@@ -53,7 +53,7 @@ export const GetStartedModal: React.FC<GetStartedModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-[#E2E8E5] p-6 sm:p-8 overflow-hidden">
         {/* Close Button */}
         <button
@@ -309,7 +309,7 @@ export const TourModal: React.FC<TourModalProps> = ({
   const CurrentIcon = current.icon;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-[#E2E8E5] p-6 sm:p-8 overflow-hidden">
         {/* Close Button */}
         <button

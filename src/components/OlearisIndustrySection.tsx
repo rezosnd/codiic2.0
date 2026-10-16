@@ -2,16 +2,15 @@
 
 import React from "react";
 import Image from "next/image";
+import { ArrowRight, Sparkles } from "lucide-react";
 import {
-  ShoppingBag,
-  Briefcase,
-  Building2,
-  Megaphone,
-  GraduationCap,
-  UtensilsCrossed,
-  ArrowRight,
-  Sparkles,
-} from "lucide-react";
+  RetailColorIcon,
+  ServicesColorIcon,
+  RealEstateColorIcon,
+  AgenciesColorIcon,
+  EducationColorIcon,
+  HospitalityColorIcon,
+} from "./ColorfulProductIcons";
 
 interface OlearisIndustrySectionProps {
   onOpenGetStarted: () => void;
@@ -25,7 +24,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
       id: "retail",
       title: "Retail & eCommerce",
       desc: "Connect your storefront with real-time UPI orders, WhatsApp customer updates, and auto-synced inventory.",
-      icon: ShoppingBag,
+      icon: RetailColorIcon,
       color: "#00B879",
       imageSrc: "/images/industries/retail.jpg",
       imageAlt: "Modern boutique retail storefront with curated lifestyle displays",
@@ -35,7 +34,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
       id: "services",
       title: "Professional Services",
       desc: "Organize client consultations, intake briefs, and retainer proposals with clear team task assignment.",
-      icon: Briefcase,
+      icon: ServicesColorIcon,
       color: "#008F60",
       imageSrc: "/images/industries/services.jpg",
       imageAlt: "Professional advisory consultants meeting in a bright contemporary office",
@@ -45,7 +44,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
       id: "real-estate",
       title: "Real Estate & Developers",
       desc: "Keep property inquiries, floorplan shares, and site-visit schedules visible across your deal pipeline.",
-      icon: Building2,
+      icon: RealEstateColorIcon,
       color: "#00B879",
       imageSrc: "/images/industries/real-estate.jpg",
       imageAlt: "Contemporary architectural residential property development",
@@ -55,7 +54,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
       id: "agencies",
       title: "Creative Agencies",
       desc: "Capture website inquiries, qualify client budgets, and track pitch milestones in one continuous feed.",
-      icon: Megaphone,
+      icon: AgenciesColorIcon,
       color: "#008F60",
       imageSrc: "/images/industries/agencies.jpg",
       imageAlt: "Creative digital agency team collaborating on digital campaign design",
@@ -65,7 +64,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
       id: "education",
       title: "Education & Academies",
       desc: "Manage prospective student enrollment forms, batch intake questions, and automated WhatsApp course brochures.",
-      icon: GraduationCap,
+      icon: EducationColorIcon,
       color: "#00B879",
       imageSrc: "/images/industries/education.jpg",
       imageAlt: "Modern interactive education seminar with active participants",
@@ -75,7 +74,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
       id: "hospitality",
       title: "Hospitality & Cafes",
       desc: "Give diners and guests a beautiful online presence to explore menus, reserve tables, and connect via WhatsApp.",
-      icon: UtensilsCrossed,
+      icon: HospitalityColorIcon,
       color: "#008F60",
       imageSrc: "/images/industries/hospitality.jpg",
       imageAlt: "Aesthetic modern boutique cafe interior with warm natural lighting",
@@ -133,11 +132,8 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
 
                     {/* Floating Category Badge & Icon */}
                     <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
-                      <div
-                        className="w-9 h-9 rounded-xl flex items-center justify-center shadow-md bg-white/95 backdrop-blur-sm"
-                        style={{ color: item.color }}
-                      >
-                        <Icon className="w-4 h-4" strokeWidth={1.8} />
+                      <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-md bg-white/95 backdrop-blur-sm p-1.5">
+                        <Icon className="w-6 h-6 shrink-0" />
                       </div>
                       <span className="text-[11px] font-bold text-white bg-black/45 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/20">
                         {item.tag}

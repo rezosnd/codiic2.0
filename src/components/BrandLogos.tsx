@@ -202,6 +202,208 @@ export const WebhooksLogo: React.FC<LogoProps> = ({
   </svg>
 );
 
+// 9. BHIM UPI Official Logo
+export const BhimUpiLogo: React.FC<LogoProps> = ({
+  className = "w-5 h-5",
+  "aria-label": ariaLabel = "BHIM UPI Payments",
+}) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    role="img"
+    aria-label={ariaLabel}
+  >
+    <rect width="24" height="24" rx="6" fill="#F8FAFC" />
+    <path d="M14.5 4.5L6.5 19.5H11.5L19.5 4.5H14.5Z" fill="#097939" />
+    <path d="M17.5 4.5L12 15H16L21.5 4.5H17.5Z" fill="#F47920" />
+  </svg>
+);
+
+// 10. BlueDart Express Official Logo
+export const BlueDartLogo: React.FC<LogoProps> = ({
+  className = "w-5 h-5",
+  "aria-label": ariaLabel = "BlueDart Express Courier",
+}) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    role="img"
+    aria-label={ariaLabel}
+  >
+    <rect width="24" height="24" rx="6" fill="#0C2340" />
+    <path d="M4 14.5L15 4.5L13.5 11.5H20L9 21.5L10.5 14.5H4Z" fill="#E63946" />
+    <path d="M8 12.5L15 6L14 11H18L11 17.5L12 12.5H8Z" fill="#FFFFFF" />
+  </svg>
+);
+
+// 11. GST Tax Compliance Official Logo
+export const GstLogo: React.FC<LogoProps> = ({
+  className = "w-5 h-5",
+  "aria-label": ariaLabel = "GST Invoicing Compliance",
+}) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    role="img"
+    aria-label={ariaLabel}
+  >
+    <rect width="24" height="24" rx="6" fill="#0F172A" />
+    <path
+      d="M12 3L4 6V11.5C4 16.5 7.5 20.8 12 22C16.5 20.8 20 16.5 20 11.5V6L12 3Z"
+      fill="#F59E0B"
+      fillOpacity="0.2"
+      stroke="#F59E0B"
+      strokeWidth="1.5"
+    />
+    <path
+      d="M9 12L11 14L15 10"
+      stroke="#10B981"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+// 12. PhonePe Official Logo
+export const PhonePeLogo: React.FC<LogoProps> = ({
+  className = "w-5 h-5",
+  "aria-label": ariaLabel = "PhonePe UPI",
+}) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    role="img"
+    aria-label={ariaLabel}
+  >
+    <rect width="24" height="24" rx="6" fill="#5F259F" />
+    <path
+      d="M13.5 6H8.5V18H11V14.5H13.5C15.9 14.5 17.5 12.9 17.5 10.25C17.5 7.6 15.9 6 13.5 6ZM13.2 12H11V8.5H13.2C14.5 8.5 15.2 9.2 15.2 10.25C15.2 11.3 14.5 12 13.2 12Z"
+      fill="#FFFFFF"
+    />
+  </svg>
+);
+
+// 13. HubSpot CRM Official Logo
+export const HubSpotLogo: React.FC<LogoProps> = ({
+  className = "w-5 h-5",
+  "aria-label": ariaLabel = "HubSpot CRM",
+}) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    role="img"
+    aria-label={ariaLabel}
+  >
+    <rect width="24" height="24" rx="6" fill="#FFF1ED" />
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M16.5 8.5V6.2C17.2 5.8 17.8 5 17.8 4C17.8 2.6 16.7 1.5 15.3 1.5C13.9 1.5 12.8 2.6 12.8 4C12.8 5 13.3 5.8 14.1 6.2V8.5C13.4 8.7 12.8 9.1 12.4 9.6L7.4 5.9C7.5 5.6 7.5 5.3 7.5 5C7.5 3.3 6.2 2 4.5 2C2.8 2 1.5 3.3 1.5 5C1.5 6.7 2.8 8 4.5 8C5.2 8 5.8 7.8 6.3 7.4L11.2 11.2C10.7 11.9 10.5 12.9 10.5 13.8C10.5 16.5 12.7 18.7 15.3 18.7C18 18.7 20.2 16.5 20.2 13.8C20.2 11.4 18.6 9.4 16.5 8.5ZM15.3 16.2C14 16.2 12.9 15.1 12.9 13.8C12.9 12.5 14 11.4 15.3 11.4C16.6 11.4 17.7 12.5 17.7 13.8C17.7 15.1 16.6 16.2 15.3 16.2Z"
+      fill="#FF7A59"
+    />
+  </svg>
+);
+
+// 14. Zoho Official Logo
+export const ZohoLogo: React.FC<LogoProps> = ({
+  className = "w-5 h-5",
+  "aria-label": ariaLabel = "Zoho Books & CRM",
+}) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    role="img"
+    aria-label={ariaLabel}
+  >
+    <rect width="24" height="24" rx="6" fill="#F8FAFC" />
+    <rect x="4" y="4" width="7" height="7" rx="1.5" fill="#E42528" />
+    <rect x="13" y="4" width="7" height="7" rx="1.5" fill="#008851" />
+    <rect x="4" y="13" width="7" height="7" rx="1.5" fill="#0096D6" />
+    <rect x="13" y="13" width="7" height="7" rx="1.5" fill="#F8B133" />
+  </svg>
+);
+
+// 15. Gmail Official Logo
+export const GmailLogo: React.FC<LogoProps> = ({
+  className = "w-5 h-5",
+  "aria-label": ariaLabel = "Gmail Automation",
+}) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    role="img"
+    aria-label={ariaLabel}
+  >
+    <rect width="24" height="24" rx="6" fill="#F8FAFC" />
+    <path d="M4 6.5C4 5.67 4.67 5 5.5 5H7L12 9L17 5H18.5C19.33 5 20 5.67 20 6.5V8.5L12 14.5L4 8.5V6.5Z" fill="#EA4335" />
+    <path d="M4 8.5L9 12.5V19H5.5C4.67 19 4 18.33 4 17.5V8.5Z" fill="#4285F4" />
+    <path d="M20 8.5L15 12.5V19H18.5C19.33 19 20 18.33 20 17.5V8.5Z" fill="#34A853" />
+    <path d="M9 19H15V12.5L12 10.25L9 12.5V19Z" fill="#FBBC05" />
+  </svg>
+);
+
+// 16. Instagram Official Logo
+export const InstagramLogo: React.FC<LogoProps> = ({
+  className = "w-5 h-5",
+  "aria-label": ariaLabel = "Instagram Direct",
+}) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    role="img"
+    aria-label={ariaLabel}
+  >
+    <defs>
+      <linearGradient id="igGradientHero" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#FD1D1D" />
+        <stop offset="50%" stopColor="#E1306C" />
+        <stop offset="100%" stopColor="#833AB4" />
+      </linearGradient>
+    </defs>
+    <rect width="24" height="24" rx="6" fill="url(#igGradientHero)" />
+    <rect x="5.5" y="5.5" width="13" height="13" rx="3.5" stroke="#FFFFFF" strokeWidth="1.5" />
+    <circle cx="12" cy="12" r="3" stroke="#FFFFFF" strokeWidth="1.5" />
+    <circle cx="15.5" cy="8.5" r="0.75" fill="#FFFFFF" />
+  </svg>
+);
+
+// 17. Google Ads Official Logo
+export const GoogleAdsLogo: React.FC<LogoProps> = ({
+  className = "w-5 h-5",
+  "aria-label": ariaLabel = "Google Ads & Leads",
+}) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    role="img"
+    aria-label={ariaLabel}
+  >
+    <rect width="24" height="24" rx="6" fill="#F8FAFC" />
+    <path d="M5.5 14.5L10 6.5C10.6 5.5 11.9 5.1 12.9 5.7C13.9 6.3 14.3 7.6 13.7 8.6L9.2 16.6C8.6 17.6 7.3 18 6.3 17.4C5.3 16.8 4.9 15.5 5.5 14.5Z" fill="#F4B400" />
+    <path d="M14.5 14.5L19 6.5C19.6 5.5 20.9 5.1 21.9 5.7C22.9 6.3 23.3 7.6 22.7 8.6L18.2 16.6C17.6 17.6 16.3 18 15.3 17.4C14.3 16.8 13.9 15.5 14.5 14.5Z" fill="#4285F4" />
+    <circle cx="6.5" cy="16.5" r="2.5" fill="#34A853" />
+  </svg>
+);
+
 // Helper function to render logo by integration id
 export const renderIntegrationLogo = (id: string, className = "w-5 h-5") => {
   switch (id) {
@@ -211,6 +413,8 @@ export const renderIntegrationLogo = (id: string, className = "w-5 h-5") => {
       return <RazorpayLogo className={className} />;
     case "google":
       return <GoogleWorkspaceLogo className={className} />;
+    case "googleads":
+      return <GoogleAdsLogo className={className} />;
     case "meta":
       return <MetaLogo className={className} />;
     case "shopify":
@@ -219,6 +423,22 @@ export const renderIntegrationLogo = (id: string, className = "w-5 h-5") => {
       return <StripeLogo className={className} />;
     case "zapier":
       return <ZapierLogo className={className} />;
+    case "bhimupi":
+      return <BhimUpiLogo className={className} />;
+    case "bluedart":
+      return <BlueDartLogo className={className} />;
+    case "gst":
+      return <GstLogo className={className} />;
+    case "phonepe":
+      return <PhonePeLogo className={className} />;
+    case "hubspot":
+      return <HubSpotLogo className={className} />;
+    case "zoho":
+      return <ZohoLogo className={className} />;
+    case "gmail":
+      return <GmailLogo className={className} />;
+    case "instagram":
+      return <InstagramLogo className={className} />;
     case "webhooks":
     default:
       return <WebhooksLogo className={className} />;

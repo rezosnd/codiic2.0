@@ -1,7 +1,12 @@
 "use client";
 
 import React from "react";
-import { Layers, Kanban, Clock, Sparkles, CheckCircle2 } from "lucide-react";
+import { Sparkles, CheckCircle2 } from "lucide-react";
+import {
+  LessSwitchingColorIcon,
+  ClearerSalesColorIcon,
+  SmootherFollowupsColorIcon,
+} from "./ColorfulProductIcons";
 
 export const BenefitsSection: React.FC = () => {
   const benefits = [
@@ -9,7 +14,7 @@ export const BenefitsSection: React.FC = () => {
       title: "Less switching",
       desc: "Your key business tools in one workspace.",
       subdesc: "Eliminate constant app hopping between website forms, disjointed CRM spreadsheets, and WhatsApp message logs.",
-      icon: Layers,
+      icon: LessSwitchingColorIcon,
       color: "#00B879",
       bullet: "Unified single login",
     },
@@ -17,7 +22,7 @@ export const BenefitsSection: React.FC = () => {
       title: "Clearer sales",
       desc: "Know where your leads and deals stand.",
       subdesc: "Visual stage tracking keeps prospective client milestones, deal values, and representative ownership crystal clear.",
-      icon: Kanban,
+      icon: ClearerSalesColorIcon,
       color: "#008F60",
       bullet: "Weighted INR pipeline",
     },
@@ -25,7 +30,7 @@ export const BenefitsSection: React.FC = () => {
       title: "Smoother follow-ups",
       desc: "Keep the next action visible.",
       subdesc: "Automated instant responses and structured reminders ensure no prospective buyer inquiry slips through the cracks.",
-      icon: Clock,
+      icon: SmootherFollowupsColorIcon,
       color: "#00B879",
       bullet: "Zero lead leakage",
     },
@@ -62,11 +67,8 @@ export const BenefitsSection: React.FC = () => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div
-                      className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-xs transition-transform group-hover:scale-105"
-                      style={{ backgroundColor: "#E8F8F1", color: card.color }}
-                    >
-                      <Icon className="w-6 h-6" strokeWidth={1.8} />
+                    <div className="w-12 h-12 rounded-2xl bg-white border border-[#E2E6E4] flex items-center justify-center shadow-xs p-1.5 transition-transform group-hover:scale-108">
+                      <Icon className="w-9 h-9 shrink-0" />
                     </div>
                     <span className="text-[10px] font-mono font-bold text-[#8A90A0]">
                       0{idx + 1}

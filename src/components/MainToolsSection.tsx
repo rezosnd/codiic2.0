@@ -2,11 +2,6 @@
 
 import React, { useState } from "react";
 import {
-  Globe,
-  Users,
-  Kanban,
-  Zap,
-  BarChart3,
   ArrowRight,
   Sparkles,
   CheckCircle2,
@@ -16,6 +11,13 @@ import {
   Clock,
   ExternalLink,
 } from "lucide-react";
+import {
+  WebsiteBuilderColorIcon,
+  CustomerCrmColorIcon,
+  SalesPipelineColorIcon,
+  AutomationColorIcon,
+  AnalyticsColorIcon,
+} from "./ColorfulProductIcons";
 
 interface MainToolsSectionProps {
   onOpenGetStarted: () => void;
@@ -31,7 +33,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({
       id: "website-builder",
       title: "Website Builder",
       desc: "Create your online presence with drag-and-drop sections.",
-      icon: Globe,
+      icon: WebsiteBuilderColorIcon,
       color: "#00B879",
       badge: "POPULAR",
       highlights: [
@@ -53,7 +55,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({
       id: "crm",
       title: "Customer CRM",
       desc: "Keep customer leads organized from WhatsApp and web.",
-      icon: Users,
+      icon: CustomerCrmColorIcon,
       color: "#008F60",
       badge: "HOT",
       highlights: [
@@ -75,7 +77,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({
       id: "sales-pipeline",
       title: "Sales Pipeline",
       desc: "See every deal at a glance from inquiry to contract.",
-      icon: Kanban,
+      icon: SalesPipelineColorIcon,
       color: "#00B879",
       badge: "NEW",
       highlights: [
@@ -97,7 +99,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({
       id: "automation",
       title: "Automation",
       desc: "Simplify repetitive follow-ups with instant triggers.",
-      icon: Zap,
+      icon: AutomationColorIcon,
       color: "#008F60",
       badge: "0.4s",
       highlights: [
@@ -119,7 +121,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({
       id: "analytics",
       title: "Analytics",
       desc: "Understand business activity and revenue in real time.",
-      icon: BarChart3,
+      icon: AnalyticsColorIcon,
       color: "#00B879",
       badge: "LIVE",
       highlights: [
@@ -133,7 +135,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({
         },
         {
           title: "Actionable team metrics",
-          desc: "Review response times, deal velocity, and representative win rates.",
+          desc: "Track response times, sales pipeline velocity, and team throughput.",
         },
       ],
     },
@@ -145,7 +147,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({
   return (
     <section
       id="tools"
-      className="pt-24 sm:pt-36 lg:pt-44 pb-20 sm:pb-28 bg-[#F7F9F8] border-b border-[#E8EAF0] relative z-10"
+      className="pt-16 sm:pt-24 lg:pt-32 pb-20 sm:pb-28 bg-[#E9EBE7] border-b border-[#D9DED8] relative z-10"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -179,7 +181,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({
                       : "text-[#5A6270] hover:text-[#171923] hover:bg-[#F7F9F8]"
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5" strokeWidth={1.8} />
+                  <Icon className="w-4 h-4 shrink-0" />
                   <span>{tool.title}</span>
                 </button>
               );
@@ -195,12 +197,9 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({
             
             {/* Left Content (5 cols) */}
             <div className="lg:col-span-5 space-y-4">
-              <div className="flex items-center gap-3">
-                <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-xs"
-                  style={{ backgroundColor: "#E8F8F1", color: currentTool.color }}
-                >
-                  <CurrentIcon className="w-6 h-6" strokeWidth={1.8} />
+              <div className="flex items-center gap-3.5">
+                <div className="w-12 h-12 rounded-2xl bg-white border border-[#E2E6E4] flex items-center justify-center shrink-0 shadow-xs p-2">
+                  <CurrentIcon className="w-8 h-8 shrink-0" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
@@ -241,7 +240,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({
                   <div className="bg-white rounded-xl p-3.5 border border-[#E2E6E4] shadow-xs">
                     <div className="flex items-center justify-between pb-2.5 border-b border-[#F0F2F5] text-xs">
                       <div className="flex items-center gap-2">
-                        <Globe className="w-4 h-4 text-[#00B879]" strokeWidth={1.8} />
+                        <WebsiteBuilderColorIcon className="w-4 h-4 shrink-0" />
                         <span className="font-bold text-[#171923]">store.yourbrand.in</span>
                       </div>
                       <span className="text-[10px] text-[#008F60] bg-[#E8F8F1] px-2 py-0.5 rounded-full font-bold">

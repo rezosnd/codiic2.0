@@ -3,10 +3,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import {
-  Globe,
-  Users,
-  Kanban,
-  Zap,
   ArrowRight,
   CheckCircle2,
   Sparkles,
@@ -15,6 +11,12 @@ import {
   Send,
   ChevronRight,
 } from "lucide-react";
+import {
+  WebsiteBuilderColorIcon,
+  CustomerCrmColorIcon,
+  SalesPipelineColorIcon,
+  AutomationColorIcon,
+} from "./ColorfulProductIcons";
 
 interface ConnectedWorkspaceSectionProps {
   onOpenGetStarted: () => void;
@@ -28,7 +30,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
   const steps = [
     {
       id: "website",
-      icon: Globe,
+      icon: WebsiteBuilderColorIcon,
       label: "1. Storefront & Website",
       action: "New inquiry received",
       desc: "Visitor submits request on your website",
@@ -36,7 +38,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
     },
     {
       id: "crm",
-      icon: Users,
+      icon: CustomerCrmColorIcon,
       label: "2. Customer CRM",
       action: "Lead profile created",
       desc: "Contact information & chat history organized",
@@ -44,7 +46,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
     },
     {
       id: "pipeline",
-      icon: Kanban,
+      icon: SalesPipelineColorIcon,
       label: "3. Sales Pipeline",
       action: "Deal card updated",
       desc: "Rep assigned with revenue stage visibility",
@@ -52,7 +54,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
     },
     {
       id: "automation",
-      icon: Zap,
+      icon: AutomationColorIcon,
       label: "4. Automation Engine",
       action: "Follow-up triggered",
       desc: "Instant WhatsApp catalog sent to buyer",
@@ -127,11 +129,8 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <div
-                        className="w-10 h-10 rounded-xl flex items-center justify-center shadow-xs transition-transform group-hover:scale-105"
-                        style={{ backgroundColor: "#E8F8F1", color: st.color }}
-                      >
-                        <Icon className="w-5 h-5" strokeWidth={1.8} />
+                      <div className="w-10 h-10 rounded-xl bg-white border border-[#E2E6E4] flex items-center justify-center shadow-xs p-1.5 transition-transform group-hover:scale-108">
+                        <Icon className="w-7 h-7 shrink-0" />
                       </div>
                       <span className="text-[10px] font-mono font-bold text-[#8A90A0]">
                         0{idx + 1}

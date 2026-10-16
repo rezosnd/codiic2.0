@@ -7,18 +7,20 @@ import {
   X,
   ArrowRight,
   ChevronDown,
-  Globe,
-  Users,
-  Kanban,
-  Zap,
-  BarChart3,
-  ShoppingBag,
-  Briefcase,
-  Building2,
   Sparkles,
   ExternalLink,
   Play,
 } from "lucide-react";
+import {
+  WebsiteBuilderColorIcon,
+  CustomerCrmColorIcon,
+  SalesPipelineColorIcon,
+  AutomationColorIcon,
+  AnalyticsColorIcon,
+  RetailColorIcon,
+  ServicesColorIcon,
+  RealEstateColorIcon,
+} from "./ColorfulProductIcons";
 
 interface NavbarProps {
   onOpenGetStarted: () => void;
@@ -57,35 +59,35 @@ export const Navbar: React.FC<NavbarProps> = ({
     {
       title: "Website Builder",
       desc: "Fast responsive storefronts & landing pages",
-      icon: Globe,
+      icon: WebsiteBuilderColorIcon,
       badge: "POPULAR",
       href: "#tools",
     },
     {
       title: "Customer CRM",
       desc: "Unified customer leads & WhatsApp chat history",
-      icon: Users,
+      icon: CustomerCrmColorIcon,
       badge: "HOT",
       href: "#tools",
     },
     {
       title: "Sales Pipeline",
       desc: "Visual Kanban deals with stage-by-stage revenue",
-      icon: Kanban,
+      icon: SalesPipelineColorIcon,
       badge: "NEW",
       href: "#tools",
     },
     {
       title: "Workflow Automation",
       desc: "Zero-delay triggers & instant buyer follow-ups",
-      icon: Zap,
+      icon: AutomationColorIcon,
       badge: "0.4s",
       href: "#tools",
     },
     {
       title: "Analytics & Reports",
       desc: "Real-time conversion metrics and revenue tracking",
-      icon: BarChart3,
+      icon: AnalyticsColorIcon,
       badge: "LIVE",
       href: "#tools",
     },
@@ -95,19 +97,19 @@ export const Navbar: React.FC<NavbarProps> = ({
     {
       title: "Retail & eCommerce",
       desc: "Storefronts with real-time UPI orders & WhatsApp updates",
-      icon: ShoppingBag,
+      icon: RetailColorIcon,
       href: "#solutions",
     },
     {
       title: "Professional Services",
       desc: "Client intake briefs & retainer agreement tracking",
-      icon: Briefcase,
+      icon: ServicesColorIcon,
       href: "#solutions",
     },
     {
       title: "Real Estate & Developers",
       desc: "Property inquiries, floorplans & site visit schedules",
-      icon: Building2,
+      icon: RealEstateColorIcon,
       href: "#solutions",
     },
   ];
@@ -226,23 +228,22 @@ export const Navbar: React.FC<NavbarProps> = ({
             </a>
           </nav>
 
-          {/* Right: Actions & Primary Green CTA */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Secondary CTA: Platform Tour */}
+          {/* Right: Actions & Primary Green CTA (Dropship.io 1:1 match) */}
+          <div className="flex items-center gap-1.5 sm:gap-3">
+            {/* Sign In */}
             <button
-              onClick={onOpenSeeHowItWorks}
-              id="header-tour-button"
-              className="hidden lg:flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold text-[#5A6270] hover:text-[#171923] hover:bg-[#F7F9F8] transition-all cursor-pointer"
+              onClick={onOpenGetStarted}
+              id="header-signin-button"
+              className="px-3 py-1.5 rounded-full text-xs sm:text-[13px] font-semibold text-[#171923] hover:text-[#00B879] transition-colors cursor-pointer"
             >
-              <Play className="w-3 h-3 text-[#00B879] fill-[#00B879]" />
-              <span>Tour</span>
+              Sign in
             </button>
 
-            {/* Primary CTA: Get Started */}
+            {/* Primary CTA: Get started */}
             <button
               onClick={onOpenGetStarted}
               id="header-cta-button"
-              className="group relative px-5 sm:px-6 py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#00B879]/20 hover:shadow-lg hover:shadow-[#00B879]/30 transition-all duration-200 flex items-center gap-1.5 active:scale-95 cursor-pointer"
+              className="group relative px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#00B879]/20 hover:shadow-lg hover:shadow-[#00B879]/30 transition-all duration-200 flex items-center gap-1.5 active:scale-95 cursor-pointer"
             >
               <span>Get started</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -297,8 +298,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onClick={() => setActiveDropdown(null)}
                       className="group p-3 rounded-2xl hover:bg-[#F7F9F8] border border-transparent hover:border-[#E2E6E4] transition-all flex items-start gap-3"
                     >
-                      <div className="w-9 h-9 rounded-xl bg-[#E8F8F1] text-[#008F60] group-hover:bg-[#00B879] group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-2xs">
-                        <Icon className="w-4 h-4" strokeWidth={1.8} />
+                      <div className="w-10 h-10 rounded-xl bg-white border border-[#E2E6E4] flex items-center justify-center shrink-0 p-1.5 shadow-2xs group-hover:scale-105 transition-transform">
+                        <Icon className="w-7 h-7 shrink-0" />
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
@@ -342,8 +343,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onClick={() => setActiveDropdown(null)}
                       className="group p-3.5 rounded-2xl hover:bg-[#F7F9F8] border border-transparent hover:border-[#E2E6E4] transition-all flex items-start gap-3"
                     >
-                      <div className="w-9 h-9 rounded-xl bg-[#E8F8F1] text-[#008F60] group-hover:bg-[#00B879] group-hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-2xs">
-                        <Icon className="w-4 h-4" strokeWidth={1.8} />
+                      <div className="w-10 h-10 rounded-xl bg-white border border-[#E2E6E4] flex items-center justify-center shrink-0 p-1.5 shadow-2xs group-hover:scale-105 transition-transform">
+                        <Icon className="w-7 h-7 shrink-0" />
                       </div>
                       <div>
                         <div className="text-xs font-bold text-[#171923] group-hover:text-[#008F60] transition-colors">
