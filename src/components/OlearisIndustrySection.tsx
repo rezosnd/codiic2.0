@@ -90,7 +90,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
+        {/* Section Header (Dropship.io headline hierarchy) */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-xs font-bold tracking-wider uppercase">
             <Sparkles className="w-3.5 h-3.5 text-[#00B879]" />
@@ -114,7 +114,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
               <div
                 key={item.id}
                 onClick={onOpenGetStarted}
-                className="group cursor-pointer rounded-3xl bg-[#F7F9F8] border border-[#E2E8E5] hover:bg-white hover:border-[#00B879]/50 hover:shadow-xl hover:shadow-[#00B879]/8 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                className="group cursor-pointer rounded-3xl bg-[#F7F9F8] border border-[#E2E6E4] hover:bg-white hover:border-[#00B879]/50 hover:shadow-xl hover:shadow-[#00B879]/8 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 <div>
                   {/* Image Container with Responsive Next/Image & Smooth Zoom */}
@@ -137,9 +137,9 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
                         className="w-9 h-9 rounded-xl flex items-center justify-center shadow-md bg-white/95 backdrop-blur-sm"
                         style={{ color: item.color }}
                       >
-                        <Icon className="w-4 h-4" />
+                        <Icon className="w-4 h-4" strokeWidth={1.8} />
                       </div>
-                      <span className="text-[11px] font-bold text-white bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/20">
+                      <span className="text-[11px] font-bold text-white bg-black/45 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/20">
                         {item.tag}
                       </span>
                     </div>

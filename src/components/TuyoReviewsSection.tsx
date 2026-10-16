@@ -110,7 +110,7 @@ export const TuyoReviewsSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header with Navigation Controls */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-xs font-bold tracking-wider uppercase mb-3">
               <Sparkles className="w-3.5 h-3.5 text-[#00B879]" />
@@ -126,12 +126,12 @@ export const TuyoReviewsSection: React.FC = () => {
             </p>
           </div>
 
-          {/* Carousel Arrows */}
+          {/* Carousel Arrows (Dropship.io rounded pill buttons) */}
           <div className="flex items-center gap-3">
             <button
               onClick={handlePrev}
               aria-label="Previous review"
-              className="w-11 h-11 rounded-full border border-[#D9DEDC] bg-white hover:bg-[#171923] hover:text-white hover:border-[#171923] text-[#171923] flex items-center justify-center transition-all shadow-xs active:scale-95"
+              className="w-11 h-11 rounded-full border border-[#D9DEDC] bg-white hover:bg-[#171923] hover:text-white hover:border-[#171923] text-[#171923] flex items-center justify-center transition-all shadow-xs active:scale-95 cursor-pointer"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -141,14 +141,14 @@ export const TuyoReviewsSection: React.FC = () => {
             <button
               onClick={handleNext}
               aria-label="Next review"
-              className="w-11 h-11 rounded-full border border-[#D9DEDC] bg-white hover:bg-[#171923] hover:text-white hover:border-[#171923] text-[#171923] flex items-center justify-center transition-all shadow-xs active:scale-95"
+              className="w-11 h-11 rounded-full border border-[#D9DEDC] bg-white hover:bg-[#171923] hover:text-white hover:border-[#171923] text-[#171923] flex items-center justify-center transition-all shadow-xs active:scale-95 cursor-pointer"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* Tuyo-Inspired Flowing 3-Card Carousel Stage */}
+        {/* Tuyo & Dropship Flowing Carousel Stage */}
         <div
           className="relative min-h-[380px] flex items-center justify-center py-4"
           onTouchStart={handleTouchStart}
@@ -159,12 +159,10 @@ export const TuyoReviewsSection: React.FC = () => {
               const total = reviews.length;
               const offset = (index - activeIndex + total) % total;
               
-              // Only render or position cards that are active or immediate neighbors
               let isCenter = offset === 0;
               let isLeft = offset === total - 1 || (activeIndex === 0 && index === total - 1);
               let isRight = offset === 1;
 
-              // Hide far cards on desktop
               if (!isCenter && !isLeft && !isRight) {
                 return null;
               }
@@ -243,7 +241,7 @@ export const TuyoReviewsSection: React.FC = () => {
             <button
               key={idx}
               onClick={() => setActiveIndex(idx)}
-              className={`h-2 rounded-full transition-all duration-300 ${
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                 activeIndex === idx
                   ? "w-8 bg-[#00B879]"
                   : "w-2 bg-[#D9DEDC] hover:bg-[#8A90A0]"

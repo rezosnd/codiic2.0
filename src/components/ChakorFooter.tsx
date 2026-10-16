@@ -15,7 +15,7 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
     <footer className="bg-[#171923] text-white pt-16 pb-12 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top 4-Column Grid (Chakor-inspired organization) */}
+        {/* Top 4-Column Grid (Chakor & Dropship-inspired organization) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-gray-800">
           
           {/* Column 1: Brand Info & Contact Action (Col span 5) */}
@@ -25,7 +25,7 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
               <div className="relative h-8 w-8 shrink-0">
                 <Image
                   src="/logo_withot text.png"
-                  alt="CODIIC"
+                  alt="CODIIC Symbol"
                   fill
                   className="object-contain"
                 />
@@ -47,10 +47,10 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
             <div className="pt-2">
               <button
                 onClick={onOpenGetStarted}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs font-bold transition-all shadow-md shadow-[#00B879]/20"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs font-bold transition-all shadow-md shadow-[#00B879]/20 hover:shadow-lg active:scale-95 cursor-pointer"
               >
                 <span>Get started with CODIIC</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </button>
             </div>
           </div>
@@ -142,7 +142,7 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
               <li>
                 <button
                   onClick={onOpenGetStarted}
-                  className="hover:text-[#00B879] transition-colors text-left"
+                  className="hover:text-[#00B879] transition-colors text-left cursor-pointer"
                 >
                   Contact Support
                 </button>

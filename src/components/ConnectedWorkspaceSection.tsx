@@ -13,6 +13,7 @@ import {
   MessageSquare,
   Clock,
   Send,
+  ChevronRight,
 } from "lucide-react";
 
 interface ConnectedWorkspaceSectionProps {
@@ -66,14 +67,14 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
     >
       {/* Subtle background glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#E8F8F1]/50 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[520px] bg-[#E8F8F1]/50 rounded-full blur-3xl pointer-events-none"
         aria-hidden="true"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto space-y-4 mb-14">
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-xs font-bold tracking-wider uppercase">
             <Sparkles className="w-3.5 h-3.5 text-[#00B879]" />
             <span>CONNECTED WORKSPACE</span>
@@ -83,7 +84,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
             Everything works together.
           </h2>
 
-          <p className="text-base sm:text-lg text-[#555A68] leading-relaxed">
+          <p className="text-base sm:text-lg text-[#555A68] leading-relaxed max-w-2xl mx-auto">
             From the first inquiry to the next follow-up, CODIIC keeps your business information connected in real time.
           </p>
 
@@ -93,23 +94,23 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
           </div>
         </div>
 
-        {/* Central Connected Visual Representation */}
-        <div className="max-w-5xl mx-auto bg-[#F7F9F8] border border-[#E2E8E5] rounded-3xl p-6 sm:p-9 shadow-xs relative">
+        {/* Central Connected Visual Representation (Dropship-inspired refined borders & cards) */}
+        <div className="max-w-5xl mx-auto bg-[#F7F9F8] border border-[#E2E8E5] rounded-3xl p-5 sm:p-9 shadow-sm relative">
           
           {/* Top Info Bar */}
           <div className="flex items-center justify-between pb-4 border-b border-[#E8EAF0] mb-8">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               <span className="w-2.5 h-2.5 rounded-full bg-[#00B879] animate-pulse" />
-              <span className="text-xs font-mono font-bold text-[#171923]">
+              <span className="text-xs font-mono font-bold text-[#171923] uppercase tracking-wider">
                 ONE UNIFIED DATA STREAM
               </span>
             </div>
             <span className="text-xs text-[#555A68] hidden sm:inline">
-              Click any stage to inspect real UI flow
+              Click any stage to inspect live data flow
             </span>
           </div>
 
-          {/* 4 Connected Flow Stages */}
+          {/* 4 Connected Flow Stages with Animated Sequence Connectors */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
             {steps.map((st, idx) => {
               const Icon = st.icon;
@@ -118,19 +119,19 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
                 <div
                   key={st.id}
                   onClick={() => setActiveStep(idx)}
-                  className={`cursor-pointer rounded-2xl p-5 border transition-all duration-300 flex flex-col justify-between ${
+                  className={`group cursor-pointer rounded-2xl p-5 border transition-all duration-300 flex flex-col justify-between ${
                     isCurrent
                       ? "bg-white border-[#00B879] shadow-xl shadow-[#00B879]/15 ring-2 ring-[#00B879]/20"
-                      : "bg-white/80 border-[#E2E8E5] hover:bg-white hover:border-[#00B879]/40"
+                      : "bg-white/90 border-[#E2E8E5] hover:bg-white hover:border-[#00B879]/40 hover:shadow-md"
                   }`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
                       <div
-                        className="w-10 h-10 rounded-xl flex items-center justify-center shadow-xs"
+                        className="w-10 h-10 rounded-xl flex items-center justify-center shadow-xs transition-transform group-hover:scale-105"
                         style={{ backgroundColor: "#E8F8F1", color: st.color }}
                       >
-                        <Icon className="w-5 h-5" />
+                        <Icon className="w-5 h-5" strokeWidth={1.8} />
                       </div>
                       <span className="text-[10px] font-mono font-bold text-[#8A90A0]">
                         0{idx + 1}
@@ -156,6 +157,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
                       className={`w-3.5 h-3.5 ${
                         isCurrent ? "text-[#00B879]" : "text-[#8A90A0]"
                       }`}
+                      strokeWidth={2}
                     />
                   </div>
                 </div>
@@ -165,7 +167,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
 
           {/* Interactive Live Product UI Panel */}
           <div className="mt-6 bg-white rounded-2xl border border-[#E2E8E5] p-5 sm:p-6 shadow-xs animate-in fade-in duration-300">
-            <div className="flex items-center justify-between pb-3 border-b border-[#F0F2F5] text-xs font-semibold">
+            <div className="flex items-center justify-between pb-3 border-b border-[#F0F2F5] text-xs font-semibold flex-wrap gap-2">
               <div className="flex items-center gap-2 text-[#171923]">
                 <span className="w-2 h-2 rounded-full bg-[#00B879]" />
                 <span className="font-bold">LIVE STAGE DEMONSTRATION:</span>
@@ -198,7 +200,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
                       </div>
                     </div>
                   </div>
-                  <div className="p-3 rounded-xl bg-[#E8F8F1] border border-[#00B879]/30 text-center">
+                  <div className="p-3.5 rounded-xl bg-[#E8F8F1] border border-[#00B879]/30 text-center">
                     <div className="text-[10px] font-bold text-[#008F60] uppercase">
                       Sync Status
                     </div>
@@ -230,7 +232,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
                       </div>
                     </div>
                   </div>
-                  <div className="p-3 rounded-xl bg-[#E8F8F1] border border-[#00B879]/30 text-center">
+                  <div className="p-3.5 rounded-xl bg-[#E8F8F1] border border-[#00B879]/30 text-center">
                     <div className="text-[10px] font-bold text-[#008F60] uppercase">
                       Assigned Rep
                     </div>
@@ -260,7 +262,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
                       </div>
                     </div>
                   </div>
-                  <div className="p-3 rounded-xl bg-[#E8F8F1] border border-[#00B879]/30 text-center">
+                  <div className="p-3.5 rounded-xl bg-[#E8F8F1] border border-[#00B879]/30 text-center">
                     <div className="text-[10px] font-bold text-[#008F60] uppercase">
                       Pipeline Total
                     </div>
@@ -282,7 +284,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
                     </div>
                     <div className="p-3 bg-[#E8F8F1]/40 rounded-xl border border-[#00B879]/30 text-xs flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <MessageSquare className="w-4 h-4 text-[#00B879]" />
+                        <MessageSquare className="w-4 h-4 text-[#00B879]" strokeWidth={2} />
                         <div>
                           <div className="font-bold text-[#171923]">Instant WhatsApp Catalog & Booking Link</div>
                           <div className="text-[10px] text-[#5A6270]">Delivered to +91 98201 XXXXX</div>
@@ -293,7 +295,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
                       </span>
                     </div>
                   </div>
-                  <div className="p-3 rounded-xl bg-white border border-[#E2E6E4] text-center">
+                  <div className="p-3.5 rounded-xl bg-white border border-[#E2E6E4] text-center">
                     <div className="text-[10px] font-bold text-[#5A6270] uppercase">
                       Human Effort Saved
                     </div>
@@ -328,7 +330,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
 
             <button
               onClick={onOpenGetStarted}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#171923] hover:bg-[#00B879] text-white text-xs font-bold transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#171923] hover:bg-[#00B879] text-white text-xs font-bold transition-all shadow-xs cursor-pointer active:scale-95"
             >
               <span>See it in action</span>
               <ArrowRight className="w-3.5 h-3.5" />

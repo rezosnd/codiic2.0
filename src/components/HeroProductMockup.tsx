@@ -14,8 +14,6 @@ import {
   MessageSquare,
   Lock,
   Layers,
-  ChevronRight,
-  Eye,
   ExternalLink,
   ShieldCheck,
   TrendingUp,
@@ -46,7 +44,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
     <div className="relative w-full max-w-6xl mx-auto">
       {/* Soft atmospheric mint glow under the mockup frame */}
       <div
-        className="absolute -inset-4 sm:-inset-6 bg-gradient-to-b from-[#00B879]/15 via-[#00B879]/8 to-transparent rounded-[36px] blur-2xl -z-10 pointer-events-none"
+        className="absolute -inset-4 sm:-inset-6 bg-gradient-to-b from-[#00B879]/20 via-[#00B879]/10 to-transparent rounded-[36px] blur-2xl -z-10 pointer-events-none"
         aria-hidden="true"
       />
 
@@ -97,9 +95,9 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
           </div>
         </div>
 
-        {/* Workspace Sub-Navigation / Pillar Selector */}
-        <div className="bg-[#F7F9F8] px-4 sm:px-6 py-2.5 border-b border-[#E2E6E4] flex items-center justify-between gap-2 overflow-x-auto custom-scrollbar">
-          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        {/* Workspace Sub-Navigation / Pillar Selector (Dropship.io style tab bar) */}
+        <div className="bg-[#F7F9F8] px-3 sm:px-6 py-2.5 border-b border-[#E2E6E4] flex items-center justify-between gap-2 overflow-x-auto custom-scrollbar">
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -109,7 +107,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? "bg-white text-[#171923] shadow-xs border border-[#E2E6E4] text-[#008F60]"
+                      ? "bg-white text-[#008F60] shadow-xs border border-[#E2E6E4] font-bold"
                       : "text-[#5A6270] hover:text-[#171923] hover:bg-white/60"
                   }`}
                 >
@@ -117,6 +115,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                     className={`w-3.5 h-3.5 ${
                       isActive ? "text-[#00B879]" : "text-[#5A6270]"
                     }`}
+                    strokeWidth={1.8}
                   />
                   <span>{tab.label}</span>
                 </button>
@@ -126,7 +125,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
 
           <button
             onClick={onOpenSeeHowItWorks}
-            className="hidden lg:flex items-center gap-1 text-[11px] font-bold text-[#008F60] hover:text-[#00B879] px-2.5 py-1 rounded-lg hover:bg-white transition-colors shrink-0"
+            className="hidden lg:flex items-center gap-1 text-[11px] font-bold text-[#008F60] hover:text-[#00B879] px-2.5 py-1 rounded-lg hover:bg-white transition-colors shrink-0 cursor-pointer"
           >
             <span>Interactive Demo</span>
             <ExternalLink className="w-3 h-3" />
@@ -138,7 +137,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
           <div className="p-4 sm:p-6 lg:p-7 space-y-5 animate-in fade-in duration-200">
             {/* Top Workspace KPI Bar */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-              <div className="bg-[#F7F9F8] rounded-2xl p-3.5 border border-[#E8EAF0]">
+              <div className="bg-[#F7F9F8] rounded-2xl p-3.5 border border-[#E8EAF0] hover:border-[#00B879]/30 transition-colors">
                 <div className="flex items-center justify-between text-[11px] font-medium text-[#5A6270]">
                   <span>Active Leads</span>
                   <span className="text-[10px] bg-[#E8F8F1] text-[#008F60] font-bold px-1.5 py-0.5 rounded">
@@ -153,7 +152,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                 </div>
               </div>
 
-              <div className="bg-[#F7F9F8] rounded-2xl p-3.5 border border-[#E8EAF0]">
+              <div className="bg-[#F7F9F8] rounded-2xl p-3.5 border border-[#E8EAF0] hover:border-[#00B879]/30 transition-colors">
                 <div className="flex items-center justify-between text-[11px] font-medium text-[#5A6270]">
                   <span>Pipeline Value</span>
                   <span className="text-[10px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.5 rounded">
@@ -168,7 +167,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                 </div>
               </div>
 
-              <div className="bg-[#F7F9F8] rounded-2xl p-3.5 border border-[#E8EAF0]">
+              <div className="bg-[#F7F9F8] rounded-2xl p-3.5 border border-[#E8EAF0] hover:border-[#00B879]/30 transition-colors">
                 <div className="flex items-center justify-between text-[11px] font-medium text-[#5A6270]">
                   <span>Online Storefront</span>
                   <span className="text-[10px] bg-[#E8F8F1] text-[#008F60] font-bold px-1.5 py-0.5 rounded">
@@ -183,7 +182,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                 </div>
               </div>
 
-              <div className="bg-[#F7F9F8] rounded-2xl p-3.5 border border-[#E8EAF0]">
+              <div className="bg-[#F7F9F8] rounded-2xl p-3.5 border border-[#E8EAF0] hover:border-[#00B879]/30 transition-colors">
                 <div className="flex items-center justify-between text-[11px] font-medium text-[#5A6270]">
                   <span>Auto-Response</span>
                   <span className="text-[10px] bg-[#E8F8F1] text-[#008F60] font-bold px-1.5 py-0.5 rounded">
@@ -208,7 +207,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                   <div className="flex items-center justify-between pb-2.5 border-b border-[#E8EAF0]">
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded-lg bg-[#E8F8F1] text-[#00B879] flex items-center justify-center">
-                        <Globe className="w-3.5 h-3.5" />
+                        <Globe className="w-3.5 h-3.5" strokeWidth={1.8} />
                       </div>
                       <span className="text-xs font-bold text-[#171923]">
                         Website Builder
@@ -223,7 +222,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                   <div className="mt-3 bg-white rounded-xl p-3 border border-[#E2E6E4] shadow-xs space-y-2.5">
                     <div className="flex items-center justify-between text-[10px] text-[#5A6270] pb-2 border-b border-[#F0F2F5]">
                       <span className="font-semibold text-[#171923]">store.yourbrand.in</span>
-                      <span className="text-[#008F60]">● Live</span>
+                      <span className="text-[#008F60] font-semibold">● Live</span>
                     </div>
 
                     <div className="rounded-lg bg-gradient-to-r from-[#171923] to-[#2D3748] p-3 text-white">
@@ -233,7 +232,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                       <div className="text-xs font-bold mt-0.5">
                         Architectural Ceramics & Studio
                       </div>
-                      <button className="mt-2 text-[9px] bg-[#00B879] hover:bg-[#008F60] text-white font-bold px-2.5 py-1 rounded-md">
+                      <button className="mt-2 text-[9px] bg-[#00B879] hover:bg-[#008F60] text-white font-bold px-2.5 py-1 rounded-md transition-colors">
                         Shop Catalog
                       </button>
                     </div>
@@ -249,7 +248,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
 
                 <div className="pt-2 text-[11px] text-[#5A6270] flex items-center justify-between">
                   <span>Forms feed straight to CRM</span>
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#00B879]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#00B879]" strokeWidth={2} />
                 </div>
               </div>
 
@@ -259,7 +258,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                   <div className="flex items-center justify-between pb-2.5 border-b border-[#E8EAF0]">
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded-lg bg-[#E8F8F1] text-[#008F60] flex items-center justify-center">
-                        <Users className="w-3.5 h-3.5" />
+                        <Users className="w-3.5 h-3.5" strokeWidth={1.8} />
                       </div>
                       <span className="text-xs font-bold text-[#171923]">
                         CRM & WhatsApp
@@ -298,7 +297,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                     </div>
 
                     <div className="flex items-center gap-1.5 text-[10px] text-[#5A6270]">
-                      <MessageSquare className="w-3 h-3 text-[#00B879]" />
+                      <MessageSquare className="w-3 h-3 text-[#00B879]" strokeWidth={2} />
                       <span className="truncate">&quot;Sent floorplan over WhatsApp&quot;</span>
                     </div>
                   </div>
@@ -306,7 +305,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
 
                 <div className="pt-2 text-[11px] text-[#5A6270] flex items-center justify-between">
                   <span>Syncs automatically with rep phone</span>
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#00B879]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#00B879]" strokeWidth={2} />
                 </div>
               </div>
 
@@ -316,7 +315,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                   <div className="flex items-center justify-between pb-2.5 border-b border-[#E8EAF0]">
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded-lg bg-[#E8F8F1] text-[#00B879] flex items-center justify-center">
-                        <Kanban className="w-3.5 h-3.5" />
+                        <Kanban className="w-3.5 h-3.5" strokeWidth={1.8} />
                       </div>
                       <span className="text-xs font-bold text-[#171923]">
                         Pipeline & Automation
@@ -335,7 +334,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                       </div>
                       <div className="font-bold text-[#171923] mt-1">TechCorp India</div>
                       <div className="font-mono text-[#008F60] font-bold mt-0.5">₹18.0L</div>
-                      <span className="text-[8px] bg-blue-50 text-blue-700 px-1 py-0.5 rounded inline-block mt-1">
+                      <span className="text-[8px] bg-blue-50 text-blue-700 px-1 py-0.5 rounded inline-block mt-1 font-semibold">
                         Reviewing
                       </span>
                     </div>
@@ -346,7 +345,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                       </div>
                       <div className="font-bold text-[#171923] mt-1">Apex Logistics</div>
                       <div className="font-mono text-[#00B879] font-bold mt-0.5">₹28.2L</div>
-                      <span className="text-[8px] bg-[#00B879] text-white px-1 py-0.5 rounded inline-block mt-1">
+                      <span className="text-[8px] bg-[#00B879] text-white px-1 py-0.5 rounded inline-block mt-1 font-semibold">
                         Closed
                       </span>
                     </div>
@@ -355,7 +354,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                   {/* Automation Trigger Pill */}
                   <div className="mt-2.5 p-2 rounded-xl bg-white border border-[#E2E6E4] flex items-center justify-between text-[10px]">
                     <div className="flex items-center gap-1.5">
-                      <Zap className="w-3 h-3 text-[#00B879]" />
+                      <Zap className="w-3 h-3 text-[#00B879]" strokeWidth={2} />
                       <span className="font-medium text-[#171923]">
                         Auto-catalog sent to buyer
                       </span>
@@ -368,7 +367,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
 
                 <div className="pt-2 text-[11px] text-[#5A6270] flex items-center justify-between">
                   <span>Zero manual copy-pasting</span>
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#00B879]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#00B879]" strokeWidth={2} />
                 </div>
               </div>
 
@@ -379,12 +378,12 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
               <div className="flex items-center gap-2 text-[#5A6270]">
                 <span className="w-2 h-2 rounded-full bg-[#00B879]" />
                 <span>
-                  <strong>Single connected database:</strong> One update syncs across website, CRM, deals, and automated WhatsApp replies.
+                  <strong className="text-[#171923]">Single connected database:</strong> One update syncs across website, CRM, deals, and automated WhatsApp replies.
                 </span>
               </div>
               <button
                 onClick={onOpenGetStarted}
-                className="text-[#008F60] hover:text-[#00B879] font-bold flex items-center gap-1 transition-colors shrink-0"
+                className="text-[#008F60] hover:text-[#00B879] font-bold flex items-center gap-1 transition-colors shrink-0 cursor-pointer"
               >
                 <span>Try this workflow</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -396,7 +395,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
         {/* Tab 2: Website Builder Deep Dive */}
         {activeTab === "website" && (
           <div className="p-5 sm:p-7 space-y-4 animate-in fade-in duration-200">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-wrap gap-2">
               <div>
                 <h4 className="text-sm font-bold text-[#171923]">
                   High-Converting Business Website Builder
@@ -414,7 +413,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
               <div className="bg-white rounded-xl p-4 border border-[#E2E6E4] shadow-xs">
                 <div className="flex items-center justify-between pb-3 border-b border-[#F0F2F5] text-xs">
                   <div className="flex items-center gap-2">
-                    <Globe className="w-4 h-4 text-[#00B879]" />
+                    <Globe className="w-4 h-4 text-[#00B879]" strokeWidth={1.8} />
                     <span className="font-bold text-[#171923]">www.zenithadvisory.in</span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -423,7 +422,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
                     </span>
                     <button
                       onClick={onOpenGetStarted}
-                      className="text-[11px] bg-[#171923] text-white px-2.5 py-1 rounded-lg font-semibold"
+                      className="text-[11px] bg-[#171923] hover:bg-[#00B879] text-white px-2.5 py-1 rounded-lg font-semibold transition-colors cursor-pointer"
                     >
                       Edit Page
                     </button>
@@ -464,7 +463,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
         {/* Tab 3: CRM & WhatsApp Deep Dive */}
         {activeTab === "crm" && (
           <div className="p-5 sm:p-7 space-y-4 animate-in fade-in duration-200">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-wrap gap-2">
               <div>
                 <h4 className="text-sm font-bold text-[#171923]">
                   Unified Customer Lead CRM
@@ -530,7 +529,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
         {/* Tab 4: Sales Pipeline Deep Dive */}
         {activeTab === "pipeline" && (
           <div className="p-5 sm:p-7 space-y-4 animate-in fade-in duration-200">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-wrap gap-2">
               <div>
                 <h4 className="text-sm font-bold text-[#171923]">
                   Visual Kanban Sales Pipeline
@@ -589,7 +588,7 @@ export const HeroProductMockup: React.FC<HeroProductMockupProps> = ({
         {/* Tab 5: Automation Engine Deep Dive */}
         {activeTab === "automation" && (
           <div className="p-5 sm:p-7 space-y-4 animate-in fade-in duration-200">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-wrap gap-2">
               <div>
                 <h4 className="text-sm font-bold text-[#171923]">
                   Zero-Delay Automation Engine
