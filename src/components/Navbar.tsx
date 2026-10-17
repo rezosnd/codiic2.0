@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { createPortal } from "react-dom";
 import {
   Menu,
   X,
@@ -36,24 +35,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<"platform" | "solutions" | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
-  const [portalReady, setPortalReady] = useState(false);
-
-  useEffect(() => setPortalReady(true), []);
-
-  useEffect(() => {
-    if (!mobileMenuOpen) return;
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMobileMenuOpen(false);
-    const onResize = () => window.innerWidth >= 768 && setMobileMenuOpen(false);
-    window.addEventListener("keydown", onKey);
-    window.addEventListener("resize", onResize);
-    return () => {
-      document.body.style.overflow = prevOverflow;
-      window.removeEventListener("keydown", onKey);
-      window.removeEventListener("resize", onResize);
-    };
-  }, [mobileMenuOpen]);
 
   useEffect(() => {
     let lastScrolled = false;
@@ -142,11 +123,15 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header
       ref={navRef}
-      className={`sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md transition-[box-shadow,border-color] duration-300 border-b ${
-        scrolled ? "border-[#E6E9E7] shadow-[0_1px_0_rgba(23,25,35,0.02)]" : "border-transparent"
-      }`}
+      className="sticky top-3.5 z-50 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-all duration-300"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5">
+      {/* Floating Capsule Bar (Dropship-inspired refined SaaS navigation) */}
+      <div
+        className={`w-full rounded-full transition-all duration-300 border border-[#E2E6E4] ${scrolled
+            ? "bg-white/95 backdrop-blur-md shadow-xl shadow-black/[0.04] py-2 px-3.5 sm:px-6"
+            : "bg-white/90 backdrop-blur-sm shadow-md shadow-black/[0.02] py-2.5 px-4 sm:px-6"
+          }`}
+      >
         <div className="flex items-center justify-between">
           {/* Left: Official CODIIC Logo */}
           <a
@@ -259,7 +244,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={onOpenGetStarted}
               id="header-cta-button"
-              className="group relative px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs sm:text-sm font-bold transition-colors duration-200 flex items-center gap-1.5 active:scale-95 cursor-pointer"
+              className="group relative px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#00B879]/20 hover:shadow-lg hover:shadow-[#00B879]/30 transition-all duration-200 flex items-center gap-1.5 active:scale-95 cursor-pointer"
             >
               <span>Get started</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -267,10 +252,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Mobile Menu Toggle Button */}
             <button
-              type="button"
-              onClick={() => setMobileMenuOpen((open) => !open)}
-              aria-expanded={mobileMenuOpen}
-              className="md:hidden w-9 h-9 rounded-full text-[#171923] bg-white hover:bg-[#F4F6F3] border border-[#D9DED8] flex items-center justify-center cursor-pointer touch-manipulation focus:outline-none active:scale-95 transition-all shrink-0"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden w-9 h-9 rounded-full text-[#171923] bg-white hover:bg-[#F4F6F3] border border-[#D9DED8] flex items-center justify-center cursor-pointer touch-manipulation focus:outline-none shadow-2xs active:scale-95 transition-all shrink-0"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -283,7 +266,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       {activeDropdown && (
         <div
           onMouseLeave={() => setActiveDropdown(null)}
-          className="hidden md:block absolute top-full left-4 right-4 mt-1 max-w-4xl mx-auto bg-white rounded-3xl border border-[#E2E6E4] shadow-[0_30px_60px_-20px_rgba(23,25,35,0.25)] p-5 sm:p-6 animate-tool-in z-50"
+          className="hidden md:block absolute top-full left-4 right-4 mt-2 max-w-4xl mx-auto bg-white rounded-3xl border border-[#E2E6E4] shadow-2xl p-5 sm:p-6 animate-in fade-in slide-in-from-top-2 duration-150 z-50"
         >
           {activeDropdown === "platform" && (
             <div>
@@ -316,13 +299,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onClick={() => setActiveDropdown(null)}
                       className="group p-3 rounded-2xl hover:bg-[#F7F9F8] border border-transparent hover:border-[#E2E6E4] transition-all flex items-start gap-3"
                     >
-                      <Icon className="w-10 h-10 shrink-0 drop-shadow-[0_4px_10px_rgba(23,25,35,0.14)] group-hover:-translate-y-0.5 transition-transform duration-300" />
+                      <div className="w-10 h-10 rounded-xl bg-white border border-[#E2E6E4] flex items-center justify-center shrink-0 p-1.5 shadow-2xs group-hover:scale-105 transition-transform">
+                        <Icon className="w-7 h-7 shrink-0" />
+                      </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
                           <span className="text-xs font-bold text-[#171923] group-hover:text-[#008F60] transition-colors truncate">
                             {tool.title}
                           </span>
-                          <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-[#E8F8F1] text-[#008F60]">
+                          <span className="text-[9px] font-bold font-mono px-1.5 py-0.2 rounded bg-[#E8F8F1] text-[#008F60] border border-[#00B879]/20">
                             {tool.badge}
                           </span>
                         </div>
@@ -359,7 +344,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onClick={() => setActiveDropdown(null)}
                       className="group p-3.5 rounded-2xl hover:bg-[#F7F9F8] border border-transparent hover:border-[#E2E6E4] transition-all flex items-start gap-3"
                     >
-                      <Icon className="w-10 h-10 shrink-0 drop-shadow-[0_4px_10px_rgba(23,25,35,0.14)] group-hover:-translate-y-0.5 transition-transform duration-300" />
+                      <div className="w-10 h-10 rounded-xl bg-white border border-[#E2E6E4] flex items-center justify-center shrink-0 p-1.5 shadow-2xs group-hover:scale-105 transition-transform">
+                        <Icon className="w-7 h-7 shrink-0" />
+                      </div>
                       <div>
                         <div className="text-xs font-bold text-[#171923] group-hover:text-[#008F60] transition-colors">
                           {ind.title}
@@ -377,32 +364,9 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       )}
 
-      {/* Mobile Drawer: portalled to <body> so no section stacking context can cover it */}
-      {mobileMenuOpen && portalReady && createPortal(
-        <div
-          className="md:hidden fixed inset-0 z-[200] flex flex-col"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Navigation menu"
-        >
-          <div
-            className="absolute inset-0 bg-[#171923]/45 backdrop-blur-sm"
-            onClick={() => setMobileMenuOpen(false)}
-          />
-          <div className="relative mx-3 mt-3 max-h-[calc(100dvh-1.5rem)] overflow-y-auto bg-white rounded-3xl border border-[#E2E6E4] p-5 shadow-2xl animate-tool-in">
-          <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E8EAF0]">
-            <div className="relative h-7 w-28">
-              <Image src="/logo_with_text.png" alt="CODIIC" fill sizes="112px" className="object-contain object-left" />
-            </div>
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-9 h-9 rounded-full bg-[#F4F6F3] border border-[#E2E6E4] flex items-center justify-center text-[#171923] active:scale-95 transition-transform cursor-pointer"
-              aria-label="Close menu"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
+      {/* Mobile Drawer (Clean, categorized, and touch-friendly) */}
+      {mobileMenuOpen && (
+        <div className="md:hidden mt-2 bg-white rounded-3xl border border-[#E2E6E4] p-5 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-150">
           <div className="space-y-4">
             <div>
               <div className="text-[10px] font-bold uppercase tracking-wider text-[#5A6270] mb-2 px-1">
@@ -415,8 +379,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className="flex items-center justify-between p-2.5 rounded-xl text-sm font-bold text-[#171923] hover:bg-[#E8F8F1] hover:text-[#008F60] transition-colors cursor-pointer"
                 >
                   <span>Platform & Tools</span>
-                  <span className="text-[10px] text-[#008F60] bg-[#E8F8F1] px-2 py-0.5 rounded-full font-bold">
-                    8 tools
+                  <span className="text-[10px] font-mono text-[#008F60] bg-[#E8F8F1] px-2 py-0.5 rounded-full font-bold">
+                    8 Tools
                   </span>
                 </a>
                 <a
@@ -474,9 +438,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             </div>
           </div>
-          </div>
-        </div>,
-        document.body
+        </div>
       )}
     </header>
   );
