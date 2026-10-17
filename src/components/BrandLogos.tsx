@@ -44,14 +44,8 @@ export const RazorpayLogo: React.FC<LogoProps> = ({
     role="img"
     aria-label={ariaLabel}
   >
-    <path
-      d="M17.8 2.5H6.2L2.5 12h6.2l-2.8 9.5 13.6-11.2h-6.2l4.5-7.8z"
-      fill="#0C2340"
-    />
-    <path
-      d="M15.5 3H7.5L4.2 11.5h5.5l-2.4 8 11.2-9.2h-5.2l3.8-6.3z"
-      fill="#3395FF"
-    />
+    <path d="M22.436 0 10.526 7.773 9.352 12.05l6.625-4.297L11.65 24h4.391L22.436 0Z" fill="#3395FF" />
+    <path d="M14.26 10.098 3.389 17.166 1.564 24h9.008l3.688-13.902Z" fill="#072654" />
   </svg>
 );
 

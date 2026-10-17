@@ -31,14 +31,17 @@ body {
   width: 6px;
   height: 6px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-track {
   background: #f0f4f2;
   border-radius: 9999px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 9999px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #00b879;
 }
@@ -46,7 +49,7 @@ body {
 /* Subtle dot / grid pattern with brand green tint */
 .bg-grid-pattern {
   background-size: 36px 36px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(0, 184, 121, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 184, 121, 0.04) 1px, transparent 1px);
 }
@@ -73,6 +76,7 @@ body {
     stroke-dashoffset: 600;
     opacity: 0.2;
   }
+
   to {
     stroke-dashoffset: 0;
     opacity: 1;
@@ -90,6 +94,7 @@ body {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.8);
   }
+
   100% {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
@@ -106,6 +111,7 @@ body {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.9);
   }
+
   100% {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
@@ -118,10 +124,13 @@ body {
 
 /* Pulse animation for node indicators */
 @keyframes pulseGreen {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.9;
   }
+
   50% {
     transform: scale(1.18);
     opacity: 0.4;
@@ -138,10 +147,12 @@ body {
     transform: scale(0.95);
     opacity: 0.6;
   }
+
   50% {
     transform: scale(1.12);
     opacity: 0.15;
   }
+
   100% {
     transform: scale(0.95);
     opacity: 0.6;
@@ -154,6 +165,7 @@ body {
 
 /* Respect reduced-motion */
 @media (prefers-reduced-motion: reduce) {
+
   .animate-connector-flow,
   .animate-pulse-green,
   .animate-hub-ripple,
@@ -171,6 +183,7 @@ body {
 .hover-lift {
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease;
 }
+
 .hover-lift:hover {
   transform: translateY(-2px);
   box-shadow: 0 16px 32px -8px rgba(23, 25, 35, 0.08), 0 4px 12px -2px rgba(23, 25, 35, 0.03);
@@ -181,6 +194,7 @@ body {
   0% {
     transform: translate3d(0, 0, 0);
   }
+
   100% {
     transform: translate3d(-50%, 0, 0);
   }
@@ -190,6 +204,7 @@ body {
   0% {
     transform: translate3d(-50%, 0, 0);
   }
+
   100% {
     transform: translate3d(0, 0, 0);
   }
@@ -224,10 +239,13 @@ body {
 
 /* Subtle badge sparkle fade */
 @keyframes badgeSparkle {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.35;
     transform: scale(0.92);
@@ -243,6 +261,7 @@ body {
   0% {
     width: 0%;
   }
+
   100% {
     width: 100%;
   }
@@ -253,5 +272,74 @@ body {
   will-change: width;
 }
 
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
+/* Tools showcase stage transitions */
+@keyframes toolStageIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toolFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes toolCaret {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-tool-in {
+  animation: toolStageIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-tool-float {
+  animation: toolFloat 5s ease-in-out infinite;
+}
+
+.animate-tool-float-delayed {
+  animation: toolFloat 6s ease-in-out 1.2s infinite;
+}
+
+.animate-tool-caret {
+  animation: toolCaret 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-tool-in,
+  .animate-tool-float,
+  .animate-tool-float-delayed,
+  .animate-tool-caret {
+    animation: none;
+  }
+}

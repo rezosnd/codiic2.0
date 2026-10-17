@@ -127,11 +127,10 @@ export const Navbar: React.FC<NavbarProps> = ({
     >
       {/* Floating Capsule Bar (Dropship-inspired refined SaaS navigation) */}
       <div
-        className={`w-full rounded-full transition-all duration-300 border border-[#E2E6E4] ${
-          scrolled
+        className={`w-full rounded-full transition-all duration-300 border border-[#E2E6E4] ${scrolled
             ? "bg-white/95 backdrop-blur-md shadow-xl shadow-black/[0.04] py-2 px-3.5 sm:px-6"
             : "bg-white/90 backdrop-blur-sm shadow-md shadow-black/[0.02] py-2.5 px-4 sm:px-6"
-        }`}
+          }`}
       >
         <div className="flex items-center justify-between">
           {/* Left: Official CODIIC Logo */}
@@ -174,17 +173,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }
                 onMouseEnter={() => setActiveDropdown("platform")}
                 aria-expanded={activeDropdown === "platform"}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
-                  activeDropdown === "platform"
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${activeDropdown === "platform"
                     ? "bg-[#E8F8F1] text-[#008F60]"
                     : "text-[#171923] hover:text-[#00B879] hover:bg-[#F7F9F8]"
-                }`}
+                  }`}
               >
                 <span>Platform</span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    activeDropdown === "platform" ? "rotate-180 text-[#008F60]" : "text-[#5A6270]"
-                  }`}
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "platform" ? "rotate-180 text-[#008F60]" : "text-[#5A6270]"
+                    }`}
                   strokeWidth={2}
                 />
               </button>
@@ -199,17 +196,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }
                 onMouseEnter={() => setActiveDropdown("solutions")}
                 aria-expanded={activeDropdown === "solutions"}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
-                  activeDropdown === "solutions"
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${activeDropdown === "solutions"
                     ? "bg-[#E8F8F1] text-[#008F60]"
                     : "text-[#171923] hover:text-[#00B879] hover:bg-[#F7F9F8]"
-                }`}
+                  }`}
               >
                 <span>Solutions</span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    activeDropdown === "solutions" ? "rotate-180 text-[#008F60]" : "text-[#5A6270]"
-                  }`}
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "solutions" ? "rotate-180 text-[#008F60]" : "text-[#5A6270]"
+                    }`}
                   strokeWidth={2}
                 />
               </button>

@@ -344,7 +344,7 @@ export const Hero: React.FC<HeroProps> = ({
 
       {/* CODIIC Hero Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-20">
-        
+
         {/* CODIIC Headline */}
         <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-extrabold text-[#171923] tracking-tight leading-[1.06] mb-5 max-w-4xl mx-auto">
           All your business.{" "}
@@ -411,7 +411,7 @@ export const Hero: React.FC<HeroProps> = ({
       <div
         className="relative w-full overflow-hidden pt-6 pb-20 select-none bg-transparent"
       >
-        
+
         {/* Central Vertical Glowing Laser Beam */}
         <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-12 w-[2px] pointer-events-none z-20 overflow-visible flex flex-col items-center">
           <div className="w-[2px] h-full bg-gradient-to-b from-[#00B879]/0 via-[#00B879] to-[#00B879]/20" />
@@ -422,17 +422,15 @@ export const Hero: React.FC<HeroProps> = ({
         <div
           onClick={handleEmblemBurst}
           title="Click to boost stream velocity!"
-          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 cursor-pointer flex flex-col items-center group transition-transform duration-300 ${
-            emblemActive ? "scale-115" : "hover:scale-105 active:scale-95"
-          }`}
+          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 cursor-pointer flex flex-col items-center group transition-transform duration-300 ${emblemActive ? "scale-115" : "hover:scale-105 active:scale-95"
+            }`}
         >
           {/* Subtle pulse aura */}
           <div
-            className={`absolute -inset-4 rounded-3xl bg-[#00B879]/30 blur-xl transition-opacity duration-300 ${
-              emblemActive ? "opacity-100 scale-125" : "opacity-60 animate-pulse"
-            }`}
+            className={`absolute -inset-4 rounded-3xl bg-[#00B879]/30 blur-xl transition-opacity duration-300 ${emblemActive ? "opacity-100 scale-125" : "opacity-60 animate-pulse"
+              }`}
           />
-          
+
           {/* The High-Elevation Squircle Badge */}
           <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-[22px] bg-[#00B879] flex items-center justify-center text-white shadow-[0_16px_45px_rgba(0,184,121,0.5)] ring-8 ring-[#E9EBE7] group-hover:shadow-[0_20px_50px_rgba(0,184,121,0.65)] transition-all">
             <div className="relative w-9 h-9 sm:w-11 sm:h-11">

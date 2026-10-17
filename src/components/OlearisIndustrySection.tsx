@@ -132,9 +132,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
 
                     {/* Floating Category Badge & Icon */}
                     <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
-                      <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-md bg-white/95 backdrop-blur-sm p-1.5">
-                        <Icon className="w-6 h-6 shrink-0" />
-                      </div>
+                      <Icon className="w-9 h-9 shrink-0 drop-shadow-[0_6px_14px_rgba(0,0,0,0.35)]" />
                       <span className="text-[11px] font-bold text-white bg-black/45 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/20">
                         {item.tag}
                       </span>

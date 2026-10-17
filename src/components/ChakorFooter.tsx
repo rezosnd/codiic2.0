@@ -14,10 +14,10 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
   return (
     <footer id="footer" className="bg-[#171923] text-white pt-16 pb-12 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Top 4-Column Grid (Chakor & Dropship-inspired organization) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-gray-800">
-          
+
           {/* Column 1: Brand Info & Contact Action (Col span 5) */}
           <div className="lg:col-span-5 space-y-5">
             {/* Official CODIIC Logo for Dark Surface */}

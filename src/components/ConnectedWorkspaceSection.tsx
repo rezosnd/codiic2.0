@@ -129,9 +129,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <div className="w-10 h-10 rounded-xl bg-white border border-[#E2E6E4] flex items-center justify-center shadow-xs p-1.5 transition-transform group-hover:scale-108">
-                        <Icon className="w-7 h-7 shrink-0" />
-                      </div>
+                      <Icon className="w-10 h-10 shrink-0 drop-shadow-[0_6px_12px_rgba(23,25,35,0.16)] transition-transform duration-300 group-hover:-translate-y-0.5" />
                       <span className="text-[10px] font-mono font-bold text-[#8A90A0]">
                         0{idx + 1}
                       </span>
