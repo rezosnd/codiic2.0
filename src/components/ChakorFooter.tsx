@@ -49,7 +49,7 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
                 onClick={onOpenGetStarted}
                 className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs font-bold transition-all shadow-md shadow-[#00B879]/20 hover:shadow-lg active:scale-95 cursor-pointer"
               >
-                <span>Get started with CODIIC</span>
+                <span>Start at ₹1/day</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </button>
             </div>

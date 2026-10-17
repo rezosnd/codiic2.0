@@ -85,7 +85,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
   return (
     <section
       id="solutions"
-      className="py-20 sm:py-28 bg-white"
+      className="py-20 sm:py-28 bg-transparent"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         

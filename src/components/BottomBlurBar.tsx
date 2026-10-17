@@ -35,14 +35,14 @@ export const BottomBlurBar: React.FC = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backdropFilter: "blur(8px)",
-          WebkitBackdropFilter: "blur(8px)",
+          backdropFilter: "blur(14px) saturate(160%)",
+          WebkitBackdropFilter: "blur(14px) saturate(160%)",
           maskImage:
-            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,1) 100%)",
+            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,1) 100%)",
           WebkitMaskImage:
-            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,1) 100%)",
+            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,1) 100%)",
           background:
-            "linear-gradient(to bottom, transparent 0%, rgba(233, 235, 231, 0.25) 40%, rgba(233, 235, 231, 0.75) 100%)",
+            "linear-gradient(to bottom, rgba(228,243,236,0) 0%, rgba(228,243,236,0.3) 45%, rgba(228,243,236,0.65) 100%)",
         }}
       />
     </div>

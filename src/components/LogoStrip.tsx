@@ -21,7 +21,7 @@ export const LogoStrip: React.FC = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-14 bg-white">
+    <section className="py-12 sm:py-14 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-center text-sm font-medium text-[#5A6270] mb-7">
           One workspace, natively connected to the tools you already use

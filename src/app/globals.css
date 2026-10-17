@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  background-color: #FFFFFF;
+  background-color: #E4F3EC;
   color: #171923;
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
@@ -380,6 +380,127 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .animate-integration-flow,
   .animate-hub-glow {
+    animation: none;
+  }
+}
+
+/* Frosted emerald backdrop + hero glass shapes */
+@keyframes emeraldDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(6%, 4%, 0) scale(1.08);
+  }
+}
+
+@keyframes glassFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(3deg);
+  }
+}
+
+@keyframes glassSheen {
+  0%,
+  55% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(520%);
+  }
+}
+
+.animate-emerald-drift {
+  animation: emeraldDrift 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-emerald-drift-slow {
+  animation: emeraldDrift 30s ease-in-out -8s infinite reverse;
+  will-change: transform;
+}
+
+.animate-glass-float {
+  animation: glassFloat 7s ease-in-out infinite;
+}
+
+.animate-glass-float-slow {
+  animation: glassFloat 9s ease-in-out -3s infinite;
+}
+
+.animate-glass-sheen {
+  animation: glassSheen 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-emerald-drift,
+  .animate-emerald-drift-slow,
+  .animate-glass-float,
+  .animate-glass-float-slow,
+  .animate-glass-sheen {
+    animation: none;
+  }
+}
+
+/* Hero headline shine */
+@keyframes textShine {
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: -150% 0;
+  }
+}
+
+.animate-text-shine {
+  animation: textShine 5s linear infinite;
+}
+
+/* Tour modal entrance */
+@keyframes tourIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-tour-in {
+  animation: tourIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes tourProgress {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.animate-tour-progress {
+  animation: tourProgress 6.5s linear both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-text-shine,
+  .animate-tour-in {
     animation: none;
   }
 }

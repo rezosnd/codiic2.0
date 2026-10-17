@@ -93,7 +93,7 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
       ref={sectionRef}
       id="integrations"
       aria-labelledby="integrations-heading"
-      className="relative bg-white py-20 sm:py-28"
+      className="relative bg-transparent py-20 sm:py-28"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
@@ -123,6 +123,9 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
               Connect your tools
               <ArrowRight className="w-4 h-4" />
             </button>
+            <p className="mt-3 text-xs font-semibold text-[#00593A]">
+              All integrations included — plans from <span className="text-[#008F60] font-extrabold">₹1/day</span>
+            </p>
           </div>
         </div>
 

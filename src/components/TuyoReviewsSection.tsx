@@ -189,7 +189,7 @@ export const TuyoReviewsSection: React.FC = () => {
     <section
       id="reviews"
       aria-label="Customer reviews"
-      className="py-20 sm:py-28 bg-white relative overflow-hidden select-none"
+      className="py-20 sm:py-28 bg-transparent relative overflow-hidden select-none"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >

@@ -7,6 +7,7 @@ import {
   X,
   ArrowRight,
   ChevronDown,
+  ChevronRight,
   Sparkles,
   ExternalLink,
   Play,
@@ -21,6 +22,14 @@ import {
   ServicesColorIcon,
   RealEstateColorIcon,
 } from "./ColorfulProductIcons";
+
+const MOBILE_LINKS = [
+  { href: "#tools", label: "Platform & Tools", badge: "8 tools" },
+  { href: "#workspace", label: "Connected Workspace" },
+  { href: "#integrations", label: "Integrations" },
+  { href: "#solutions", label: "Solutions" },
+  { href: "#reviews", label: "Reviews" },
+];
 
 interface NavbarProps {
   onOpenGetStarted: () => void;
@@ -49,6 +58,21 @@ export const Navbar: React.FC<NavbarProps> = ({
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMobileMenuOpen(false);
+    const onResize = () => window.innerWidth >= 768 && setMobileMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("resize", onResize);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [mobileMenuOpen]);
 
   // Close dropdown on click outside
   useEffect(() => {
@@ -123,13 +147,21 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header
       ref={navRef}
-      className="sticky top-3.5 z-50 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-all duration-300"
+      className="sticky top-2.5 sm:top-3.5 z-50 w-full px-2.5 sm:px-6 lg:px-8 transition-all duration-300"
     >
+      {mobileMenuOpen && (
+        <div
+          aria-hidden
+          onClick={() => setMobileMenuOpen(false)}
+          className="md:hidden fixed inset-0 -z-10 bg-[#04120C]/35 backdrop-blur-[3px] animate-in fade-in duration-200"
+        />
+      )}
+
       {/* Floating Capsule Bar (Dropship-inspired refined SaaS navigation) */}
       <div
-        className={`w-full rounded-full transition-all duration-300 border border-[#E2E6E4] ${scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-xl shadow-black/[0.04] py-2 px-3.5 sm:px-6"
-            : "bg-white/90 backdrop-blur-sm shadow-md shadow-black/[0.02] py-2.5 px-4 sm:px-6"
+        className={`w-full max-w-7xl mx-auto rounded-full transition-all duration-300 border border-white/70 backdrop-blur-xl backdrop-saturate-150 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] ${scrolled
+            ? "bg-white/80 shadow-xl shadow-[#00593A]/10 py-1.5 pl-3 pr-1.5 sm:py-2 sm:px-6"
+            : "bg-white/65 shadow-lg shadow-[#00593A]/[0.06] py-2 pl-3.5 pr-2 sm:py-2.5 sm:px-6"
           }`}
       >
         <div className="flex items-center justify-between">
@@ -150,13 +182,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               />
             </div>
 
-            {/* Mobile: Symbol-Only Logo */}
-            <div className="block sm:hidden relative h-7 w-9">
+            {/* Mobile: compact full logo */}
+            <div className="block sm:hidden relative h-6 w-[88px]">
               <Image
-                src="/logo_withot text.png"
-                alt="CODIIC Symbol"
+                src="/logo_with_text.png"
+                alt="CODIIC"
                 fill
                 priority
+                sizes="88px"
                 className="object-contain object-left"
               />
             </div>
@@ -244,19 +277,28 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={onOpenGetStarted}
               id="header-cta-button"
-              className="group relative px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#00B879]/20 hover:shadow-lg hover:shadow-[#00B879]/30 transition-all duration-200 flex items-center gap-1.5 active:scale-95 cursor-pointer"
+              className="group relative h-9 sm:h-auto px-3.5 sm:px-5 sm:py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#00B879]/30 hover:shadow-lg hover:shadow-[#00B879]/40 transition-all duration-200 flex items-center gap-1.5 active:scale-95 cursor-pointer whitespace-nowrap"
             >
-              <span>Get started</span>
+              <span className="sm:hidden">Start ₹1/day</span>
+              <span className="hidden sm:inline">Start at ₹1/day</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </button>
 
             {/* Mobile Menu Toggle Button */}
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden w-9 h-9 rounded-full text-[#171923] bg-white hover:bg-[#F4F6F3] border border-[#D9DED8] flex items-center justify-center cursor-pointer touch-manipulation focus:outline-none shadow-2xs active:scale-95 transition-all shrink-0"
+              type="button"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              aria-expanded={mobileMenuOpen}
+              className={`md:hidden w-9 h-9 rounded-full flex items-center justify-center cursor-pointer touch-manipulation focus:outline-none active:scale-90 transition-all shrink-0 ${
+                mobileMenuOpen
+                  ? "bg-[#171923] text-white"
+                  : "bg-white/80 text-[#171923] border border-[#D9E7E0]"
+              }`}
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              <span className={`transition-transform duration-300 ${mobileMenuOpen ? "rotate-90" : ""}`}>
+                {mobileMenuOpen ? <X className="w-[18px] h-[18px]" /> : <Menu className="w-[18px] h-[18px]" />}
+              </span>
             </button>
           </div>
         </div>
@@ -366,77 +408,56 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer (Clean, categorized, and touch-friendly) */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-2 bg-white rounded-3xl border border-[#E2E6E4] p-5 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-150">
-          <div className="space-y-4">
-            <div>
-              <div className="text-[10px] font-bold uppercase tracking-wider text-[#5A6270] mb-2 px-1">
-                Navigation
-              </div>
-              <div className="space-y-1">
-                <a
-                  href="#tools"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between p-2.5 rounded-xl text-sm font-bold text-[#171923] hover:bg-[#E8F8F1] hover:text-[#008F60] transition-colors cursor-pointer"
-                >
-                  <span>Platform & Tools</span>
-                  <span className="text-[10px] font-mono text-[#008F60] bg-[#E8F8F1] px-2 py-0.5 rounded-full font-bold">
-                    8 Tools
-                  </span>
-                </a>
-                <a
-                  href="#workspace"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block p-2.5 rounded-xl text-sm font-bold text-[#171923] hover:bg-[#E8F8F1] hover:text-[#008F60] transition-colors"
-                >
-                  Connected Workspace
-                </a>
-                <a
-                  href="#integrations"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block p-2.5 rounded-xl text-sm font-bold text-[#171923] hover:bg-[#E8F8F1] hover:text-[#008F60] transition-colors"
-                >
-                  Integrations
-                </a>
-                <a
-                  href="#solutions"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block p-2.5 rounded-xl text-sm font-bold text-[#171923] hover:bg-[#E8F8F1] hover:text-[#008F60] transition-colors"
-                >
-                  Solutions
-                </a>
-                <a
-                  href="#reviews"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block p-2.5 rounded-xl text-sm font-bold text-[#171923] hover:bg-[#E8F8F1] hover:text-[#008F60] transition-colors"
-                >
-                  Reviews
-                </a>
-              </div>
-            </div>
-
-            <div className="pt-3 border-t border-[#E8EAF0] space-y-2">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenSeeHowItWorks();
-                }}
-                className="w-full py-2.5 rounded-full bg-[#F7F9F8] hover:bg-[#E8F8F1] text-[#171923] text-xs font-semibold border border-[#E2E6E4] flex items-center justify-center gap-2"
+        <div className="md:hidden mt-2 max-h-[calc(100dvh-5.5rem)] overflow-y-auto no-scrollbar rounded-[26px] border border-white/70 bg-white/85 backdrop-blur-2xl backdrop-saturate-150 p-3 shadow-[0_30px_60px_-20px_rgba(0,60,40,0.35),inset_0_1px_0_rgba(255,255,255,0.9)] animate-tool-in">
+          <nav className="flex flex-col">
+            {MOBILE_LINKS.map((link, i) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="group flex items-center justify-between px-3.5 py-3.5 rounded-2xl text-[15px] font-semibold text-[#171923] active:bg-[#E8F8F1] hover:bg-[#E8F8F1]/70 transition-colors animate-tool-in"
+                style={{ animationDelay: `${60 + i * 40}ms` }}
               >
-                <Play className="w-3.5 h-3.5 text-[#00B879] fill-[#00B879]" />
-                <span>Explore Platform Tour</span>
-              </button>
+                <span>{link.label}</span>
+                <span className="flex items-center gap-2">
+                  {link.badge && (
+                    <span className="text-[10px] text-[#008F60] bg-[#E8F8F1] px-2 py-0.5 rounded-full font-bold">
+                      {link.badge}
+                    </span>
+                  )}
+                  <ChevronRight className="w-4 h-4 text-[#9AA7A0] group-hover:text-[#00B879] transition-colors" />
+                </span>
+              </a>
+            ))}
+          </nav>
 
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenGetStarted();
-                }}
-                className="w-full py-3 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs font-bold shadow-md shadow-[#00B879]/20 flex items-center justify-center gap-2"
-              >
-                <span>Get started free</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+          <div className="mt-2 p-2 rounded-2xl bg-gradient-to-br from-[#E8F8F1] to-[#D4F2E4] border border-[#00B879]/15 space-y-2">
+            <div className="flex items-center justify-center gap-2 pt-1 text-xs font-semibold text-[#00593A]">
+              <Sparkles className="w-3.5 h-3.5 text-[#00B879]" />
+              Plans start at just <span className="font-extrabold text-[#008F60]">₹1/day</span>
             </div>
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenGetStarted();
+              }}
+              className="w-full py-3.5 rounded-full bg-[#00B879] active:bg-[#008F60] text-white text-sm font-bold shadow-lg shadow-[#00B879]/30 flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
+            >
+              Start at ₹1/day
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenSeeHowItWorks();
+              }}
+              className="w-full py-3 rounded-full bg-white/80 text-[#171923] text-sm font-semibold border border-white flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
+            >
+              <Play className="w-3.5 h-3.5 text-[#00B879] fill-[#00B879]" />
+              Explore platform tour
+            </button>
           </div>
         </div>
       )}

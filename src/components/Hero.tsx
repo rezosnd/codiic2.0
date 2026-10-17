@@ -25,6 +25,8 @@ import {
   AnalyticsColorIcon,
 } from "./ColorfulProductIcons";
 import { BipsyncHeroCanvas } from "./BipsyncHeroCanvas";
+import { HeroGlassShapes } from "./HeroGlassShapes";
+import { RupeeOfferPill } from "./RupeeOffer";
 
 interface HeroProps {
   onOpenGetStarted: () => void;
@@ -168,7 +170,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
   const paused = !inView;
 
   return (
-    <section className="relative overflow-hidden bg-white pt-12 sm:pt-20 lg:pt-24">
+    <section className="relative overflow-hidden bg-transparent pt-12 sm:pt-20 lg:pt-24">
       {/* Interactive 3D hexagon terrain (reacts to the cursor) */}
       <BipsyncHeroCanvas className="absolute inset-0 pointer-events-none z-0 overflow-hidden" />
 
@@ -177,12 +179,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
         {/* Soft halo so the copy stays readable over the 3D terrain */}
         <div
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-[-10%] -translate-x-1/2 w-[110%] max-w-[980px] h-[120%] -z-10 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.75)_40%,rgba(255,255,255,0)_72%)]"
+          className="pointer-events-none absolute left-1/2 top-[-10%] -translate-x-1/2 w-[110%] max-w-[980px] h-[120%] -z-10 bg-[radial-gradient(ellipse_at_center,rgba(244,252,248,0.95)_0%,rgba(236,249,243,0.75)_40%,rgba(236,249,243,0)_72%)]"
         />
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/80 bg-white/70 backdrop-blur-md shadow-[0_8px_24px_-12px_rgba(0,143,96,0.35)] text-xs font-semibold text-[#5A6270] mb-6">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00B879]" />
-          Built for Indian businesses · WhatsApp & UPI ready
-        </div>
+        <HeroGlassShapes />
+        <RupeeOfferPill className="mb-6" />
 
         <h1 className="mx-auto max-w-4xl text-[40px] sm:text-6xl lg:text-[76px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.02] [text-shadow:0_2px_24px_rgba(255,255,255,0.9)]">
           All your business.{" "}
@@ -204,16 +204,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
             type="button"
             onClick={onOpenGetStarted}
             id="hero-primary-cta"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-[15px] font-bold transition-colors active:scale-[0.98] cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-[15px] font-bold shadow-[0_14px_34px_-12px_rgba(0,143,96,0.7)] transition-colors active:scale-[0.98] cursor-pointer"
           >
-            Get started free
+            Start at ₹1/day
             <ArrowRight className="w-4 h-4" />
           </button>
           <button
             type="button"
             onClick={onOpenSeeHowItWorks}
             id="hero-secondary-cta"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white hover:bg-[#F6F8F7] text-[#171923] text-[15px] font-semibold border border-[#D9DED8] transition-colors active:scale-[0.98] cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/65 hover:bg-white/85 backdrop-blur-md text-[#171923] text-[15px] font-semibold border border-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] transition-colors active:scale-[0.98] cursor-pointer"
           >
             <Play className="w-4 h-4 fill-[#171923]" />
             See how it works
@@ -228,6 +228,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
           </span>
           <span className="font-semibold text-[#171923]">4.9</span>
           <span>from 2,400+ businesses</span>
+          <span className="hidden sm:inline text-[#9AA7A0]">·</span>
+          <span className="hidden sm:inline">WhatsApp & UPI ready</span>
         </div>
       </div>
 
@@ -281,7 +283,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
         </div>
 
         {/* Frosted-glass bottom edge */}
-        <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 pointer-events-none z-20 backdrop-blur-xl backdrop-saturate-150 bg-gradient-to-t from-white/85 via-white/40 to-white/0 [mask-image:linear-gradient(to_top,black_35%,transparent)]" />
+        <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 pointer-events-none z-20 backdrop-blur-xl backdrop-saturate-150 bg-gradient-to-t from-[#E3F4EC]/90 via-[#E3F4EC]/45 to-transparent [mask-image:linear-gradient(to_top,black_35%,transparent)]" />
       </div>
     </section>
   );

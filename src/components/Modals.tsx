@@ -1,427 +1,338 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   X,
   CheckCircle2,
   ArrowRight,
+  ArrowLeft,
   Globe,
   Users,
   Kanban,
   Zap,
   Play,
-  ShieldCheck,
-  Building,
-  Phone,
-  Mail,
-  User,
 } from "lucide-react";
-
-interface GetStartedModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  initialPlan?: string;
-}
-
-export const GetStartedModal: React.FC<GetStartedModalProps> = ({
-  isOpen,
-  onClose,
-  initialPlan = "Growth",
-}) => {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [company, setCompany] = useState("");
-  const [industry, setIndustry] = useState("Retail & eCommerce");
-  const [plan, setPlan] = useState(initialPlan);
-  const [submitted, setSubmitted] = useState(false);
-
-  if (!isOpen) return null;
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
-  const handleReset = () => {
-    setSubmitted(false);
-    setFullName("");
-    setEmail("");
-    setPhone("");
-    setCompany("");
-    onClose();
-  };
-
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-[#E2E8E5] p-6 sm:p-8 overflow-hidden">
-        {/* Close Button */}
-        <button
-          onClick={handleReset}
-          className="absolute top-4 right-4 p-2 text-[#555A68] hover:text-[#171923] rounded-full hover:bg-[#F7F9F8] transition-colors"
-          aria-label="Close dialog"
-        >
-          <X className="w-5 h-5" />
-        </button>
-
-        {submitted ? (
-          <div className="text-center py-8 space-y-4">
-            <div className="w-16 h-16 bg-[#E8F8F1] text-[#008F60] rounded-full flex items-center justify-center mx-auto border border-[#00B879]/30 shadow-xs">
-              <CheckCircle2 className="w-9 h-9 text-[#00B879]" />
-            </div>
-            <h3 className="text-2xl font-bold text-[#171923]">
-              Aapka Workspace Ready Hai!
-            </h3>
-            <p className="text-sm text-[#555A68] max-w-sm mx-auto leading-relaxed">
-              Thank you, <strong>{fullName || "Friend"}</strong>! Our solutions specialist will send your instant workspace activation link to <strong>{email || "your email"}</strong> and message on WhatsApp within 15 minutes.
-            </p>
-            <div className="p-3 bg-[#F7F9F8] border border-[#E2E8E5] rounded-2xl text-xs text-[#171923] font-semibold">
-              Selected Plan: {plan} • Zero credit card required
-            </div>
-            <button
-              onClick={handleReset}
-              className="px-6 py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs font-bold transition-all shadow-md shadow-[#00B879]/20"
-            >
-              Back to Overview
-            </button>
-          </div>
-        ) : (
-          <div>
-            <div className="mb-6 space-y-1">
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#E8F8F1] text-[#008F60] text-xs font-bold uppercase tracking-wider border border-[#00B879]/20">
-                <span>START FREE TRIAL</span>
-                <span>•</span>
-                <span>14 DAYS FULL ACCESS</span>
-              </div>
-              <h3 className="text-2xl font-bold text-[#171923]">
-                Get started with CODIIC
-              </h3>
-              <p className="text-xs text-[#555A68]">
-                Website se customer tak — ek connected workspace mein shuru karein.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-3.5 text-xs">
-              <div>
-                <label className="block font-semibold text-[#171923] mb-1">
-                  Full Name
-                </label>
-                <div className="relative">
-                  <User className="w-4 h-4 text-[#8A90A0] absolute left-3 top-2.5" />
-                  <input
-                    type="text"
-                    required
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    placeholder="e.g. Vikram Sharma"
-                    className="w-full pl-9 pr-3 py-2 rounded-xl border border-[#E2E8E5] focus:border-[#00B879] focus:outline-none bg-[#F7F9F8]"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block font-semibold text-[#171923] mb-1">
-                    Work Email
-                  </label>
-                  <div className="relative">
-                    <Mail className="w-4 h-4 text-[#8A90A0] absolute left-3 top-2.5" />
-                    <input
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="vikram@company.in"
-                      className="w-full pl-9 pr-3 py-2 rounded-xl border border-[#E2E8E5] focus:border-[#00B879] focus:outline-none bg-[#F7F9F8]"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block font-semibold text-[#171923] mb-1">
-                    WhatsApp / Phone
-                  </label>
-                  <div className="relative">
-                    <Phone className="w-4 h-4 text-[#8A90A0] absolute left-3 top-2.5" />
-                    <input
-                      type="tel"
-                      required
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="+91 98765 43210"
-                      className="w-full pl-9 pr-3 py-2 rounded-xl border border-[#E2E8E5] focus:border-[#00B879] focus:outline-none bg-[#F7F9F8]"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block font-semibold text-[#171923] mb-1">
-                    Company Name
-                  </label>
-                  <div className="relative">
-                    <Building className="w-4 h-4 text-[#8A90A0] absolute left-3 top-2.5" />
-                    <input
-                      type="text"
-                      required
-                      value={company}
-                      onChange={(e) => setCompany(e.target.value)}
-                      placeholder="Your Business Name"
-                      className="w-full pl-9 pr-3 py-2 rounded-xl border border-[#E2E8E5] focus:border-[#00B879] focus:outline-none bg-[#F7F9F8]"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block font-semibold text-[#171923] mb-1">
-                    Industry
-                  </label>
-                  <select
-                    value={industry}
-                    onChange={(e) => setIndustry(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl border border-[#E2E8E5] focus:border-[#00B879] focus:outline-none bg-[#F7F9F8]"
-                  >
-                    <option value="Retail & eCommerce">Retail & eCommerce</option>
-                    <option value="Real Estate">Real Estate</option>
-                    <option value="IT & Software Services">IT & Software</option>
-                    <option value="Marketing Agency">Marketing Agency</option>
-                    <option value="Healthcare">Healthcare & Clinic</option>
-                    <option value="Manufacturing">Manufacturing</option>
-                    <option value="Professional Services">Professional Services</option>
-                    <option value="Education">Education & EdTech</option>
-                    <option value="Logistics">Logistics & Transport</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block font-semibold text-[#171923] mb-1">
-                  Select Plan
-                </label>
-                <div className="grid grid-cols-3 gap-2">
-                  {["Starter", "Growth", "Business"].map((p) => (
-                    <button
-                      key={p}
-                      type="button"
-                      onClick={() => setPlan(p)}
-                      className={`py-2 rounded-xl border font-bold text-center transition-all ${
-                        plan === p
-                          ? "bg-[#00B879] text-white border-[#00B879] shadow-xs"
-                          : "bg-white text-[#555A68] border-[#E2E8E5] hover:bg-[#F7F9F8]"
-                      }`}
-                    >
-                      {p}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-3">
-                <button
-                  type="submit"
-                  className="w-full py-3 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs font-bold shadow-md shadow-[#00B879]/25 hover:shadow-lg transition-all flex items-center justify-center gap-2"
-                >
-                  <span>Create Workspace Now</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-
-              <div className="flex items-center justify-center gap-2 text-[10px] text-[#555A68] pt-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#00B879]" />
-                <span>Zero setup fees • Instant access • Cancel anytime</span>
-              </div>
-            </form>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
 
 interface TourModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onOpenGetStarted: () => void;
 }
 
-export const TourModal: React.FC<TourModalProps> = ({
-  isOpen,
-  onClose,
-  onOpenGetStarted,
-}) => {
+const STEP_DURATION = 6500;
+
+const TOUR_STEPS = [
+  {
+    title: "Storefront & Website Builder",
+    short: "Website",
+    icon: Globe,
+    accent: "#00E08F",
+    accentSoft: "rgba(0,224,143,0.16)",
+    tagline: "Code ka jhanjhat khatam",
+    desc: "Drag and drop responsive blocks to launch your storefront or agency landing page in minutes. All inquiry forms sync directly with your CRM.",
+    stats: [
+      { value: "5 min", label: "To go live" },
+      { value: "100%", label: "Mobile ready" },
+    ],
+    highlights: [
+      "Pre-built business sections (Hero, Catalog, Pricing, Testimonials)",
+      "Ultra-fast loading with zero code maintenance",
+      "Custom domain with automatic SSL security",
+    ],
+  },
+  {
+    title: "Customer Relationship Management",
+    short: "CRM",
+    icon: Users,
+    accent: "#38BDF8",
+    accentSoft: "rgba(56,189,248,0.16)",
+    tagline: "Follow-up bhoolna ab band",
+    desc: "Connect your WhatsApp Business API, web forms, and advertising channels into one chronological timeline of client interactions.",
+    stats: [
+      { value: "1", label: "Timeline per customer" },
+      { value: "0", label: "Lost leads" },
+    ],
+    highlights: [
+      "Centralized contact profiles with complete conversation logs",
+      "Lead scoring and intent qualification rules",
+      "Automated follow-up reminders to assigned executives",
+    ],
+  },
+  {
+    title: "Kanban Sales Pipeline",
+    short: "Pipeline",
+    icon: Kanban,
+    accent: "#A78BFA",
+    accentSoft: "rgba(167,139,250,0.18)",
+    tagline: "Har deal, har stage — sab saaf",
+    desc: "Move opportunities through stages like New Leads, Contacted, Qualified, Proposal, and Won with clear revenue forecasting in INR.",
+    stats: [
+      { value: "₹ INR", label: "Native forecasting" },
+      { value: "+28%", label: "Avg. win-rate lift" },
+    ],
+    highlights: [
+      "Drag-and-drop deal management with deal probabilities",
+      "Individual representative quota and conversion tracking",
+      "Weighted monthly pipeline forecasting",
+    ],
+  },
+  {
+    title: "Workflow Automation Engine",
+    short: "Automation",
+    icon: Zap,
+    accent: "#FBBF24",
+    accentSoft: "rgba(251,191,36,0.16)",
+    tagline: "Kaam smart, growth fast",
+    desc: "Set intelligent triggers that automatically enrich leads, assign sales reps, and dispatch instant WhatsApp brochures without manual intervention.",
+    stats: [
+      { value: "0.4s", label: "Response time" },
+      { value: "24/7", label: "Always running" },
+    ],
+    highlights: [
+      "Visual trigger and action canvas builder",
+      "Instant round-robin assignment based on territory or team",
+      "Zero-delay automated responses to potential buyers",
+    ],
+  },
+];
+
+export const TourModal: React.FC<TourModalProps> = ({ isOpen, onClose }) => {
   const [activeStep, setActiveStep] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const last = TOUR_STEPS.length - 1;
+
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
+
+  const go = (i: number) => setActiveStep(Math.min(last, Math.max(0, i)));
+
+  useEffect(() => {
+    if (!isOpen) return;
+    setActiveStep(0);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onCloseRef.current();
+      if (e.key === "ArrowRight") setActiveStep((s) => Math.min(last, s + 1));
+      if (e.key === "ArrowLeft") setActiveStep((s) => Math.max(0, s - 1));
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [isOpen, last]);
+
+  useEffect(() => {
+    if (!isOpen || paused || activeStep === last) return;
+    const t = setTimeout(() => setActiveStep((s) => s + 1), STEP_DURATION);
+    return () => clearTimeout(t);
+  }, [isOpen, paused, activeStep, last]);
 
   if (!isOpen) return null;
 
-  const tourSteps = [
-    {
-      title: "1. Storefront & Website Builder",
-      icon: Globe,
-      color: "#00B879",
-      tagline: "Code ka jhanjhat khatam",
-      desc: "Drag and drop responsive blocks to launch your storefront or agency landing page in minutes. All inquiry forms sync directly with your CRM.",
-      highlights: [
-        "Pre-built business sections (Hero, Catalog, Pricing, Testimonials)",
-        "Ultra-fast loading with zero code maintenance",
-        "Custom domain with automatic SSL security",
-      ],
-    },
-    {
-      title: "2. Customer Relationship Management",
-      icon: Users,
-      color: "#008F60",
-      tagline: "Follow-up bhoolna ab band",
-      desc: "Connect your WhatsApp Business API, web forms, and advertising channels into one chronological timeline of client interactions.",
-      highlights: [
-        "Centralized contact profiles with complete conversation logs",
-        "Lead scoring and intent qualification rules",
-        "Automated follow-up reminders to assigned executives",
-      ],
-    },
-    {
-      title: "3. Kanban Sales Pipeline",
-      icon: Kanban,
-      color: "#00B879",
-      tagline: "Har deal, har stage — sab saaf",
-      desc: "Move opportunities through stages like New Leads, Contacted, Qualified, Proposal, and Won with clear revenue forecasting in INR.",
-      highlights: [
-        "Drag-and-drop deal management with deal probabilities",
-        "Individual representative quota and conversion tracking",
-        "Weighted monthly pipeline forecasting",
-      ],
-    },
-    {
-      title: "4. Workflow Automation Engine",
-      icon: Zap,
-      color: "#008F60",
-      tagline: "Kaam smart, growth fast",
-      desc: "Set intelligent triggers that automatically enrich leads, assign sales reps, and dispatch instant WhatsApp brochures without manual intervention.",
-      highlights: [
-        "Visual trigger and action canvas builder",
-        "Instant round-robin assignment based on territory or team",
-        "Zero-delay automated responses to potential buyers",
-      ],
-    },
-  ];
-
-  const current = tourSteps[activeStep];
+  const current = TOUR_STEPS[activeStep];
   const CurrentIcon = current.icon;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-[#E2E8E5] p-6 sm:p-8 overflow-hidden">
-        {/* Close Button */}
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-[#030806]/75 backdrop-blur-md"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Interactive platform tour"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onTouchStart={(e) => (touchStartX.current = e.touches[0].clientX)}
+        onTouchEnd={(e) => {
+          if (touchStartX.current === null) return;
+          const dx = e.changedTouches[0].clientX - touchStartX.current;
+          if (Math.abs(dx) > 50) go(activeStep + (dx < 0 ? 1 : -1));
+          touchStartX.current = null;
+        }}
+        className="relative w-full max-w-4xl max-h-[calc(100dvh-1.5rem)] overflow-y-auto no-scrollbar rounded-[28px] bg-[#0B1310] text-white ring-1 ring-white/10 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.8)] animate-tour-in"
+      >
+        {/* Ambient accent glow + dot grid */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-40 -right-32 w-[520px] h-[520px] rounded-full blur-[120px] transition-colors duration-700"
+          style={{ backgroundColor: current.accentSoft }}
+        />
+        <div aria-hidden className="pointer-events-none absolute -bottom-48 -left-32 w-[420px] h-[420px] rounded-full bg-[#00B879]/10 blur-[120px]" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.07)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:radial-gradient(ellipse_at_top_right,black_20%,transparent_70%)]"
+        />
+
         <button
+          type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-[#555A68] hover:text-[#171923] rounded-full hover:bg-[#F7F9F8] transition-colors"
+          className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/5 hover:bg-white/15 ring-1 ring-white/10 flex items-center justify-center text-white/70 hover:text-white transition-colors cursor-pointer"
           aria-label="Close walkthrough"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
 
-        {/* Modal Header */}
-        <div className="mb-6 space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#E8F8F1] text-[#008F60] text-xs font-bold uppercase tracking-wider border border-[#00B879]/20">
-            <Play className="w-3 h-3 fill-[#00B879]" />
-            <span>INTERACTIVE PLATFORM TOUR</span>
-          </div>
-          <h3 className="text-2xl font-bold text-[#171923]">
-            How CODIIC Connects Your Entire Business
-          </h3>
-          <p className="text-xs text-[#555A68]">
-            Four core capabilities working together in real-time.
-          </p>
-        </div>
+        <div className="relative grid md:grid-cols-12">
+          {/* Sidebar: steps */}
+          <aside className="md:col-span-4 p-5 sm:p-7 md:border-r border-white/[0.08]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00B879]/15 ring-1 ring-[#00B879]/30 text-[#5EF0B8] text-[10px] font-bold uppercase tracking-[0.14em]">
+              <Play className="w-3 h-3 fill-current" />
+              Interactive platform tour
+            </div>
+            <h3 className="mt-4 text-2xl sm:text-[28px] font-bold tracking-[-0.03em] leading-[1.1] pr-10 md:pr-0">
+              How CODIIC connects your{" "}
+              <em className="font-serif italic font-normal text-[#5EF0B8]">entire business.</em>
+            </h3>
 
-        {/* Step Tabs */}
-        <div className="grid grid-cols-4 gap-2 mb-6">
-          {tourSteps.map((st, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveStep(i)}
-              className={`py-2 px-2 rounded-xl text-center text-xs font-bold transition-all border ${
-                activeStep === i
-                  ? "bg-[#171923] text-white border-[#171923] shadow-sm"
-                  : "bg-[#F7F9F8] text-[#555A68] border-[#E2E8E5] hover:text-[#171923]"
-              }`}
-            >
-              Step 0{i + 1}
-            </button>
-          ))}
-        </div>
+            <div className="mt-6 flex md:flex-col gap-2 overflow-x-auto no-scrollbar -mx-1 px-1 pb-1">
+              {TOUR_STEPS.map((st, i) => {
+                const Icon = st.icon;
+                const isActive = i === activeStep;
+                const isDone = i < activeStep;
+                return (
+                  <button
+                    key={st.title}
+                    type="button"
+                    onClick={() => go(i)}
+                    className={`group relative shrink-0 flex items-center gap-3 text-left rounded-2xl px-3 py-2.5 md:py-3 overflow-hidden transition-all cursor-pointer ring-1 ${
+                      isActive ? "bg-white/[0.07] ring-white/15" : "ring-transparent hover:bg-white/[0.04]"
+                    }`}
+                  >
+                    <span
+                      className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-all"
+                      style={{
+                        backgroundColor: isActive || isDone ? st.accent : "rgba(255,255,255,0.06)",
+                        color: isActive || isDone ? "#0B1310" : "rgba(255,255,255,0.6)",
+                        boxShadow: isActive ? `0 0 24px -2px ${st.accent}` : undefined,
+                      }}
+                    >
+                      {isDone ? <CheckCircle2 className="w-4 h-4" /> : <Icon className="w-4 h-4" />}
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block text-[10px] font-bold uppercase tracking-wider text-white/40">
+                        Step 0{i + 1}
+                      </span>
+                      <span className={`block text-sm font-semibold whitespace-nowrap ${isActive ? "text-white" : "text-white/65"}`}>
+                        {st.short}
+                      </span>
+                    </span>
+                    {isActive && (
+                      <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/10">
+                        <span
+                          key={`${i}-${paused}`}
+                          className={`block h-full ${paused || i === last ? "w-full" : "animate-tour-progress"}`}
+                          style={{ backgroundColor: st.accent, animationDuration: `${STEP_DURATION}ms` }}
+                        />
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </aside>
 
-        {/* Active Step Content */}
-        <div className="bg-[#F7F9F8] border border-[#E2E8E5] rounded-2xl p-5 sm:p-6 space-y-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div
-                className="w-10 h-10 rounded-2xl flex items-center justify-center shadow-xs"
-                style={{ backgroundColor: "#E8F8F1", color: current.color }}
+          {/* Active step */}
+          <section key={activeStep} className="md:col-span-8 p-5 sm:p-8 animate-tour-in">
+            <div className="flex items-center gap-4">
+              <span
+                className="relative w-14 h-14 rounded-2xl flex items-center justify-center shrink-0"
+                style={{
+                  background: `linear-gradient(135deg, ${current.accent}, ${current.accent}99)`,
+                  boxShadow: `0 18px 40px -12px ${current.accent}`,
+                }}
               >
-                <CurrentIcon className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="text-base font-bold text-[#171923]">
+                <CurrentIcon className="w-7 h-7 text-[#0B1310]" />
+              </span>
+              <div className="min-w-0">
+                <span
+                  className="inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full"
+                  style={{ backgroundColor: current.accentSoft, color: current.accent }}
+                >
+                  {current.tagline}
+                </span>
+                <h4 className="mt-1.5 text-xl sm:text-2xl font-bold tracking-tight leading-tight">
                   {current.title}
                 </h4>
-                <div className="text-xs font-semibold text-[#008F60]">
-                  {current.tagline}
+              </div>
+            </div>
+
+            <p className="mt-5 text-sm sm:text-[15px] text-white/70 leading-relaxed">{current.desc}</p>
+
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              {current.stats.map((s) => (
+                <div key={s.label} className="rounded-2xl bg-white/[0.04] ring-1 ring-white/10 px-4 py-3.5 backdrop-blur">
+                  <div className="text-2xl font-extrabold tracking-tight tabular-nums" style={{ color: current.accent }}>
+                    {s.value}
+                  </div>
+                  <div className="mt-0.5 text-xs text-white/50">{s.label}</div>
                 </div>
-              </div>
+              ))}
             </div>
-            <span className="text-xs font-mono font-bold text-[#8A90A0]">
-              {activeStep + 1} / 4
-            </span>
-          </div>
 
-          <p className="text-xs sm:text-sm text-[#555A68] leading-relaxed">
-            {current.desc}
-          </p>
+            <ul className="mt-5 space-y-2.5">
+              {current.highlights.map((h, idx) => (
+                <li
+                  key={h}
+                  className="flex items-start gap-3 rounded-xl px-3.5 py-2.5 bg-white/[0.03] ring-1 ring-white/[0.06] text-sm text-white/85 animate-tour-in"
+                  style={{ animationDelay: `${120 + idx * 80}ms` }}
+                >
+                  <CheckCircle2 className="w-4 h-4 mt-0.5 shrink-0" style={{ color: current.accent }} />
+                  <span>{h}</span>
+                </li>
+              ))}
+            </ul>
 
-          <div className="space-y-2 pt-2 border-t border-[#E8EAF0]">
-            <div className="text-[11px] font-bold uppercase tracking-wider text-[#171923]">
-              Key Highlights:
-            </div>
-            {current.highlights.map((h, idx) => (
-              <div key={idx} className="flex items-center gap-2 text-xs text-[#171923]">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#00B879] shrink-0" />
-                <span>{h}</span>
+            {/* Controls */}
+            <div className="mt-7 pt-5 border-t border-white/[0.08] flex items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={() => go(activeStep - 1)}
+                disabled={activeStep === 0}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-sm font-semibold text-white/75 ring-1 ring-white/15 hover:bg-white/10 hover:text-white disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back
+              </button>
+
+              <div className="hidden sm:flex items-center gap-1.5" aria-hidden>
+                {TOUR_STEPS.map((st, i) => (
+                  <span
+                    key={st.title}
+                    className="h-1.5 rounded-full transition-all duration-300"
+                    style={{
+                      width: i === activeStep ? 22 : 6,
+                      backgroundColor: i <= activeStep ? current.accent : "rgba(255,255,255,0.15)",
+                    }}
+                  />
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Modal Footer Controls */}
-        <div className="mt-6 flex items-center justify-between">
-          <button
-            onClick={() => setActiveStep(Math.max(0, activeStep - 1))}
-            disabled={activeStep === 0}
-            className="px-4 py-2 rounded-full text-xs font-semibold border border-[#E2E8E5] text-[#555A68] hover:text-[#171923] disabled:opacity-40"
-          >
-            Previous
-          </button>
-
-          {activeStep < 3 ? (
-            <button
-              onClick={() => setActiveStep(activeStep + 1)}
-              className="px-5 py-2.5 rounded-full bg-[#171923] hover:bg-[#00B879] text-white text-xs font-bold transition-colors flex items-center gap-1.5"
-            >
-              <span>Next Step</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                onClose();
-                onOpenGetStarted();
-              }}
-              className="px-5 py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs font-bold transition-all shadow-md shadow-[#00B879]/20 flex items-center gap-1.5"
-            >
-              <span>Explore CODIIC Platform Now</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          )}
+              {activeStep < last ? (
+                <button
+                  type="button"
+                  onClick={() => go(activeStep + 1)}
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-bold text-[#0B1310] transition-transform active:scale-95 cursor-pointer"
+                  style={{ backgroundColor: current.accent, boxShadow: `0 10px 30px -10px ${current.accent}` }}
+                >
+                  Next step
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#00B879] hover:bg-[#00D08A] text-sm font-bold text-[#0B1310] shadow-[0_10px_30px_-10px_#00B879] transition-colors active:scale-95 cursor-pointer"
+                >
+                  Start at ₹1/day
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+          </section>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { RupeeOfferPill } from "./RupeeOffer";
 import {
   ArrowRight,
   Check,
@@ -759,7 +760,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
     <section
       ref={sectionRef}
       id="tools"
-      className="relative bg-white py-20 sm:py-28"
+      className="relative bg-transparent py-20 sm:py-28"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -854,6 +855,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
                   Book a demo
                 </button>
               </div>
+              <RupeeOfferPill className="mt-5" label={`${currentTool.title} included · from ₹1/day`} />
             </div>
 
             {/* Product preview */}

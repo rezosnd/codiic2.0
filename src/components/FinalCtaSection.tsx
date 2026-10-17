@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, Play, Sparkles } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { BipsyncHeroCanvas } from "./BipsyncHeroCanvas";
+import { RupeeOfferPill } from "./RupeeOffer";
 
 interface FinalCtaSectionProps {
   onOpenGetStarted: () => void;
@@ -24,11 +25,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 z-10">
         
-        {/* Hindi punch line */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-white text-xs font-semibold backdrop-blur-sm shadow-xs">
-          <span className="w-2 h-2 rounded-full bg-[#00B879] animate-pulse" />
-          <span><em>Business badhega. Confusion nahi.</em></span>
-        </div>
+        <RupeeOfferPill dark label="Start with just ₹1 per day · Business badhega" />
 
         {/* Headline */}
         <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] max-w-3xl mx-auto">
@@ -46,7 +43,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
             onClick={onOpenGetStarted}
             className="w-full sm:w-auto group px-8 py-3.5 sm:py-4 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-base font-bold shadow-xl shadow-[#00B879]/25 hover:shadow-2xl hover:shadow-[#00B879]/35 transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
           >
-            <span>Get started</span>
+            <span>Start at ₹1/day</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
 
@@ -60,7 +57,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
         </div>
 
         <p className="text-xs text-gray-400 pt-2">
-          No credit card required · Free 14-day trial · Setup in 2 minutes
+          Plans from ₹1/day · No credit card required · Setup in 2 minutes
         </p>
 
       </div>
