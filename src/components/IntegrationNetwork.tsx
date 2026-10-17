@@ -76,9 +76,14 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    const observer = new IntersectionObserver(([entry]) => setIsInView(entry.isIntersecting), {
-      threshold: 0.1,
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setIsInView(true);
+        observer.disconnect();
+      },
+      { threshold: 0.05 }
+    );
     observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);

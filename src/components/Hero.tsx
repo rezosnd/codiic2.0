@@ -24,6 +24,7 @@ import {
   AutomationColorIcon,
   AnalyticsColorIcon,
 } from "./ColorfulProductIcons";
+import { BipsyncHeroCanvas } from "./BipsyncHeroCanvas";
 
 interface HeroProps {
   onOpenGetStarted: () => void;
@@ -168,22 +169,35 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
 
   return (
     <section className="relative overflow-hidden bg-white pt-12 sm:pt-20 lg:pt-24">
+      {/* Interactive 3D hexagon terrain (reacts to the cursor) */}
+      <BipsyncHeroCanvas className="absolute inset-0 pointer-events-none z-0 overflow-hidden" />
+
       {/* Copy */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E2E6E4] bg-white text-xs font-semibold text-[#5A6270] mb-6">
+        {/* Soft halo so the copy stays readable over the 3D terrain */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-[-10%] -translate-x-1/2 w-[110%] max-w-[980px] h-[120%] -z-10 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.75)_40%,rgba(255,255,255,0)_72%)]"
+        />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/80 bg-white/70 backdrop-blur-md shadow-[0_8px_24px_-12px_rgba(0,143,96,0.35)] text-xs font-semibold text-[#5A6270] mb-6">
           <span className="w-1.5 h-1.5 rounded-full bg-[#00B879]" />
           Built for Indian businesses · WhatsApp & UPI ready
         </div>
 
-        <h1 className="mx-auto max-w-4xl text-[40px] sm:text-6xl lg:text-[76px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.02]">
+        <h1 className="mx-auto max-w-4xl text-[40px] sm:text-6xl lg:text-[76px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.02] [text-shadow:0_2px_24px_rgba(255,255,255,0.9)]">
           All your business.{" "}
-          <em className="font-serif italic font-normal text-[#008F60]">One platform.</em>
+          <em className="font-serif italic font-normal pr-1 text-transparent bg-clip-text bg-[linear-gradient(110deg,#006B48_0%,#00B879_35%,#5EF0B8_50%,#00B879_65%,#006B48_100%)] bg-[length:250%_100%] animate-text-shine [text-shadow:none]">
+            One platform.
+          </em>
         </h1>
 
-        <p className="mx-auto mt-5 sm:mt-6 max-w-2xl text-base sm:text-lg lg:text-xl text-[#5A6270] leading-relaxed">
-          Build your website, manage customers, track sales and automate everyday work — all from one
-          place. Ek platform, poora business.
-        </p>
+        <div className="mx-auto mt-5 sm:mt-6 max-w-2xl rounded-2xl sm:rounded-3xl px-5 py-3.5 sm:px-7 sm:py-4 bg-white/60 backdrop-blur-xl backdrop-saturate-150 border border-white/80 shadow-[0_20px_50px_-24px_rgba(0,107,72,0.45),inset_0_1px_0_rgba(255,255,255,0.9)]">
+          <p className="text-base sm:text-lg lg:text-xl font-medium text-[#2A303C] leading-relaxed">
+            Build your website, manage customers, track sales and automate everyday work — all from
+            one place.{" "}
+            <span className="font-semibold text-[#008F60]">Ek platform, poora business.</span>
+          </p>
+        </div>
 
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
@@ -223,9 +237,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
         <div className="absolute left-[26%] sm:left-1/2 top-0 bottom-0 -translate-x-1/2 w-[3px] bg-gradient-to-b from-[#00B879]/0 via-[#00B879] to-[#00B879]/0" />
 
         {/* Rows */}
-        <div className="absolute inset-0 flex flex-col justify-center gap-3 sm:gap-4 [mask-image:linear-gradient(90deg,transparent,black_5%,black_92%,transparent)] sm:[mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+        <div className="absolute inset-0 flex flex-col justify-center gap-3 sm:gap-4 [perspective:1400px] [mask-image:linear-gradient(90deg,transparent,black_5%,black_92%,transparent)] sm:[mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
           {ROWS.map((row, i) => (
-            <div key={i} className="relative h-[64px] sm:h-[74px]">
+            <div
+              key={i}
+              className="relative h-[64px] sm:h-[74px]"
+              style={{ transform: `rotateX(14deg) rotate(${(i - 1) * 0.8}deg) translateZ(0)` }}
+            >
               {reducedMotion ? (
                 <div className="absolute inset-0 flex justify-center gap-4">
                   {row.items.slice(0, 4).map((item, j) => (
@@ -262,8 +280,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
           </div>
         </div>
 
-        {/* Bottom fade */}
-        <div className="absolute inset-x-0 bottom-0 h-16 sm:h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+        {/* Frosted-glass bottom edge */}
+        <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 pointer-events-none z-20 backdrop-blur-xl backdrop-saturate-150 bg-gradient-to-t from-white/85 via-white/40 to-white/0 [mask-image:linear-gradient(to_top,black_35%,transparent)]" />
       </div>
     </section>
   );

@@ -270,6 +270,7 @@ const TOOLS: Tool[] = [
     badge: "NATURAL LANGUAGE",
     desc: "Ask AI in plain language to find stores, products, and campaign strategies matching your exact criteria.",
     icon: MagicAiIcon,
+    image: "/magic_ai.png",
     stats: [
       { value: "< 3 sec", label: "Average answer time" },
       { value: "Plain text", label: "No filters or query syntax" },
@@ -737,6 +738,21 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
     list.scrollTo({ left: target, behavior: "smooth" });
   }, [activeTab]);
 
+  const tiltRef = useRef<HTMLDivElement>(null);
+
+  const handleTilt = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = tiltRef.current;
+    if (!el || e.pointerType !== "mouse") return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    el.style.transform = `perspective(1200px) rotateY(${x * 7}deg) rotateX(${-y * 5}deg)`;
+  };
+
+  const resetTilt = () => {
+    if (tiltRef.current) tiltRef.current.style.transform = "";
+  };
+
   const CurrentIcon = currentTool.icon;
 
   return (
@@ -843,15 +859,36 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
             {/* Product preview */}
             <div className="lg:col-span-7">
               {currentTool.image ? (
-                <div className="relative aspect-[3/2] rounded-2xl overflow-hidden bg-white border border-[#E6E9E7] shadow-[0_24px_60px_-30px_rgba(23,25,35,0.25)]">
-                  <Image
-                    src={currentTool.image}
-                    alt={`${currentTool.title} dashboard in CODIIC`}
-                    fill
-                    sizes="(min-width: 1024px) 720px, 100vw"
-                    className="object-cover object-left-top"
-                    priority={activeIndex === 0}
-                  />
+                <div
+                  ref={tiltRef}
+                  onPointerMove={handleTilt}
+                  onPointerLeave={resetTilt}
+                  className="relative transition-transform duration-300 ease-out"
+                >
+                  <div className="relative aspect-[3/2] rounded-2xl overflow-hidden bg-white border border-[#E6E9E7] shadow-[0_24px_60px_-30px_rgba(23,25,35,0.25)]">
+                    <div className="absolute inset-0 animate-shot-reveal">
+                      <div className="absolute inset-0 animate-shot-zoom">
+                        <Image
+                          src={currentTool.image}
+                          alt={`${currentTool.title} dashboard in CODIIC`}
+                          fill
+                          sizes="(min-width: 1024px) 720px, 100vw"
+                          className="object-cover object-left-top"
+                          priority={activeIndex === 0}
+                        />
+                      </div>
+                    </div>
+                    <span
+                      aria-hidden
+                      className="absolute inset-y-0 -left-1 w-1 bg-[#00B879] shadow-[0_0_24px_6px_rgba(0,184,121,0.55)] animate-shot-scan pointer-events-none"
+                    />
+                    {!isPaused && (
+                      <span
+                        aria-hidden
+                        className="absolute bottom-0 left-0 h-[3px] bg-[#00B879] animate-shot-progress"
+                      />
+                    )}
+                  </div>
                 </div>
               ) : (
                 <div className="rounded-2xl bg-white border border-[#E6E9E7] shadow-[0_24px_60px_-30px_rgba(23,25,35,0.25)] p-4 sm:p-6">

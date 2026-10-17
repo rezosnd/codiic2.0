@@ -383,3 +383,81 @@ body {
     animation: none;
   }
 }
+
+/* Tool screenshots: wipe-in reveal, scan beam, slow zoom, autoplay progress */
+@keyframes shotReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+    filter: blur(6px) saturate(0.6);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+    filter: blur(0) saturate(1);
+  }
+}
+
+@keyframes shotScan {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes shotZoom {
+  from {
+    transform: scale(1.06);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes shotProgress {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.animate-shot-reveal {
+  animation: shotReveal 0.9s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+.animate-shot-scan {
+  animation: shotScan 0.9s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+.animate-shot-zoom {
+  animation: shotZoom 7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-shot-progress {
+  animation: shotProgress 7s linear both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-shot-reveal,
+  .animate-shot-zoom,
+  .animate-shot-progress {
+    animation: none;
+  }
+
+  .animate-shot-scan {
+    display: none;
+  }
+}
