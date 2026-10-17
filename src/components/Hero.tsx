@@ -227,7 +227,94 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
           <span className="font-semibold text-[#171923]">4.9</span>
           <span>from 2,400+ businesses</span>
           <span className="hidden sm:inline text-[#9AA7A0]">·</span>
-          <span className="hidden sm:inline">No code, only drag &amp; drop</span>
+          {/* ── Pencil-sketch oval encircle (matches reference) ── */}
+          <span className="hidden sm:inline-flex items-center">
+            <span className="relative inline-block px-4 py-0.5">
+              {/* Dark bold text — matches reference */}
+              <span className="relative z-10 font-extrabold text-[#171923] tracking-tight" style={{ fontFamily: "inherit" }}>
+                No code, only drag &amp; drop
+              </span>
+
+              {/* Hand-drawn teal oval SVG — drawn around the text */}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 220 44"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute inset-0 w-full h-full overflow-visible pointer-events-none"
+                preserveAspectRatio="none"
+              >
+                <defs>
+                  <linearGradient id="ovalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#00D4A0" />
+                    <stop offset="50%" stopColor="#00B879" />
+                    <stop offset="100%" stopColor="#5EF0C8" />
+                  </linearGradient>
+                </defs>
+
+                {/* Primary oval stroke — thick, wobbly, hand-drawn */}
+                <path
+                  d="
+                    M 28 36
+                    C 14 40, 4 32, 6 22
+                    C 8 10, 22 4, 50 3
+                    C 80 2, 130 1, 168 3
+                    C 196 4, 216 10, 215 20
+                    C 214 30, 202 38, 178 40
+                    C 148 43, 98 44, 58 42
+                    C 42 41, 30 39, 28 36 Z
+                  "
+                  stroke="url(#ovalGrad)"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{
+                    strokeDasharray: 620,
+                    strokeDashoffset: 620,
+                    animation: "sketchDraw 1.1s cubic-bezier(0.35,0,0.25,1) 0.2s forwards",
+                  }}
+                />
+
+                {/* Secondary inner oval — thinner, offset, pencil second-pass feel */}
+                <path
+                  d="
+                    M 32 38
+                    C 20 41, 10 35, 12 25
+                    C 13 14, 26 7, 52 5.5
+                    C 82 4, 132 3, 166 5
+                    C 194 6.5, 212 13, 211 22
+                    C 210 31, 200 39, 175 41.5
+                    C 144 44, 94 45, 55 43
+                    C 40 42, 32 40, 32 38 Z
+                  "
+                  stroke="#00B879"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  opacity={0.38}
+                  style={{
+                    strokeDasharray: 620,
+                    strokeDashoffset: 620,
+                    animation: "sketchDraw 1.1s cubic-bezier(0.35,0,0.25,1) 0.42s forwards",
+                  }}
+                />
+
+                {/* Tiny sketch tail / overshoot — like a pen lifting off */}
+                <path
+                  d="M 28 36 C 24 35, 20 36, 18 34"
+                  stroke="#00B879"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  opacity={0.55}
+                  style={{
+                    strokeDasharray: 30,
+                    strokeDashoffset: 30,
+                    animation: "sketchDraw 0.4s ease 1.1s forwards",
+                  }}
+                />
+              </svg>
+            </span>
+          </span>
         </div>
       </div>
 

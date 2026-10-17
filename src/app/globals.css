@@ -477,6 +477,49 @@ body {
   }
 }
 
+/* Pencil-sketch underline: draw-in */
+@keyframes sketchDraw {
+  0% {
+    stroke-dashoffset: 260;
+    opacity: 0.4;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* Pencil-sketch underline: gentle living wobble after draw-in */
+@keyframes sketchLoop {
+  0%, 100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  45% {
+    stroke-dashoffset: -8;
+    opacity: 0.85;
+  }
+
+  55% {
+    stroke-dashoffset: 8;
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  path[style*="sketchDraw"] {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+    opacity: 1 !important;
+  }
+}
+
 .animate-text-shine {
   animation: textShine 5s linear infinite;
 }
