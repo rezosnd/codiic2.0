@@ -21,7 +21,7 @@ const siteUrl =
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
-    : "https://codiic.com");
+    : "https://codiic2-0.vercel.app");
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -40,8 +40,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "CODIIC Technologies" }],
   icons: {
-    icon: "/logo_withot text.png",
-    apple: "/logo_withot text.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/codiic-icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
   },
   openGraph: {
     title: "CODIIC — All your business. One connected platform.",
@@ -51,7 +57,8 @@ export const metadata: Metadata = {
     siteName: "CODIIC",
     images: [
       {
-        url: "/og-image.png",
+        url: `${siteUrl}/og-image.png`,
+        secureUrl: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
         type: "image/png",
@@ -66,7 +73,7 @@ export const metadata: Metadata = {
     title: "CODIIC — All your business. One connected platform.",
     description:
       "Website se customer tak — sab connected. Build, manage, and scale your business operations with CODIIC.",
-    images: ["/og-image.png"],
+    images: [`${siteUrl}/og-image.png`],
   },
   robots: {
     index: true,
@@ -82,7 +89,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        <link rel="icon" href="/logo_withot text.png" type="image/png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/codiic-icon.png" type="image/png" sizes="512x512" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        <link rel="image_src" href={`${siteUrl}/og-image.png`} />
+        <meta property="og:image:secure_url" content={`${siteUrl}/og-image.png`} />
       </head>
       <body className="min-h-screen bg-[#F7F9F8] text-[#171923] antialiased selection:bg-[#00B879]/20 selection:text-[#008F60]">
         {children}
