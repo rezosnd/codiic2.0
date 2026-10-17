@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { ArrowRight, Check, Lock } from "lucide-react";
 import {
   WhatsAppLogo,
@@ -9,6 +10,12 @@ import {
   MetaLogo,
   ShopifyLogo,
   AwsLogo,
+  StripeLogo,
+  ZapierLogo,
+  InstagramLogo,
+  PhonePeLogo,
+  ZohoLogo,
+  GmailLogo,
 } from "./BrandLogos";
 
 interface IntegrationNetworkProps {
@@ -68,15 +75,51 @@ const INTEGRATIONS: Integration[] = [
     points: ["Encrypted file storage", "Nightly automated backups"],
     logo: AwsLogo,
   },
+  {
+    id: "stripe",
+    name: "Stripe",
+    role: "Global card & subscription billing",
+    points: ["International payments supported", "Subscription auto-renewals"],
+    logo: StripeLogo,
+  },
+  {
+    id: "instagram",
+    name: "Instagram Direct",
+    role: "DMs & story lead capture",
+    points: ["Replies routed to CRM", "Story leads auto-tagged"],
+    logo: InstagramLogo,
+  },
+  {
+    id: "zapier",
+    name: "Zapier",
+    role: "Connect 6000+ apps via Zaps",
+    points: ["No-code automation triggers", "Multi-step workflow builder"],
+    logo: ZapierLogo,
+  },
+  {
+    id: "zoho",
+    name: "Zoho Books",
+    role: "GST invoicing & ledger sync",
+    points: ["Auto-generate GST invoices", "Real-time P&L reconciliation"],
+    logo: ZohoLogo,
+  },
+  {
+    id: "phonepe",
+    name: "PhonePe",
+    role: "UPI payments & settlements",
+    points: ["QR-code payment collection", "Instant settlement alerts"],
+    logo: PhonePeLogo,
+  },
+  {
+    id: "gmail",
+    name: "Gmail",
+    role: "Email automation & logging",
+    points: ["Emails tracked in timeline", "Smart follow-up sequences"],
+    logo: GmailLogo,
+  },
 ];
 
-/* ─── Animated SVG Network ─────────────────────────────────────────────────── */
-
-/**
- * Each integration tile sits at a specific (cx, cy) in the 800×420 viewBox.
- * Paths all converge at the hub on the left at (80, 210).
- */
-const HUB = { x: 80, y: 210 };
+/* ─── SVG Network ─────────────────────────────────────────────────────────── */
 
 interface TilePos {
   id: string;
@@ -86,34 +129,45 @@ interface TilePos {
   label: string;
 }
 
-// Desktop tile positions — mimicking the reference fan-out layout
+// Hub origin (left side of canvas)
+const HUB_D = { x: 72, y: 240 };
+const HUB_M = { x: 44, y: 200 };
+
+// Desktop: 11 tiles fanned out across 860×480 viewBox
 const TILES_DESKTOP: TilePos[] = [
-  { id: "whatsapp", cx: 340, cy: 60,  Logo: WhatsAppLogo,       label: "WhatsApp" },
-  { id: "google",   cx: 540, cy: 130, Logo: GoogleWorkspaceLogo, label: "Workspace" },
-  { id: "meta",     cx: 700, cy: 185, Logo: MetaLogo,            label: "Meta" },
-  { id: "razorpay", cx: 420, cy: 215, Logo: RazorpayLogo,        label: "Razorpay" },
-  { id: "shopify",  cx: 620, cy: 280, Logo: ShopifyLogo,         label: "Shopify" },
-  { id: "aws",      cx: 340, cy: 370, Logo: AwsLogo,             label: "AWS" },
+  { id: "whatsapp",  cx: 250, cy: 40,  Logo: WhatsAppLogo,       label: "WhatsApp"  },
+  { id: "google",    cx: 430, cy: 80,  Logo: GoogleWorkspaceLogo, label: "Workspace" },
+  { id: "stripe",    cx: 640, cy: 60,  Logo: StripeLogo,          label: "Stripe"    },
+  { id: "meta",      cx: 760, cy: 140, Logo: MetaLogo,            label: "Meta"      },
+  { id: "instagram", cx: 310, cy: 175, Logo: InstagramLogo,       label: "Instagram" },
+  { id: "razorpay",  cx: 530, cy: 200, Logo: RazorpayLogo,        label: "Razorpay"  },
+  { id: "shopify",   cx: 730, cy: 250, Logo: ShopifyLogo,         label: "Shopify"   },
+  { id: "zapier",    cx: 420, cy: 310, Logo: ZapierLogo,          label: "Zapier"    },
+  { id: "zoho",      cx: 620, cy: 360, Logo: ZohoLogo,            label: "Zoho"      },
+  { id: "phonepe",   cx: 260, cy: 390, Logo: PhonePeLogo,         label: "PhonePe"   },
+  { id: "aws",       cx: 760, cy: 410, Logo: AwsLogo,             label: "AWS"       },
 ];
 
-// Mobile tile positions inside a narrower 360×340 viewBox
+// Mobile: 8 tiles in a 370×360 viewBox
 const TILES_MOBILE: TilePos[] = [
-  { id: "whatsapp", cx: 195, cy: 42,  Logo: WhatsAppLogo,       label: "WhatsApp" },
-  { id: "google",   cx: 290, cy: 100, Logo: GoogleWorkspaceLogo, label: "Workspace" },
-  { id: "meta",     cx: 310, cy: 175, Logo: MetaLogo,            label: "Meta" },
-  { id: "razorpay", cx: 200, cy: 185, Logo: RazorpayLogo,        label: "Razorpay" },
-  { id: "shopify",  cx: 290, cy: 265, Logo: ShopifyLogo,         label: "Shopify" },
-  { id: "aws",      cx: 185, cy: 310, Logo: AwsLogo,             label: "AWS" },
+  { id: "whatsapp",  cx: 160, cy: 38,  Logo: WhatsAppLogo,       label: "WhatsApp"  },
+  { id: "google",    cx: 290, cy: 85,  Logo: GoogleWorkspaceLogo, label: "Workspace" },
+  { id: "stripe",    cx: 330, cy: 165, Logo: StripeLogo,          label: "Stripe"    },
+  { id: "meta",      cx: 195, cy: 155, Logo: MetaLogo,            label: "Meta"      },
+  { id: "razorpay",  cx: 310, cy: 248, Logo: RazorpayLogo,        label: "Razorpay"  },
+  { id: "shopify",   cx: 165, cy: 265, Logo: ShopifyLogo,         label: "Shopify"   },
+  { id: "zapier",    cx: 280, cy: 330, Logo: ZapierLogo,          label: "Zapier"    },
+  { id: "aws",       cx: 155, cy: 345, Logo: AwsLogo,             label: "AWS"       },
 ];
 
-/** Cubic bezier path from hub to tile with a horizontal bias */
 function cubicPath(
   hub: { x: number; y: number },
   tile: { cx: number; cy: number }
 ) {
-  const cpx1 = hub.x + (tile.cx - hub.x) * 0.55;
-  const cpx2 = tile.cx - (tile.cx - hub.x) * 0.3;
-  return `M ${hub.x} ${hub.y} C ${cpx1} ${hub.y}, ${cpx2} ${tile.cy}, ${tile.cx} ${tile.cy}`;
+  const dx = tile.cx - hub.x;
+  const cp1x = hub.x + dx * 0.52;
+  const cp2x = tile.cx - dx * 0.28;
+  return `M ${hub.x} ${hub.y} C ${cp1x} ${hub.y}, ${cp2x} ${tile.cy}, ${tile.cx} ${tile.cy}`;
 }
 
 interface NetworkSVGProps {
@@ -131,6 +185,9 @@ const NetworkSVG: React.FC<NetworkSVGProps> = ({
   tiles, hub, vw, vh, tileSize, hubSize, isInView, reducedMotion,
 }) => {
   const paths = tiles.map((t) => cubicPath(hub, t));
+  const iconPad = tileSize * 0.22;
+  const iconSize = tileSize - iconPad * 2;
+  const r = tileSize * 0.28;
 
   return (
     <svg
@@ -140,36 +197,29 @@ const NetworkSVG: React.FC<NetworkSVGProps> = ({
       style={{ display: "block" }}
     >
       <defs>
-        {/* Radial glow on hub */}
-        <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#00B879" stopOpacity="0.25" />
+        <radialGradient id="intHubGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#00B879" stopOpacity="0.22" />
           <stop offset="100%" stopColor="#00B879" stopOpacity="0" />
         </radialGradient>
-        {/* Traveling pulse gradient */}
-        <linearGradient id="pulseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#00B879" stopOpacity="0" />
-          <stop offset="50%" stopColor="#00B879" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="#00B879" stopOpacity="0" />
-        </linearGradient>
       </defs>
 
-      {/* ── Base connector paths (static light lines) ── */}
+      {/* ── Static base paths ── */}
       {paths.map((d, i) => (
         <path
           key={`base-${tiles[i].id}`}
           d={d}
           fill="none"
-          stroke="#CBD8EF"
-          strokeWidth="1.5"
+          stroke="#BDD0E8"
+          strokeWidth="1.4"
           strokeLinecap="round"
-          opacity={isInView ? 0.65 : 0}
+          opacity={isInView ? 0.7 : 0}
           style={{
-            transition: reducedMotion ? "none" : `opacity 0.8s ease ${i * 120}ms`,
+            transition: reducedMotion ? "none" : `opacity 0.7s ease ${i * 90}ms`,
           }}
         />
       ))}
 
-      {/* ── Animated dashed flow lines ── */}
+      {/* ── Animated dashed flow paths ── */}
       {!reducedMotion &&
         paths.map((d, i) => (
           <path
@@ -179,37 +229,38 @@ const NetworkSVG: React.FC<NetworkSVGProps> = ({
             stroke="#00B879"
             strokeWidth="1.5"
             strokeLinecap="round"
-            opacity={isInView ? 0.45 : 0}
+            opacity={isInView ? 0.5 : 0}
             className="animate-connector-flow"
             style={{
-              animationDelay: `${i * 0.38}s`,
-              transition: `opacity 0.6s ease ${i * 100}ms`,
+              animationDelay: `${i * 0.32}s`,
+              transition: `opacity 0.5s ease ${i * 80}ms`,
             }}
           />
         ))}
 
-      {/* ── Hub node ── */}
-      {/* outer glow */}
+      {/* ── Hub outer glow ── */}
       <circle
         cx={hub.x}
         cy={hub.y}
-        r={hubSize + 14}
-        fill="url(#hubGlow)"
+        r={hubSize + 18}
+        fill="url(#intHubGlow)"
         opacity={isInView ? 1 : 0}
         style={{ transition: reducedMotion ? "none" : "opacity 0.8s ease" }}
       />
-      {/* ring */}
+
+      {/* Hub ring */}
       <circle
         cx={hub.x}
         cy={hub.y}
-        r={hubSize + 4}
+        r={hubSize + 5}
         fill="none"
         stroke="#00B879"
         strokeWidth="1"
-        opacity={isInView ? 0.3 : 0}
+        opacity={isInView ? 0.28 : 0}
         style={{ transition: reducedMotion ? "none" : "opacity 0.8s ease 0.2s" }}
       />
-      {/* hub body */}
+
+      {/* Hub white disk */}
       <circle
         cx={hub.x}
         cy={hub.y}
@@ -217,70 +268,68 @@ const NetworkSVG: React.FC<NetworkSVGProps> = ({
         fill="white"
         stroke="#E2E6E4"
         strokeWidth="1.5"
-        filter="drop-shadow(0 4px 12px rgba(0,0,0,0.10))"
+        filter="drop-shadow(0 4px 14px rgba(0,0,0,0.11))"
         opacity={isInView ? 1 : 0}
         style={{ transition: reducedMotion ? "none" : "opacity 0.6s ease 0.1s" }}
       />
-      {/* CODIIC "C" lettermark */}
-      <text
-        x={hub.x}
-        y={hub.y + 5}
-        textAnchor="middle"
-        fontSize={hubSize * 0.72}
-        fontWeight="900"
-        fontFamily="system-ui, -apple-system, sans-serif"
-        fill="#00B879"
+
+      {/* ── CODIIC logo image inside hub ── */}
+      <foreignObject
+        x={hub.x - hubSize * 0.58}
+        y={hub.y - hubSize * 0.58}
+        width={hubSize * 1.16}
+        height={hubSize * 1.16}
         opacity={isInView ? 1 : 0}
-        style={{ transition: reducedMotion ? "none" : "opacity 0.5s ease 0.3s" }}
+        style={{ transition: reducedMotion ? "none" : "opacity 0.5s ease 0.35s" }}
       >
-        C
-      </text>
+        {/* @ts-ignore */}
+        <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <img
+            src="/logo_withot text.png"
+            alt="CODIIC"
+            style={{ width: "100%", height: "100%", objectFit: "contain" }}
+          />
+        </div>
+      </foreignObject>
 
       {/* ── Integration icon tiles ── */}
-      {tiles.map((t, i) => {
-        const half = tileSize / 2;
-        const iconPad = tileSize * 0.22;
-        const iconSize = tileSize - iconPad * 2;
-        const r = tileSize * 0.28;
-        return (
-          <g
-            key={t.id}
-            opacity={isInView ? 1 : 0}
-            style={{
-              transition: reducedMotion
-                ? "none"
-                : `opacity 0.55s cubic-bezier(0.22,1,0.36,1) ${300 + i * 90}ms`,
-            }}
+      {tiles.map((t, i) => (
+        <g
+          key={t.id}
+          opacity={isInView ? 1 : 0}
+          style={{
+            transition: reducedMotion
+              ? "none"
+              : `opacity 0.5s cubic-bezier(0.22,1,0.36,1) ${280 + i * 80}ms`,
+          }}
+        >
+          {/* Tile background */}
+          <rect
+            x={t.cx - tileSize / 2}
+            y={t.cy - tileSize / 2}
+            width={tileSize}
+            height={tileSize}
+            rx={r}
+            ry={r}
+            fill="white"
+            stroke="#E4E8EC"
+            strokeWidth="1.1"
+            filter="drop-shadow(0 3px 10px rgba(0,0,0,0.08))"
+          />
+          {/* Brand icon via foreignObject */}
+          <foreignObject
+            x={t.cx - iconSize / 2}
+            y={t.cy - iconSize / 2}
+            width={iconSize}
+            height={iconSize}
           >
-            {/* White rounded-square tile */}
-            <rect
-              x={t.cx - half}
-              y={t.cy - half}
-              width={tileSize}
-              height={tileSize}
-              rx={r}
-              ry={r}
-              fill="white"
-              stroke="#E5E8EC"
-              strokeWidth="1.2"
-              filter="drop-shadow(0 3px 10px rgba(0,0,0,0.08))"
-            />
-            {/* Brand logo rendered via foreignObject (standard SVG spec) */}
-            <foreignObject
-              x={t.cx - iconSize / 2}
-              y={t.cy - iconSize / 2}
-              width={iconSize}
-              height={iconSize}
-            >
-              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-              {/* @ts-ignore */}
-              <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <t.Logo className="w-full h-full" />
-              </div>
-            </foreignObject>
-          </g>
-        );
-      })}
+            {/* @ts-ignore */}
+            <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <t.Logo className="w-full h-full" />
+            </div>
+          </foreignObject>
+        </g>
+      ))}
     </svg>
   );
 };
@@ -310,7 +359,7 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({
         setIsInView(true);
         observer.disconnect();
       },
-      { threshold: 0.08 }
+      { threshold: 0.06 }
     );
     observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -323,16 +372,14 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({
       aria-labelledby="integrations-heading"
       className="relative bg-white py-20 sm:py-28 overflow-hidden"
     >
-      {/* Very faint dot-grid texture */}
+      {/* Faint dot-grid */}
       <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" aria-hidden />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* ── Header row ─────────────────────────────────────── */}
+        {/* ── Header ── */}
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-          {/* Left: heading */}
           <div>
-            {/* Eyebrow badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E2E6E4] bg-[#F7F9F8] text-xs font-semibold text-[#5A6270] mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00B879] animate-pulse-green" />
               Integrations
@@ -349,7 +396,6 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({
             </h2>
           </div>
 
-          {/* Right: description + CTA */}
           <div className="flex flex-col justify-start pt-1 lg:pt-3">
             <p className="text-base sm:text-[17px] text-[#5A6270] leading-relaxed">
               Messages, payments, leads, orders and files flow into one CODIIC
@@ -375,82 +421,80 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({
           </div>
         </div>
 
-        {/* ── Animated Network (desktop) ─────────────────────── */}
+        {/* ── SVG Network — Desktop ── */}
         <div
-          className="hidden sm:block mt-14 lg:mt-16 relative w-full"
-          style={{ height: "clamp(300px, 38vw, 420px)" }}
+          className="hidden sm:block mt-14 lg:mt-16 w-full select-none"
+          style={{ height: "clamp(320px, 42vw, 480px)" }}
           aria-hidden="true"
         >
           <NetworkSVG
             tiles={TILES_DESKTOP}
-            hub={HUB}
-            vw={800}
-            vh={420}
-            tileSize={64}
-            hubSize={30}
+            hub={HUB_D}
+            vw={860}
+            vh={480}
+            tileSize={62}
+            hubSize={34}
             isInView={isInView}
             reducedMotion={reducedMotion}
           />
         </div>
 
-        {/* ── Animated Network (mobile) ──────────────────────── */}
+        {/* ── SVG Network — Mobile ── */}
         <div
-          className="sm:hidden mt-10 relative w-full"
-          style={{ height: "340px" }}
+          className="sm:hidden mt-10 w-full select-none"
+          style={{ height: "370px" }}
           aria-hidden="true"
         >
           <NetworkSVG
             tiles={TILES_MOBILE}
-            hub={{ x: 40, y: 175 }}
-            vw={360}
-            vh={340}
-            tileSize={52}
-            hubSize={22}
+            hub={HUB_M}
+            vw={370}
+            vh={370}
+            tileSize={50}
+            hubSize={26}
             isInView={isInView}
             reducedMotion={reducedMotion}
           />
         </div>
 
-        {/* ── Integration Cards Grid ─────────────────────────── */}
+        {/* ── Integration Cards Grid ── */}
         <ul
           id="integrations-list"
-          className="mt-12 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
-          aria-label="Integrations list"
+          className="mt-12 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5"
+          aria-label="All integrations"
         >
           {INTEGRATIONS.map((item, i) => {
             const Logo = item.logo;
             return (
               <li
                 key={item.id}
-                className={`group rounded-[22px] bg-[#F7F9F8] hover:bg-white border border-transparent hover:border-[#E2E6E4] p-6 sm:p-7 transition-all duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] ${
+                className={`group rounded-[22px] bg-[#F7F9F8] hover:bg-white border border-transparent hover:border-[#E2E6E4] p-5 sm:p-6 transition-all duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] ${
                   isInView ? "animate-tool-in" : "opacity-0"
                 }`}
-                style={{ animationDelay: `${i * 75}ms` }}
+                style={{ animationDelay: `${i * 55}ms` }}
               >
-                {/* Logo + name */}
-                <div className="flex items-center gap-4">
-                  <span className="w-13 h-13 shrink-0 rounded-2xl bg-white ring-1 ring-black/[0.06] flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:ring-[#00B879]/20 transition-all duration-300">
-                    <Logo className="w-7 h-7" />
+                <div className="flex items-center gap-3.5">
+                  <span className="w-12 h-12 shrink-0 rounded-xl bg-white ring-1 ring-black/[0.06] flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:ring-[#00B879]/20 transition-all duration-300">
+                    <Logo className="w-6 h-6" />
                   </span>
                   <div className="min-w-0">
-                    <div className="text-[15px] font-bold text-[#171923] leading-tight">
+                    <div className="text-[14px] font-bold text-[#171923] leading-tight truncate">
                       {item.name}
                     </div>
-                    <div className="mt-0.5 text-[13px] text-[#6B7280] leading-snug">
+                    <div className="mt-0.5 text-[12px] text-[#6B7280] leading-snug truncate">
                       {item.role}
                     </div>
                   </div>
                 </div>
 
-                {/* Feature points */}
-                <ul className="mt-5 space-y-2.5">
+                <ul className="mt-4 space-y-2">
                   {item.points.map((point) => (
                     <li
                       key={point}
-                      className="flex items-center gap-2.5 text-[13.5px] text-[#3C4450] leading-snug"
+                      className="flex items-start gap-2 text-[12.5px] text-[#3C4450] leading-snug"
                     >
-                      <span className="w-5 h-5 rounded-full bg-[#E8F8F1] text-[#008F60] flex items-center justify-center shrink-0">
-                        <Check className="w-3 h-3" strokeWidth={3} />
+                      <span className="mt-0.5 w-4 h-4 rounded-full bg-[#E8F8F1] text-[#008F60] flex items-center justify-center shrink-0">
+                        <Check className="w-2.5 h-2.5" strokeWidth={3} />
                       </span>
                       {point}
                     </li>
@@ -461,7 +505,7 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({
           })}
         </ul>
 
-        {/* ── Trust footer ──────────────────────────────────── */}
+        {/* ── Trust line ── */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-[12px] text-[#8A939F] text-center">
           <span className="inline-flex items-center gap-1.5 font-semibold text-[#171923]">
             <Lock className="w-3.5 h-3.5 text-[#00B879]" aria-hidden="true" />

@@ -227,7 +227,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
           <span className="font-semibold text-[#171923]">4.9</span>
           <span>from 2,400+ businesses</span>
           <span className="hidden sm:inline text-[#9AA7A0]">·</span>
-          <span className="hidden sm:inline">WhatsApp & UPI ready</span>
+          <span className="hidden sm:inline">No code, only drag &amp; drop</span>
         </div>
       </div>
 
