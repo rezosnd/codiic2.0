@@ -1,224 +1,261 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-  Building2,
-  ShoppingBag,
-  Code2,
-  Megaphone,
-  HeartPulse,
-  Factory,
-  Briefcase,
-  HardHat,
-  GraduationCap,
-  UtensilsCrossed,
-  Plane,
-  Truck,
-  ArrowRight,
-  Sparkles,
-} from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { CoverflowCarousel, type CoverflowSlide } from "@/components/ui/coverflow-carousel";
 
 interface IndustrySolutionsSectionProps {
   onOpenGetStarted: () => void;
 }
 
+/* ─── Industry data ────────────────────────────────────────────────────── */
+const INDUSTRIES = [
+  {
+    id: "retail",
+    badge: "Retail & eCommerce",
+    subtitle: "Storefront & Orders",
+    title: "Modern boutique retail storefront with curated lifestyle displays",
+    description:
+      "Connect your storefront with real-time UPI orders, WhatsApp customer updates, and auto-synced inventory.",
+    img: "/images/industries/retail.jpg",
+    accent: "#00B879",
+  },
+  {
+    id: "services",
+    badge: "Professional Services",
+    subtitle: "Retainers & Inquiries",
+    title: "Professional advisory consultants meeting in a bright contemporary office",
+    description:
+      "Organize client consultations, intake briefs, and retainer proposals with clear team task assignment.",
+    img: "/images/industries/services.jpg",
+    accent: "#008F60",
+  },
+  {
+    id: "real-estate",
+    badge: "Real Estate & Developers",
+    subtitle: "Site Visits & Deals",
+    title: "Contemporary architectural residential property development",
+    description:
+      "Keep property inquiries, floorplan shares, and site-visit schedules visible across your deal pipeline.",
+    img: "/images/industries/real-estate.jpg",
+    accent: "#00B879",
+  },
+  {
+    id: "agencies",
+    badge: "Creative Agencies",
+    subtitle: "Pitches & Scopes",
+    title: "Creative digital agency team collaborating on digital campaign design",
+    description:
+      "Capture website inquiries, qualify client budgets, and track pitch milestones in one continuous feed.",
+    img: "/images/industries/agencies.jpg",
+    accent: "#008F60",
+  },
+  {
+    id: "education",
+    badge: "Education & Academies",
+    subtitle: "Admissions & Leads",
+    title: "Modern interactive education seminar with active participants",
+    description:
+      "Manage prospective student enrollment forms, batch intake questions, and automated WhatsApp course brochures.",
+    img: "/images/industries/education.jpg",
+    accent: "#00B879",
+  },
+  {
+    id: "hospitality",
+    badge: "Hospitality & Cafes",
+    subtitle: "Menus & Bookings",
+    title: "Aesthetic modern boutique cafe interior with warm natural lighting",
+    description:
+      "Give diners and guests a beautiful online presence to explore menus, reserve tables, and connect via WhatsApp.",
+    img: "/images/industries/hospitality.jpg",
+    accent: "#008F60",
+  },
+];
+
+/* Map to CoverflowSlide shape */
+const SLIDES: CoverflowSlide[] = INDUSTRIES.map((ind) => ({
+  src: ind.img,
+  alt: ind.title,
+  title: ind.subtitle,
+  subtitle: ind.badge,
+  badge: ind.badge,
+  description: ind.description,
+}));
+
+/* ─── Desktop card ─────────────────────────────────────────────────────── */
+const DesktopCard: React.FC<{
+  item: (typeof INDUSTRIES)[0];
+  i: number;
+  isInView: boolean;
+  onOpenGetStarted: () => void;
+}> = ({ item, i, isInView, onOpenGetStarted }) => (
+  <div
+    className={`group relative overflow-hidden rounded-[28px] cursor-pointer flex flex-col transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_48px_rgba(0,0,0,0.12)] ${
+      isInView ? "animate-tool-in opacity-0" : "opacity-0"
+    }`}
+    style={{ animationDelay: `${i * 90}ms`, animationFillMode: "forwards" }}
+    onClick={onOpenGetStarted}
+  >
+    {/* Photo */}
+    <div className="relative overflow-hidden" style={{ aspectRatio: "3/2" }}>
+      <img
+        src={item.img}
+        alt={item.title}
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        loading="lazy"
+      />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+      {/* Badge */}
+      <span
+        className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide text-white backdrop-blur-sm"
+        style={{ backgroundColor: `${item.accent}CC` }}
+      >
+        {item.badge}
+      </span>
+    </div>
+
+    {/* Content */}
+    <div className="flex flex-col flex-1 p-5 bg-[#F7F9F8] group-hover:bg-white transition-colors duration-300 border-x border-b border-[#EAEDED] rounded-b-[28px]">
+      <p className="text-[11px] font-bold tracking-widest uppercase text-[#00B879] mb-1">
+        {item.subtitle}
+      </p>
+      <p className="text-[13.5px] font-semibold text-[#171923] leading-snug mb-2 line-clamp-2">
+        {item.description}
+      </p>
+      <div className="mt-auto pt-3 border-t border-[#E8EAF0] flex items-center justify-between text-[12px] font-bold text-[#008F60]">
+        <span>Explore industry solution</span>
+        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
+      </div>
+    </div>
+  </div>
+);
+
+/* ─── Main Section ─────────────────────────────────────────────────────── */
 export const IndustrySolutionsSection: React.FC<IndustrySolutionsSectionProps> = ({
   onOpenGetStarted,
 }) => {
-  const [filter, setFilter] = useState<"all" | "commerce" | "services" | "operations">("all");
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isInView, setIsInView] = useState(false);
 
-  const industries = [
-    {
-      id: "real-estate",
-      category: "operations",
-      name: "Real Estate & Housing",
-      desc: "Manage property inquiries, buyer relationships, site visit schedules, and broker commission pipelines.",
-      icon: Building2,
-      color: "#00B879",
-    },
-    {
-      id: "retail",
-      category: "commerce",
-      name: "Retail & Omnichannel Brands",
-      desc: "Bring your online storefront, customer catalog, UPI checkout, and multi-channel order tracking into one workspace.",
-      icon: ShoppingBag,
-      color: "#008F60",
-    },
-    {
-      id: "it-services",
-      category: "services",
-      name: "IT & Software Services",
-      desc: "Track client project milestones, retainer agreements, billable deliverables, and support request tickets.",
-      icon: Code2,
-      color: "#00B879",
-    },
-    {
-      id: "marketing-agencies",
-      category: "services",
-      name: "Marketing & Creative Agencies",
-      desc: "Manage client campaign accounts, pitch pipelines, creative asset approvals, and monthly retainers.",
-      icon: Megaphone,
-      color: "#008F60",
-    },
-    {
-      id: "healthcare",
-      category: "services",
-      name: "Healthcare & Clinics",
-      desc: "Coordinate patient appointment inquiries, front-desk reception, and scheduled consultation reminders.",
-      icon: HeartPulse,
-      color: "#00B879",
-    },
-    {
-      id: "manufacturing",
-      category: "operations",
-      name: "Manufacturing & Distribution",
-      desc: "Coordinate dealer and distributor orders, quotation requests, supplier follow-ups, and dispatch alerts.",
-      icon: Factory,
-      color: "#008F60",
-    },
-    {
-      id: "professional-services",
-      category: "services",
-      name: "Legal, Tax & Consulting",
-      desc: "Manage advisory client engagements, document verification workflows, and recurring compliance invoicing.",
-      icon: Briefcase,
-      color: "#00B879",
-    },
-    {
-      id: "construction",
-      category: "operations",
-      name: "Construction & Contracting",
-      desc: "Track tender bids, subcontractor communications, client milestone sign-offs, and project budgets.",
-      icon: HardHat,
-      color: "#008F60",
-    },
-    {
-      id: "education",
-      category: "services",
-      name: "Education & EdTech",
-      desc: "Organize admissions inquiries, student enrollment communication, fee follow-ups, and administrative tasks.",
-      icon: GraduationCap,
-      color: "#00B879",
-    },
-    {
-      id: "restaurants",
-      category: "commerce",
-      name: "Restaurants & Catering",
-      desc: "Manage corporate catering inquiries, banquet reservations, menu packages, and customer feedback loops.",
-      icon: UtensilsCrossed,
-      color: "#008F60",
-    },
-    {
-      id: "travel",
-      category: "commerce",
-      name: "Travel & Hospitality",
-      desc: "Track holiday inquiries, custom package bookings, itinerary dispatches, and scheduled installment reminders.",
-      icon: Plane,
-      color: "#00B879",
-    },
-    {
-      id: "logistics",
-      category: "operations",
-      name: "Logistics & Fleet Transport",
-      desc: "Manage freight quotes, corporate fleet contracts, consignment inquiries, and customer dispatch alerts.",
-      icon: Truck,
-      color: "#008F60",
-    },
-  ];
-
-  const filtered = industries.filter((item) => {
-    if (filter === "all") return true;
-    return item.category === filter;
-  });
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return;
+        setIsInView(true);
+        obs.disconnect();
+      },
+      { threshold: 0.06 }
+    );
+    obs.observe(sectionRef.current);
+    return () => obs.disconnect();
+  }, []);
 
   return (
-    <section id="industries" className="py-20 sm:py-28 bg-white border-b border-[#E8EAF0]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-[#00B879]" />
-            <span>BUILT FOR THE WAY YOU WORK</span>
+    <section
+      ref={sectionRef}
+      id="industries"
+      aria-labelledby="industries-heading"
+      className="relative py-14 sm:py-24 bg-white overflow-hidden"
+    >
+      {/* Subtle grid texture */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" aria-hidden />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* ── Header ── */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-[11px] font-bold uppercase tracking-wider mb-4">
+            <Sparkles className="w-3 h-3" />
+            Built for every type of business
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#171923] tracking-tight leading-tight">
-            One platform. Different ways to do business.
+          <h2
+            id="industries-heading"
+            className="text-[26px] sm:text-[42px] lg:text-[50px] font-extrabold text-[#171923] tracking-[-0.03em] leading-[1.08] mb-4"
+          >
+            One platform.{" "}
+            <em className="font-serif italic font-normal text-[#008F60] not-italic">
+              Different ways to work.
+            </em>
           </h2>
 
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F7F9F8] border border-[#E2E8E5] text-xs font-semibold text-[#171923]">
-            <span className="w-2 h-2 rounded-full bg-[#00B879]" />
-            <span>Har industry ka apna style, CODIIC ka wahi perfect fit.</span>
-          </div>
-
-          <p className="text-base sm:text-lg text-[#555A68] leading-relaxed">
-            CODIIC provides a flexible, connected foundation that businesses adapt to their specific industry, customer touchpoints, and everyday workflows.
+          <p className="text-[14px] sm:text-[16px] text-[#5A6270] leading-relaxed">
+            CODIIC adapts to how your industry actually operates — not the other way around.
           </p>
+        </div>
 
-          {/* Filter Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
-            {[
-              { id: "all", label: "All Industries (12)" },
-              { id: "commerce", label: "Commerce & Retail" },
-              { id: "services", label: "Services & Agencies" },
-              { id: "operations", label: "Operations & Logistics" },
-            ].map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setFilter(cat.id as any)}
-                className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${
-                  filter === cat.id
-                    ? "bg-[#00B879] text-white shadow-md shadow-[#00B879]/20"
-                    : "bg-[#F7F9F8] text-[#555A68] hover:text-[#171923] border border-[#E2E8E5]"
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
+        {/* ══════════════════════════════════════
+            MOBILE — Coverflow Carousel
+            (hidden on sm and above)
+        ══════════════════════════════════════ */}
+        <div className="sm:hidden -mx-2">
+          <CoverflowCarousel
+            slides={SLIDES}
+            cardWidth="clamp(190px, 58vw, 240px)"
+            rotate={40}
+            depth={0.5}
+            fade={0.1}
+            gap={0.08}
+            showCaption={true}
+            showNavigation={true}
+            showPagination={true}
+            label="Industry solutions"
+            onSlideClick={onOpenGetStarted}
+          />
+
+          {/* Mobile CTA */}
+          <div className="mt-6 text-center">
+            <button
+              type="button"
+              onClick={onOpenGetStarted}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-sm font-bold shadow-lg shadow-[#00B879]/25 transition-all duration-200 active:scale-[0.97]"
+            >
+              See all industry solutions
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
-        {/* 12 Industry Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          {filtered.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.id}
-                onClick={onOpenGetStarted}
-                className="group cursor-pointer rounded-3xl p-6 bg-[#F7F9F8] border border-[#E2E8E5] hover:bg-white hover:border-[#00B879]/40 hover:shadow-xl hover:shadow-[#00B879]/5 transition-all duration-200 flex flex-col justify-between"
-              >
-                <div>
-                  <div
-                    className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-105"
-                    style={{ backgroundColor: "#E8F8F1", color: item.color }}
-                  >
-                    <Icon className="w-6 h-6" />
-                  </div>
-
-                  <h3 className="text-base font-bold text-[#171923] group-hover:text-[#008F60] transition-colors mb-2">
-                    {item.name}
-                  </h3>
-
-                  <p className="text-xs text-[#555A68] leading-relaxed mb-4">
-                    {item.desc}
-                  </p>
-                </div>
-
-                <div className="pt-3 border-t border-[#E8EAF0] flex items-center justify-between text-xs font-semibold text-[#008F60] group-hover:underline">
-                  <span>Explore solution</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            );
-          })}
+        {/* ══════════════════════════════════════
+            DESKTOP — Animated 3-col card grid
+            (hidden on mobile)
+        ══════════════════════════════════════ */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+          {INDUSTRIES.map((item, i) => (
+            <DesktopCard
+              key={item.id}
+              item={item}
+              i={i}
+              isInView={isInView}
+              onOpenGetStarted={onOpenGetStarted}
+            />
+          ))}
         </div>
 
-        {/* Note on adaptability */}
-        <div className="mt-10 text-center text-xs text-[#555A68] max-w-2xl mx-auto">
-          Need custom fields or industry-specific workflow rules? CODIIC adapts to your exact business terminology, pipeline stages, and operational handoffs.
+        {/* Desktop CTA */}
+        <div className="hidden sm:flex justify-center mt-12">
+          <button
+            type="button"
+            onClick={onOpenGetStarted}
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#171923] hover:bg-[#00B879] text-white text-[14px] font-bold shadow-lg shadow-black/10 hover:shadow-[#00B879]/25 transition-all duration-200 active:scale-[0.97]"
+          >
+            Start your free trial — any industry
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
 
+        {/* Legal note */}
+        <p className="mt-8 text-center text-[11px] text-[#9AA7A0]">
+          Need custom fields or workflow rules?{" "}
+          <button
+            onClick={onOpenGetStarted}
+            className="text-[#008F60] font-semibold hover:underline cursor-pointer"
+          >
+            Talk to us →
+          </button>
+        </p>
       </div>
     </section>
   );
