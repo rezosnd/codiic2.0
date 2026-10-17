@@ -40,10 +40,6 @@ export const Footer: React.FC = () => {
               All your business. One connected platform. Build websites, manage customer relationships, organize sales pipelines, and automate everyday workflows.
             </p>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E8F8F1] text-[#008F60] text-xs font-semibold border border-[#00B879]/20">
-              <span className="w-2 h-2 rounded-full bg-[#00B879] animate-pulse" />
-              <span>All Systems Operational (99.98% Uptime)</span>
-            </div>
 
             {/* Newsletter Subscription */}
             <div className="pt-2">

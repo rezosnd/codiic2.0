@@ -39,10 +39,6 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
               One connected platform for your website, customers, sales, and everyday business workflows.
             </p>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-800 text-emerald-400 text-xs font-semibold">
-              <span className="w-2 h-2 rounded-full bg-[#00B879] animate-pulse" />
-              <span>All Systems Operational (99.98% Uptime)</span>
-            </div>
 
             <div className="pt-2">
               <button

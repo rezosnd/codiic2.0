@@ -801,7 +801,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
                 onClick={() => setActiveTab(tool.id)}
                 className={`relative flex items-center gap-2.5 pl-2 pr-4 py-1.5 rounded-full border text-[13px] font-semibold whitespace-nowrap shrink-0 cursor-pointer transition-all ${
                   isActive
-                    ? "bg-[#E8F8F1] border-[#00B879]/50 text-[#008F60] shadow-sm shadow-[#00B879]/15"
+                    ? "bg-[#FFD84D] border-black/20 text-[#171923] shadow-sm font-bold ring-1 ring-black/10"
                     : "bg-white border-[#E2E6E4] text-[#5A6270] hover:text-[#171923] hover:border-[#C9D0CC]"
                 }`}
               >
@@ -816,7 +816,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
         <div
           key={currentTool.id}
           role="tabpanel"
-          className="mt-6 sm:mt-8 rounded-[28px] bg-[#F4F7F5] p-5 sm:p-8 lg:p-12 animate-tool-in"
+          className="mt-6 sm:mt-8 rounded-[28px] bg-[#FFD84D] border border-black/10 shadow-[0_24px_50px_-20px_rgba(23,25,35,0.2)] p-5 sm:p-8 lg:p-12 animate-tool-in text-[#171923]"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Copy */}
@@ -827,14 +827,14 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
               <h3 className="mt-5 text-3xl sm:text-4xl font-bold text-[#171923] tracking-[-0.03em] leading-[1.08]">
                 {currentTool.title}
               </h3>
-              <p className="mt-4 text-[15px] sm:text-base text-[#5A6270] leading-relaxed">
+              <p className="mt-4 text-[15px] sm:text-base text-[#2D260D] leading-relaxed">
                 {currentTool.desc}
               </p>
 
               <dl className="mt-6 grid grid-cols-2 gap-4">
                 {currentTool.stats.map((s) => (
                   <div key={s.label}>
-                    <dt className="text-xs text-[#8A919C]">{s.label}</dt>
+                    <dt className="text-xs text-[#4A401A] font-semibold">{s.label}</dt>
                     <dd className="mt-0.5 text-xl font-bold text-[#171923] tracking-tight">{s.value}</dd>
                   </div>
                 ))}
@@ -844,7 +844,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
                 <button
                   type="button"
                   onClick={onOpenGetStarted}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#171923] hover:bg-black text-white text-sm font-bold transition-colors active:scale-[0.98] cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#171923] hover:bg-black text-white text-sm font-bold transition-all shadow-md shadow-black/15 active:scale-[0.98] cursor-pointer"
                 >
                   Explore {currentTool.title}
                   <ArrowRight className="w-4 h-4" />
@@ -852,7 +852,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
                 <button
                   type="button"
                   onClick={onOpenGetStarted}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-sm font-semibold text-[#171923] hover:bg-white transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-sm font-bold text-[#171923] bg-white/40 hover:bg-white border border-black/10 transition-colors cursor-pointer"
                 >
                   Book a demo
                 </button>
@@ -869,7 +869,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
                   onPointerLeave={resetTilt}
                   className="relative transition-transform duration-300 ease-out"
                 >
-                  <div className="relative aspect-[3/2] rounded-2xl overflow-hidden bg-white border border-[#E6E9E7] shadow-[0_24px_60px_-30px_rgba(23,25,35,0.25)]">
+                  <div className="relative aspect-[3/2] rounded-2xl overflow-hidden bg-white border border-black/10 shadow-[0_24px_60px_-30px_rgba(23,25,35,0.35)]">
                     <div className="absolute inset-0 animate-shot-reveal">
                       <div className="absolute inset-0 animate-shot-zoom">
                         <Image
@@ -895,7 +895,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
                   </div>
                 </div>
               ) : (
-                <div className="rounded-2xl bg-white border border-[#E6E9E7] shadow-[0_24px_60px_-30px_rgba(23,25,35,0.25)] p-4 sm:p-6">
+                <div className="rounded-2xl bg-white border border-black/10 shadow-[0_24px_60px_-30px_rgba(23,25,35,0.35)] p-4 sm:p-6">
                   <ToolMockup id={currentTool.id} />
                 </div>
               )}
@@ -903,15 +903,15 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
           </div>
 
           {/* Highlights */}
-          <div className="hidden md:grid grid-cols-3 gap-6 mt-10 pt-8 border-t border-[#E3E8E5]">
+          <div className="hidden md:grid grid-cols-3 gap-6 mt-10 pt-8 border-t border-black/10">
             {currentTool.highlights.map((h) => (
               <div key={h.title} className="flex items-start gap-3">
-                <span className="mt-0.5 w-6 h-6 rounded-full bg-[#E8F8F1] text-[#008F60] flex items-center justify-center shrink-0">
+                <span className="mt-0.5 w-6 h-6 rounded-full bg-[#171923] text-[#FFD84D] flex items-center justify-center shrink-0 shadow-xs">
                   <Check className="w-3.5 h-3.5" strokeWidth={3} />
                 </span>
                 <div>
                   <h4 className="text-[15px] font-bold text-[#171923] tracking-tight">{h.title}</h4>
-                  <p className="mt-1 text-[13px] text-[#5A6270] leading-relaxed">{h.desc}</p>
+                  <p className="mt-1 text-[13px] text-[#2D260D] leading-relaxed font-medium">{h.desc}</p>
                 </div>
               </div>
             ))}

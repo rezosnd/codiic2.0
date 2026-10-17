@@ -2,15 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import {
-  ArrowRight,
-  CheckCircle2,
-  Sparkles,
-  MessageSquare,
-  Clock,
-  Send,
-  ChevronRight,
-} from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import {
   WebsiteBuilderColorIcon,
   CustomerCrmColorIcon,
@@ -99,7 +91,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
               </span>
             </div>
             <span className="text-xs text-[#5A6270] hidden sm:inline">
-              Click any stage to inspect the flow
+              Real-time sync across your entire business
             </span>
           </div>
 
@@ -148,152 +140,6 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
                 </div>
               );
             })}
-          </div>
-
-          {/* Interactive Live Product UI Panel */}
-          <div className="mt-6 bg-white rounded-2xl border border-[#E2E8E5] p-5 sm:p-6 shadow-xs animate-in fade-in duration-300">
-            <div className="flex items-center justify-between pb-3 border-b border-[#F0F2F5] text-xs font-semibold flex-wrap gap-2">
-              <div className="flex items-center gap-2 text-[#171923]">
-                <span className="w-2 h-2 rounded-full bg-[#00B879]" />
-                <span className="font-bold">Live preview:</span>
-                <span className="text-[#008F60]">{steps[activeStep].label}</span>
-              </div>
-              <span className="text-[11px] text-[#5A6270]">
-                Processed in 0.4s
-              </span>
-            </div>
-
-            <div className="pt-4">
-              {activeStep === 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-                  <div className="md:col-span-2 space-y-2">
-                    <div className="text-xs font-bold text-[#171923]">
-                      Visitor Form Submitted on Storefront
-                    </div>
-                    <div className="p-3 bg-[#F7F9F8] rounded-xl border border-[#E8EAF0] text-xs space-y-1">
-                      <div className="flex justify-between">
-                        <span className="text-[#5A6270]">Customer:</span>
-                        <span className="font-bold text-[#171923]">Rahul Sharma</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-[#5A6270]">Source:</span>
-                        <span className="text-[#008F60] font-medium">store.yourbrand.in/contact</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-[#5A6270]">Requested Scope:</span>
-                        <span className="text-[#171923]">3BHK Interior Consultation</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-3.5 rounded-xl bg-[#E8F8F1] border border-[#00B879]/30 text-center">
-                    <div className="text-[10px] font-bold text-[#008F60] uppercase">
-                      Sync Status
-                    </div>
-                    <div className="text-sm font-extrabold text-[#008F60] mt-1">
-                      ✓ Ingested
-                    </div>
-                    <p className="text-[10px] text-[#5A6270] mt-1">
-                      Instantly forwarded to Lead CRM without webhook latency.
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {activeStep === 1 && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-                  <div className="md:col-span-2 space-y-2">
-                    <div className="text-xs font-bold text-[#171923]">
-                      Customer Profile & WhatsApp Stream Organized
-                    </div>
-                    <div className="p-3 bg-[#F7F9F8] rounded-xl border border-[#E8EAF0] text-xs space-y-1.5">
-                      <div className="flex items-center justify-between">
-                        <span className="font-bold text-[#171923]">Rahul Sharma (Mumbai)</span>
-                        <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">
-                          WhatsApp Connected
-                        </span>
-                      </div>
-                      <div className="text-[11px] text-[#5A6270]">
-                        &quot;Client inquired about turn-key scope. Rep assigned to call today.&quot;
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-3.5 rounded-xl bg-[#E8F8F1] border border-[#00B879]/30 text-center">
-                    <div className="text-[10px] font-bold text-[#008F60] uppercase">
-                      Assigned Rep
-                    </div>
-                    <div className="text-sm font-extrabold text-[#171923] mt-1">
-                      Rohan Mehta
-                    </div>
-                    <p className="text-[10px] text-[#008F60] font-semibold mt-1">
-                      West Zone Sales Team
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {activeStep === 2 && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-                  <div className="md:col-span-2 space-y-2">
-                    <div className="text-xs font-bold text-[#171923]">
-                      Kanban Board Deal Stage Auto-Updated
-                    </div>
-                    <div className="p-3 bg-[#F7F9F8] rounded-xl border border-[#E8EAF0] text-xs flex items-center justify-between">
-                      <div>
-                        <div className="font-bold text-[#171923]">Rahul Sharma • Retainer</div>
-                        <div className="text-[10px] text-[#5A6270]">Stage: Qualified → In Proposal</div>
-                      </div>
-                      <div className="font-mono font-bold text-sm text-[#00B879]">
-                        ₹4,50,000 INR
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-3.5 rounded-xl bg-[#E8F8F1] border border-[#00B879]/30 text-center">
-                    <div className="text-[10px] font-bold text-[#008F60] uppercase">
-                      Pipeline Total
-                    </div>
-                    <div className="text-sm font-extrabold text-[#171923] mt-1 font-mono">
-                      ₹54,60,000
-                    </div>
-                    <p className="text-[10px] text-[#008F60] font-semibold mt-1">
-                      18 deals active this quarter
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {activeStep === 3 && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-                  <div className="md:col-span-2 space-y-2">
-                    <div className="text-xs font-bold text-[#171923]">
-                      Automated Follow-up Trigger Dispatched
-                    </div>
-                    <div className="p-3 bg-[#E8F8F1]/40 rounded-xl border border-[#00B879]/30 text-xs flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <MessageSquare className="w-4 h-4 text-[#00B879]" strokeWidth={2} />
-                        <div>
-                          <div className="font-bold text-[#171923]">Instant WhatsApp Catalog & Booking Link</div>
-                          <div className="text-[10px] text-[#5A6270]">Delivered to +91 98201 XXXXX</div>
-                        </div>
-                      </div>
-                      <span className="text-[10px] bg-[#00B879] text-white px-2 py-0.5 rounded font-bold">
-                        Sent (0.4s)
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-3.5 rounded-xl bg-white border border-[#E2E6E4] text-center">
-                    <div className="text-[10px] font-bold text-[#5A6270] uppercase">
-                      Human Effort Saved
-                    </div>
-                    <div className="text-sm font-extrabold text-[#008F60] mt-1">
-                      100% Zero-Touch
-                    </div>
-                    <p className="text-[10px] text-[#5A6270] mt-1">
-                      Buyer gets instant answer even on weekends.
-                    </p>
-                  </div>
-                </div>
-              )}
-            </div>
           </div>
 
           {/* Central Hub Connector Badge */}

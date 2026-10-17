@@ -396,15 +396,15 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
               return (
                 <li
                   key={item.id}
-                  className={`flex items-center gap-2.5 px-3 py-2.5 rounded-2xl bg-[#F7F9F8] border border-[#EAEDED] active:bg-[#EEF5F1] transition-colors ${isInView ? "animate-tool-in" : "opacity-0"}`}
+                  className={`flex items-center gap-2.5 px-3 py-2.5 rounded-2xl bg-[#D8EEF9] border border-[#BCE1F5] active:bg-[#C8E4F3] transition-colors ${isInView ? "animate-tool-in" : "opacity-0"}`}
                   style={{ animationDelay: `${i * 40}ms` }}
                 >
-                  <span className="w-8 h-8 shrink-0 rounded-xl bg-white ring-1 ring-black/[0.06] flex items-center justify-center shadow-sm">
+                  <span className="w-8 h-8 shrink-0 rounded-xl bg-white ring-1 ring-black/[0.08] flex items-center justify-center shadow-xs">
                     <Logo className="w-4.5 h-4.5" />
                   </span>
                   <div className="min-w-0">
-                    <div className="text-[11.5px] font-bold text-[#171923] leading-tight truncate">{item.name}</div>
-                    <div className="text-[10px] text-[#8A939F] leading-tight truncate mt-0.5">{item.role}</div>
+                    <div className="text-[11.5px] font-bold text-[#0F2A3D] leading-tight truncate">{item.name}</div>
+                    <div className="text-[10px] text-[#355368] leading-tight truncate mt-0.5 font-medium">{item.role}</div>
                   </div>
                 </li>
               );
@@ -414,7 +414,7 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
           <button
             type="button"
             onClick={() => setShowAll((v) => !v)}
-            className="mt-3 w-full py-2.5 rounded-2xl border border-[#E2E6E4] bg-[#F7F9F8] hover:bg-[#EEF5F1] text-[12.5px] font-semibold text-[#5A6270] hover:text-[#008F60] transition-colors flex items-center justify-center gap-1.5 active:scale-[0.98]"
+            className="mt-3 w-full py-2.5 rounded-2xl border border-[#BCE1F5] bg-[#D8EEF9] hover:bg-[#C8E4F3] text-[12.5px] font-bold text-[#0F2A3D] transition-colors flex items-center justify-center gap-1.5 active:scale-[0.98]"
           >
             {showAll ? (
               <>Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden><path d="M2 8l4-4 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></>
@@ -438,22 +438,22 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
             return (
               <li
                 key={item.id}
-                className={`group rounded-[20px] bg-[#F7F9F8] hover:bg-white border border-transparent hover:border-[#E2E6E4] p-5 transition-all duration-300 hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] ${isInView ? "animate-tool-in" : "opacity-0"}`}
+                className={`group rounded-[20px] bg-[#D8EEF9] hover:bg-[#CEEAF7] border border-[#BCE1F5] hover:border-[#9FD4F1] p-5 transition-all duration-300 hover:shadow-[0_12px_32px_-8px_rgba(15,42,61,0.15)] hover:-translate-y-0.5 ${isInView ? "animate-tool-in" : "opacity-0"}`}
                 style={{ animationDelay: `${i * 50}ms` }}
               >
                 <div className="flex items-center gap-3">
-                  <span className="w-11 h-11 shrink-0 rounded-xl bg-white ring-1 ring-black/[0.06] flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:ring-[#00B879]/20 transition-all duration-300">
+                  <span className="w-11 h-11 shrink-0 rounded-xl bg-white ring-1 ring-black/[0.08] flex items-center justify-center shadow-xs group-hover:shadow-md transition-all duration-300">
                     <Logo className="w-6 h-6" />
                   </span>
                   <div className="min-w-0">
-                    <div className="text-[13.5px] font-bold text-[#171923] leading-tight truncate">{item.name}</div>
-                    <div className="mt-0.5 text-[11.5px] text-[#6B7280] leading-snug truncate">{item.role}</div>
+                    <div className="text-[13.5px] font-bold text-[#0F2A3D] leading-tight truncate">{item.name}</div>
+                    <div className="mt-0.5 text-[11.5px] text-[#355368] leading-snug truncate font-medium">{item.role}</div>
                   </div>
                 </div>
                 <ul className="mt-4 space-y-1.5">
                   {item.points.map((point) => (
-                    <li key={point} className="flex items-start gap-2 text-[12px] text-[#3C4450] leading-snug">
-                      <span className="mt-0.5 w-3.5 h-3.5 rounded-full bg-[#E8F8F1] text-[#008F60] flex items-center justify-center shrink-0">
+                    <li key={point} className="flex items-start gap-2 text-[12px] text-[#1D3B4F] leading-snug font-medium">
+                      <span className="mt-0.5 w-3.5 h-3.5 rounded-full bg-white text-[#0369A1] shadow-2xs flex items-center justify-center shrink-0">
                         <Check className="w-2 h-2" strokeWidth={3} />
                       </span>
                       {point}

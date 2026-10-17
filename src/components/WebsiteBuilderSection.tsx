@@ -117,10 +117,10 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
 
         {/* ── Studio Frame (Mobile-Perfect Light Theme with Official Logo) ── */}
         <div className="max-w-6xl mx-auto">
-          <div className="rounded-2xl sm:rounded-3xl bg-white border border-[#D9E2DC] shadow-[0_20px_50px_-15px_rgba(0,184,121,0.1),0_8px_25px_-8px_rgba(23,25,35,0.06)] overflow-hidden">
+          <div className="rounded-2xl sm:rounded-3xl bg-[#FFD84D] border border-black/10 shadow-[0_24px_50px_-20px_rgba(23,25,35,0.25)] overflow-hidden">
             
             {/* ── Window Top Bar: Clean & Non-Cramped on Mobile ── */}
-            <div className="flex items-center justify-between px-3 sm:px-6 py-2.5 sm:py-3 border-b border-[#E5ECE7] bg-[#FAFCFA]">
+            <div className="flex items-center justify-between px-3 sm:px-6 py-2.5 sm:py-3 border-b border-black/10 bg-[#FFD84D]">
               
               {/* Left: Window Dots + Real CODIIC Logo */}
               <div className="flex items-center gap-2 sm:gap-4">
@@ -130,7 +130,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                   <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]/50 inline-block" />
                 </div>
 
-                <div className="flex items-center gap-1.5 sm:gap-2 pl-2 sm:pl-3 border-l border-[#E2E8E5]">
+                <div className="flex items-center gap-1.5 sm:gap-2 pl-2 sm:pl-3 border-l border-black/15">
                   {/* Real Official CODIIC Logo with Text */}
                   <div className="relative h-5 sm:h-6 w-24 sm:w-32 shrink-0">
                     <Image
@@ -141,21 +141,21 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                       className="object-contain object-left"
                     />
                   </div>
-                  <span className="hidden sm:inline px-1.5 py-0.5 rounded bg-[#E8F8F1] text-[#008F60] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
+                  <span className="hidden sm:inline px-1.5 py-0.5 rounded bg-[#171923] text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
                     Studio
                   </span>
                 </div>
               </div>
 
               {/* Center: Device Viewport Toggles (desktop/tablet) */}
-              <div className="hidden sm:flex items-center gap-1 bg-[#EEF2EF] p-1 rounded-xl border border-[#DFE5E1]">
+              <div className="hidden sm:flex items-center gap-1 bg-black/5 p-1 rounded-xl border border-black/10">
                 <button
                   type="button"
                   onClick={() => setDeviceView("desktop")}
                   className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     deviceView === "desktop"
-                      ? "bg-white text-[#171923] shadow-xs"
-                      : "text-[#5A6270] hover:text-[#171923]"
+                      ? "bg-white text-[#171923] shadow-xs font-bold"
+                      : "text-black/70 hover:text-black"
                   }`}
                   title="Desktop Preview"
                 >
@@ -167,8 +167,8 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                   onClick={() => setDeviceView("tablet")}
                   className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     deviceView === "tablet"
-                      ? "bg-white text-[#171923] shadow-xs"
-                      : "text-[#5A6270] hover:text-[#171923]"
+                      ? "bg-white text-[#171923] shadow-xs font-bold"
+                      : "text-black/70 hover:text-black"
                   }`}
                   title="Tablet Preview"
                 >
@@ -180,8 +180,8 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                   onClick={() => setDeviceView("mobile")}
                   className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     deviceView === "mobile"
-                      ? "bg-white text-[#171923] shadow-xs"
-                      : "text-[#5A6270] hover:text-[#171923]"
+                      ? "bg-white text-[#171923] shadow-xs font-bold"
+                      : "text-black/70 hover:text-black"
                   }`}
                   title="Mobile Preview"
                 >
@@ -192,8 +192,8 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
 
               {/* Right: Publish Live Button */}
               <div className="flex items-center gap-2">
-                <span className="hidden lg:flex items-center gap-1.5 text-[11px] text-[#5A6270]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#00B879]" />
+                <span className="hidden lg:flex items-center gap-1.5 text-[11px] text-black/70 font-semibold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#008F60]" />
                   <span>Auto-saved</span>
                 </span>
 
@@ -203,7 +203,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all duration-200 cursor-pointer active:scale-95 ${
                     isPublished
                       ? "bg-[#171923] text-white"
-                      : "bg-[#00B879] hover:bg-[#008F60] text-white shadow-[#00B879]/25"
+                      : "bg-[#171923] hover:bg-black text-white shadow-black/20"
                   }`}
                 >
                   <Send className="w-3 h-3" />
@@ -213,8 +213,8 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
             </div>
 
             {/* ── Mobile-Only Section Selector Bar (Touch-Friendly Horizontal Tabs) ── */}
-            <div className="md:hidden flex items-center gap-1.5 p-2 bg-[#F7F9F8] border-b border-[#E5ECE7] overflow-x-auto no-scrollbar">
-              <span className="text-[10px] font-bold text-[#5A6270] uppercase px-1 shrink-0">
+            <div className="md:hidden flex items-center gap-1.5 p-2 bg-[#FFD84D] border-b border-black/10 overflow-x-auto no-scrollbar">
+              <span className="text-[10px] font-bold text-[#171923] uppercase px-1 shrink-0">
                 Section:
               </span>
               {componentsList.map((item) => {
@@ -227,8 +227,8 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                     onClick={() => setActiveBlock(item.id)}
                     className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                       isSelected
-                        ? "bg-[#00B879] text-white shadow-xs"
-                        : "bg-white text-[#5A6270] border border-[#E2E8E5]"
+                        ? "bg-[#171923] text-white shadow-xs"
+                        : "bg-white/80 text-[#171923] border border-black/10"
                     }`}
                   >
                     <Icon className="w-3 h-3" />
@@ -239,16 +239,16 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
             </div>
 
             {/* ── Studio Body ── */}
-            <div className="grid grid-cols-12 bg-[#F3F6F4]">
+            <div className="grid grid-cols-12 bg-[#FFF9E6]">
               
               {/* Left Column: Sections Library (Desktop & Tablet) */}
-              <aside className="hidden md:block md:col-span-3 lg:col-span-3 bg-white border-r border-[#E5ECE7] p-4 flex flex-col justify-between">
+              <aside className="hidden md:block md:col-span-3 lg:col-span-3 bg-[#FFD84D] border-r border-black/10 p-4 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#EEF2EF]">
+                  <div className="flex items-center justify-between mb-3 pb-2 border-b border-black/10">
                     <span className="text-[11px] font-bold uppercase tracking-wider text-[#171923]">
                       Page Sections
                     </span>
-                    <span className="text-[10px] font-mono text-[#008F60] bg-[#E8F8F1] px-1.5 py-0.5 rounded">
+                    <span className="text-[10px] font-mono text-white bg-[#171923] px-1.5 py-0.5 rounded font-bold">
                       4 Ready
                     </span>
                   </div>
@@ -264,19 +264,19 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                           onClick={() => setActiveBlock(item.id)}
                           className={`w-full text-left p-2.5 rounded-xl transition-all flex items-center justify-between cursor-pointer border ${
                             isSelected
-                              ? "bg-[#E8F8F1] border-[#00B879]/40 text-[#008F60] shadow-xs"
-                              : "bg-[#FAFCFA] hover:bg-[#F2F5F3] border-[#E8EEEA] text-[#171923]"
+                              ? "bg-white border-black/20 text-[#171923] shadow-xs"
+                              : "bg-white/60 hover:bg-white border-black/10 text-[#171923]"
                           }`}
                         >
                           <div className="flex items-center gap-2.5">
-                            <Icon className={`w-4 h-4 ${isSelected ? "text-[#008F60]" : "text-[#5A6270]"}`} />
+                            <Icon className={`w-4 h-4 ${isSelected ? "text-[#008F60]" : "text-[#171923]"}`} />
                             <span className="text-xs font-bold">{item.label}</span>
                           </div>
                           <span
                             className={`text-[9px] font-semibold px-1.5 py-0.5 rounded ${
                               isSelected
-                                ? "bg-white text-[#008F60]"
-                                : "bg-[#EEF2EF] text-[#5A6270]"
+                                ? "bg-[#171923] text-white"
+                                : "bg-white text-[#171923]"
                             }`}
                           >
                             {item.tag}
@@ -288,19 +288,19 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                 </div>
 
                 {/* Live Sync Info Card */}
-                <div className="p-3 rounded-xl bg-[#F7F9F8] border border-[#E5ECE7] text-[11px]">
-                  <div className="flex items-center gap-1.5 text-[#008F60] font-bold mb-1">
-                    <span className="w-2 h-2 rounded-full bg-[#00B879] animate-pulse" />
+                <div className="p-3 rounded-xl bg-white border border-black/10 text-[11px] shadow-xs">
+                  <div className="flex items-center gap-1.5 text-[#171923] font-bold mb-1">
+                    <span className="w-2 h-2 rounded-full bg-[#008F60] animate-pulse" />
                     <span>Instant CRM & WhatsApp</span>
                   </div>
-                  <p className="text-[10.5px] text-[#5A6270] leading-snug">
+                  <p className="text-[10.5px] text-[#2D260D] leading-snug">
                     Customer clicks & inquiries sync in real-time with zero extra plugins.
                   </p>
                 </div>
               </aside>
 
               {/* Center Canvas: Live Preview */}
-              <div className="col-span-12 md:col-span-9 lg:col-span-6 p-2.5 sm:p-5 flex flex-col items-center justify-center overflow-x-hidden">
+              <div className="col-span-12 md:col-span-9 lg:col-span-6 p-2.5 sm:p-5 flex flex-col items-center justify-center overflow-x-hidden bg-[#FFF9E6]">
                 <div
                   className={`w-full transition-all duration-300 rounded-xl sm:rounded-2xl bg-white border border-[#DCE4DF] shadow-xs sm:shadow-md overflow-hidden flex flex-col ${
                     deviceView === "mobile"
@@ -448,34 +448,34 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
               </div>
 
               {/* Right Column: Health & SEO Meter (Desktop only) */}
-              <aside className="hidden lg:block lg:col-span-3 bg-white border-l border-[#E5ECE7] p-4 flex flex-col justify-between">
+              <aside className="hidden lg:block lg:col-span-3 bg-[#FFD84D] border-l border-black/10 p-4 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#EEF2EF]">
+                  <div className="flex items-center justify-between mb-3 pb-2 border-b border-black/10">
                     <span className="text-[11px] font-bold uppercase tracking-wider text-[#171923]">
                       Page Health
                     </span>
-                    <span className="text-[10px] font-bold text-[#008F60]">Live</span>
+                    <span className="text-[10px] font-bold text-[#171923] bg-white px-2 py-0.5 rounded shadow-2xs">Live</span>
                   </div>
 
                   {/* SEO Score Meter */}
-                  <div className="p-3.5 rounded-xl bg-[#F7F9F8] border border-[#E5ECE7] text-center mb-4">
-                    <div className="text-2xl font-black text-[#008F60] leading-none mb-0.5">
+                  <div className="p-3.5 rounded-xl bg-white border border-black/10 text-center mb-4 shadow-xs">
+                    <div className="text-2xl font-black text-[#171923] leading-none mb-0.5">
                       98<span className="text-xs font-semibold text-[#5A6270]">/100</span>
                     </div>
                     <div className="text-[10px] font-bold text-[#171923] mb-1.5">
                       Google Core Web Vitals
                     </div>
-                    <div className="space-y-1 text-[10px] text-[#5A6270] text-left">
+                    <div className="space-y-1 text-[10px] text-[#2D260D] text-left">
                       <div className="flex items-center gap-1.5">
-                        <Check className="w-3 h-3 text-[#00B879] shrink-0" />
+                        <Check className="w-3 h-3 text-[#008F60] shrink-0" />
                         <span>Mobile PageSpeed: 0.4s LCP</span>
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <Check className="w-3 h-3 text-[#00B879] shrink-0" />
+                        <Check className="w-3 h-3 text-[#008F60] shrink-0" />
                         <span>Auto-generated Meta Tags</span>
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <Check className="w-3 h-3 text-[#00B879] shrink-0" />
+                        <Check className="w-3 h-3 text-[#008F60] shrink-0" />
                         <span>Structured Schema Markup</span>
                       </div>
                     </div>
@@ -483,7 +483,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
 
                   {/* Design Tokens Theme Switcher */}
                   <div className="space-y-2 text-xs">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#5A6270]">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#171923]">
                       Brand Tokens
                     </span>
                     <div className="flex items-center gap-2">
@@ -492,8 +492,8 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                         onClick={() => setActiveTheme("emerald")}
                         className={`flex-1 py-1.5 px-2 rounded-lg text-[11px] font-bold border transition-colors ${
                           activeTheme === "emerald"
-                            ? "bg-[#E8F8F1] border-[#00B879] text-[#008F60]"
-                            : "bg-[#FAFCFA] border-[#E5ECE7] text-[#5A6270]"
+                            ? "bg-[#171923] border-[#171923] text-white shadow-xs"
+                            : "bg-white border-black/10 text-[#171923] hover:bg-white/80"
                         }`}
                       >
                         Emerald
@@ -503,8 +503,8 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                         onClick={() => setActiveTheme("slate")}
                         className={`flex-1 py-1.5 px-2 rounded-lg text-[11px] font-bold border transition-colors ${
                           activeTheme === "slate"
-                            ? "bg-[#E8F8F1] border-[#00B879] text-[#008F60]"
-                            : "bg-[#FAFCFA] border-[#E5ECE7] text-[#5A6270]"
+                            ? "bg-[#171923] border-[#171923] text-white shadow-xs"
+                            : "bg-white border-black/10 text-[#171923] hover:bg-white/80"
                         }`}
                       >
                         Minimal
@@ -513,9 +513,9 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-[#EEF2EF] text-[10.5px] text-[#5A6270] flex items-center justify-between">
+                <div className="pt-3 border-t border-black/10 text-[10.5px] text-[#2D260D] flex items-center justify-between font-medium">
                   <span>Custom Domain</span>
-                  <span className="font-mono text-[#008F60] font-bold">yourbrand.in</span>
+                  <span className="font-mono text-[#171923] font-bold">yourbrand.in</span>
                 </div>
               </aside>
 
@@ -531,16 +531,16 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
             return (
               <div
                 key={idx}
-                className="group p-3.5 sm:p-5 rounded-2xl bg-[#F7F9F8] hover:bg-white border border-[#E2E8E5] hover:border-[#00B879]/40 shadow-2xs hover:shadow-xl hover:shadow-[#00B879]/10 transition-all duration-300 flex items-start gap-3 sm:gap-3.5"
+                className="group p-3.5 sm:p-5 rounded-2xl bg-[#FFD84D] border border-black/10 hover:border-black/30 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-start gap-3 sm:gap-3.5"
               >
                 <div className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center drop-shadow-xs group-hover:scale-105 transition-transform">
                   <Icon className="w-9 h-9 sm:w-10 sm:h-10 shrink-0" />
                 </div>
                 <div>
-                  <h3 className="text-xs sm:text-sm font-bold text-[#171923] group-hover:text-[#008F60] transition-colors leading-tight mb-0.5 sm:mb-1">
+                  <h3 className="text-xs sm:text-sm font-bold text-[#171923] leading-tight mb-0.5 sm:mb-1">
                     {feat.title}
                   </h3>
-                  <p className="text-[11px] sm:text-[11.5px] text-[#555A68] leading-relaxed">
+                  <p className="text-[11px] sm:text-[11.5px] text-[#2D260D] leading-relaxed">
                     {feat.desc}
                   </p>
                 </div>
