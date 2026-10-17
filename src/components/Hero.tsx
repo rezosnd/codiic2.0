@@ -218,7 +218,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
           </button>
         </div>
 
-        <div className="mt-6 flex items-center justify-center gap-2 text-sm text-[#5A6270]">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-2 text-xs sm:text-sm text-[#5A6270]">
           <span className="flex items-center gap-0.5 text-amber-400" aria-hidden="true">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star key={i} className="w-3.5 h-3.5 fill-current" />
@@ -228,10 +228,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
           <span>from 2,400+ businesses</span>
           <span className="hidden sm:inline text-[#9AA7A0]">·</span>
           {/* ── Pencil-sketch oval encircle (matches reference) ── */}
-          <span className="hidden sm:inline-flex items-center">
-            <span className="relative inline-block px-4 py-0.5">
+          <span className="inline-flex items-center">
+            <span className="relative inline-block px-3.5 sm:px-4 py-0.5">
               {/* Dark bold text — matches reference */}
-              <span className="relative z-10 font-extrabold text-[#171923] tracking-tight" style={{ fontFamily: "inherit" }}>
+              <span className="relative z-10 font-extrabold text-[#171923] tracking-tight text-xs sm:text-sm" style={{ fontFamily: "inherit" }}>
                 No code, only drag &amp; drop
               </span>
 
