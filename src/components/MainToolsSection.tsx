@@ -799,13 +799,13 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setActiveTab(tool.id)}
-                className={`relative flex items-center gap-2 pl-2.5 pr-4 py-2 rounded-full border text-[13px] font-semibold whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
+                className={`relative flex items-center gap-2.5 pl-2 pr-4 py-1.5 rounded-full border text-[13px] font-semibold whitespace-nowrap shrink-0 cursor-pointer transition-all ${
                   isActive
-                    ? "bg-[#E8F8F1] border-[#00B879]/40 text-[#008F60]"
+                    ? "bg-[#E8F8F1] border-[#00B879]/50 text-[#008F60] shadow-sm shadow-[#00B879]/15"
                     : "bg-white border-[#E2E6E4] text-[#5A6270] hover:text-[#171923] hover:border-[#C9D0CC]"
                 }`}
               >
-                <Icon className="w-5 h-5 shrink-0" />
+                <Icon className="w-6 h-6 shrink-0" />
                 <span>{tool.title}</span>
               </button>
             );
@@ -821,7 +821,9 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Copy */}
             <div className="lg:col-span-5">
-              <CurrentIcon className="w-12 h-12" />
+              <div className="w-14 h-14 flex items-center justify-center drop-shadow-md">
+                <CurrentIcon className="w-14 h-14" />
+              </div>
               <h3 className="mt-5 text-3xl sm:text-4xl font-bold text-[#171923] tracking-[-0.03em] leading-[1.08]">
                 {currentTool.title}
               </h3>

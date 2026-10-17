@@ -18,6 +18,7 @@ import {
   SalesPipelineColorIcon,
   AutomationColorIcon,
   AnalyticsColorIcon,
+  IntegrationsColorIcon,
   RetailColorIcon,
   ServicesColorIcon,
   RealEstateColorIcon,
@@ -120,6 +121,13 @@ export const Navbar: React.FC<NavbarProps> = ({
       icon: AnalyticsColorIcon,
       badge: "LIVE",
       href: "#tools",
+    },
+    {
+      title: "Integrations & APIs",
+      desc: "WhatsApp, Razorpay, Google & 6,000+ app connectors",
+      icon: IntegrationsColorIcon,
+      badge: "CONNECT",
+      href: "#integrations",
     },
   ];
 
@@ -341,8 +349,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onClick={() => setActiveDropdown(null)}
                       className="group p-3 rounded-2xl hover:bg-[#F7F9F8] border border-transparent hover:border-[#E2E6E4] transition-all flex items-start gap-3"
                     >
-                      <div className="w-10 h-10 rounded-xl bg-white border border-[#E2E6E4] flex items-center justify-center shrink-0 p-1.5 shadow-2xs group-hover:scale-105 transition-transform">
-                        <Icon className="w-7 h-7 shrink-0" />
+                      <div className="w-10 h-10 flex items-center justify-center shrink-0 drop-shadow-sm group-hover:scale-105 transition-transform">
+                        <Icon className="w-10 h-10 shrink-0" />
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
@@ -386,8 +394,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onClick={() => setActiveDropdown(null)}
                       className="group p-3.5 rounded-2xl hover:bg-[#F7F9F8] border border-transparent hover:border-[#E2E6E4] transition-all flex items-start gap-3"
                     >
-                      <div className="w-10 h-10 rounded-xl bg-white border border-[#E2E6E4] flex items-center justify-center shrink-0 p-1.5 shadow-2xs group-hover:scale-105 transition-transform">
-                        <Icon className="w-7 h-7 shrink-0" />
+                      <div className="w-10 h-10 flex items-center justify-center shrink-0 drop-shadow-sm group-hover:scale-105 transition-transform">
+                        <Icon className="w-10 h-10 shrink-0" />
                       </div>
                       <div>
                         <div className="text-xs font-bold text-[#171923] group-hover:text-[#008F60] transition-colors">

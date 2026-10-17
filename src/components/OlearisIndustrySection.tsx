@@ -2,6 +2,14 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  RetailColorIcon,
+  ServicesColorIcon,
+  RealEstateColorIcon,
+  AgenciesColorIcon,
+  EducationColorIcon,
+  HospitalityColorIcon,
+} from "./ColorfulProductIcons";
 
 interface OlearisIndustrySectionProps {
   onOpenGetStarted: () => void;
@@ -13,6 +21,7 @@ const INDUSTRIES = [
     id: "retail",
     title: "Retail & eCommerce",
     tag: "Storefront & Orders",
+    icon: RetailColorIcon,
     desc: "Connect your storefront with real-time UPI orders, WhatsApp customer updates, and auto-synced inventory.",
     imageSrc: "/images/industries/retail.jpg",
     imageAlt: "Modern boutique retail storefront with curated lifestyle displays",
@@ -22,6 +31,7 @@ const INDUSTRIES = [
     id: "services",
     title: "Professional Services",
     tag: "Retainers & Inquiries",
+    icon: ServicesColorIcon,
     desc: "Organize client consultations, intake briefs, and retainer proposals with clear team task assignment.",
     imageSrc: "/images/industries/services.jpg",
     imageAlt: "Professional advisory consultants meeting in a bright contemporary office",
@@ -31,6 +41,7 @@ const INDUSTRIES = [
     id: "real-estate",
     title: "Real Estate & Developers",
     tag: "Site Visits & Deals",
+    icon: RealEstateColorIcon,
     desc: "Keep property inquiries, floorplan shares, and site-visit schedules visible across your deal pipeline.",
     imageSrc: "/images/industries/real-estate.jpg",
     imageAlt: "Contemporary architectural residential property development",
@@ -40,6 +51,7 @@ const INDUSTRIES = [
     id: "agencies",
     title: "Creative Agencies",
     tag: "Pitches & Scopes",
+    icon: AgenciesColorIcon,
     desc: "Capture website inquiries, qualify client budgets, and track pitch milestones in one continuous feed.",
     imageSrc: "/images/industries/agencies.jpg",
     imageAlt: "Creative digital agency team collaborating on digital campaign design",
@@ -49,6 +61,7 @@ const INDUSTRIES = [
     id: "education",
     title: "Education & Academies",
     tag: "Admissions & Leads",
+    icon: EducationColorIcon,
     desc: "Manage prospective student enrollment forms, batch intake questions, and automated WhatsApp course brochures.",
     imageSrc: "/images/industries/education.jpg",
     imageAlt: "Modern interactive education seminar with active participants",
@@ -58,6 +71,7 @@ const INDUSTRIES = [
     id: "hospitality",
     title: "Hospitality & Cafes",
     tag: "Menus & Bookings",
+    icon: HospitalityColorIcon,
     desc: "Give diners and guests a beautiful online presence to explore menus, reserve tables, and connect via WhatsApp.",
     imageSrc: "/images/industries/hospitality.jpg",
     imageAlt: "Aesthetic modern boutique cafe interior with warm natural lighting",
@@ -235,8 +249,11 @@ function MobileCoverflow({ onOpenGetStarted }: { onOpenGetStarted: () => void })
                   {item.tag}
                 </span>
               </div>
-              {/* Bottom title */}
-              <div className="absolute bottom-0 left-0 right-0 p-4">
+              {/* Bottom title with brand icon */}
+              <div className="absolute bottom-0 left-0 right-0 p-3.5 flex items-center gap-2.5">
+                <div className="w-8 h-8 shrink-0 flex items-center justify-center drop-shadow-md">
+                  <item.icon className="w-8 h-8 shrink-0" />
+                </div>
                 <p className="text-white text-[13px] font-bold leading-snug">{item.title}</p>
               </div>
             </div>
@@ -399,11 +416,16 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
                 </div>
               </div>
 
-              {/* Text */}
+              {/* Text with icon */}
               <div className="p-5 flex flex-col flex-1">
-                <h3 className="text-[15px] font-bold text-[#171923] group-hover:text-[#008F60] transition-colors mb-1.5">
-                  {item.title}
-                </h3>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-9 h-9 shrink-0 flex items-center justify-center drop-shadow-xs">
+                    <item.icon className="w-9 h-9 shrink-0" />
+                  </div>
+                  <h3 className="text-[15px] font-bold text-[#171923] group-hover:text-[#008F60] transition-colors leading-tight">
+                    {item.title}
+                  </h3>
+                </div>
                 <p className="text-[12.5px] text-[#555A68] leading-relaxed flex-1">{item.desc}</p>
                 <div className="mt-4 pt-3.5 border-t border-[#E8EAF0] flex items-center justify-between text-[11.5px] font-bold text-[#008F60]">
                   <span>Explore industry solution</span>

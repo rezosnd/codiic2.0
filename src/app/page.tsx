@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { MainToolsSection } from "@/components/MainToolsSection";
+import { WebsiteBuilderSection } from "@/components/WebsiteBuilderSection";
 import { ConnectedWorkspaceSection } from "@/components/ConnectedWorkspaceSection";
 import { BenefitsSection } from "@/components/BenefitsSection";
 import { IntegrationNetwork } from "@/components/IntegrationNetwork";
@@ -32,38 +33,41 @@ export default function Home() {
         {/* 2. Hero Section (All your business. One connected platform.) */}
         <Hero onOpenGetStarted={goToLogin} onOpenSeeHowItWorks={goToLogin} />
 
-        {/* 3. Main Product Tools (5 key tools in a compact overview) */}
+        {/* 3. Main Product Tools (Platform intelligence) */}
         <MainToolsSection onOpenGetStarted={goToLogin} />
 
-        {/* 4. Connected Workspace (Everything works together.) */}
+        {/* 4. No-Code Drag and Drop Website & Storefront Studio */}
+        <WebsiteBuilderSection onOpenGetStarted={goToLogin} />
+
+        {/* 5. Connected Workspace (Everything works together.) */}
         <ConnectedWorkspaceSection onOpenGetStarted={goToLogin} />
 
-        {/* 5. Benefits bento (Less switching, Clearer sales, Smoother follow-ups) */}
+        {/* 7. Benefits bento (Less switching, Clearer sales, Smoother follow-ups) */}
         <BenefitsSection onOpenGetStarted={goToLogin} />
 
-        {/* 6. Animated Integration Network (Your tools. Connected.) */}
+        {/* 8. Animated Integration Network (Your tools. Connected.) */}
         <IntegrationNetwork onOpenGetStarted={goToLogin} />
 
-        {/* 7. Industry Showcase (Olearis-inspired 6 compact tiles) */}
+        {/* 9. Industry Showcase (Olearis-inspired 6 compact tiles) */}
         <OlearisIndustrySection onOpenGetStarted={goToLogin} />
 
-        {/* 7. Customer Reviews & Playbooks (Tuyo-inspired large flowing review cards) */}
+        {/* 10. Customer Reviews & Playbooks (Tuyo-inspired large flowing review cards) */}
         <TuyoReviewsSection />
 
-        {/* 8. Customer / Integration Logo Strip (Understated slim monochrome logo strip) */}
+        {/* 11. Customer / Integration Logo Strip (Understated slim monochrome logo strip) */}
         <LogoStrip />
 
-        {/* 9. Final CTA (Ready to bring your business together?) */}
+        {/* 12. Final CTA (Ready to bring your business together?) */}
         <FinalCtaSection onOpenGetStarted={goToLogin} onOpenSeeHowItWorks={goToLogin} />
       </main>
 
-      {/* 10. Premium Dark Footer (The Chakor-inspired #171923 organization) */}
+      {/* 13. Premium Dark Footer (The Chakor-inspired #171923 organization) */}
       <ChakorFooter onOpenGetStarted={goToLogin} />
 
-      {/* 11. WhatsApp Floating Contact Button (Only active when real number is configured) */}
+      {/* 14. WhatsApp Floating Contact Button */}
       <WhatsAppFloatingButton onOpenContact={goToLogin} />
 
-      {/* 12. Tuyo.com Progressive Bottom Edge Blur Bar (dissolves at footer) */}
+      {/* 15. Apple-grade Glassmorphic Dock & Bottom Ambient Blur */}
       <BottomBlurBar />
     </div>
   );
