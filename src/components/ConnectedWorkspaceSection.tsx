@@ -114,8 +114,8 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
                   onClick={() => setActiveStep(idx)}
                   className={`group cursor-pointer rounded-2xl p-5 border transition-all duration-300 flex flex-col justify-between ${
                     isCurrent
-                      ? "bg-white border-[#00B879]/50 shadow-[0_16px_40px_-20px_rgba(23,25,35,0.25)]"
-                      : "bg-white border-transparent hover:border-[#D9DED8]"
+                      ? "bg-[#FFD84D] border-[#171923] shadow-[0_16px_36px_-18px_rgba(23,25,35,0.3)] ring-2 ring-[#171923]/20 -translate-y-0.5"
+                      : "bg-[#FFD84D] border-black/10 hover:border-black/30 hover:shadow-md hover:-translate-y-0.5"
                   }`}
                 >
                   <div>
@@ -127,20 +127,20 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
                       {st.label}
                     </div>
 
-                    <div className="text-xs font-semibold text-[#008F60] mb-1">
+                    <div className="text-xs font-semibold text-[#085433] mb-1">
                       {st.action}
                     </div>
 
-                    <p className="text-[11px] text-[#555A68] leading-relaxed">
+                    <p className="text-[11px] text-[#2D260D] leading-relaxed">
                       {st.desc}
                     </p>
                   </div>
 
-                  <div className="mt-4 pt-2.5 border-t border-[#E8EAF0] flex items-center justify-between text-[10px]">
-                    <span className="text-[#555A68]">Instant sync</span>
+                  <div className="mt-4 pt-2.5 border-t border-black/10 flex items-center justify-between text-[10px]">
+                    <span className="text-[#2D260D] font-medium">Instant sync</span>
                     <CheckCircle2
                       className={`w-3.5 h-3.5 ${
-                        isCurrent ? "text-[#00B879]" : "text-[#8A90A0]"
+                        isCurrent ? "text-[#085433]" : "text-black/40"
                       }`}
                       strokeWidth={2}
                     />
