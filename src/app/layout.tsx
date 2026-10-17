@@ -15,8 +15,16 @@ export const viewport: Viewport = {
   themeColor: "#00B879",
 };
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "https://codiic.com");
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://codiic.com"),
+  metadataBase: new URL(siteUrl),
   title: "CODIIC — All your business. One connected platform.",
   description:
     "CODIIC helps businesses connect their website, customer relationships, sales pipeline, automated follow-ups, and business operations in one unified workspace.",
@@ -39,13 +47,14 @@ export const metadata: Metadata = {
     title: "CODIIC — All your business. One connected platform.",
     description:
       "Connect your website, leads, sales pipeline, and business operations in one intuitive workspace.",
-    url: "https://codiic.com",
+    url: siteUrl,
     siteName: "CODIIC",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
+        type: "image/png",
         alt: "CODIIC — All your business. One connected platform.",
       },
     ],
