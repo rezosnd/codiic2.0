@@ -43,10 +43,10 @@ export const metadata: Metadata = {
     siteName: "CODIIC",
     images: [
       {
-        url: "/logo_with_text.png",
+        url: "/og-image.png",
         width: 1200,
-        height: 360,
-        alt: "CODIIC Logo",
+        height: 630,
+        alt: "CODIIC — All your business. One connected platform.",
       },
     ],
     locale: "en_IN",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     title: "CODIIC — All your business. One connected platform.",
     description:
       "Website se customer tak — sab connected. Build, manage, and scale your business operations with CODIIC.",
-    images: ["/logo_with_text.png"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
