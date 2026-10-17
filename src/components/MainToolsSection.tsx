@@ -1,19 +1,16 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import {
   ArrowRight,
-  ArrowLeft,
-  ArrowUpRight,
+  Check,
   Sparkles,
   Search,
   SlidersHorizontal,
   Play,
   Bookmark,
-  Lock,
   TrendingUp,
-  TrendingDown,
-  Bell,
   Zap,
 } from "lucide-react";
 import {
@@ -41,6 +38,8 @@ interface Tool {
   badge: string;
   desc: string;
   icon: IconComponent;
+  /** Product screenshot (1536×1024) shown in the tab panel; falls back to the inline mockup. */
+  image?: string;
   stats: { value: string; label: string }[];
   chips: { label: string; value: string; trend: "up" | "down" | "alert" }[];
   highlights: { title: string; desc: string }[];
@@ -54,6 +53,7 @@ const TOOLS: Tool[] = [
     badge: "LIVE DATA",
     desc: "Monitor store and product sales over time to gain insights into revenue, volume, and operational trends.",
     icon: SalesTrackerIcon,
+    image: "/sales.png",
     stats: [
       { value: "15 min", label: "Data refresh cycle" },
       { value: "₹480Cr+", label: "GMV tracked monthly" },
@@ -84,6 +84,7 @@ const TOOLS: Tool[] = [
     badge: "ORGANIZE",
     desc: "Save and organize high-performing stores, winning products, and ad angles into custom monitored portfolios.",
     icon: PortfolioIcon,
+    image: "/portfolio.png",
     stats: [
       { value: "Unlimited", label: "Folders & watchlists" },
       { value: "Hourly", label: "Auto-sync of tracked stores" },
@@ -114,6 +115,7 @@ const TOOLS: Tool[] = [
     badge: "MILLIONS OF SHOPS",
     desc: "Search millions of active online storefronts with granular filters for revenue, creation date, theme, and apps used.",
     icon: ShopLibraryIcon,
+    image: "/shop_library.png",
     stats: [
       { value: "2.4M+", label: "Storefronts indexed" },
       { value: "40+", label: "Granular search filters" },
@@ -144,6 +146,7 @@ const TOOLS: Tool[] = [
     badge: "SIDE-BY-SIDE",
     desc: "Benchmark multiple competing brands side-by-side to track catalog updates, pricing changes, and market shifts.",
     icon: CompetitorsIcon,
+    image: "/competeteor.png",
     stats: [
       { value: "Up to 10", label: "Brands compared at once" },
       { value: "Instant", label: "Price & SKU change alerts" },
@@ -174,6 +177,7 @@ const TOOLS: Tool[] = [
     badge: "HOT ADS",
     desc: "Explore active high-converting ad creatives across Meta, TikTok, and Google to uncover winning formats.",
     icon: AdLibraryIcon,
+    image: "/ad_library.png",
     stats: [
       { value: "18M+", label: "Ad creatives archived" },
       { value: "3", label: "Major ad networks covered" },
@@ -204,6 +208,7 @@ const TOOLS: Tool[] = [
     badge: "HOT PRODUCTS",
     desc: "Database of trending products with verified order velocity, profit margin calculators, and supplier links.",
     icon: ProductLibraryIcon,
+    image: "/product_library.png",
     stats: [
       { value: "350K+", label: "Products with verified orders" },
       { value: "64%", label: "Average tracked margin" },
@@ -234,6 +239,7 @@ const TOOLS: Tool[] = [
     badge: "AD SPEND INTEL",
     desc: "Track competitor advertising campaigns over time to discover when they scale spend or pivot messaging.",
     icon: AdvertiserTrackerIcon,
+    image: "/advertiser_tracker.png",
     stats: [
       { value: "120K+", label: "Advertisers monitored" },
       { value: "Daily", label: "Spend & creative snapshots" },
@@ -288,8 +294,6 @@ const TOOLS: Tool[] = [
     ],
   },
 ];
-
-const pad = (n: number) => String(n).padStart(2, "0");
 
 const Sparkline: React.FC<{ points: number[]; color?: string; className?: string }> = ({
   points,
@@ -694,38 +698,7 @@ const ToolMockup: React.FC<{ id: string }> = ({ id }) => {
   }
 };
 
-const chipIcon = (trend: "up" | "down" | "alert") => {
-  if (trend === "up") return { Icon: TrendingUp, cls: "bg-[#E8F8F1] text-[#00B879]" };
-  if (trend === "down") return { Icon: TrendingDown, cls: "bg-amber-100 text-amber-600" };
-  return { Icon: Bell, cls: "bg-indigo-100 text-indigo-600" };
-};
-
-const FloatingChip: React.FC<{
-  chip: Tool["chips"][number];
-  className: string;
-  floatClass: string;
-}> = ({ chip, className, floatClass }) => {
-  const { Icon, cls } = chipIcon(chip.trend);
-  return (
-    <div className={`hidden sm:block absolute z-20 ${className}`}>
-      <div className={floatClass}>
-        <div className="flex items-center gap-2.5 pl-2 pr-3.5 py-2 rounded-2xl bg-white/95 backdrop-blur shadow-xl shadow-black/25 ring-1 ring-black/5">
-          <span className={`w-8 h-8 rounded-xl flex items-center justify-center ${cls}`}>
-            <Icon className="w-4 h-4" />
-          </span>
-          <div className="leading-tight">
-            <div className="text-[10px] font-medium text-[#8A919C] whitespace-nowrap">{chip.label}</div>
-            <div className="text-sm font-extrabold text-[#171923] tabular-nums">{chip.value}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export const MainToolsSection: React.FC<MainToolsSectionProps> = ({
-  onOpenGetStarted,
-}) => {
+export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetStarted }) => {
   const [activeTab, setActiveTab] = useState<string>(TOOLS[0].id);
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const [isInView, setIsInView] = useState<boolean>(true);
@@ -736,27 +709,22 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({
   const currentTool = TOOLS[activeIndex];
 
   useEffect(() => {
-    if (typeof window === "undefined" || !sectionRef.current) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-
+    if (!sectionRef.current) return;
+    const observer = new IntersectionObserver(([entry]) => setIsInView(entry.isIntersecting), {
+      threshold: 0.1,
+    });
     observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
     if (isPaused || !isInView) return;
-
     const timer = setInterval(() => {
       setActiveTab((curr) => {
         const i = TOOLS.findIndex((t) => t.id === curr);
         return TOOLS[(i + 1) % TOOLS.length].id;
       });
-    }, 6000);
-
+    }, 7000);
     return () => clearInterval(timer);
   }, [isPaused, isInView, activeTab]);
 
@@ -769,254 +737,140 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({
     list.scrollTo({ left: target, behavior: "smooth" });
   }, [activeTab]);
 
-  const step = (dir: 1 | -1) => {
-    setActiveTab(TOOLS[(activeIndex + dir + TOOLS.length) % TOOLS.length].id);
-  };
-
   const CurrentIcon = currentTool.icon;
 
   return (
     <section
       ref={sectionRef}
       id="tools"
-      className="relative z-10 overflow-hidden pt-16 sm:pt-24 lg:pt-32 pb-20 sm:pb-28 bg-[#E9EBE7] border-b border-[#D9DED8]"
+      className="relative bg-white py-20 sm:py-28"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-60 [background-image:linear-gradient(#D9DED8_1px,transparent_1px),linear-gradient(90deg,#D9DED8_1px,transparent_1px)] [background-size:64px_64px] [mask-image:radial-gradient(ellipse_at_top,black_20%,transparent_70%)]"
-      />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Split header */}
-        <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-end mb-10 sm:mb-12">
-          <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#D9DED8] text-[11px] font-bold tracking-widest uppercase text-[#5A6270] shadow-2xs mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00B879] animate-pulse" />
-              Dropship & business intelligence
-            </div>
-            <h2 className="text-[34px] sm:text-5xl lg:text-[58px] font-extrabold text-[#171923] tracking-[-0.035em] leading-[1.02]">
-              Every tool you need to scale.{" "}
-              <span className="text-[#9AA19D]">All in one place.</span>
-            </h2>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E2E6E4] bg-white text-xs font-semibold text-[#5A6270]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00B879]" />
+            Platform
           </div>
-          <div className="lg:col-span-5 lg:pb-2">
-            <p className="text-base sm:text-lg text-[#5A6270] leading-relaxed">
-              From product discovery and competitor tracking to sales monitoring and AI search — eight
-              connected tools, one workspace.
-            </p>
-            <div className="mt-5 flex items-center gap-6">
-              {[
-                { v: "8", l: "Pro tools" },
-                { v: "2.4M+", l: "Stores tracked" },
-                { v: "24/7", l: "Live data" },
-              ].map((s) => (
-                <div key={s.l}>
-                  <div className="text-xl sm:text-2xl font-extrabold text-[#171923] tracking-tight">{s.v}</div>
-                  <div className="text-[11px] font-semibold uppercase tracking-wider text-[#8A919C]">{s.l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <h2 className="mt-5 text-[34px] sm:text-5xl lg:text-[56px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.05]">
+            Every tool you need to grow,{" "}
+            <em className="font-serif italic font-normal text-[#008F60]">in one place.</em>
+          </h2>
+          <p className="mt-5 text-base sm:text-lg text-[#5A6270] leading-relaxed">
+            From product discovery and competitor tracking to sales monitoring and AI search — eight
+            connected tools that share one workspace.
+          </p>
         </div>
 
-        {/* Tab bar */}
-        <div className="flex items-center justify-between gap-4 mb-5">
-          <div
-            ref={tabListRef}
-            role="tablist"
-            aria-label="Tools"
-            className="relative flex items-center gap-1 p-1.5 bg-white rounded-2xl sm:rounded-full border border-[#D9DED8] shadow-sm max-w-full overflow-x-auto no-scrollbar"
-          >
-            {TOOLS.map((tool) => {
-              const Icon = tool.icon;
-              const isActive = activeTab === tool.id;
-
-              return (
-                <button
-                  key={tool.id}
-                  data-tab={tool.id}
-                  role="tab"
-                  aria-selected={isActive}
-                  onClick={() => setActiveTab(tool.id)}
-                  className={`relative flex items-center gap-2 pl-2 pr-3.5 sm:pr-4 py-2 rounded-xl sm:rounded-full text-xs font-bold whitespace-nowrap transition-all duration-300 shrink-0 cursor-pointer overflow-hidden ${
-                    isActive
-                      ? "bg-[#171923] text-white shadow-lg shadow-black/15"
-                      : "text-[#5A6270] hover:text-[#171923] hover:bg-[#F2F4F1]"
-                  }`}
-                >
-                  <Icon className="w-5 h-5 shrink-0" />
-                  <span>{tool.title}</span>
-                  {isActive && (
-                    <span
-                      key={`${tool.id}-${isPaused}`}
-                      className={`absolute bottom-0 left-0 h-[2px] bg-[#00B879] ${
-                        isPaused ? "w-full" : "animate-tab-progress"
-                      }`}
-                    />
-                  )}
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="hidden xl:flex items-center gap-2 text-[11px] font-semibold text-[#8A919C] shrink-0">
-            <span className={`w-1.5 h-1.5 rounded-full ${isPaused ? "bg-[#9AA19D]" : "bg-[#00B879] animate-pulse"}`} />
-            {isPaused ? "Paused" : "Auto-playing"}
-          </div>
-        </div>
-
-        {/* Showcase card */}
-        <div className="bg-white rounded-[28px] border border-[#D9DED8] shadow-[0_30px_80px_-30px_rgba(23,25,35,0.25)] overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12">
-            {/* Left editorial panel */}
-            <div className="lg:col-span-5 p-7 sm:p-10 lg:p-12 flex flex-col">
-              <div className="flex items-center gap-3 mb-8">
-                <span className="font-mono text-sm font-bold text-[#171923] tabular-nums">
-                  {pad(activeIndex + 1)}
-                  <span className="text-[#B4BAB6]"> / {pad(TOOLS.length)}</span>
-                </span>
-                <span className="h-px flex-1 bg-[#E8EAE7]" />
-                <div className="flex items-center gap-1.5">
-                  <button
-                    onClick={() => step(-1)}
-                    aria-label="Previous tool"
-                    className="w-9 h-9 rounded-full border border-[#E2E6E4] flex items-center justify-center text-[#5A6270] hover:bg-[#171923] hover:text-white hover:border-[#171923] transition-colors cursor-pointer"
-                  >
-                    <ArrowLeft className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => step(1)}
-                    aria-label="Next tool"
-                    className="w-9 h-9 rounded-full border border-[#E2E6E4] flex items-center justify-center text-[#5A6270] hover:bg-[#171923] hover:text-white hover:border-[#171923] transition-colors cursor-pointer"
-                  >
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-
-              <div key={currentTool.id} className="flex-1 flex flex-col animate-tool-in">
-                <div className="flex items-center gap-3 mb-5">
-                  <CurrentIcon className="w-12 h-12 shrink-0 drop-shadow-[0_8px_16px_rgba(23,25,35,0.18)]" />
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#008F60]">
-                      {currentTool.category}
-                    </span>
-                    <span className="self-start text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-[#171923] text-white">
-                      {currentTool.badge}
-                    </span>
-                  </div>
-                </div>
-
-                <h3 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#171923] tracking-[-0.03em] leading-[1.05]">
-                  {currentTool.title}
-                </h3>
-                <p className="mt-4 text-[15px] sm:text-base text-[#5A6270] leading-relaxed">
-                  {currentTool.desc}
-                </p>
-
-                <div className="mt-7 grid grid-cols-2 border-y border-[#EEF0EE]">
-                  {currentTool.stats.map((s, i) => (
-                    <div key={s.label} className={`py-4 ${i === 1 ? "pl-5 border-l border-[#EEF0EE]" : "pr-5"}`}>
-                      <div className="text-2xl sm:text-[28px] font-extrabold text-[#171923] tracking-tight leading-none">
-                        {s.value}
-                      </div>
-                      <div className="mt-1.5 text-xs text-[#8A919C] leading-snug">{s.label}</div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-auto pt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-                  <button
-                    onClick={onOpenGetStarted}
-                    className="group inline-flex items-center gap-3 pl-6 pr-1.5 py-1.5 rounded-full bg-[#171923] hover:bg-black text-white text-sm font-bold shadow-lg shadow-black/15 transition-all active:scale-[0.97] cursor-pointer"
-                  >
-                    <span>Explore {currentTool.title}</span>
-                    <span className="w-9 h-9 rounded-full bg-[#00B879] flex items-center justify-center transition-transform duration-300 group-hover:rotate-[-45deg]">
-                      <ArrowRight className="w-4 h-4" />
-                    </span>
-                  </button>
-                  <button
-                    onClick={onOpenGetStarted}
-                    className="group inline-flex items-center gap-1.5 text-sm font-bold text-[#171923] cursor-pointer"
-                  >
-                    <span className="border-b border-[#171923]/20 group-hover:border-[#171923] transition-colors">
-                      Book a demo
-                    </span>
-                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Right dark stage */}
-            <div className="lg:col-span-7 relative bg-[#0B1310] overflow-hidden px-5 py-10 sm:px-12 sm:py-14 lg:px-14 lg:py-16 flex items-center min-h-[420px]">
-              <div
-                aria-hidden
-                className="absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.09)_1px,transparent_1px)] [background-size:20px_20px] [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_80%)]"
-              />
-              <div aria-hidden className="absolute -top-32 -right-24 w-[420px] h-[420px] rounded-full bg-[#00B879]/30 blur-[110px]" />
-              <div aria-hidden className="absolute -bottom-40 -left-24 w-[360px] h-[360px] rounded-full bg-[#0EA5E9]/15 blur-[110px]" />
-
-              <div className="relative w-full max-w-[560px] mx-auto">
-                <FloatingChip
-                  key={`${currentTool.id}-chip-a`}
-                  chip={currentTool.chips[0]}
-                  className="-top-7 -left-4 lg:-left-8 animate-tool-in [animation-delay:150ms]"
-                  floatClass="animate-tool-float"
-                />
-                <FloatingChip
-                  key={`${currentTool.id}-chip-b`}
-                  chip={currentTool.chips[1]}
-                  className="-bottom-7 -right-4 lg:-right-8 animate-tool-in [animation-delay:250ms]"
-                  floatClass="animate-tool-float-delayed"
-                />
-
-                <div className="relative rounded-2xl bg-white shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10 overflow-hidden">
-                  <div className="flex items-center gap-3 px-4 h-10 bg-[#F6F7F5] border-b border-[#EAECE9]">
-                    <div className="flex items-center gap-1.5 shrink-0">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
-                    </div>
-                    <div className="flex-1 flex justify-center min-w-0">
-                      <div className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-white border border-[#EAECE9] text-[10px] text-[#5A6270] font-medium max-w-full">
-                        <Lock className="w-2.5 h-2.5 shrink-0" />
-                        <span className="truncate">codiic.app/tools/{currentTool.id}</span>
-                      </div>
-                    </div>
-                    <span className="hidden sm:flex items-center gap-1 text-[10px] font-bold text-[#008F60] shrink-0">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00B879] animate-pulse" />
-                      Live
-                    </span>
-                  </div>
-                  <div key={currentTool.id} className="p-4 sm:p-5 animate-tool-in">
-                    <ToolMockup id={currentTool.id} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Numbered highlight strip */}
-          <div
-            key={`${currentTool.id}-highlights`}
-            className="grid grid-cols-1 md:grid-cols-3 border-t border-[#EEF0EE] bg-[#FAFBFA] divide-y md:divide-y-0 md:divide-x divide-[#EEF0EE]"
-          >
-            {currentTool.highlights.map((h, i) => (
-              <div
-                key={h.title}
-                className="group relative p-6 sm:p-8 hover:bg-white transition-colors animate-tool-in"
-                style={{ animationDelay: `${120 + i * 80}ms` }}
+        {/* Tabs */}
+        <div
+          ref={tabListRef}
+          role="tablist"
+          aria-label="Tools"
+          className="mt-10 sm:mt-12 flex items-center gap-2 overflow-x-auto no-scrollbar px-1 pb-1 sm:justify-center"
+        >
+          {TOOLS.map((tool) => {
+            const Icon = tool.icon;
+            const isActive = activeTab === tool.id;
+            return (
+              <button
+                key={tool.id}
+                type="button"
+                data-tab={tool.id}
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setActiveTab(tool.id)}
+                className={`relative flex items-center gap-2 pl-2.5 pr-4 py-2 rounded-full border text-[13px] font-semibold whitespace-nowrap shrink-0 cursor-pointer transition-colors ${
+                  isActive
+                    ? "bg-[#E8F8F1] border-[#00B879]/40 text-[#008F60]"
+                    : "bg-white border-[#E2E6E4] text-[#5A6270] hover:text-[#171923] hover:border-[#C9D0CC]"
+                }`}
               >
-                <span className="absolute top-0 left-0 h-[2px] w-0 bg-[#00B879] transition-all duration-500 group-hover:w-full" />
-                <div className="flex items-start gap-4">
-                  <span className="font-mono text-xs font-bold text-[#00B879] pt-0.5">{pad(i + 1)}</span>
-                  <div>
-                    <h4 className="text-[15px] font-bold text-[#171923] tracking-tight">{h.title}</h4>
-                    <p className="mt-1.5 text-[13px] text-[#5A6270] leading-relaxed">{h.desc}</p>
+                <Icon className="w-5 h-5 shrink-0" />
+                <span>{tool.title}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Tab panel */}
+        <div
+          key={currentTool.id}
+          role="tabpanel"
+          className="mt-6 sm:mt-8 rounded-[28px] bg-[#F4F7F5] p-5 sm:p-8 lg:p-12 animate-tool-in"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Copy */}
+            <div className="lg:col-span-5">
+              <CurrentIcon className="w-12 h-12" />
+              <h3 className="mt-5 text-3xl sm:text-4xl font-bold text-[#171923] tracking-[-0.03em] leading-[1.08]">
+                {currentTool.title}
+              </h3>
+              <p className="mt-4 text-[15px] sm:text-base text-[#5A6270] leading-relaxed">
+                {currentTool.desc}
+              </p>
+
+              <dl className="mt-6 grid grid-cols-2 gap-4">
+                {currentTool.stats.map((s) => (
+                  <div key={s.label}>
+                    <dt className="text-xs text-[#8A919C]">{s.label}</dt>
+                    <dd className="mt-0.5 text-xl font-bold text-[#171923] tracking-tight">{s.value}</dd>
                   </div>
+                ))}
+              </dl>
+
+              <div className="mt-7 flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={onOpenGetStarted}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#171923] hover:bg-black text-white text-sm font-bold transition-colors active:scale-[0.98] cursor-pointer"
+                >
+                  Explore {currentTool.title}
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={onOpenGetStarted}
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-sm font-semibold text-[#171923] hover:bg-white transition-colors cursor-pointer"
+                >
+                  Book a demo
+                </button>
+              </div>
+            </div>
+
+            {/* Product preview */}
+            <div className="lg:col-span-7">
+              {currentTool.image ? (
+                <div className="relative aspect-[3/2] rounded-2xl overflow-hidden bg-white border border-[#E6E9E7] shadow-[0_24px_60px_-30px_rgba(23,25,35,0.25)]">
+                  <Image
+                    src={currentTool.image}
+                    alt={`${currentTool.title} dashboard in CODIIC`}
+                    fill
+                    sizes="(min-width: 1024px) 720px, 100vw"
+                    className="object-cover object-left-top"
+                    priority={activeIndex === 0}
+                  />
+                </div>
+              ) : (
+                <div className="rounded-2xl bg-white border border-[#E6E9E7] shadow-[0_24px_60px_-30px_rgba(23,25,35,0.25)] p-4 sm:p-6">
+                  <ToolMockup id={currentTool.id} />
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Highlights */}
+          <div className="hidden md:grid grid-cols-3 gap-6 mt-10 pt-8 border-t border-[#E3E8E5]">
+            {currentTool.highlights.map((h) => (
+              <div key={h.title} className="flex items-start gap-3">
+                <span className="mt-0.5 w-6 h-6 rounded-full bg-[#E8F8F1] text-[#008F60] flex items-center justify-center shrink-0">
+                  <Check className="w-3.5 h-3.5" strokeWidth={3} />
+                </span>
+                <div>
+                  <h4 className="text-[15px] font-bold text-[#171923] tracking-tight">{h.title}</h4>
+                  <p className="mt-1 text-[13px] text-[#5A6270] leading-relaxed">{h.desc}</p>
                 </div>
               </div>
             ))}

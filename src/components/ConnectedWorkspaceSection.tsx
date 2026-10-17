@@ -65,50 +65,41 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
   return (
     <section
       id="workspace"
-      className="py-20 sm:py-28 bg-[#E9EBE7] border-b border-[#D9DED8] relative overflow-hidden"
+      className="py-20 sm:py-28 bg-white relative overflow-hidden"
     >
-      {/* Subtle background glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[520px] bg-[#E8F8F1]/50 rounded-full blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-xs font-bold tracking-wider uppercase">
-            <Sparkles className="w-3.5 h-3.5 text-[#00B879]" />
-            <span>CONNECTED WORKSPACE</span>
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E2E6E4] bg-white text-xs font-semibold text-[#5A6270]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00B879]" />
+            Connected workspace
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#171923] tracking-tight leading-tight">
-            Everything works together.
+          <h2 className="mt-5 text-[34px] sm:text-5xl lg:text-[56px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.05]">
+            Everything{" "}
+            <em className="font-serif italic font-normal text-[#008F60]">works together.</em>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#555A68] leading-relaxed max-w-2xl mx-auto">
-            From the first inquiry to the next follow-up, CODIIC keeps your business information connected in real time.
+          <p className="mt-5 text-base sm:text-lg text-[#5A6270] leading-relaxed max-w-2xl mx-auto">
+            From the first inquiry to the next follow-up, CODIIC keeps your business information
+            connected in real time. Website se customer tak — sab connected.
           </p>
-
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F7F9F8] border border-[#E2E8E5] text-xs font-semibold text-[#171923]">
-            <span className="w-2 h-2 rounded-full bg-[#00B879] animate-pulse" />
-            <span><em>Website se customer tak — sab connected.</em></span>
-          </div>
         </div>
 
-        {/* Central Connected Visual Representation (Dropship-inspired refined borders & cards) */}
-        <div className="max-w-5xl mx-auto bg-[#F7F9F8] border border-[#E2E8E5] rounded-3xl p-5 sm:p-9 shadow-sm relative">
+        {/* Connected flow */}
+        <div className="max-w-5xl mx-auto bg-[#F4F7F5] rounded-[28px] p-5 sm:p-9 relative">
           
           {/* Top Info Bar */}
-          <div className="flex items-center justify-between pb-4 border-b border-[#E8EAF0] mb-8">
+          <div className="flex items-center justify-between pb-4 border-b border-[#E3E8E5] mb-8">
             <div className="flex items-center gap-2.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#00B879] animate-pulse" />
-              <span className="text-xs font-mono font-bold text-[#171923] uppercase tracking-wider">
-                ONE UNIFIED DATA STREAM
+              <span className="w-2 h-2 rounded-full bg-[#00B879]" />
+              <span className="text-sm font-bold text-[#171923]">
+                One unified data stream
               </span>
             </div>
-            <span className="text-xs text-[#555A68] hidden sm:inline">
-              Click any stage to inspect live data flow
+            <span className="text-xs text-[#5A6270] hidden sm:inline">
+              Click any stage to inspect the flow
             </span>
           </div>
 
@@ -123,16 +114,13 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
                   onClick={() => setActiveStep(idx)}
                   className={`group cursor-pointer rounded-2xl p-5 border transition-all duration-300 flex flex-col justify-between ${
                     isCurrent
-                      ? "bg-white border-[#00B879] shadow-xl shadow-[#00B879]/15 ring-2 ring-[#00B879]/20"
-                      : "bg-white/90 border-[#E2E8E5] hover:bg-white hover:border-[#00B879]/40 hover:shadow-md"
+                      ? "bg-white border-[#00B879]/50 shadow-[0_16px_40px_-20px_rgba(23,25,35,0.25)]"
+                      : "bg-white border-transparent hover:border-[#D9DED8]"
                   }`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <Icon className="w-10 h-10 shrink-0 drop-shadow-[0_6px_12px_rgba(23,25,35,0.16)] transition-transform duration-300 group-hover:-translate-y-0.5" />
-                      <span className="text-[10px] font-mono font-bold text-[#8A90A0]">
-                        0{idx + 1}
-                      </span>
+                      <Icon className="w-10 h-10 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5" />
                     </div>
 
                     <div className="text-xs font-bold text-[#171923] mb-1">
@@ -167,11 +155,11 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
             <div className="flex items-center justify-between pb-3 border-b border-[#F0F2F5] text-xs font-semibold flex-wrap gap-2">
               <div className="flex items-center gap-2 text-[#171923]">
                 <span className="w-2 h-2 rounded-full bg-[#00B879]" />
-                <span className="font-bold">LIVE STAGE DEMONSTRATION:</span>
+                <span className="font-bold">Live preview:</span>
                 <span className="text-[#008F60]">{steps[activeStep].label}</span>
               </div>
-              <span className="text-[11px] text-[#5A6270] font-mono">
-                Auto-processed in 0.4s
+              <span className="text-[11px] text-[#5A6270]">
+                Processed in 0.4s
               </span>
             </div>
 

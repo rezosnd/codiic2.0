@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Sparkles, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import {
   LessSwitchingColorIcon,
   ClearerSalesColorIcon,
@@ -37,56 +37,50 @@ export const BenefitsSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#E9EBE7] border-b border-[#D9DED8]">
+    <section className="py-20 sm:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#E2E6E4] text-[11px] font-bold tracking-widest uppercase text-[#5A6270] shadow-2xs">
-            <span>WHY CODIIC</span>
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E2E6E4] bg-white text-xs font-semibold text-[#5A6270]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00B879]" />
+            Why CODIIC
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#171923] tracking-tight leading-tight">
-            Built for everyday clarity.
+          <h2 className="mt-5 text-[34px] sm:text-5xl lg:text-[56px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.05]">
+            Built for{" "}
+            <em className="font-serif italic font-normal text-[#008F60]">everyday clarity.</em>
           </h2>
 
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-xs font-semibold text-[#008F60]">
-            <Sparkles className="w-3.5 h-3.5 text-[#00B879]" />
-            <span><em>Kaam smart, growth fast.</em></span>
-          </div>
+          <p className="mt-5 text-base sm:text-lg text-[#5A6270] leading-relaxed">
+            Kaam smart, growth fast. Fewer tabs, clearer numbers and follow-ups that never slip.
+          </p>
         </div>
 
-        {/* 3 Simple Benefits Grid (Dropship.io balanced cards & spacious rhythm) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 max-w-5xl mx-auto">
+        {/* Benefits */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
           {benefits.map((card, idx) => {
             const Icon = card.icon;
             return (
               <div
                 key={idx}
-                className="group bg-white rounded-3xl p-7 sm:p-8 border border-[#E2E6E4] shadow-xs hover:border-[#00B879]/50 hover:shadow-xl hover:shadow-[#00B879]/8 transition-all duration-300 flex flex-col justify-between"
+                className="group bg-[#F4F7F5] rounded-[24px] p-7 sm:p-8 hover:bg-[#EEF3F0] transition-colors flex flex-col"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <Icon className="w-12 h-12 shrink-0 drop-shadow-[0_8px_16px_rgba(23,25,35,0.16)] transition-transform duration-300 group-hover:-translate-y-0.5" />
-                    <span className="text-[10px] font-mono font-bold text-[#8A90A0]">
-                      0{idx + 1}
-                    </span>
-                  </div>
+                <Icon className="w-12 h-12 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5" />
 
-                  <h3 className="text-xl font-bold text-[#171923] group-hover:text-[#008F60] transition-colors mb-2">
-                    {card.title}
-                  </h3>
+                <h3 className="mt-6 text-xl font-bold text-[#171923] tracking-tight">
+                  {card.title}
+                </h3>
 
-                  <p className="text-sm font-semibold text-[#171923] mb-2 leading-snug">
-                    {card.desc}
-                  </p>
+                <p className="mt-1.5 text-[15px] font-semibold text-[#171923] leading-snug">
+                  {card.desc}
+                </p>
 
-                  <p className="text-xs text-[#555A68] leading-relaxed">
-                    {card.subdesc}
-                  </p>
-                </div>
+                <p className="mt-2 text-sm text-[#5A6270] leading-relaxed">
+                  {card.subdesc}
+                </p>
 
-                <div className="mt-6 pt-4 border-t border-[#E8EAF0] flex items-center gap-2 text-xs font-semibold text-[#008F60]">
+                <div className="mt-auto pt-6 flex items-center gap-2 text-sm font-semibold text-[#008F60]">
                   <CheckCircle2 className="w-4 h-4 text-[#00B879]" strokeWidth={2} />
                   <span>{card.bullet}</span>
                 </div>

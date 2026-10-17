@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  background-color: #E9EBE7;
+  background-color: #FFFFFF;
   color: #171923;
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
@@ -340,6 +340,46 @@ body {
   .animate-tool-float,
   .animate-tool-float-delayed,
   .animate-tool-caret {
+    animation: none;
+  }
+}
+
+/* Integration flow: cards travel left → right through the hub */
+@keyframes integrationFlow {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-integration-flow {
+  animation: integrationFlow 45s linear infinite;
+  will-change: transform;
+}
+
+@keyframes hubGlow {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.94);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+.animate-hub-glow {
+  animation: hubGlow 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-integration-flow,
+  .animate-hub-glow {
     animation: none;
   }
 }

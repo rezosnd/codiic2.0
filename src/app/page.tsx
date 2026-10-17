@@ -21,7 +21,7 @@ export default function Home() {
   const [tourOpen, setTourOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#E9EBE7] text-[#171923] selection:bg-[#00B879]/20 selection:text-[#008F60]">
+    <div className="min-h-screen flex flex-col bg-white text-[#171923] selection:bg-[#00B879]/20 selection:text-[#008F60]">
       {/* 1. Header (TeaCode-inspired floating pill navigation) */}
       <Navbar
         onOpenGetStarted={() => setGetStartedOpen(true)}
