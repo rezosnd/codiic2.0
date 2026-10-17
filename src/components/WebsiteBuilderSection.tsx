@@ -17,6 +17,7 @@ import {
   MessageSquare,
   Search,
   ShieldCheck,
+  Pencil,
 } from "lucide-react";
 import {
   WebsiteBuilderColorIcon,
@@ -73,26 +74,114 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
 
       <div className="relative max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
         
-        {/* ── Section Header (Mobile-Friendly & Concise) ── */}
+        {/* ── Section Header (Hand-Drawn Pencil Sketch Effect) ── */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-3">
-            <WebsiteBuilderColorIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
-            <span>Storefront & Website Studio</span>
+          {/* Hand-drawn pencil sketch badge */}
+          <div className="relative inline-flex items-center gap-2 px-4 py-1.5 mb-4 group select-none">
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none overflow-visible"
+              preserveAspectRatio="none"
+              viewBox="0 0 240 44"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {/* Organic pencil border pass 1 */}
+              <path
+                d="M 6,9 C 60,4 180,5 234,7 C 238,18 236,31 233,37 C 175,40 70,38 7,39 C 3,28 4,16 6,9 Z"
+                fill="#FFD84D"
+                fillOpacity="0.3"
+                stroke="#171923"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              {/* Secondary jittery graphite sketch stroke */}
+              <path
+                d="M 9,12 C 75,7 165,8 230,10 C 235,22 233,30 231,35 C 170,37 85,36 9,36"
+                stroke="#008F60"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeDasharray="90 3 60 2"
+                opacity="0.8"
+              />
+            </svg>
+            <Pencil className="w-3.5 h-3.5 text-[#171923] relative z-10 -rotate-12" />
+            <span className="relative z-10 text-[12px] sm:text-xs font-bold text-[#171923] tracking-tight font-serif italic">
+              Handcrafted layouts · Zero code required
+            </span>
           </div>
 
           <h2
             id="builder-heading"
-            className="text-[24px] xs:text-[28px] sm:text-[42px] lg:text-[50px] font-extrabold text-[#171923] tracking-[-0.03em] leading-[1.1] mb-2.5 sm:mb-3"
+            className="text-[28px] xs:text-[34px] sm:text-[44px] lg:text-[52px] font-extrabold text-[#171923] tracking-[-0.035em] leading-[1.12] mb-4 sm:mb-5"
           >
             A professional website.{" "}
-            <em className="font-serif italic font-normal text-[#008F60] not-italic">
-              Without the complexity.
-            </em>
+            <span className="relative inline-block whitespace-nowrap">
+              <span className="relative z-10 text-[#008F60] font-serif italic font-normal">
+                Without the complexity.
+              </span>
+              {/* Multi-layer hand-drawn pencil sketch underline */}
+              <svg
+                className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3.5 sm:h-5 pointer-events-none overflow-visible"
+                viewBox="0 0 340 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* Soft crayon/yellow highlight wash */}
+                <path
+                  d="M 6,13 C 65,6 185,5 334,12"
+                  stroke="#FFD84D"
+                  strokeWidth="7"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  opacity="0.95"
+                />
+                {/* Primary hand-drawn graphite pencil line */}
+                <path
+                  d="M 8,15 C 80,9 195,7 330,14"
+                  stroke="#171923"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  opacity="0.9"
+                />
+                {/* Secondary pencil jitter/scratch pass */}
+                <path
+                  d="M 14,17 C 110,11 220,9 318,15"
+                  stroke="#008F60"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  opacity="0.75"
+                />
+              </svg>
+            </span>
           </h2>
 
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#E2E8E5] shadow-2xs text-[11px] sm:text-xs font-semibold text-[#171923] mb-3">
-            <Sparkles className="w-3 h-3 text-[#00B879]" />
-            <span>Code ka jhanjhat khatam. Launch in minutes.</span>
+          {/* Hand-sketched arrow annotation */}
+          <div className="hidden sm:flex items-center justify-center gap-2 mb-3 text-[#171923] select-none">
+            <svg
+              className="w-14 h-7 text-[#171923] overflow-visible -rotate-6"
+              viewBox="0 0 70 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 4,20 C 22,6 48,8 62,24"
+                stroke="#171923"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+              <path
+                d="M 52,24 L 62,25 L 60,16"
+                stroke="#171923"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className="font-serif italic text-xs text-[#171923] font-semibold -rotate-2">
+              interactive live studio below ↓
+            </span>
           </div>
 
           <p className="text-[13px] sm:text-[15px] lg:text-[16px] text-[#5A6270] leading-relaxed max-w-lg mx-auto px-2">
