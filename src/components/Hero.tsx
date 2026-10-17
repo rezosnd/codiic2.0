@@ -25,7 +25,6 @@ import {
   AnalyticsColorIcon,
 } from "./ColorfulProductIcons";
 import { BipsyncHeroCanvas } from "./BipsyncHeroCanvas";
-import { HeroGlassShapes } from "./HeroGlassShapes";
 import { RupeeOfferPill } from "./RupeeOffer";
 
 interface HeroProps {
@@ -181,7 +180,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-[-10%] -translate-x-1/2 w-[110%] max-w-[980px] h-[120%] -z-10 bg-[radial-gradient(ellipse_at_center,rgba(244,252,248,0.95)_0%,rgba(236,249,243,0.75)_40%,rgba(236,249,243,0)_72%)]"
         />
-        <HeroGlassShapes />
         <RupeeOfferPill className="mb-6" />
 
         <h1 className="mx-auto max-w-4xl text-[40px] sm:text-6xl lg:text-[76px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.02] [text-shadow:0_2px_24px_rgba(255,255,255,0.9)]">
