@@ -85,13 +85,13 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
   return (
     <section
       id="solutions"
-      className="py-20 sm:py-28 bg-white border-b border-[#E8EAF0]"
+      className="py-20 sm:py-28 bg-[#E9EBE7] border-b border-[#D9DED8]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header (Dropship.io headline hierarchy) */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-xs font-bold tracking-wider uppercase">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#D9DED8] text-[#5A6270] text-[11px] font-bold tracking-widest uppercase shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-[#00B879]" />
             <span>INDUSTRY WORKFLOWS</span>
           </div>
@@ -113,17 +113,17 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
               <div
                 key={item.id}
                 onClick={onOpenGetStarted}
-                className="group cursor-pointer rounded-3xl bg-[#F7F9F8] border border-[#E2E6E4] hover:bg-white hover:border-[#00B879]/50 hover:shadow-xl hover:shadow-[#00B879]/8 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                className="group cursor-pointer rounded-3xl bg-white border border-[#D9DED8] hover:border-[#00B879]/50 hover:shadow-xl hover:shadow-[#00B879]/8 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 <div>
                   {/* Image Container with Responsive Next/Image & Smooth Zoom */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#E2E6E4]">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#D9DED8]">
                     <Image
                       src={item.imageSrc}
                       alt={item.imageAlt}
                       fill
-                      loading="lazy"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      priority
+                      unoptimized
                       className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                     />
                     

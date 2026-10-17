@@ -12,7 +12,7 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
   onOpenGetStarted,
 }) => {
   return (
-    <footer className="bg-[#171923] text-white pt-16 pb-12 border-t border-gray-800">
+    <footer id="footer" className="bg-[#171923] text-white pt-16 pb-12 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top 4-Column Grid (Chakor & Dropship-inspired organization) */}

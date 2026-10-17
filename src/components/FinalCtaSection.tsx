@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ArrowRight, Play, Sparkles } from "lucide-react";
+import { BipsyncHeroCanvas } from "./BipsyncHeroCanvas";
 
 interface FinalCtaSectionProps {
   onOpenGetStarted: () => void;
@@ -14,6 +15,9 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
 }) => {
   return (
     <section className="relative overflow-hidden py-24 sm:py-32 bg-[#171923] text-white">
+      {/* Bipsync-inspired Interactive Hexagonal Mesh Background (Dark Theme) */}
+      <BipsyncHeroCanvas theme="dark" className="absolute inset-0 pointer-events-none z-0 overflow-hidden" />
+
       {/* Background glowing aura in green */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[760px] h-[380px] bg-gradient-to-r from-[#00B879]/25 via-[#008F60]/20 to-transparent blur-3xl pointer-events-none rounded-full" />
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#00B879_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />

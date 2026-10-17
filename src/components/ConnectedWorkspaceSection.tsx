@@ -65,7 +65,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
   return (
     <section
       id="workspace"
-      className="py-20 sm:py-28 bg-white border-b border-[#E8EAF0] relative overflow-hidden"
+      className="py-20 sm:py-28 bg-[#E9EBE7] border-b border-[#D9DED8] relative overflow-hidden"
     >
       {/* Subtle background glow */}
       <div

@@ -238,14 +238,20 @@ body {
   animation: badgeSparkle 2.4s ease-in-out infinite;
 }
 
-/* Reduced motion overrides */
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee-left,
-  .animate-marquee-right,
-  .animate-badge-sparkle {
-    animation: none !important;
-    transform: none !important;
+/* Dropship.io-inspired tab progress bar */
+@keyframes tabProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
   }
 }
+
+.animate-tab-progress {
+  animation: tabProgress 6s linear forwards;
+  will-change: width;
+}
+
 
 

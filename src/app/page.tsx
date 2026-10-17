@@ -13,6 +13,7 @@ import { LogoStrip } from "@/components/LogoStrip";
 import { FinalCtaSection } from "@/components/FinalCtaSection";
 import { ChakorFooter } from "@/components/ChakorFooter";
 import { WhatsAppFloatingButton } from "@/components/WhatsAppFloatingButton";
+import { BottomBlurBar } from "@/components/BottomBlurBar";
 import { GetStartedModal, TourModal } from "@/components/Modals";
 
 export default function Home() {
@@ -81,7 +82,10 @@ export default function Home() {
         onOpenContact={() => setGetStartedOpen(true)}
       />
 
-      {/* 12. Interactive Modals */}
+      {/* 12. Tuyo.com Progressive Bottom Edge Blur Bar (dissolves at footer) */}
+      <BottomBlurBar />
+
+      {/* 13. Interactive Modals */}
       <GetStartedModal
         isOpen={getStartedOpen}
         onClose={() => setGetStartedOpen(false)}

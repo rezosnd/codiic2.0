@@ -74,7 +74,7 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({
     <section
       ref={sectionRef}
       id="integrations"
-      className="py-20 sm:py-28 bg-white border-b border-[#E8EAF0] relative overflow-hidden"
+      className="py-20 sm:py-28 bg-[#E9EBE7] border-b border-[#D9DED8] relative overflow-hidden"
       aria-labelledby="integrations-heading"
     >
       {/* Subtle ambient mint background aura */}

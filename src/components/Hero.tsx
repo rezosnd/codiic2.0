@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import {
   ArrowRight,
@@ -33,6 +33,7 @@ import {
   AutomationColorIcon,
   AnalyticsColorIcon,
 } from "./ColorfulProductIcons";
+import { BipsyncHeroCanvas } from "./BipsyncHeroCanvas";
 
 interface HeroProps {
   onOpenGetStarted: () => void;
@@ -53,10 +54,6 @@ export const Hero: React.FC<HeroProps> = ({
   onOpenGetStarted,
   onOpenSeeHowItWorks,
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const row1Ref = useRef<HTMLDivElement>(null);
-  const row2Ref = useRef<HTMLDivElement>(null);
-  const row3Ref = useRef<HTMLDivElement>(null);
   const [speedMultiplier, setSpeedMultiplier] = useState<number>(1);
   const [emblemActive, setEmblemActive] = useState<boolean>(false);
 
@@ -262,97 +259,27 @@ export const Hero: React.FC<HeroProps> = ({
     },
   ];
 
-  // Dropship.io-inspired 3D Organic Curve & Scanner Clip Calculation
-  useEffect(() => {
-    let animId: number;
-    let isRunning = true;
-
-    const updateCurvatureAndScanner = () => {
-      if (!isRunning || !containerRef.current) return;
-
-      const container = containerRef.current;
-      const rect = container.getBoundingClientRect();
-      const centerLine = rect.left + rect.width / 2;
-      const isMobile = window.innerWidth <= 768;
-      const radius = isMobile ? 1800 : 3200;
-
-      const rows = [
-        { ref: row1Ref, curve: "bowl" },
-        { ref: row2Ref, curve: "straight" },
-        { ref: row3Ref, curve: "arch" },
-      ];
-
-      rows.forEach(({ ref, curve }) => {
-        if (!ref.current) return;
-        const cards = ref.current.querySelectorAll<HTMLElement>("[data-marquee-card]");
-
-        cards.forEach((card) => {
-          const cardRect = card.getBoundingClientRect();
-          const cardCenter = cardRect.left + cardRect.width / 2;
-          const dist = cardCenter - centerLine;
-
-          // Curvature geometry (exact Dropship.io formula)
-          if (curve !== "straight") {
-            const clampedDist = Math.min(Math.abs(dist), radius);
-            const sag = Math.sqrt(radius * radius - clampedDist * clampedDist) - radius;
-            const angle =
-              Math.atan2(clampedDist, Math.sqrt(radius * radius - clampedDist * clampedDist)) *
-              (180 / Math.PI) *
-              Math.sign(dist);
-
-            const y = curve === "bowl" ? sag : -sag;
-            const rot = curve === "bowl" ? -angle : angle;
-            card.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0) rotate(${rot.toFixed(2)}deg)`;
-          }
-
-          // Scanner reveal effect (as card crosses center laser beam)
-          const skeleton = card.querySelector<HTMLElement>("[data-skeleton-overlay]");
-          if (skeleton) {
-            const cardWidth = card.offsetWidth;
-            // Ratio of card that has crossed to the right of centerLine
-            const progress = Math.max(0, Math.min(1, (cardRect.right - centerLine) / cardWidth));
-            const clipAmount = Math.round(progress * cardWidth);
-            // Inset clip from the right side, revealing the colorful verified card from left to right!
-            skeleton.style.clipPath = `inset(0 ${clipAmount}px 0 0 round 16px)`;
-          }
-        });
-      });
-
-      animId = requestAnimationFrame(updateCurvatureAndScanner);
-    };
-
-    animId = requestAnimationFrame(updateCurvatureAndScanner);
-
-    return () => {
-      isRunning = false;
-      cancelAnimationFrame(animId);
-    };
-  }, []);
-
   // Handle click on center emblem (triggers Dropship hyper-speed burst animation)
   const handleEmblemBurst = () => {
     if (emblemActive) return;
     setEmblemActive(true);
-    setSpeedMultiplier(5);
+    setSpeedMultiplier(4);
 
     setTimeout(() => {
       setSpeedMultiplier(1);
-      setTimeout(() => setEmblemActive(false), 800);
+      setTimeout(() => setEmblemActive(false), 600);
     }, 1200);
   };
 
-  // Render Card with Real Colorful Brand Logo and Live Dropship-style Scanner Skeleton Overlay
+  // Render Card with Real Colorful Brand Logo and High-Performance Hardware Acceleration
   const renderCard = (item: MarqueeCardItem, key: string) => {
     const Logo = item.LogoComponent || WebhooksLogo;
     return (
       <div
         key={key}
         data-marquee-card
-        className="relative flex items-center gap-3.5 px-4 py-3 rounded-2xl bg-white border border-[#D9DED8] shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-xl hover:border-[#00B879]/50 transition-shadow duration-200 shrink-0 min-w-[285px] sm:min-w-[315px] select-none group cursor-pointer overflow-hidden will-change-transform"
+        className="relative flex items-center gap-3.5 px-4 py-3 rounded-2xl bg-white border border-[#D9DED8] shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-xl hover:border-[#00B879]/50 hover:scale-[1.02] transition-all duration-200 shrink-0 min-w-[285px] sm:min-w-[315px] select-none group cursor-pointer overflow-hidden will-change-transform"
       >
-        {/* ================================================================= */}
-        {/* Base Layer: Verified Colorful Brand Event                         */}
-        {/* ================================================================= */}
         {/* Left: Real Colorful Brand Icon */}
         <div className="w-11 h-11 rounded-xl bg-white border border-[#E2E6E4] shadow-xs flex items-center justify-center p-2 shrink-0 group-hover:scale-108 transition-transform">
           <Logo className="w-6 h-6 shrink-0" />
@@ -396,27 +323,6 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
           </div>
         </div>
-
-        {/* ================================================================= */}
-        {/* Scanner Overlay Layer: Dropship Wireframe Skeleton                */}
-        {/* (Clipped dynamically as card crosses center laser beam)           */}
-        {/* ================================================================= */}
-        <div
-          data-skeleton-overlay
-          className="absolute inset-0 z-10 bg-[#F4F6F3] border border-[#D9DED8] flex items-center gap-3.5 px-4 py-3 pointer-events-none transition-[clip-path] duration-75"
-          style={{ clipPath: "inset(0 0px 0 0 round 16px)" }}
-        >
-          <div className="w-11 h-11 rounded-xl bg-[#E2E6E4] shrink-0" />
-          <div className="min-w-[105px] space-y-2">
-            <div className="h-3 w-22 bg-[#E2E6E4] rounded-full" />
-            <div className="h-2 w-14 bg-[#E2E6E4]/70 rounded-full" />
-          </div>
-          <div className="w-px h-8 bg-[#E2E6E4] shrink-0 mx-0.5" />
-          <div className="min-w-[85px] space-y-2 flex flex-col items-end">
-            <div className="h-3.5 w-18 bg-[#E2E6E4] rounded-full" />
-            <div className="h-2 w-11 bg-[#E2E6E4]/70 rounded-full" />
-          </div>
-        </div>
       </div>
     );
   };
@@ -427,9 +333,12 @@ export const Hero: React.FC<HeroProps> = ({
 
   return (
     <section className="relative pt-8 sm:pt-14 pb-16 sm:pb-24 lg:pb-32 overflow-hidden bg-[#E9EBE7]">
+      {/* Bipsync-inspired Interactive Hexagonal Mesh Background (reacts to mouse cursor) */}
+      <BipsyncHeroCanvas className="absolute inset-0 pointer-events-none z-0 overflow-hidden" />
+
       {/* Subtle radial ambient mint glow */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[520px] bg-[radial-gradient(ellipse_at_center,rgba(0,184,121,0.08),transparent_70%)] pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[520px] bg-[radial-gradient(ellipse_at_center,rgba(0,184,121,0.08),transparent_70%)] pointer-events-none z-0"
         aria-hidden="true"
       />
 
@@ -442,10 +351,12 @@ export const Hero: React.FC<HeroProps> = ({
           <span className="text-[#00B879]">One connected platform.</span>
         </h1>
 
-        {/* Subtitle */}
-        <p className="text-base sm:text-lg lg:text-xl text-[#5A6270] leading-relaxed max-w-2xl mx-auto mb-4 sm:mb-5 font-normal">
-          Build your website, manage customers, track sales, and automate everyday work—all from one place.
-        </p>
+        {/* Subtitle with High Contrast & Readability */}
+        <div className="max-w-2xl mx-auto mb-5 sm:mb-6">
+          <p className="text-base sm:text-lg lg:text-[20px] font-semibold text-[#171923] leading-relaxed tracking-tight px-4 sm:px-5 py-2 rounded-2xl bg-white/70 backdrop-blur-md border border-[#D9DED8] inline-block shadow-xs">
+            Build your website, manage customers, track sales, and automate everyday work—<span className="text-[#008F60] font-bold">all from one place.</span>
+          </p>
+        </div>
 
         {/* Hindi Punchline Capsule */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/80 border border-[#D9DED8] text-xs font-semibold text-[#008F60] mb-6 sm:mb-7 shadow-2xs">
@@ -498,8 +409,7 @@ export const Hero: React.FC<HeroProps> = ({
       {/* 1:1 Dropship.io Visual Marquee Stage (Curved Arcs & Real-time Scanner)    */}
       {/* ========================================================================= */}
       <div
-        ref={containerRef}
-        className="relative w-full overflow-hidden pt-6 pb-20 select-none bg-[#E9EBE7]"
+        className="relative w-full overflow-hidden pt-6 pb-20 select-none bg-transparent"
       >
         
         {/* Central Vertical Glowing Laser Beam */}
@@ -538,12 +448,14 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
 
         {/* Marquee Layout with 3 Organic Curvature Tracks */}
-        <div className="w-[125%] -ml-[12.5%] py-6 space-y-4 will-change-transform pause-on-hover">
+        <div className="w-[125%] -ml-[12.5%] py-6 space-y-4 will-change-transform pause-on-hover [perspective:1400px]">
           {/* Track 1: Bowl Curve (Scrolls Left) */}
           <div
-            ref={row1Ref}
-            style={{ animationDuration: `${track1Duration}s` }}
-            className="animate-marquee-left flex gap-4"
+            style={{
+              animationDuration: `${track1Duration}s`,
+              transform: "rotate(-0.8deg) translateZ(0)",
+            }}
+            className="animate-marquee-left flex gap-4 will-change-transform"
           >
             {[...row1Items, ...row1Items].map((item, idx) =>
               renderCard(item, `r1-card-${idx}`)
@@ -552,9 +464,11 @@ export const Hero: React.FC<HeroProps> = ({
 
           {/* Track 2: Straight (Scrolls Right) */}
           <div
-            ref={row2Ref}
-            style={{ animationDuration: `${track2Duration}s` }}
-            className="animate-marquee-right flex gap-4"
+            style={{
+              animationDuration: `${track2Duration}s`,
+              transform: "translateZ(0)",
+            }}
+            className="animate-marquee-right flex gap-4 will-change-transform"
           >
             {[...row2Items, ...row2Items].map((item, idx) =>
               renderCard(item, `r2-card-${idx}`)
@@ -563,9 +477,11 @@ export const Hero: React.FC<HeroProps> = ({
 
           {/* Track 3: Arch Curve (Scrolls Left Slow) */}
           <div
-            ref={row3Ref}
-            style={{ animationDuration: `${track3Duration}s` }}
-            className="animate-marquee-left-slow flex gap-4"
+            style={{
+              animationDuration: `${track3Duration}s`,
+              transform: "rotate(0.8deg) translateZ(0)",
+            }}
+            className="animate-marquee-left-slow flex gap-4 will-change-transform"
           >
             {[...row3Items, ...row3Items].map((item, idx) =>
               renderCard(item, `r3-card-${idx}`)

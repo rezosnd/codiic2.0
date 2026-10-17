@@ -37,7 +37,7 @@ export const BenefitsSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#F7F9F8] border-b border-[#E8EAF0]">
+    <section className="py-20 sm:py-28 bg-[#E9EBE7] border-b border-[#D9DED8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

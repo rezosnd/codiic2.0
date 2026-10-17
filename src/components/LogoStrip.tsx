@@ -21,7 +21,7 @@ export const LogoStrip: React.FC = () => {
   ];
 
   return (
-    <section className="py-12 bg-white border-b border-[#E8EAF0]">
+    <section className="py-12 bg-[#E9EBE7] border-b border-[#D9DED8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Subtle Heading */}

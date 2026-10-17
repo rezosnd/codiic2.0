@@ -37,10 +37,16 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let lastScrolled = false;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 15);
+      const isScrolled = window.scrollY > 15;
+      if (isScrolled !== lastScrolled) {
+        lastScrolled = isScrolled;
+        setScrolled(isScrolled);
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -230,11 +236,11 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Right: Actions & Primary Green CTA (Dropship.io 1:1 match) */}
           <div className="flex items-center gap-1.5 sm:gap-3">
-            {/* Sign In */}
+            {/* Sign In (Hidden on mobile to preserve space for logo and CTA) */}
             <button
               onClick={onOpenGetStarted}
               id="header-signin-button"
-              className="px-3 py-1.5 rounded-full text-xs sm:text-[13px] font-semibold text-[#171923] hover:text-[#00B879] transition-colors cursor-pointer"
+              className="hidden sm:block px-3 py-1.5 rounded-full text-xs sm:text-[13px] font-semibold text-[#171923] hover:text-[#00B879] transition-colors cursor-pointer"
             >
               Sign in
             </button>
@@ -243,7 +249,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={onOpenGetStarted}
               id="header-cta-button"
-              className="group relative px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#00B879]/20 hover:shadow-lg hover:shadow-[#00B879]/30 transition-all duration-200 flex items-center gap-1.5 active:scale-95 cursor-pointer"
+              className="group relative px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#00B879]/20 hover:shadow-lg hover:shadow-[#00B879]/30 transition-all duration-200 flex items-center gap-1.5 active:scale-95 cursor-pointer"
             >
               <span>Get started</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -252,7 +258,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-full text-[#171923] hover:bg-[#F7F9F8] border border-[#E2E6E4] focus:outline-none"
+              className="md:hidden w-9 h-9 rounded-full text-[#171923] bg-white hover:bg-[#F4F6F3] border border-[#D9DED8] flex items-center justify-center cursor-pointer touch-manipulation focus:outline-none shadow-2xs active:scale-95 transition-all shrink-0"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -375,11 +381,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <a
                   href="#tools"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between p-2.5 rounded-xl text-sm font-bold text-[#171923] hover:bg-[#E8F8F1] hover:text-[#008F60] transition-colors"
+                  className="flex items-center justify-between p-2.5 rounded-xl text-sm font-bold text-[#171923] hover:bg-[#E8F8F1] hover:text-[#008F60] transition-colors cursor-pointer"
                 >
                   <span>Platform & Tools</span>
                   <span className="text-[10px] font-mono text-[#008F60] bg-[#E8F8F1] px-2 py-0.5 rounded-full font-bold">
-                    5 Tools
+                    8 Tools
                   </span>
                 </a>
                 <a
