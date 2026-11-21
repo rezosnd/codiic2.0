@@ -7,7 +7,7 @@ interface BenefitsSectionProps {
   onOpenGetStarted?: () => void;
 }
 
-const UNIFIED = ["Website & store", "Customer CRM", "WhatsApp inbox", "UPI payments"];
+const UNIFIED = ["WhatsApp Cloud API & Coexistence", "Instagram + Facebook inbox", "Telegram + Email", "Broadcasts & Drip Campaigns"];
 
 const DEALS = [
   { name: "Rohan Mehta", company: "Apex Logistics", initials: "RM", color: "#0EA5E9", stage: "Proposal", value: "₹4,50,000" },
@@ -32,9 +32,9 @@ const ORBIT = [
 ];
 
 const FOLLOW_UPS = [
-  { icon: MessageCircle, label: "WhatsApp brochure sent", meta: "Instantly · Auto", tone: "text-[#4ADE80]" },
-  { icon: PhoneCall, label: "Call reminder for Rahul", meta: "Today, 4:30 PM", tone: "text-[#38BDF8]" },
-  { icon: CalendarCheck, label: "Site visit confirmed", meta: "Sat, 11:00 AM", tone: "text-[#FBBF24]" },
+  { icon: MessageCircle, label: "Instagram Auto-DM sent", meta: "Instantly · Keyword trigger", tone: "text-[#4ADE80]" },
+  { icon: PhoneCall, label: "Bulk AI voice call — 42 booked", meta: "Auto · Appointments", tone: "text-[#38BDF8]" },
+  { icon: CalendarCheck, label: "WhatsApp drip campaign", meta: "Day 3 · Scheduled", tone: "text-[#FBBF24]" },
 ];
 
 const Avatar: React.FC<{ initials: string; color: string; className?: string }> = ({ initials, color, className = "w-9 h-9 text-xs" }) => (
@@ -52,24 +52,25 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ onOpenGetStart
       {/* Section Header */}
       <div className="grid lg:grid-cols-12 gap-6 items-end mb-10 sm:mb-14">
         <div className="lg:col-span-7">
-          <span className="text-sm font-semibold text-[#008F60]">Why CODIIC</span>
+          <span className="text-sm font-semibold text-[#008F60]">Why CODIIC · Aapka Business, Aapka Control</span>
           <h2 className="mt-3 text-[34px] sm:text-5xl lg:text-[56px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.05]">
             Built for{" "}
             <em className="font-serif italic font-normal text-[#008F60]">everyday clarity.</em>
           </h2>
         </div>
         <p className="lg:col-span-5 text-base sm:text-lg text-[#4A5260] leading-relaxed">
-          Kaam smart, growth fast. Fewer tabs, clearer numbers and follow-ups that never slip.
+          One inbox for every channel, AI follow-ups that never sleep, and numbers the whole team
+          can see.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
         {/* Less switching — solid emerald */}
         <article className="lg:col-span-4 relative overflow-hidden rounded-[22px] bg-[#00A06A] text-white p-7 sm:p-8 flex flex-col min-h-[400px]">
-          <h3 className="text-[22px] font-bold tracking-tight">Less switching</h3>
+          <h3 className="text-[22px] font-bold tracking-tight">One omnichannel inbox</h3>
           <p className="mt-3 text-[15px] text-white/85 leading-relaxed">
-            Website forms, CRM sheets and WhatsApp chats stop living in different apps. One login,
-            one place.
+            WhatsApp Cloud API, Business App Coexistence, Instagram, Facebook, Telegram and Email —
+            every customer chat lands in one shared team inbox.
           </p>
 
           <div className="mt-auto -mx-7 sm:-mx-8 -mb-7 sm:-mb-8 pt-8">
@@ -117,8 +118,8 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ onOpenGetStart
             <div className="relative flex flex-col min-h-[300px]">
               <h3 className="text-[22px] font-bold tracking-tight text-[#0F2A3D]">Clearer sales</h3>
               <p className="mt-3 text-[15px] text-[#3B5466] leading-relaxed">
-                Every lead, its stage, its value and who owns it — visible to the whole team in rupees,
-                not guesswork.
+                Every lead, its stage, its value and who owns it — visible to the whole team in real
+                numbers, not guesswork.
               </p>
 
               <div className="relative flex-1 mt-4 min-h-[200px]" aria-hidden>
@@ -144,8 +145,11 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ onOpenGetStart
           <div>
             <h3 className="text-[22px] font-bold tracking-tight">Smoother follow-ups</h3>
             <p className="mt-3 text-[15px] text-white/70 leading-relaxed">
-              Instant replies and scheduled reminders keep the next step in front of your team, so no
-              inquiry goes cold.
+              AI voice calls, keyword triggers and drip campaigns keep the next step moving —
+              so no inquiry goes cold.
+            </p>
+            <p className="mt-3 text-[13px] italic text-white/50 leading-relaxed">
+              Ab koi bhi lead thandi nahi padegi — AI khud follow-up lega.
             </p>
           </div>
           <ol className="relative space-y-3 before:absolute before:left-[19px] before:top-3 before:bottom-3 before:w-px before:bg-white/10">
@@ -168,7 +172,7 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ onOpenGetStart
           <span className="text-sm font-semibold">Average first reply</span>
           <div className="mt-2 text-[64px] sm:text-[80px] font-bold tracking-[-0.05em] leading-none">0.4s</div>
           <p className="mt-3 text-[15px] text-[#4A3F0A] leading-relaxed max-w-sm">
-            Leads hear back while they are still on your website — every plan, from ₹1/day.
+            AI first-reply speed across WhatsApp, Instagram & Telegram — on every plan, including free.
           </p>
           {onOpenGetStarted && (
             <button
@@ -176,7 +180,7 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ onOpenGetStart
               onClick={onOpenGetStarted}
               className="mt-6 self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1F1A05] hover:bg-black text-white text-sm font-bold transition-colors active:scale-[0.98] cursor-pointer"
             >
-              Start at ₹1/day
+              Start Free
               <ArrowRight className="w-4 h-4" />
             </button>
           )}

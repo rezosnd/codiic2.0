@@ -8,11 +8,21 @@ import { RupeeOfferPill } from "./RupeeOffer";
 interface FinalCtaSectionProps {
   onOpenGetStarted: () => void;
   onOpenSeeHowItWorks: () => void;
+  pillLabel?: string;
+  headline?: string;
+  subheadline?: string;
+  ctaLabel?: string;
+  subNote?: string;
 }
 
 export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
   onOpenGetStarted,
   onOpenSeeHowItWorks,
+  pillLabel = "Ab alag-alag apps ka kharcha band! Start at ₹1/day",
+  headline = "One Platform. Your Entire Business. Start Today.",
+  subheadline = "Drag-and-drop your storefront, connect WhatsApp & Instagram in 2 minutes, and scale with AI automation & ad intelligence — start free today.",
+  ctaLabel = "Create Your Free Workspace",
+  subNote = "2 minute mein apni dukaan online lao · Free forever plan · No credit card required",
 }) => {
   return (
     <section className="relative overflow-hidden py-24 sm:py-32 bg-[#171923] text-white">
@@ -25,16 +35,16 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 z-10">
         
-        <RupeeOfferPill dark label="Start with just ₹1 per day · Business badhega" />
+        <RupeeOfferPill dark label={pillLabel} />
 
         {/* Headline */}
         <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] max-w-3xl mx-auto">
-          Ready to bring your business together?
+          {headline}
         </h2>
 
         {/* Description */}
         <p className="text-base sm:text-lg text-gray-300 max-w-xl mx-auto leading-relaxed">
-          Start with the tools you need. Keep everything connected as your business grows.
+          {subheadline}
         </p>
 
         {/* CTA Buttons (Dropship.io dual button group) */}
@@ -43,7 +53,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
             onClick={onOpenGetStarted}
             className="w-full sm:w-auto group px-8 py-3.5 sm:py-4 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-base font-bold shadow-xl shadow-[#00B879]/25 hover:shadow-2xl hover:shadow-[#00B879]/35 transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
           >
-            <span>Start at ₹1/day</span>
+            <span>{ctaLabel}</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
 
@@ -52,13 +62,11 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
             className="w-full sm:w-auto px-6 py-3.5 sm:py-4 rounded-full bg-white/10 hover:bg-white/15 text-white text-sm font-semibold border border-white/20 transition-all flex items-center justify-center gap-2 backdrop-blur-xs active:scale-95 cursor-pointer"
           >
             <Play className="w-3.5 h-3.5 text-[#00B879] fill-[#00B879]" />
-            <span>Explore the platform</span>
+            <span>See how it works</span>
           </button>
         </div>
 
-        <p className="text-xs text-gray-400 pt-2">
-          Plans from ₹1/day · No credit card required · Setup in 2 minutes
-        </p>
+        <p className="text-xs text-gray-400 pt-2">{subNote}</p>
 
       </div>
     </section>

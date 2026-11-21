@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowRight, Check, Lock } from "lucide-react";
+import { ArrowRight, Check, Globe, Lock, Send } from "lucide-react";
 import {
   WhatsAppLogo,
   RazorpayLogo,
@@ -15,6 +15,7 @@ import {
   PhonePeLogo,
   ZohoLogo,
   GmailLogo,
+  WebhooksLogo,
 } from "./BrandLogos";
 
 interface IntegrationNetworkProps {
@@ -34,31 +35,73 @@ interface Integration {
 const INTEGRATIONS: Integration[] = [
   {
     id: "whatsapp",
-    name: "WhatsApp Business",
-    role: "Messaging & lead capture",
-    points: ["Leads land in your CRM", "Order updates & catalogs"],
+    name: "WhatsApp Cloud API",
+    role: "Official Meta Cloud API",
+    points: ["Leads land in your CRM", "Broadcasts, drips & templates"],
     logo: WhatsAppLogo,
   },
   {
+    id: "coexistence",
+    name: "WhatsApp Coexistence",
+    role: "Business App + Cloud API together",
+    points: ["Keep your existing number", "Chats sync on both apps"],
+    logo: WhatsAppLogo,
+  },
+  {
+    id: "instagram",
+    name: "Instagram Auto-DM",
+    role: "Comments, DMs & story replies",
+    points: ["Auto-replies routed to CRM", "CTWA ads connect instantly"],
+    logo: InstagramLogo,
+  },
+  {
+    id: "meta",
+    name: "Facebook Lead Ads",
+    role: "Lead forms & CTWA campaigns",
+    points: ["Lead forms routed to reps", "Click-to-WhatsApp routing"],
+    logo: MetaLogo,
+  },
+  {
+    id: "telegram",
+    name: "Telegram",
+    role: "Bot & personal inbox",
+    points: ["Chats land in team inbox", "Keyword triggers & templates"],
+    logo: Send,
+  },
+  {
+    id: "gmail",
+    name: "Gmail",
+    role: "Email automation & logging",
+    points: ["Emails tracked in timeline", "Smart follow-up sequences"],
+    logo: GmailLogo,
+  },
+  {
+    id: "stripe",
+    name: "Stripe",
+    role: "Global cards & wallets",
+    points: ["International payments supported", "Checkout syncs to orders"],
+    logo: StripeLogo,
+  },
+  {
     id: "razorpay",
-    name: "Razorpay Payments",
+    name: "Razorpay",
     role: "UPI, cards & payment links",
     points: ["Auto-matched to invoices", "Instant settlement status"],
     logo: RazorpayLogo,
   },
   {
-    id: "google",
-    name: "Google Workspace",
-    role: "Gmail, Calendar & Contacts",
-    points: ["Emails logged to timeline", "Meetings synced both ways"],
-    logo: GoogleWorkspaceLogo,
+    id: "phonepe",
+    name: "PhonePe",
+    role: "QR & UPI payments",
+    points: ["QR-code payment collection", "Instant settlement alerts"],
+    logo: PhonePeLogo,
   },
   {
-    id: "meta",
-    name: "Meta Lead Gen",
-    role: "Facebook & Instagram leads",
-    points: ["Lead forms routed to reps", "DMs converted to leads"],
-    logo: MetaLogo,
+    id: "zoho",
+    name: "Zoho Books",
+    role: "Automated tax & GST invoices",
+    points: ["Auto-generate tax invoices", "Real-time P&L reconciliation"],
+    logo: ZohoLogo,
   },
   {
     id: "shopify",
@@ -68,53 +111,39 @@ const INTEGRATIONS: Integration[] = [
     logo: ShopifyLogo,
   },
   {
+    id: "domains",
+    name: "Custom Domains",
+    role: "Your brand, your URL",
+    points: ["Connect domain in 60 seconds", "Free SSL certificate included"],
+    logo: Globe,
+  },
+  {
+    id: "google",
+    name: "Google Workspace",
+    role: "Gmail, Calendar & Contacts",
+    points: ["Emails logged to timeline", "Meetings synced both ways"],
+    logo: GoogleWorkspaceLogo,
+  },
+  {
     id: "aws",
     name: "AWS Cloud",
-    role: "Secure storage & backups",
+    role: "Encrypted storage & backups",
     points: ["Encrypted file storage", "Nightly automated backups"],
     logo: AwsLogo,
   },
   {
-    id: "stripe",
-    name: "Stripe",
-    role: "Global card & subscription billing",
-    points: ["International payments supported", "Subscription auto-renewals"],
-    logo: StripeLogo,
-  },
-  {
-    id: "instagram",
-    name: "Instagram Direct",
-    role: "DMs & story lead capture",
-    points: ["Replies routed to CRM", "Story leads auto-tagged"],
-    logo: InstagramLogo,
+    id: "webhooks",
+    name: "Webhooks & REST API",
+    role: "Build anything on CODIIC",
+    points: ["Signed webhook events", "Full REST API access"],
+    logo: WebhooksLogo,
   },
   {
     id: "zapier",
     name: "Zapier",
-    role: "Connect 6000+ apps via Zaps",
+    role: "Connect 6,000+ apps",
     points: ["No-code automation triggers", "Multi-step workflow builder"],
     logo: ZapierLogo,
-  },
-  {
-    id: "zoho",
-    name: "Zoho Books",
-    role: "GST invoicing & ledger sync",
-    points: ["Auto-generate GST invoices", "Real-time P&L reconciliation"],
-    logo: ZohoLogo,
-  },
-  {
-    id: "phonepe",
-    name: "PhonePe",
-    role: "UPI payments & settlements",
-    points: ["QR-code payment collection", "Instant settlement alerts"],
-    logo: PhonePeLogo,
-  },
-  {
-    id: "gmail",
-    name: "Gmail",
-    role: "Email automation & logging",
-    points: ["Emails tracked in timeline", "Smart follow-up sequences"],
-    logo: GmailLogo,
   },
 ];
 
@@ -353,7 +382,7 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
               <p className="text-[13px] font-semibold text-[#5A6270]">
-                All included — <span className="text-[#008F60] font-extrabold">₹1/day</span>
+                All included — <span className="text-[#008F60] font-extrabold">start free</span>
               </p>
             </div>
           </div>
@@ -469,7 +498,7 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-[11.5px] text-[#8A939F] text-center">
           <span className="inline-flex items-center gap-1.5 font-semibold text-[#171923]">
             <Lock className="w-3 h-3 text-[#00B879]" aria-hidden="true" />
-            OAuth 2.0 &amp; signed webhooks
+            Official Meta Tech Partner · 256-Bit SSL · GDPR &amp; Global Tax Ready · AWS Cloud Hosted
           </span>
           <span className="hidden sm:inline text-[#D1D5DB]">•</span>
           <span>Brand names and logos belong to their respective owners.</span>

@@ -17,11 +17,15 @@ import {
   CustomerCrmColorIcon,
   SalesPipelineColorIcon,
   AutomationColorIcon,
+  SalesTrackerIcon,
   AnalyticsColorIcon,
   IntegrationsColorIcon,
   RetailColorIcon,
   ServicesColorIcon,
   RealEstateColorIcon,
+  AgenciesColorIcon,
+  EducationColorIcon,
+  HospitalityColorIcon,
 } from "./ColorfulProductIcons";
 
 const MOBILE_LINKS = [
@@ -35,11 +39,14 @@ const MOBILE_LINKS = [
 interface NavbarProps {
   onOpenGetStarted: () => void;
   onOpenSeeHowItWorks: () => void;
+  /** Prefix added to in-page anchor links (e.g. "/" so they resolve from subpages). */
+  linkPrefix?: string;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenGetStarted,
   onOpenSeeHowItWorks,
+  linkPrefix = "",
 }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -88,67 +95,92 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const platformTools = [
     {
-      title: "Website Builder",
-      desc: "Fast responsive storefronts & landing pages",
+      title: "Drag-and-Drop Builder",
+      desc: "No-code storefronts, pages & lead forms",
       icon: WebsiteBuilderColorIcon,
       badge: "POPULAR",
-      href: "#tools",
+      href: "/platform/website-builder",
     },
     {
-      title: "Customer CRM",
-      desc: "Unified customer leads & WhatsApp chat history",
+      title: "Omnichannel Inbox",
+      desc: "WhatsApp, Instagram, Facebook, Telegram & Email",
       icon: CustomerCrmColorIcon,
       badge: "HOT",
-      href: "#tools",
+      href: "/platform/omnichannel-inbox",
     },
     {
-      title: "Sales Pipeline",
-      desc: "Visual Kanban deals with stage-by-stage revenue",
+      title: "CRM 360 & Pipeline",
+      desc: "Custom stages, segments & auto-agent routing",
       icon: SalesPipelineColorIcon,
       badge: "NEW",
-      href: "#tools",
+      href: "/platform/crm-360",
     },
     {
-      title: "Workflow Automation",
-      desc: "Zero-delay triggers & instant buyer follow-ups",
+      title: "AI Voice & Automations",
+      desc: "Bulk AI calls & visual drag-and-drop flows",
       icon: AutomationColorIcon,
       badge: "0.4s",
-      href: "#tools",
+      href: "/platform/bulk-ai-calls",
     },
     {
-      title: "Analytics & Reports",
-      desc: "Real-time conversion metrics and revenue tracking",
+      title: "Ad & Product Intelligence",
+      desc: "8-tool market, ad & competitor research suite",
       icon: AnalyticsColorIcon,
       badge: "LIVE",
-      href: "#tools",
+      href: "/platform/ad-product-library",
+    },
+    {
+      title: "Sales & Profit Tracker",
+      desc: "Live revenue, SKU margins & channel ROI",
+      icon: SalesTrackerIcon,
+      badge: "15m",
+      href: "/platform/sales-tracker",
     },
     {
       title: "Integrations & APIs",
-      desc: "WhatsApp, Razorpay, Google & 6,000+ app connectors",
+      desc: "Stripe, Razorpay, Meta & 6,000+ app connectors",
       icon: IntegrationsColorIcon,
       badge: "CONNECT",
-      href: "#integrations",
+      href: "/developers",
     },
   ];
 
   const solutionIndustries = [
     {
-      title: "Retail & eCommerce",
-      desc: "Storefronts with real-time UPI orders & WhatsApp updates",
+      title: "Retail & D2C eCommerce",
+      desc: "Drag-and-drop storefronts & WhatsApp order updates",
       icon: RetailColorIcon,
-      href: "#solutions",
+      href: "/solutions/retail-d2c",
     },
     {
-      title: "Professional Services",
-      desc: "Client intake briefs & retainer agreement tracking",
+      title: "Service Businesses",
+      desc: "No-code service pages & booking calendars",
       icon: ServicesColorIcon,
-      href: "#solutions",
+      href: "/solutions/service-businesses",
     },
     {
       title: "Real Estate & Developers",
-      desc: "Property inquiries, floorplans & site visit schedules",
+      desc: "CTWA lead capture & AI voice-booked tours",
       icon: RealEstateColorIcon,
-      href: "#solutions",
+      href: "/solutions/real-estate",
+    },
+    {
+      title: "Agencies",
+      desc: "Client workspaces, Auto-DM funnels & ad intel",
+      icon: AgenciesColorIcon,
+      href: "/solutions/agencies",
+    },
+    {
+      title: "Education & Coaching",
+      desc: "Admission pages & AI counselor follow-ups",
+      icon: EducationColorIcon,
+      href: "/solutions/education",
+    },
+    {
+      title: "Hospitality & Cafes",
+      desc: "QR menus, reservations & loyalty broadcasts",
+      icon: HospitalityColorIcon,
+      href: "/solutions/hospitality",
     },
   ];
 
@@ -175,7 +207,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center justify-between">
           {/* Left: Official CODIIC Logo */}
           <a
-            href="#"
+            href={linkPrefix || "#"}
             className="flex items-center gap-2 focus:outline-none shrink-0 group py-1"
             aria-label="CODIIC Homepage"
           >
@@ -253,7 +285,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Integrations Link */}
             <a
-              href="#integrations"
+              href={`${linkPrefix}#integrations`}
               onClick={() => setActiveDropdown(null)}
               className="px-3.5 py-1.5 rounded-full text-[#171923] hover:text-[#00B879] hover:bg-[#F7F9F8] transition-all"
             >
@@ -262,7 +294,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Reviews Link */}
             <a
-              href="#reviews"
+              href={`${linkPrefix}#reviews`}
               onClick={() => setActiveDropdown(null)}
               className="px-3.5 py-1.5 rounded-full text-[#171923] hover:text-[#00B879] hover:bg-[#F7F9F8] transition-all"
             >
@@ -287,8 +319,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="header-cta-button"
               className="group relative h-9 sm:h-auto px-3.5 sm:px-5 sm:py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#00B879]/30 hover:shadow-lg hover:shadow-[#00B879]/40 transition-all duration-200 flex items-center gap-1.5 active:scale-95 cursor-pointer whitespace-nowrap"
             >
-              <span className="sm:hidden">Start ₹1/day</span>
-              <span className="hidden sm:inline">Start at ₹1/day</span>
+              <span className="sm:hidden">Start Free</span>
+              <span className="hidden sm:inline">Start Free</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </button>
 
@@ -342,10 +374,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
                 {platformTools.map((tool) => {
                   const Icon = tool.icon;
+                  const href = tool.href.startsWith("#")
+                    ? `${linkPrefix}${tool.href}`
+                    : tool.href;
                   return (
                     <a
                       key={tool.title}
-                      href={tool.href}
+                      href={href}
                       onClick={() => setActiveDropdown(null)}
                       className="group p-3 rounded-2xl hover:bg-[#F7F9F8] border border-transparent hover:border-[#E2E6E4] transition-all flex items-start gap-3"
                     >
@@ -381,16 +416,19 @@ export const Navbar: React.FC<NavbarProps> = ({
                     Industry-Specific Workflows
                   </span>
                 </div>
-                <span className="text-xs text-[#5A6270]">Built for Indian business operations</span>
+                <span className="text-xs text-[#5A6270]">Built for global business operations</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {solutionIndustries.map((ind) => {
                   const Icon = ind.icon;
+                  const href = ind.href.startsWith("#")
+                    ? `${linkPrefix}${ind.href}`
+                    : ind.href;
                   return (
                     <a
                       key={ind.title}
-                      href={ind.href}
+                      href={href}
                       onClick={() => setActiveDropdown(null)}
                       className="group p-3.5 rounded-2xl hover:bg-[#F7F9F8] border border-transparent hover:border-[#E2E6E4] transition-all flex items-start gap-3"
                     >
@@ -421,7 +459,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {MOBILE_LINKS.map((link, i) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={`${linkPrefix}${link.href}`}
                 onClick={() => setMobileMenuOpen(false)}
                 className="group flex items-center justify-between px-3.5 py-3.5 rounded-2xl text-[15px] font-semibold text-[#171923] active:bg-[#E8F8F1] hover:bg-[#E8F8F1]/70 transition-colors animate-tool-in"
                 style={{ animationDelay: `${60 + i * 40}ms` }}
@@ -442,7 +480,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="mt-2 p-2 rounded-2xl bg-gradient-to-br from-[#E8F8F1] to-[#D4F2E4] border border-[#00B879]/15 space-y-2">
             <div className="flex items-center justify-center gap-2 pt-1 text-xs font-semibold text-[#00593A]">
               <Sparkles className="w-3.5 h-3.5 text-[#00B879]" />
-              Plans start at just <span className="font-extrabold text-[#008F60]">₹1/day</span>
+              Start free · Pro at <span className="font-extrabold text-[#008F60]">₹1/day</span>
             </div>
             <button
               type="button"
@@ -452,7 +490,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }}
               className="w-full py-3.5 rounded-full bg-[#00B879] active:bg-[#008F60] text-white text-sm font-bold shadow-lg shadow-[#00B879]/30 flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
             >
-              Start at ₹1/day
+              Start Free
               <ArrowRight className="w-4 h-4" />
             </button>
             <button

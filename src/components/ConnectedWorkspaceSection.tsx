@@ -21,35 +21,35 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
 
   const steps = [
     {
-      id: "website",
+      id: "capture",
       icon: WebsiteBuilderColorIcon,
-      label: "1. Storefront & Website",
-      action: "New inquiry received",
-      desc: "Visitor submits request on your website",
+      label: "1. Capture · Storefront & Ads",
+      action: "New lead captured",
+      desc: "Visitor clicks a CTWA ad, comments on Instagram, submits a Lead Gen Form, or shops your drag-and-drop storefront",
       color: "#00B879",
     },
     {
-      id: "crm",
+      id: "engage",
       icon: CustomerCrmColorIcon,
-      label: "2. Customer CRM",
-      action: "Lead profile created",
-      desc: "Contact information & chat history organized",
+      label: "2. Engage · AI Chat & Voice",
+      action: "AI replies in 0.4s",
+      desc: "Trained on your Knowledge Base, AI replies across WhatsApp/IG/Telegram or triggers a Bulk AI Voice Call",
       color: "#008F60",
     },
     {
-      id: "pipeline",
+      id: "convert",
       icon: SalesPipelineColorIcon,
-      label: "3. Sales Pipeline",
-      action: "Deal card updated",
-      desc: "Rep assigned with revenue stage visibility",
+      label: "3. Convert · CRM 360 Pipeline",
+      action: "Deal auto-advances stages",
+      desc: "Custom stages (New Lead → Won) with auto-agent routing, segments, and labels",
       color: "#00B879",
     },
     {
-      id: "automation",
+      id: "retain",
       icon: AutomationColorIcon,
-      label: "4. Automation Engine",
-      action: "Follow-up triggered",
-      desc: "Instant WhatsApp catalog sent to buyer",
+      label: "4. Retain · Orders & Drips",
+      action: "Repeat value automated",
+      desc: "Order management, support tickets, invoices, and scheduled Drip Campaigns",
       color: "#008F60",
     },
   ];
@@ -74,8 +74,8 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
           </h2>
 
           <p className="mt-5 text-base sm:text-lg text-[#5A6270] leading-relaxed max-w-2xl mx-auto">
-            From the first inquiry to the next follow-up, CODIIC keeps your business information
-            connected in real time. Website se customer tak — sab connected.
+            From the first click to repeat purchase, CODIIC keeps every lead, chat, order and ticket
+            connected in one CRM 360 stream — in real time.
           </p>
         </div>
 
@@ -155,7 +155,7 @@ export const ConnectedWorkspaceSection: React.FC<ConnectedWorkspaceSectionProps>
                 />
               </div>
               <span className="text-[#171923] font-semibold">
-                Single database. Zero duplicate entries between departments.
+                Lead aayi, AI ne baat ki, aur payment bhi ho gayi — single database, zero duplicate entries.
               </span>
             </div>
 

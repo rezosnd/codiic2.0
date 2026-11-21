@@ -647,3 +647,31 @@ body {
     display: none;
   }
 }
+/* ─── Scroll-reveal utility (shared across sub-pages) ─────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.65s ease-out,
+    transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Subtle emerald dot-grid texture for hero areas */
+.dot-grid {
+  background-image: radial-gradient(rgba(0, 184, 121, 0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+}

@@ -19,20 +19,20 @@ interface OlearisIndustrySectionProps {
 const INDUSTRIES = [
   {
     id: "retail",
-    title: "Retail & eCommerce",
-    tag: "Storefront & Orders",
+    title: "Retail & D2C eCommerce",
+    tag: "Storefronts & Orders",
     icon: RetailColorIcon,
-    desc: "Connect your storefront with real-time UPI orders, WhatsApp customer updates, and auto-synced inventory.",
+    desc: "Drag-and-drop storefronts, multi-currency checkout, AI voice order verification, and automated WhatsApp tracking updates.",
     imageSrc: "/images/industries/retail.jpg",
     imageAlt: "Modern boutique retail storefront with curated lifestyle displays",
     accent: "#00B879",
   },
   {
     id: "services",
-    title: "Professional Services",
-    tag: "Retainers & Inquiries",
+    title: "Service Businesses & Consultants",
+    tag: "Bookings & Reminders",
     icon: ServicesColorIcon,
-    desc: "Organize client consultations, intake briefs, and retainer proposals with clear team task assignment.",
+    desc: "No-code service pages, online booking calendars, team & agent assignment, and automated appointment reminders.",
     imageSrc: "/images/industries/services.jpg",
     imageAlt: "Professional advisory consultants meeting in a bright contemporary office",
     accent: "#008F60",
@@ -42,37 +42,37 @@ const INDUSTRIES = [
     title: "Real Estate & Developers",
     tag: "Site Visits & Deals",
     icon: RealEstateColorIcon,
-    desc: "Keep property inquiries, floorplan shares, and site-visit schedules visible across your deal pipeline.",
+    desc: "Property showcase pages, Facebook/CTWA lead capture, instant WhatsApp floorplan delivery, and AI voice-booked tours.",
     imageSrc: "/images/industries/real-estate.jpg",
     imageAlt: "Contemporary architectural residential property development",
     accent: "#00B879",
   },
   {
     id: "agencies",
-    title: "Creative Agencies",
-    tag: "Pitches & Scopes",
+    title: "Creative & Marketing Agencies",
+    tag: "Pitches & Retainers",
     icon: AgenciesColorIcon,
-    desc: "Capture website inquiries, qualify client budgets, and track pitch milestones in one continuous feed.",
+    desc: "Rapid client site launches, multi-client inbox, Ad Library & Competitor research, and retainer invoicing.",
     imageSrc: "/images/industries/agencies.jpg",
     imageAlt: "Creative digital agency team collaborating on digital campaign design",
     accent: "#008F60",
   },
   {
     id: "education",
-    title: "Education & Academies",
+    title: "Education & Coaching Academies",
     tag: "Admissions & Leads",
     icon: EducationColorIcon,
-    desc: "Manage prospective student enrollment forms, batch intake questions, and automated WhatsApp course brochures.",
+    desc: "Drag-and-drop admission pages, automated WhatsApp course brochures, counseling call scheduling, and fee reminders.",
     imageSrc: "/images/industries/education.jpg",
     imageAlt: "Modern interactive education seminar with active participants",
     accent: "#00B879",
   },
   {
     id: "hospitality",
-    title: "Hospitality & Cafes",
+    title: "Hospitality, Salons & Cafes",
     tag: "Menus & Bookings",
     icon: HospitalityColorIcon,
-    desc: "Give diners and guests a beautiful online presence to explore menus, reserve tables, and connect via WhatsApp.",
+    desc: "QR digital menus, table & slot reservations, and automated WhatsApp loyalty broadcasts.",
     imageSrc: "/images/industries/hospitality.jpg",
     imageAlt: "Aesthetic modern boutique cafe interior with warm natural lighting",
     accent: "#008F60",
@@ -363,7 +363,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
             </em>
           </h2>
           <p className="text-[14px] sm:text-[16px] text-[#5A6270] leading-relaxed">
-            Whether you run a retail shop, advisory practice, or agency, CODIIC connects your daily customer operations.
+            Whether you run a retail shop, advisory practice, or agency anywhere in the world, CODIIC connects your daily customer operations.
           </p>
         </div>
 

@@ -42,24 +42,24 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
     { id: "hero", label: "Hero Banner", tag: "Main", icon: LayoutTemplate },
     { id: "products", label: "Product Grid", tag: "Store", icon: ShoppingBag },
     { id: "proof", label: "Client Proof", tag: "Trust", icon: ShieldCheck },
-    { id: "contact", label: "CRM Form", tag: "Leads", icon: MessageSquare },
+    { id: "contact", label: "Lead Form", tag: "Leads", icon: MessageSquare },
   ] as const;
 
   const features = [
     {
       icon: WebsiteBuilderColorIcon,
-      title: "Visual Drag & Drop",
-      desc: "Pre-crafted storefront, catalog & intake modules with zero coding required.",
+      title: "True Drag-and-Drop Builder",
+      desc: "Pick a theme and visually drop Hero Banners, Product Grids, Client Proof, Galleries & Lead Forms — no developers needed.",
     },
     {
       icon: AutomationColorIcon,
-      title: "Zero Broken Layouts",
-      desc: "Fluid responsive rendering on all mobile phones, tablets, and desktop viewports.",
+      title: "Complete Site Management",
+      desc: "Manage pages, catalogs, blogs, menus, media & store policies in one editor — responsive on Desktop, Tablet & Mobile.",
     },
     {
       icon: CustomerCrmColorIcon,
-      title: "WhatsApp & CRM Connected",
-      desc: "Every buyer inquiry and UPI checkout flows directly into your sales pipeline.",
+      title: "Direct Zero-Plugin Sync",
+      desc: "Every click, checkout & payment (Stripe, Razorpay, PhonePe, UPI) syncs live into CRM 360 & Order Management.",
     },
   ];
 
@@ -107,7 +107,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
             </svg>
             <Pencil className="w-3.5 h-3.5 text-[#171923] relative z-10 -rotate-12" />
             <span className="relative z-10 text-[12px] sm:text-xs font-bold text-[#171923] tracking-tight font-serif italic">
-              Handcrafted layouts · Zero code required
+              No-code website & theme studio · Zero code required
             </span>
           </div>
 
@@ -115,10 +115,10 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
             id="builder-heading"
             className="text-[28px] xs:text-[34px] sm:text-[44px] lg:text-[52px] font-extrabold text-[#171923] tracking-[-0.035em] leading-[1.12] mb-4 sm:mb-5"
           >
-            A professional website.{" "}
+            A professional storefront.{" "}
             <span className="relative inline-block whitespace-nowrap">
               <span className="relative z-10 text-[#008F60] font-serif italic font-normal">
-                Without the complexity.
+                Without the code.
               </span>
               {/* Multi-layer hand-drawn pencil sketch underline */}
               <svg
@@ -185,7 +185,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
           </div>
 
           <p className="text-[13px] sm:text-[15px] lg:text-[16px] text-[#5A6270] leading-relaxed max-w-lg mx-auto px-2">
-            Design and publish high-converting storefronts, landing pages, and lead intake forms — connected straight to your WhatsApp and sales CRM.
+            Design and publish high-converting storefronts, landing pages, and lead forms — with instant custom domain connection and every submission synced straight to CRM 360.
           </p>
 
           {/* Quick CTA */}
@@ -195,11 +195,11 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
               onClick={onOpenGetStarted}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#00B879]/25 transition-all duration-200 active:scale-[0.98] cursor-pointer"
             >
-              <span>Explore Storefront & Website Builder</span>
+              <span>Explore Drag-and-Drop Studio</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <span className="text-[11px] sm:text-xs font-semibold text-[#5A6270]">
-              Included in all plans — <strong className="text-[#008F60]">₹1/day</strong>
+              Included in all plans — <strong className="text-[#008F60]">start free</strong>
             </span>
           </div>
         </div>
@@ -380,10 +380,10 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                 <div className="p-3 rounded-xl bg-white border border-black/10 text-[11px] shadow-xs">
                   <div className="flex items-center gap-1.5 text-[#171923] font-bold mb-1">
                     <span className="w-2 h-2 rounded-full bg-[#008F60] animate-pulse" />
-                    <span>Instant CRM & WhatsApp</span>
+                    <span>Instant CRM 360 Sync</span>
                   </div>
                   <p className="text-[10.5px] text-[#2D260D] leading-snug">
-                    Customer clicks & inquiries sync in real-time with zero extra plugins.
+                    Clicks, checkouts & inquiries sync in real-time — zero extra plugins.
                   </p>
                 </div>
               </aside>
@@ -431,7 +431,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                           Modern Sustainable Home Decor
                         </h3>
                         <p className="text-[11px] sm:text-xs text-[#5A6270] max-w-sm mx-auto leading-relaxed">
-                          Handcrafted lifestyle essentials designed for contemporary Indian homes. Free delivery nationwide.
+                          Handcrafted lifestyle essentials designed for modern homes worldwide. Free global shipping.
                         </p>
                         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2 pt-1 w-full max-w-xs mx-auto">
                           <button
@@ -454,7 +454,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                       <div className="space-y-2.5 my-auto">
                         <div className="flex items-center justify-between pb-1 border-b border-[#EEF2EF]">
                           <span className="text-[11px] sm:text-xs font-bold text-[#171923]">Bestselling Products</span>
-                          <span className="text-[9px] sm:text-[10px] text-[#008F60] font-semibold">UPI Instant Pay</span>
+                          <span className="text-[9px] sm:text-[10px] text-[#008F60] font-semibold">Instant Secure Pay</span>
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-left">
                           <div className="p-2 sm:p-2.5 rounded-xl bg-[#F7F9F8] border border-[#E5ECE7]">
@@ -529,7 +529,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                       </div>
                       <div className="flex items-center gap-1 text-[#171923] font-bold">
                         <RazorpayLogo className="w-3 h-3" />
-                        <span>UPI Ready</span>
+                        <span>Stripe & UPI Ready</span>
                       </div>
                     </div>
                   </div>

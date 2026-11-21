@@ -10,80 +10,80 @@ interface PricingSectionProps {
 
 export const PricingSection: React.FC<PricingSectionProps> = ({
   onOpenGetStarted,
-  onOpenContactSales,
 }) => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("annual");
 
   const plans = [
     {
+      id: "free",
+      name: "Free Forever",
+      badge: "Start Today",
+      desc: "Launch your no-code storefront and organize every customer conversation — no credit card required.",
+      monthlyPrice: "$0",
+      annualPrice: "$0",
+      monthlyNote: "Free forever — no billing",
+      annualNote: "Free forever — no billing",
+      popular: false,
+      ctaText: "Start Free",
+      action: onOpenGetStarted,
+      features: [
+        "No-code drag-and-drop storefront builder",
+        "Basic CRM 360 pipeline & contact timeline",
+        "Unified omnichannel inbox (WhatsApp, IG, FB, Telegram & Email)",
+        "Manual order management",
+        "Ready-made themes & lead forms",
+        "Community support",
+      ],
+      notIncluded: [
+        "Custom domain & WhatsApp Coexistence",
+        "AI voice calling & automation flows",
+      ],
+    },
+    {
       id: "starter",
       name: "Starter",
-      badge: "Emerging Businesses",
-      desc: "For growing businesses looking to establish an online storefront and manage customer leads systematically.",
-      monthlyPrice: "₹2,499",
-      annualPrice: "₹1,999",
-      billingNote: "per month, billed annually",
+      badge: "$1/Day",
+      desc: "For businesses ready to go live on a custom domain with WhatsApp Coexistence and automated selling.",
+      monthlyPrice: "$35",
+      annualPrice: "$30",
+      monthlyNote: "Billed monthly, cancel anytime",
+      annualNote: "Just $1/day billed annually (₹1/day in India)",
       popular: false,
-      ctaText: "Get Started",
+      ctaText: "Start Starter",
       action: onOpenGetStarted,
       features: [
-        "Connected business workspace for up to 3 team members",
-        "Website & Storefront builder with custom domain support",
-        "Centralized CRM lead capture & contact profile timeline",
-        "Visual sales pipeline with up to 3 customizable stages",
-        "Automated email notifications & follow-up reminder alerts",
-        "Standard onboarding & email support",
+        "Everything in Free, plus:",
+        "Custom domain connection with free SSL",
+        "WhatsApp Coexistence — keep your existing number",
+        "Automated catalog replies & preset templates",
+        "Online checkout — Stripe, Razorpay, PhonePe & UPI",
+        "Automated invoicing & WhatsApp receipts",
       ],
       notIncluded: [
-        "Advanced WhatsApp Business API automation",
-        "Multi-team round-robin lead distribution",
+        "Bulk AI Voice Calling & Smart Broadcasts",
+        "8-tool Ad & Competitor Intelligence Suite",
       ],
     },
     {
-      id: "growth",
-      name: "Growth",
+      id: "pro",
+      name: "Pro Growth",
       badge: "Most Popular",
-      desc: "For active businesses that require connected workflows, WhatsApp automation, and sales pipeline forecasting.",
-      monthlyPrice: "₹5,999",
-      annualPrice: "₹4,999",
-      billingNote: "per month, billed annually",
+      desc: "The full growth stack — unlimited automation, AI voice calling, and the complete market intelligence suite.",
+      monthlyPrice: "$19",
+      annualPrice: "$15",
+      monthlyNote: "$19/mo or ₹499/mo in India — cancel anytime",
+      annualNote: "Flat 20% off when billed annually",
       popular: true,
-      ctaText: "Start Growth Plan",
+      ctaText: "Go Pro",
       action: onOpenGetStarted,
       features: [
-        "Full connected workspace for up to 15 team members",
-        "E-commerce storefront with integrated Razorpay & UPI checkout",
-        "Complete Customer CRM with two-way WhatsApp API sync",
-        "Multi-stage Kanban sales pipeline with revenue forecasting",
-        "Visual workflow automation builder (unlimited runs)",
-        "Automated lead scoring & smart round-robin distribution",
-        "Real-time executive analytics & conversion velocity reports",
-        "Priority chat support & dedicated onboarding specialist",
-      ],
-      notIncluded: [
-        "Custom ERP integrations & on-premise dedicated server",
-      ],
-    },
-    {
-      id: "business",
-      name: "Business",
-      badge: "Multi-Team & Enterprise",
-      desc: "For established organizations with multi-department teams, complex approval chains, and custom integrations.",
-      monthlyPrice: "₹11,999",
-      annualPrice: "₹9,999",
-      billingNote: "per month, billed annually",
-      popular: false,
-      ctaText: "Contact Sales",
-      action: onOpenContactSales,
-      features: [
-        "Unlimited users across multiple departments and branches",
-        "Everything in Growth plus full enterprise business suite",
-        "Custom approval chains, internal task boards & client portals",
-        "Inventory management, quote generation & PDF invoicing",
-        "Custom API webhooks, Zapier & legacy accounting sync",
-        "Granular role-based permissions & security audit logs",
-        "Dedicated account manager with 99.9% uptime SLA",
-        "Custom team training & tailored workflow architecture",
+        "Everything in Starter, plus:",
+        "Unlimited drag-and-drop automation flows",
+        "Smart Broadcasts & Drip Campaigns",
+        "Bulk AI Voice Calling & AI follow-ups",
+        "Instagram Auto-DM & CTWA ad routing",
+        "Full 8-tool Ad & Competitor Intelligence Suite",
+        "Multi-agent team access & round-robin routing",
       ],
       notIncluded: [],
     },
@@ -101,16 +101,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#171923] tracking-tight leading-tight">
-            Choose the tools that fit your business.
+            One platform. Transparent global pricing.
           </h2>
 
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F7F9F8] border border-[#E2E8E5] text-xs font-semibold text-[#171923]">
             <span className="w-2 h-2 rounded-full bg-[#00B879]" />
-            <span>Transparent pricing. Koi hidden charges nahi.</span>
+            <span>Transparent pricing. No hidden charges.</span>
           </div>
 
           <p className="text-base sm:text-lg text-[#555A68] leading-relaxed">
-            Start with the essentials and activate additional modules as your team and customer volume expand. No lock-in.
+            Start free, upgrade when you grow — flat 20% off all annual plans. No lock-in.
           </p>
 
           {/* Billing Cycle Toggle */}
@@ -196,9 +196,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
                       </span>
                     </div>
                     <div className="text-[11px] text-[#555A68] mt-1 font-mono">
-                      {billingCycle === "annual"
-                        ? "Billed annually (Includes 20% discount)"
-                        : "Billed monthly, cancel anytime"}
+                      {billingCycle === "annual" ? plan.annualNote : plan.monthlyNote}
                     </div>
                   </div>
 
@@ -240,14 +238,15 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
           })}
         </div>
 
-        {/* Note on plan variations */}
+        {/* Stack savings callout */}
         <div className="mt-12 p-5 rounded-2xl bg-[#F7F9F8] border border-[#E2E8E5] max-w-3xl mx-auto text-center text-xs text-[#555A68] space-y-1">
           <div className="font-bold text-[#171923] flex items-center justify-center gap-1.5">
             <ShieldCheck className="w-4 h-4 text-[#00B879]" />
-            <span>Note on Plan Capabilities</span>
+            <span>Replace Your Entire Stack</span>
           </div>
           <p>
-            Available features vary by plan. All subscriptions include secure cloud hosting, 99.9% uptime SLA, automated daily backups, and SSL encryption.
+            Replace Webflow/Shopify + Wati + Klaviyo + Ad Spy Tools — save $300+/month with CODIIC.
+            All plans include secure AWS cloud hosting, automated daily backups, and SSL encryption.
           </p>
         </div>
 

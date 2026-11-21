@@ -12,6 +12,7 @@ import { IntegrationNetwork } from "@/components/IntegrationNetwork";
 import { OlearisIndustrySection } from "@/components/OlearisIndustrySection";
 import { TuyoReviewsSection } from "@/components/TuyoReviewsSection";
 import { LogoStrip } from "@/components/LogoStrip";
+import { FaqSection } from "@/components/FaqSection";
 import { FinalCtaSection } from "@/components/FinalCtaSection";
 import { ChakorFooter } from "@/components/ChakorFooter";
 import { WhatsAppFloatingButton } from "@/components/WhatsAppFloatingButton";
@@ -54,10 +55,13 @@ export default function Home() {
         {/* 10. Customer Reviews & Playbooks (Tuyo-inspired large flowing review cards) */}
         <TuyoReviewsSection />
 
-        {/* 11. Customer / Integration Logo Strip (Understated slim monochrome logo strip) */}
+        {/* 12. Customer / Integration Logo Strip (Understated slim monochrome logo strip) */}
         <LogoStrip />
 
-        {/* 12. Final CTA (Ready to bring your business together?) */}
+        {/* 13. Objection-Handling FAQ (Clean accordion) */}
+        <FaqSection />
+
+        {/* 14. Final CTA (One Platform. Your Entire Business.) */}
         <FinalCtaSection onOpenGetStarted={goToLogin} onOpenSeeHowItWorks={goToLogin} />
       </main>
 

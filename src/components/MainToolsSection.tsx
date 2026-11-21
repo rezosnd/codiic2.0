@@ -3,28 +3,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { RupeeOfferPill } from "./RupeeOffer";
+import { ArrowRight, Check, PhoneCall } from "lucide-react";
 import {
-  ArrowRight,
-  Check,
-  Sparkles,
-  Search,
-  SlidersHorizontal,
-  Play,
-  Bookmark,
-  TrendingUp,
-  Zap,
-} from "lucide-react";
-import {
-  SalesTrackerIcon,
-  PortfolioIcon,
-  ShopLibraryIcon,
-  CompetitorsIcon,
-  AdLibraryIcon,
-  ProductLibraryIcon,
-  AdvertiserTrackerIcon,
+  WebsiteBuilderColorIcon,
+  CustomerCrmColorIcon,
+  SalesPipelineColorIcon,
+  AutomationColorIcon,
+  AgenciesColorIcon,
   MagicAiIcon,
+  SalesTrackerIcon,
+  SmootherFollowupsColorIcon,
 } from "./ColorfulProductIcons";
-import { GoogleAdsLogo, InstagramLogo, MetaLogo } from "./BrandLogos";
 
 interface MainToolsSectionProps {
   onOpenGetStarted: () => void;
@@ -48,280 +37,253 @@ interface Tool {
 
 const TOOLS: Tool[] = [
   {
-    id: "sales-tracker",
-    title: "Sales Tracker",
-    category: "Real-time revenue",
-    badge: "LIVE DATA",
-    desc: "Monitor store and product sales over time to gain insights into revenue, volume, and operational trends.",
-    icon: SalesTrackerIcon,
-    image: "/sales.png",
+    id: "website-studio",
+    title: "Drag-and-Drop Website Studio",
+    category: "No-code storefront",
+    badge: "NO-CODE BUILDER",
+    desc: "Pick a theme and visually build your storefront — pages, product catalogs, blogs, menus, and store policies — responsive across every device with instant custom domain connection.",
+    icon: WebsiteBuilderColorIcon,
+    image: "/module1.avif",
     stats: [
-      { value: "15 min", label: "Data refresh cycle" },
-      { value: "₹480Cr+", label: "GMV tracked monthly" },
+      { value: "60 sec", label: "Custom domain live" },
+      { value: "100%", label: "Responsive themes" },
     ],
     chips: [
-      { label: "Revenue today", value: "+18.4%", trend: "up" },
-      { label: "New orders / hr", value: "+24", trend: "up" },
+      { label: "Pages published", value: "+3", trend: "up" },
+      { label: "Domain status", value: "SSL live", trend: "alert" },
     ],
     highlights: [
       {
-        title: "Real-time revenue monitoring",
-        desc: "Track daily, weekly, and monthly sales volume without manual spreadsheets.",
+        title: "True visual block library",
+        desc: "Drag in Hero Banners, Product Grids, Client Proof, Galleries & Lead Forms — zero code.",
       },
       {
-        title: "Product level breakdown",
-        desc: "Pinpoint top-performing SKUs and order counts across your catalog.",
+        title: "Complete site management",
+        desc: "Pages, catalogs, blogs, menus, media & store policies in one visual editor.",
       },
       {
-        title: "Unit margin calculation",
-        desc: "Automatically deduct COGS and shipping to track real net profits.",
+        title: "Instant custom domain",
+        desc: "Connect your domain and go live in 60 seconds with free SSL included.",
       },
     ],
   },
   {
-    id: "portfolio",
-    title: "Portfolio",
-    category: "Saved assets",
-    badge: "ORGANIZE",
-    desc: "Save and organize high-performing stores, winning products, and ad angles into custom monitored portfolios.",
-    icon: PortfolioIcon,
-    image: "/portfolio.png",
+    id: "omnichannel-inbox",
+    title: "Omnichannel Unified Inbox",
+    category: "Team chat hub",
+    badge: "MULTI-CHANNEL CHAT",
+    desc: "Manage and reply to customers across WhatsApp Cloud API, WhatsApp Business App (Coexistence), Instagram, Facebook, Telegram, and Email from one shared team inbox.",
+    icon: CustomerCrmColorIcon,
+    image: "/module2.avif",
     stats: [
-      { value: "Unlimited", label: "Folders & watchlists" },
-      { value: "Hourly", label: "Auto-sync of tracked stores" },
+      { value: "6+", label: "Channels unified" },
+      { value: "0.4s", label: "AI first-reply speed" },
     ],
     chips: [
-      { label: "Bestseller launched", value: "Eco Home", trend: "alert" },
-      { label: "Portfolio growth", value: "+31.2%", trend: "up" },
+      { label: "Open chats", value: "128", trend: "up" },
+      { label: "Missed messages", value: "0", trend: "alert" },
     ],
     highlights: [
       {
-        title: "Custom folder organization",
-        desc: "Group tracked brands by niche, supplier, or growth opportunity.",
+        title: "WhatsApp Coexistence built-in",
+        desc: "Cloud API and your Business App run side-by-side on the same number.",
       },
       {
-        title: "Automated revenue alerts",
-        desc: "Get notified when a tracked store launches a new bestseller or scales ad spend.",
+        title: "Shared team inbox",
+        desc: "Agent assignment, internal notes, labels and full chat history in one view.",
       },
       {
-        title: "Collaborative team notes",
-        desc: "Tag teammates on prospective products and shared inventory plans.",
+        title: "Keyword triggers & templates",
+        desc: "Preset replies and smart triggers that cut messaging costs up to 40%.",
       },
     ],
   },
   {
-    id: "shop-library",
-    title: "Shop Library",
-    category: "Store research",
-    badge: "MILLIONS OF SHOPS",
-    desc: "Search millions of active online storefronts with granular filters for revenue, creation date, theme, and apps used.",
-    icon: ShopLibraryIcon,
-    image: "/shop_library.png",
+    id: "crm-pipeline",
+    title: "CRM 360 & Visual Pipeline",
+    category: "Leads & deals",
+    badge: "LEAD & DEAL CRM",
+    desc: "Track every lead from first message to closed sale with customizable deal stages, auto-agent routing, customer segments, labels, and instant profile history.",
+    icon: SalesPipelineColorIcon,
+    image: "/module3.avif",
     stats: [
-      { value: "2.4M+", label: "Storefronts indexed" },
-      { value: "40+", label: "Granular search filters" },
+      { value: "360°", label: "Customer timeline" },
+      { value: "Auto", label: "Agent routing" },
     ],
     chips: [
-      { label: "Stores matched", value: "1,284", trend: "up" },
-      { label: "Avg. daily revenue", value: "₹96K", trend: "up" },
+      { label: "Deals moved", value: "+18", trend: "up" },
+      { label: "Won this week", value: "₹4.5L", trend: "up" },
     ],
     highlights: [
       {
-        title: "Comprehensive storefront database",
-        desc: "Filter through verified Shopify, WooCommerce, and custom Indian stores.",
+        title: "Customizable Kanban stages",
+        desc: "New Lead, Contacted, Qualified, Proposal, Won — shape stages to your process.",
       },
       {
-        title: "App & stack detection",
-        desc: "See which checkout, logistics, and WhatsApp apps power competitor growth.",
+        title: "Auto-agent routing",
+        desc: "Round-robin assignment, segments and labels keep every lead owned.",
       },
       {
-        title: "Historical traffic & rank",
-        desc: "Understand store age, visitor velocity, and daily gross order flow.",
+        title: "Instant profile history",
+        desc: "Full chat, order and deal timeline on every customer card.",
       },
     ],
   },
   {
-    id: "competitors",
-    title: "Competitors",
-    category: "Benchmarking",
-    badge: "SIDE-BY-SIDE",
-    desc: "Benchmark multiple competing brands side-by-side to track catalog updates, pricing changes, and market shifts.",
-    icon: CompetitorsIcon,
-    image: "/competeteor.png",
+    id: "bot-flow-builder",
+    title: "Visual Bot & Flow Builder",
+    category: "No-code automation",
+    badge: "NO-CODE AUTOMATION",
+    desc: "Build drag-and-drop chat automations, keyword triggers, Click-to-WhatsApp (CTWA) ad flows, and Instagram Auto-DM funnels without writing code.",
+    icon: AutomationColorIcon,
+    image: "/module4.avif",
     stats: [
-      { value: "Up to 10", label: "Brands compared at once" },
-      { value: "Instant", label: "Price & SKU change alerts" },
+      { value: "Unlimited", label: "Automation flows" },
+      { value: "0", label: "Lines of code" },
     ],
     chips: [
-      { label: "Price drop detected", value: "−8%", trend: "down" },
-      { label: "New SKUs this week", value: "+12", trend: "alert" },
+      { label: "Auto-DM replies", value: "Live", trend: "up" },
+      { label: "CTWA flows", value: "+12", trend: "alert" },
     ],
     highlights: [
       {
-        title: "Direct pricing comparison",
-        desc: "Spot competitor price drops, flash discounts, and bundle strategies.",
+        title: "Drag-and-drop flow canvas",
+        desc: "Connect triggers, conditions and replies visually — publish in minutes.",
       },
       {
-        title: "New product launch alerts",
-        desc: "Know the moment a competitor adds new SKUs or updates their home banner.",
+        title: "CTWA ad routing",
+        desc: "Click-to-WhatsApp ads drop leads straight into the right flow.",
       },
       {
-        title: "Market share trajectory",
-        desc: "Compare relative sales velocity across leading brands in your niche.",
+        title: "Instagram Auto-DM funnels",
+        desc: "Turn comments and story replies into automated conversations.",
       },
     ],
   },
   {
-    id: "ad-library",
-    title: "Ad Library",
-    category: "Creative spy",
-    badge: "HOT ADS",
-    desc: "Explore active high-converting ad creatives across Meta, TikTok, and Google to uncover winning formats.",
-    icon: AdLibraryIcon,
-    image: "/ad_library.png",
+    id: "broadcasts-drips",
+    title: "Smart Broadcasts & Drips",
+    category: "Campaign engine",
+    badge: "CAMPAIGN ENGINE",
+    desc: "Send high-converting WhatsApp campaigns and automated multi-day drip sequences using pre-approved templates that cut messaging costs by up to 40%.",
+    icon: AgenciesColorIcon,
+    image: "/module5.avif",
     stats: [
-      { value: "18M+", label: "Ad creatives archived" },
-      { value: "3", label: "Major ad networks covered" },
+      { value: "40%", label: "Lower messaging cost" },
+      { value: "Multi-day", label: "Drip sequences" },
     ],
     chips: [
-      { label: "Running 30+ days", value: "842 ads", trend: "up" },
-      { label: "Hook retention", value: "98%", trend: "up" },
+      { label: "Campaign sent", value: "12.4K", trend: "up" },
+      { label: "Drip day 3", value: "Scheduled", trend: "alert" },
     ],
     highlights: [
       {
-        title: "Live creative feeds",
-        desc: "Analyze active video hooks, carousel designs, and compelling captions.",
+        title: "High-converting broadcasts",
+        desc: "Segment audiences and send offers, launches and restock alerts at scale.",
       },
       {
-        title: "Campaign longevity signals",
-        desc: "Filter by ads active for 30+ days to identify proven high-ROI angles.",
+        title: "Automated drip sequences",
+        desc: "Multi-day follow-up journeys that nurture leads until they buy.",
       },
       {
-        title: "Direct landing page preview",
-        desc: "Inspect the exact conversion funnel and checkout flow used by top advertisers.",
+        title: "Pre-approved templates",
+        desc: "Ready-made Meta-approved templates that maximize delivery and savings.",
       },
     ],
   },
   {
-    id: "product-library",
-    title: "Product Library",
-    category: "Winning catalog",
-    badge: "HOT PRODUCTS",
-    desc: "Database of trending products with verified order velocity, profit margin calculators, and supplier links.",
-    icon: ProductLibraryIcon,
-    image: "/product_library.png",
-    stats: [
-      { value: "350K+", label: "Products with verified orders" },
-      { value: "64%", label: "Average tracked margin" },
-    ],
-    chips: [
-      { label: "Trending this week", value: "+212", trend: "up" },
-      { label: "Verified suppliers", value: "4.8K", trend: "alert" },
-    ],
-    highlights: [
-      {
-        title: "Verified order numbers",
-        desc: "Inspect actual transactions instead of vague estimated vanity rankings.",
-      },
-      {
-        title: "Built-in profit calculator",
-        desc: "Calculate landed costs, ad targets, and expected margin before sourcing.",
-      },
-      {
-        title: "Verified direct suppliers",
-        desc: "Connect directly with verified domestic and international fulfillment partners.",
-      },
-    ],
-  },
-  {
-    id: "advertiser-tracker",
-    title: "Advertiser Tracker",
-    category: "Campaign monitor",
-    badge: "AD SPEND INTEL",
-    desc: "Track competitor advertising campaigns over time to discover when they scale spend or pivot messaging.",
-    icon: AdvertiserTrackerIcon,
-    image: "/advertiser_tracker.png",
-    stats: [
-      { value: "120K+", label: "Advertisers monitored" },
-      { value: "Daily", label: "Spend & creative snapshots" },
-    ],
-    chips: [
-      { label: "Spend scaling", value: "+45%", trend: "up" },
-      { label: "Creatives paused", value: "6", trend: "down" },
-    ],
-    highlights: [
-      {
-        title: "Ad spend scaling alerts",
-        desc: "Get pinged when a competitor ramps up new variations of an ad.",
-      },
-      {
-        title: "Creative fatigue detection",
-        desc: "See which ad hooks they pause and what new angles replace them.",
-      },
-      {
-        title: "Targeting & demographic insights",
-        desc: "Understand buyer age, region, and placement distribution.",
-      },
-    ],
-  },
-  {
-    id: "magic-ai-search",
-    title: "Magic AI Search",
-    category: "AI discovery",
-    badge: "NATURAL LANGUAGE",
-    desc: "Ask AI in plain language to find stores, products, and campaign strategies matching your exact criteria.",
+    id: "ai-knowledge-base",
+    title: "AI Knowledge Base & 24/7 Assistant",
+    category: "Custom AI brain",
+    badge: "CUSTOM AI BRAIN",
+    desc: "Train your AI assistant on your business PDFs, website pages, and FAQs so it answers customer questions and shares catalogs in 0.4 seconds.",
     icon: MagicAiIcon,
-    image: "/magic_ai.png",
+    image: "/module6.avif",
     stats: [
-      { value: "< 3 sec", label: "Average answer time" },
-      { value: "Plain text", label: "No filters or query syntax" },
+      { value: "0.4s", label: "Answer speed" },
+      { value: "24/7", label: "Always-on coverage" },
     ],
     chips: [
-      { label: "Opportunities found", value: "18", trend: "alert" },
-      { label: "Avg. niche margin", value: "68%", trend: "up" },
+      { label: "Questions answered", value: "Auto", trend: "up" },
+      { label: "Catalogs shared", value: "Instant", trend: "alert" },
     ],
     highlights: [
       {
-        title: "Natural language query",
-        desc: "Search: 'Find Indian lifestyle brands making ₹15L/mo with high repeat orders.'",
+        title: "Train on your content",
+        desc: "Upload PDFs, website pages and FAQs — your AI learns your business.",
       },
       {
-        title: "Instant structured answers",
-        desc: "Get sorted tables, growth graphs, and supplier leads within seconds.",
+        title: "Instant answers & catalogs",
+        desc: "Replies and product catalogs delivered to customers in 0.4 seconds.",
       },
       {
-        title: "Predictive opportunity scoring",
-        desc: "AI identifies underserved niches with low ad competition and high search demand.",
+        title: "Human handoff anytime",
+        desc: "Seamlessly routes tricky chats to your team inside the same inbox.",
+      },
+    ],
+  },
+  {
+    id: "catalog-orders",
+    title: "Catalog, Orders & Bookings",
+    category: "Commerce & scheduling",
+    badge: "COMMERCE & SCHEDULING",
+    desc: "Manage product SKUs, track live customer orders, schedule service appointments, and send automated receipts and status updates in one workspace.",
+    icon: SalesTrackerIcon,
+    image: "/module7.avif",
+    stats: [
+      { value: "Live", label: "Order tracking" },
+      { value: "Auto", label: "Receipts & updates" },
+    ],
+    chips: [
+      { label: "Orders today", value: "+42", trend: "up" },
+      { label: "Bookings", value: "12 slots", trend: "alert" },
+    ],
+    highlights: [
+      {
+        title: "Product catalog & SKUs",
+        desc: "Organize variants, pricing and inventory across your storefront and inbox.",
+      },
+      {
+        title: "Orders & appointments",
+        desc: "Track live orders and schedule service bookings from one table.",
+      },
+      {
+        title: "Automated status updates",
+        desc: "Receipts, confirmations and tracking sent to customers on WhatsApp.",
+      },
+    ],
+  },
+  {
+    id: "ai-voice-calls",
+    title: "Bulk AI Voice Calls",
+    category: "AI voice engine",
+    badge: "AI VOICE",
+    desc: "Automatically call new leads, confirm orders, and book appointments directly onto your calendar with human-like AI voice agents.",
+    icon: SmootherFollowupsColorIcon,
+    stats: [
+      { value: "Bulk", label: "Simultaneous calls" },
+      { value: "Auto", label: "Calendar bookings" },
+    ],
+    chips: [
+      { label: "Calls completed", value: "1.2K", trend: "up" },
+      { label: "Appointments", value: "+42", trend: "alert" },
+    ],
+    highlights: [
+      {
+        title: "Instant lead callbacks",
+        desc: "AI calls every new lead within seconds of capture — no manual dialing.",
+      },
+      {
+        title: "Order verification calls",
+        desc: "Confirm COD orders and delivery details automatically by voice.",
+      },
+      {
+        title: "Calendar appointment booking",
+        desc: "Books demos, site visits and consultations straight onto your calendar.",
       },
     ],
   },
 ];
-
-const Sparkline: React.FC<{ points: number[]; color?: string; className?: string }> = ({
-  points,
-  color = "#00B879",
-  className = "w-16 h-6",
-}) => {
-  const max = Math.max(...points);
-  const min = Math.min(...points);
-  const range = max - min || 1;
-  const d = points
-    .map((p, i) => `${(i / (points.length - 1)) * 100},${28 - ((p - min) / range) * 24}`)
-    .join(" ");
-  return (
-    <svg viewBox="0 0 100 30" preserveAspectRatio="none" className={className}>
-      <polyline
-        points={d}
-        fill="none"
-        stroke={color}
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        vectorEffect="non-scaling-stroke"
-      />
-    </svg>
-  );
-};
 
 const MockHeader: React.FC<{
   icon?: React.ReactNode;
@@ -337,373 +299,52 @@ const MockHeader: React.FC<{
   </div>
 );
 
-const Segmented: React.FC<{ items: string[] }> = ({ items }) => (
-  <div className="flex items-center gap-0.5 bg-[#F2F4F1] p-0.5 rounded-lg text-[10px] font-semibold text-[#5A6270] shrink-0">
-    {items.map((item, i) => (
-      <span
-        key={item}
-        className={`px-2 py-1 rounded-md ${
-          i === 0 ? "bg-white text-[#171923] font-bold shadow-sm" : ""
-        }`}
-      >
-        {item}
-      </span>
-    ))}
-  </div>
-);
-
 const ToolMockup: React.FC<{ id: string }> = ({ id }) => {
-  switch (id) {
-    case "sales-tracker":
-      return (
-        <>
-          <MockHeader
-            icon={<span className="w-2 h-2 rounded-full bg-[#00B879] animate-pulse" />}
-            title="Sales Dashboard · yourbrand.in"
-            right={<Segmented items={["Today", "7D", "30D"]} />}
-          />
-          <div className="grid grid-cols-3 gap-2.5">
-            {[
-              { k: "Total sales", v: "₹1,28,450", d: "+18.4%" },
-              { k: "Orders", v: "342", d: "+24/hr" },
-              { k: "AOV", v: "₹2,499", d: "+6.1%" },
-            ].map((s) => (
-              <div key={s.k} className="rounded-xl border border-[#EEF0EE] p-3">
-                <div className="text-[10px] uppercase tracking-wider font-bold text-[#8A919C]">{s.k}</div>
-                <div className="mt-1 text-[15px] sm:text-lg font-extrabold text-[#171923] tabular-nums">{s.v}</div>
-                <div className="text-[10px] font-bold text-[#008F60] mt-0.5">↗ {s.d}</div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-3 rounded-xl border border-[#EEF0EE] p-3">
-            <div className="flex items-center justify-between text-[11px] mb-2">
-              <span className="font-bold text-[#171923]">Hourly sales velocity</span>
-              <span className="text-[#8A919C]">Peak at 9 PM</span>
-            </div>
-            <svg viewBox="0 0 300 80" preserveAspectRatio="none" className="w-full h-20">
-              <defs>
-                <linearGradient id="salesArea" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#00B879" stopOpacity="0.28" />
-                  <stop offset="100%" stopColor="#00B879" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M0,62 C25,58 40,64 60,52 C80,40 95,50 120,44 C145,38 160,46 180,30 C200,16 220,28 240,18 C260,10 280,14 300,6 L300,80 L0,80 Z"
-                fill="url(#salesArea)"
-              />
-              <path
-                d="M0,62 C25,58 40,64 60,52 C80,40 95,50 120,44 C145,38 160,46 180,30 C200,16 220,28 240,18 C260,10 280,14 300,6"
-                fill="none"
-                stroke="#00B879"
-                strokeWidth="2.5"
-                vectorEffect="non-scaling-stroke"
-              />
-            </svg>
-          </div>
-        </>
-      );
-
-    case "portfolio":
-      return (
-        <>
-          <MockHeader
-            icon={<Bookmark className="w-4 h-4 text-[#00B879]" />}
-            title="Saved Portfolios"
-            right={
-              <span className="text-[10px] bg-[#E8F8F1] text-[#008F60] px-2 py-1 rounded-full font-bold shrink-0">
-                4 folders
-              </span>
-            }
-          />
-          <div className="space-y-2.5">
-            {[
-              { e: "🌿", bg: "bg-emerald-100", n: "Eco Lifestyle & Home", m: "14 stores · 89 products", r: "₹42.8L/mo", g: "+28.4%", w: "w-[72%]" },
-              { e: "⚡", bg: "bg-indigo-100", n: "Smart Electronics", m: "9 stores · 45 products", r: "₹68.5L/mo", g: "+34.2%", w: "w-[86%]" },
-              { e: "💎", bg: "bg-amber-100", n: "Jewellery & Accessories", m: "6 stores · 31 products", r: "₹19.2L/mo", g: "+12.7%", w: "w-[44%]" },
-            ].map((f) => (
-              <div key={f.n} className="flex items-center gap-3 p-3 rounded-xl border border-[#EEF0EE] hover:border-[#00B879]/40 transition-colors">
-                <div className={`w-9 h-9 rounded-lg ${f.bg} flex items-center justify-center text-base shrink-0`}>{f.e}</div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-xs font-bold text-[#171923] truncate">{f.n}</div>
-                  <div className="text-[10px] text-[#8A919C]">{f.m}</div>
-                  <div className="mt-1.5 h-1 rounded-full bg-[#F2F4F1] overflow-hidden">
-                    <div className={`h-full ${f.w} rounded-full bg-gradient-to-r from-[#00B879] to-[#34D399]`} />
-                  </div>
-                </div>
-                <div className="text-right shrink-0">
-                  <div className="text-xs font-extrabold text-[#171923] tabular-nums">{f.r}</div>
-                  <div className="text-[10px] font-bold text-[#008F60]">↗ {f.g}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </>
-      );
-
-    case "shop-library":
-      return (
-        <>
-          <div className="flex items-center gap-2 mb-3">
-            <div className="flex-1 flex items-center gap-2 px-3 py-2 rounded-lg border border-[#E2E6E4] bg-[#FAFBFA] text-[11px] text-[#5A6270]">
-              <Search className="w-3.5 h-3.5 shrink-0" />
-              <span className="truncate">Home decor stores · India · ₹50K+/day</span>
-            </div>
-            <span className="flex items-center gap-1 px-2.5 py-2 rounded-lg bg-[#171923] text-white text-[10px] font-bold shrink-0">
-              <SlidersHorizontal className="w-3 h-3" /> Filters
+  if (id === "ai-voice-calls") {
+    return (
+      <>
+        <MockHeader
+          icon={<PhoneCall className="w-4 h-4 text-[#00B879]" />}
+          title="AI Voice Queue · Bulk Campaign"
+          right={
+            <span className="text-[10px] bg-[#E8F8F1] text-[#008F60] px-2 py-1 rounded-full font-bold shrink-0">
+              Running
             </span>
-          </div>
-          <div className="flex flex-wrap gap-1.5 mb-3">
-            {["Shopify", "UPI checkout", "WhatsApp", "< 1 yr old"].map((c) => (
-              <span key={c} className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#E8F8F1] text-[#008F60]">
-                {c}
-              </span>
-            ))}
-          </div>
-          <div className="rounded-xl border border-[#EEF0EE] overflow-hidden text-xs">
-            <div className="grid grid-cols-12 px-3 py-2 bg-[#FAFBFA] text-[10px] uppercase tracking-wider font-bold text-[#8A919C]">
-              <span className="col-span-6">Store</span>
-              <span className="col-span-3 text-right">Revenue/day</span>
-              <span className="col-span-3 text-right">Trend</span>
-            </div>
-            {[
-              { i: "K", c: "bg-rose-500", n: "kaverilifestyle.in", r: "₹1,12,947", p: [3, 4, 3, 6, 5, 8, 9] },
-              { i: "J", c: "bg-amber-500", n: "jaipurjewels.store", r: "₹88,450", p: [4, 3, 5, 4, 6, 6, 8] },
-              { i: "N", c: "bg-sky-500", n: "nestandnook.co", r: "₹64,210", p: [2, 3, 3, 4, 4, 5, 7] },
-            ].map((s) => (
-              <div key={s.n} className="grid grid-cols-12 items-center px-3 py-2.5 border-t border-[#EEF0EE]">
-                <div className="col-span-6 flex items-center gap-2 min-w-0">
-                  <span className={`w-6 h-6 rounded-md ${s.c} text-white text-[10px] font-bold flex items-center justify-center shrink-0`}>{s.i}</span>
-                  <span className="font-bold text-[#171923] truncate">{s.n}</span>
-                </div>
-                <div className="col-span-3 text-right font-bold text-[#171923] tabular-nums">{s.r}</div>
-                <div className="col-span-3 flex justify-end">
-                  <Sparkline points={s.p} className="w-14 h-5" />
-                </div>
+          }
+        />
+        <div className="space-y-2">
+          {[
+            { n: "Order confirmation — #1042", m: "Completed · COD verified", b: "Done", bc: "bg-emerald-100 text-emerald-800" },
+            { n: "New lead callback — Riya S.", m: "Appointment booked · Fri 4 PM", b: "Booked", bc: "bg-sky-100 text-sky-800" },
+            { n: "Winback campaign — 214 contacts", m: "In progress · 68% reached", b: "Calling", bc: "bg-amber-100 text-amber-800" },
+          ].map((r) => (
+            <div key={r.n} className="flex items-center justify-between gap-3 p-3 rounded-xl border border-[#EEF0EE] text-xs">
+              <div className="min-w-0">
+                <div className="font-bold text-[#171923] truncate">{r.n}</div>
+                <div className="text-[10px] text-[#8A919C] truncate">{r.m}</div>
               </div>
-            ))}
-          </div>
-        </>
-      );
-
-    case "competitors":
-      return (
-        <>
-          <MockHeader
-            icon={<TrendingUp className="w-4 h-4 text-[#00B879]" />}
-            title="Competitor Benchmarking"
-            right={<Segmented items={["7D", "30D", "90D"]} />}
-          />
-          <div className="rounded-xl border border-[#EEF0EE] overflow-hidden text-xs">
-            <div className="grid grid-cols-12 px-3 py-2 bg-[#FAFBFA] text-[10px] uppercase tracking-wider font-bold text-[#8A919C]">
-              <span className="col-span-5">Brand</span>
-              <span className="col-span-2 text-right">Avg price</span>
-              <span className="col-span-2 text-right">SKUs</span>
-              <span className="col-span-3 text-right">Signal</span>
+              <span className={"text-[10px] px-2 py-0.5 rounded-full font-bold whitespace-nowrap " + r.bc}>{r.b}</span>
             </div>
-            {[
-              { i: "A", c: "bg-[#171923]", n: "Brand A", s: "Ceramics", p: "₹1,899", k: "42", b: "Price −8%", bc: "bg-amber-100 text-amber-800" },
-              { i: "B", c: "bg-[#00B879]", n: "Brand B", s: "Home Decor", p: "₹2,499", k: "88", b: "+12 SKUs", bc: "bg-emerald-100 text-emerald-800" },
-              { i: "C", c: "bg-indigo-500", n: "Brand C", s: "Kitchenware", p: "₹1,249", k: "56", b: "Ads +45%", bc: "bg-indigo-100 text-indigo-800" },
-            ].map((r) => (
-              <div key={r.n} className="grid grid-cols-12 items-center px-3 py-2.5 border-t border-[#EEF0EE]">
-                <div className="col-span-5 flex items-center gap-2 min-w-0">
-                  <span className={`w-7 h-7 rounded-lg ${r.c} text-white text-[11px] font-bold flex items-center justify-center shrink-0`}>{r.i}</span>
-                  <div className="min-w-0">
-                    <div className="font-bold text-[#171923] truncate">{r.n}</div>
-                    <div className="text-[10px] text-[#8A919C] truncate">{r.s}</div>
-                  </div>
-                </div>
-                <div className="col-span-2 text-right font-bold text-[#171923] tabular-nums">{r.p}</div>
-                <div className="col-span-2 text-right text-[#5A6270] tabular-nums">{r.k}</div>
-                <div className="col-span-3 flex justify-end">
-                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold whitespace-nowrap ${r.bc}`}>{r.b}</span>
-                </div>
-              </div>
-            ))}
+          ))}
+        </div>
+        <div className="mt-3 rounded-xl border border-[#EEF0EE] p-3">
+          <div className="flex items-center justify-between text-[11px]">
+            <span className="font-bold text-[#171923]">Appointments booked</span>
+            <span className="font-bold text-[#008F60]">42 today</span>
           </div>
-          <div className="mt-3 rounded-xl border border-[#EEF0EE] p-3">
-            <div className="flex items-center justify-between text-[11px] mb-2">
-              <span className="font-bold text-[#171923]">Market share · Home & Living</span>
-              <span className="text-[#8A919C]">Last 30 days</span>
-            </div>
-            <div className="flex h-2.5 rounded-full overflow-hidden gap-0.5">
-              <div className="w-[38%] bg-[#171923]" />
-              <div className="w-[34%] bg-[#00B879]" />
-              <div className="w-[18%] bg-indigo-500" />
-              <div className="flex-1 bg-[#E2E6E4]" />
-            </div>
-            <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2 text-[10px] text-[#5A6270]">
-              <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#171923]" />A 38%</span>
-              <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#00B879]" />B 34%</span>
-              <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />C 18%</span>
-              <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#E2E6E4]" />Others</span>
-            </div>
-          </div>
-        </>
-      );
-
-    case "ad-library":
-      return (
-        <>
-          <MockHeader
-            icon={<InstagramLogo className="w-4 h-4" />}
-            title="Active Ad Creatives"
-            right={
-              <div className="flex items-center gap-1.5 shrink-0">
-                <MetaLogo className="w-4 h-4" />
-                <GoogleAdsLogo className="w-4 h-4" />
-              </div>
-            }
-          />
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { t: "Portable Blender", g: "from-rose-400 via-orange-300 to-amber-200", d: "42 days", h: "98%" },
-              { t: "Thermal Flask UGC", g: "from-sky-400 via-cyan-300 to-emerald-200", d: "28 days", h: "92%" },
-            ].map((a) => (
-              <div key={a.t} className="rounded-xl border border-[#EEF0EE] overflow-hidden">
-                <div className={`relative h-28 bg-gradient-to-br ${a.g} flex items-center justify-center`}>
-                  <span className="w-10 h-10 rounded-full bg-white/90 backdrop-blur flex items-center justify-center shadow-lg">
-                    <Play className="w-4 h-4 text-[#171923] fill-[#171923] ml-0.5" />
-                  </span>
-                  <span className="absolute top-2 left-2 text-[9px] font-bold uppercase tracking-wider bg-black/60 text-white px-1.5 py-0.5 rounded">
-                    Video
-                  </span>
-                </div>
-                <div className="p-2.5">
-                  <div className="text-xs font-bold text-[#171923] truncate">{a.t}</div>
-                  <div className="flex justify-between text-[10px] mt-1">
-                    <span className="text-[#8A919C]">Active {a.d}</span>
-                    <span className="text-[#008F60] font-bold">{a.h} hook</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </>
-      );
-
-    case "product-library":
-      return (
-        <>
-          <MockHeader
-            icon={<Zap className="w-4 h-4 text-[#00B879]" />}
-            title="Winning Products"
-            right={<Segmented items={["Trending", "New", "Top"]} />}
-          />
-          <div className="space-y-2.5">
-            {[
-              { e: "🐷", n: "Kids ATM Piggy Bank", c: "₹899", s: "₹2,499", m: 64, r: "₹1.28L/mo" },
-              { e: "🍼", n: "Portable Bottle Warmer", c: "₹950", s: "₹2,699", m: 65, r: "₹1.13L/mo" },
-              { e: "🪴", n: "Self-watering Planter", c: "₹420", s: "₹1,199", m: 58, r: "₹86K/mo" },
-            ].map((p) => (
-              <div key={p.n} className="flex items-center gap-3 p-3 rounded-xl border border-[#EEF0EE]">
-                <div className="w-10 h-10 rounded-lg bg-[#F2F4F1] flex items-center justify-center text-lg shrink-0">{p.e}</div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-xs font-bold text-[#171923] truncate">{p.n}</div>
-                  <div className="text-[10px] text-[#8A919C]">Cost {p.c} · Sell {p.s}</div>
-                </div>
-                <div className="hidden sm:block w-20 shrink-0">
-                  <div className="text-[10px] font-bold text-[#171923] mb-1">{p.m}% margin</div>
-                  <div className="h-1 rounded-full bg-[#F2F4F1] overflow-hidden">
-                    <div className="h-full rounded-full bg-[#00B879]" style={{ width: `${p.m}%` }} />
-                  </div>
-                </div>
-                <div className="text-right text-xs font-extrabold text-[#171923] tabular-nums shrink-0">{p.r}</div>
-              </div>
-            ))}
-          </div>
-        </>
-      );
-
-    case "advertiser-tracker":
-      return (
-        <>
-          <MockHeader
-            icon={<GoogleAdsLogo className="w-4 h-4" />}
-            title="Advertiser Spend Monitor"
-            right={<span className="text-[10px] text-[#8A919C] shrink-0">Updated 4m ago</span>}
-          />
-          <div className="rounded-xl border border-[#EEF0EE] p-3 mb-3">
-            <div className="flex items-center justify-between text-[11px] mb-2">
-              <span className="font-bold text-[#171923]">Est. daily spend · Apex Direct</span>
-              <span className="font-bold text-[#008F60]">↗ +45%</span>
-            </div>
-            <div className="flex items-end gap-1 h-14">
-              {[30, 34, 28, 40, 38, 46, 52, 50, 64, 72, 80, 96].map((h, i) => (
-                <div
-                  key={i}
-                  className={`flex-1 rounded-t-sm ${i > 7 ? "bg-[#00B879]" : "bg-[#D9DED8]"}`}
-                  style={{ height: `${h}%` }}
-                />
-              ))}
-            </div>
-          </div>
-          <div className="space-y-2">
-            {[
-              { n: "Apex Direct", m: "18 campaigns · Meta & Google", b: "Scaling up", bc: "bg-emerald-100 text-emerald-800" },
-              { n: "Urban Living Store", m: "6 new creatives this week", b: "Testing angles", bc: "bg-sky-100 text-sky-800" },
-            ].map((r) => (
-              <div key={r.n} className="flex items-center justify-between gap-3 p-3 rounded-xl border border-[#EEF0EE] text-xs">
-                <div className="min-w-0">
-                  <div className="font-bold text-[#171923] truncate">{r.n}</div>
-                  <div className="text-[10px] text-[#8A919C] truncate">{r.m}</div>
-                </div>
-                <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold whitespace-nowrap ${r.bc}`}>{r.b}</span>
-              </div>
-            ))}
-          </div>
-        </>
-      );
-
-    case "magic-ai-search":
-      return (
-        <>
-          <div className="flex items-start gap-2.5 p-3 rounded-xl border-2 border-[#00B879]/30 bg-[#F6FCF9]">
-            <Sparkles className="w-4 h-4 text-[#00B879] mt-0.5 shrink-0" />
-            <span className="text-xs text-[#171923] font-medium leading-relaxed">
-              Find eco-friendly stores making &gt;₹15L/month with UPI checkout
-              <span className="inline-block w-[2px] h-3.5 bg-[#00B879] ml-0.5 align-middle animate-tool-caret" />
-            </span>
-          </div>
-          <div className="mt-3 rounded-xl border border-[#EEF0EE] p-3">
-            <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#008F60] mb-2.5">
-              <span className="w-4 h-4 rounded-full bg-[#00B879] flex items-center justify-center">
-                <Sparkles className="w-2.5 h-2.5 text-white" />
-              </span>
-              18 high-growth opportunities found
-            </div>
-            <div className="space-y-2">
-              {[
-                { n: "Bamboo & eco kitchenware", v: "8 stores", s: "68% margin", w: "w-[92%]" },
-                { n: "Ayurvedic organic wellness", v: "6 stores", s: "₹24.5L/mo", w: "w-[78%]" },
-                { n: "Handloom apparel", v: "4 stores", s: "42% repeat", w: "w-[61%]" },
-              ].map((o) => (
-                <div key={o.n} className="text-[11px]">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="font-semibold text-[#171923] truncate">{o.n}</span>
-                    <span className="text-[#5A6270] shrink-0 ml-2">
-                      {o.v} · <span className="font-bold text-[#008F60]">{o.s}</span>
-                    </span>
-                  </div>
-                  <div className="h-1 rounded-full bg-[#F2F4F1] overflow-hidden">
-                    <div className={`h-full ${o.w} rounded-full bg-gradient-to-r from-[#00B879] to-[#34D399]`} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </>
-      );
-
-    default:
-      return null;
+        </div>
+      </>
+    );
   }
+  return null;
 };
 
 export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetStarted }) => {
   const [activeTab, setActiveTab] = useState<string>(TOOLS[0].id);
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const [isInView, setIsInView] = useState<boolean>(true);
+  const [canScrollLeft, setCanScrollLeft] = useState<boolean>(false);
+  const [canScrollRight, setCanScrollRight] = useState<boolean>(false);
   const sectionRef = useRef<HTMLElement>(null);
   const tabListRef = useRef<HTMLDivElement>(null);
 
@@ -735,9 +376,29 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
     const list = tabListRef.current;
     const btn = list?.querySelector<HTMLButtonElement>(`[data-tab="${activeTab}"]`);
     if (!list || !btn) return;
-    const target = btn.offsetLeft - list.clientWidth / 2 + btn.clientWidth / 2;
+    const btnRect = btn.getBoundingClientRect();
+    const listRect = list.getBoundingClientRect();
+    const target =
+      list.scrollLeft + btnRect.left - listRect.left - list.clientWidth / 2 + btnRect.width / 2;
     list.scrollTo({ left: target, behavior: "smooth" });
   }, [activeTab]);
+
+  // Track scrollable edges so the tab bar can fade overflow hints
+  useEffect(() => {
+    const list = tabListRef.current;
+    if (!list) return;
+    const update = () => {
+      setCanScrollLeft(list.scrollLeft > 4);
+      setCanScrollRight(list.scrollLeft + list.clientWidth < list.scrollWidth - 4);
+    };
+    update();
+    list.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      list.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
 
   const tiltRef = useRef<HTMLDivElement>(null);
 
@@ -756,6 +417,15 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
 
   const CurrentIcon = currentTool.icon;
 
+  const tabMask =
+    canScrollLeft && canScrollRight
+      ? "linear-gradient(to right, transparent, black 28px, black calc(100% - 28px), transparent)"
+      : canScrollLeft
+        ? "linear-gradient(to right, transparent, black 28px)"
+        : canScrollRight
+          ? "linear-gradient(to left, transparent, black 28px)"
+          : undefined;
+
   return (
     <section
       ref={sectionRef}
@@ -769,15 +439,15 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E2E6E4] bg-white text-xs font-semibold text-[#5A6270]">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00B879]" />
-            Platform
+            Core Workspace Modules
           </div>
           <h2 className="mt-5 text-[34px] sm:text-5xl lg:text-[56px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.05]">
             Every tool you need to grow,{" "}
             <em className="font-serif italic font-normal text-[#008F60]">in one place.</em>
           </h2>
           <p className="mt-5 text-base sm:text-lg text-[#5A6270] leading-relaxed">
-            From product discovery and competitor tracking to sales monitoring and AI search — eight
-            connected tools that share one workspace.
+            From your drag-and-drop storefront and unified inbox to CRM, AI automation and order
+            management — eight connected modules that run your entire business.
           </p>
         </div>
 
@@ -786,7 +456,8 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
           ref={tabListRef}
           role="tablist"
           aria-label="Tools"
-          className="mt-10 sm:mt-12 flex items-center gap-2 overflow-x-auto no-scrollbar px-1 pb-1 sm:justify-center"
+          style={tabMask ? { maskImage: tabMask, WebkitMaskImage: tabMask } : undefined}
+          className="mt-10 sm:mt-12 flex items-center gap-2 overflow-x-auto no-scrollbar px-4 pb-1 sm:[justify-content:safe_center]"
         >
           {TOOLS.map((tool) => {
             const Icon = tool.icon;
@@ -857,7 +528,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
                   Book a demo
                 </button>
               </div>
-              <RupeeOfferPill className="mt-5" label={`${currentTool.title} included · from ₹1/day`} />
+              <RupeeOfferPill className="mt-5" label={`${currentTool.title} included in Pro · from ₹1/day`} />
             </div>
 
             {/* Product preview */}

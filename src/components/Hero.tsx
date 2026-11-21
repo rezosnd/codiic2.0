@@ -9,7 +9,6 @@ import {
   GoogleWorkspaceLogo,
   GoogleAdsLogo,
   MetaLogo,
-  ShopifyLogo,
   BhimUpiLogo,
   BlueDartLogo,
   GstLogo,
@@ -51,12 +50,12 @@ const ROWS: FlowRow[] = [
   {
     duration: 44,
     items: [
-      { title: "WhatsApp lead", subtitle: "Routed to CRM", value: "+128", growth: "today", Logo: WhatsAppLogo },
-      { title: "Store order #1042", subtitle: "UPI payment received", value: "₹14,990", growth: "paid", Logo: ShopifyLogo },
-      { title: "Deal won", subtitle: "Moved to Closed · Won", value: "₹4,50,000", growth: "+28%", Logo: SalesPipelineColorIcon },
-      { title: "GST invoice", subtitle: "Generated on checkout", value: "₹64,200", growth: "auto", Logo: GstLogo },
+      { title: "Drag-and-Drop Storefront published", subtitle: "Custom domain live in 60s", value: "Live", growth: "SSL", Logo: WebsiteBuilderColorIcon },
+      { title: "Naya Order Aaya!", subtitle: "WhatsApp pe receipt & tracking sent", value: "₹1,499", growth: "paid", Logo: WhatsAppLogo },
+      { title: "Deal won", subtitle: "Moved to Won in CRM 360", value: "₹4,50,000", growth: "+28%", Logo: SalesPipelineColorIcon },
+      { title: "Tax invoice", subtitle: "Auto-generated on checkout", value: "₹64,200", growth: "auto", Logo: GstLogo },
       { title: "Shipment booked", subtitle: "Tracking sent on WhatsApp", value: "AWB", growth: "synced", Logo: BlueDartLogo },
-      { title: "Google Ads lead", subtitle: "High-intent inquiry", value: "₹2,10,000", growth: "4.8x", Logo: GoogleAdsLogo },
+      { title: "CTWA ad click", subtitle: "Routed to WhatsApp + CRM", value: "₹2,10,000", growth: "4.8x", Logo: GoogleAdsLogo },
       { title: "Razorpay checkout", subtitle: "Card payment captured", value: "₹8,450", growth: "instant", Logo: RazorpayLogo },
     ],
   },
@@ -64,22 +63,22 @@ const ROWS: FlowRow[] = [
     duration: 38,
     items: [
       { title: "Customer merged", subtitle: "Web form + WhatsApp", value: "314", growth: "leads", Logo: CustomerCrmColorIcon },
-      { title: "BHIM UPI settled", subtitle: "QR merchant payment", value: "₹24,500", growth: "0% fee", Logo: BhimUpiLogo },
-      { title: "Catalog sent", subtitle: "Auto-reply on inquiry", value: "0.4s", growth: "99% open", Logo: WhatsAppLogo },
-      { title: "Website published", subtitle: "yourbusiness.in is live", value: "Live", growth: "SSL", Logo: WebsiteBuilderColorIcon },
+      { title: "UPI payment settled", subtitle: "QR merchant payment", value: "₹24,500", growth: "0% fee", Logo: BhimUpiLogo },
+      { title: "Instant AI Reply", subtitle: "0.4s mein catalog bhej diya gaya", value: "0.4s", growth: "99% open", Logo: WhatsAppLogo },
+      { title: "Website published", subtitle: "yourbrand.com is live", value: "60s", growth: "SSL", Logo: WebsiteBuilderColorIcon },
       { title: "PhonePe payment", subtitle: "Storefront checkout", value: "₹1,95,000", growth: "+32%", Logo: PhonePeLogo },
-      { title: "Instagram DM", subtitle: "Converted to lead", value: "+31", growth: "today", Logo: InstagramLogo },
+      { title: "Instagram Auto-DM triggered", subtitle: "Lead added to CRM 360 Pipeline", value: "+31", growth: "today", Logo: InstagramLogo },
     ],
   },
   {
     duration: 50,
     items: [
       { title: "Revenue forecast", subtitle: "18 deals closing", value: "₹28,20,000", growth: "+18%", Logo: AnalyticsColorIcon },
-      { title: "Follow-up sent", subtitle: "Round-robin to rep", value: "0.2s", growth: "100%", Logo: AutomationColorIcon },
+      { title: "Bulk AI Voice Call completed", subtitle: "42 appointments booked", value: "42", growth: "qualified", Logo: AutomationColorIcon },
       { title: "Meeting booked", subtitle: "Calendar synced", value: "12", growth: "this week", Logo: GoogleWorkspaceLogo },
-      { title: "Meta lead form", subtitle: "Synced to pipeline", value: "+86", growth: "leads", Logo: MetaLogo },
+      { title: "Ad Library Alert", subtitle: "Rival launched 14 Meta video ads", value: "14", growth: "new", Logo: MetaLogo },
       { title: "Client email logged", subtitle: "Added to timeline", value: "Inbox 0", growth: "24/7", Logo: GmailLogo },
-      { title: "Festive catalog", subtitle: "Inventory auto-synced", value: "420", growth: "orders", Logo: ShopifyLogo },
+      { title: "Meta lead form", subtitle: "Synced to pipeline", value: "+86", growth: "leads", Logo: MetaLogo },
     ],
   },
 ];
@@ -180,20 +179,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-[-10%] -translate-x-1/2 w-[110%] max-w-[980px] h-[120%] -z-10 bg-[radial-gradient(ellipse_at_center,rgba(244,252,248,0.95)_0%,rgba(236,249,243,0.75)_40%,rgba(236,249,243,0)_72%)]"
         />
-        <RupeeOfferPill className="mb-6" />
+        <RupeeOfferPill
+          className="mb-6"
+          label="Sara kuch ₹1/day mein • No-Code Builder & Official Meta Cloud API 🌍"
+        />
 
         <h1 className="mx-auto max-w-4xl text-[40px] sm:text-6xl lg:text-[76px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.02] [text-shadow:0_2px_24px_rgba(255,255,255,0.9)]">
-          All your business.{" "}
+          Build your storefront with drag-and-drop.{" "}
           <em className="font-serif italic font-normal pr-1 text-transparent bg-clip-text bg-[linear-gradient(110deg,#006B48_0%,#00B879_35%,#5EF0B8_50%,#00B879_65%,#006B48_100%)] bg-[length:250%_100%] animate-text-shine [text-shadow:none]">
-            One platform.
+            Turn chats into paid orders.
           </em>
         </h1>
 
         <div className="mx-auto mt-5 sm:mt-6 max-w-2xl rounded-2xl sm:rounded-3xl px-5 py-3.5 sm:px-7 sm:py-4 bg-white/60 backdrop-blur-xl backdrop-saturate-150 border border-white/80 shadow-[0_20px_50px_-24px_rgba(0,107,72,0.45),inset_0_1px_0_rgba(255,255,255,0.9)]">
           <p className="text-base sm:text-lg lg:text-xl font-medium text-[#2A303C] leading-relaxed">
-            Build your website, manage customers, track sales and automate everyday work — all from
-            one place.{" "}
-            <span className="font-semibold text-[#008F60]">Ek platform, poora business.</span>
+            Design a high-converting website without writing a single line of code, manage every
+            customer across WhatsApp, Instagram, Facebook, Telegram &amp; Email in one inbox, spy on
+            winning ads &amp; competitors, and automate AI voice &amp; chat follow-ups.{" "}
+            <span className="font-semibold text-[#008F60]">Start free, or unlock Pro at ₹1/day.</span>
           </p>
         </div>
 
@@ -204,7 +207,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
             id="hero-primary-cta"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-[15px] font-bold shadow-[0_14px_34px_-12px_rgba(0,143,96,0.7)] transition-colors active:scale-[0.98] cursor-pointer"
           >
-            Start at ₹1/day
+            Start Free
             <ArrowRight className="w-4 h-4" />
           </button>
           <button
@@ -218,6 +221,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
           </button>
         </div>
 
+        <p className="mt-4 text-xs sm:text-sm italic text-[#5A6270]">
+          Na coding ki tension, na mehnga setup — website se WhatsApp payment tak sab connected.
+        </p>
+
         <div className="mt-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-2 text-xs sm:text-sm text-[#5A6270]">
           <span className="flex items-center gap-0.5 text-amber-400" aria-hidden="true">
             {Array.from({ length: 5 }).map((_, i) => (
@@ -225,14 +232,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
             ))}
           </span>
           <span className="font-semibold text-[#171923]">4.9</span>
-          <span>from 2,400+ businesses</span>
+          <span>from 2,400+ global brands &amp; agencies</span>
           <span className="hidden sm:inline text-[#9AA7A0]">·</span>
           {/* ── Pencil-sketch oval encircle (matches reference) ── */}
           <span className="inline-flex items-center">
             <span className="relative inline-block px-3.5 sm:px-4 py-0.5">
               {/* Dark bold text — matches reference */}
               <span className="relative z-10 font-extrabold text-[#171923] tracking-tight text-xs sm:text-sm" style={{ fontFamily: "inherit" }}>
-                No code, only drag &amp; drop
+                Zero coding — only drag &amp; drop
               </span>
 
               {/* Hand-drawn teal oval SVG — drawn around the text */}
@@ -315,6 +322,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
               </svg>
             </span>
           </span>
+          <span className="hidden sm:inline text-[#9AA7A0]">·</span>
+          <span>2-minute setup</span>
+          <span className="hidden sm:inline text-[#9AA7A0]">·</span>
+          <span>Keep your existing WhatsApp Business number</span>
         </div>
       </div>
 

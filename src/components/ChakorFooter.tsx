@@ -4,6 +4,33 @@ import React from "react";
 import Image from "next/image";
 import { ArrowRight, CheckCircle2, Shield, Heart } from "lucide-react";
 
+const PLATFORM_LINKS = [
+  { label: "Drag-and-Drop Website Builder", href: "/platform/website-builder" },
+  { label: "CRM 360", href: "/platform/crm-360" },
+  { label: "Omnichannel Inbox", href: "/platform/omnichannel-inbox" },
+  { label: "Bulk AI Calls", href: "/platform/bulk-ai-calls" },
+  { label: "Ad & Product Library", href: "/platform/ad-product-library" },
+  { label: "Sales Tracker", href: "/platform/sales-tracker" },
+];
+
+const SOLUTION_LINKS = [
+  { label: "Retail & D2C", href: "/solutions/retail-d2c" },
+  { label: "Real Estate", href: "/solutions/real-estate" },
+  { label: "Service Businesses", href: "/solutions/service-businesses" },
+  { label: "Agencies", href: "/solutions/agencies" },
+  { label: "Education", href: "/solutions/education" },
+  { label: "Hospitality", href: "/solutions/hospitality" },
+];
+
+const COMPANY_LINKS = [
+  { label: "About", href: "/about" },
+  { label: "API & Developers", href: "/developers" },
+  { label: "User Guide", href: "/user-guide" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms", href: "/terms" },
+  { label: "Security", href: "/security" },
+];
+
 interface ChakorFooterProps {
   onOpenGetStarted: () => void;
 }
@@ -36,7 +63,7 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
             </div>
 
             <p className="text-sm text-gray-300 leading-relaxed max-w-sm">
-              One connected platform for your website, customers, sales, and everyday business workflows.
+              One platform for your storefront, omnichannel inbox, AI automation, and market intelligence — your entire business.
             </p>
 
 
@@ -45,7 +72,7 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
                 onClick={onOpenGetStarted}
                 className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs font-bold transition-all shadow-md shadow-[#00B879]/20 hover:shadow-lg active:scale-95 cursor-pointer"
               >
-                <span>Start at ₹1/day</span>
+                <span>Start Free</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </button>
             </div>
@@ -57,31 +84,13 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
               Platform Tools
             </h4>
             <ul className="space-y-2 text-xs text-gray-400">
-              <li>
-                <a href="#tools" className="hover:text-[#00B879] transition-colors">
-                  Website Builder
-                </a>
-              </li>
-              <li>
-                <a href="#tools" className="hover:text-[#00B879] transition-colors">
-                  Customer CRM
-                </a>
-              </li>
-              <li>
-                <a href="#tools" className="hover:text-[#00B879] transition-colors">
-                  Sales Pipeline
-                </a>
-              </li>
-              <li>
-                <a href="#tools" className="hover:text-[#00B879] transition-colors">
-                  Workflow Automation
-                </a>
-              </li>
-              <li>
-                <a href="#tools" className="hover:text-[#00B879] transition-colors">
-                  Analytics & Reports
-                </a>
-              </li>
+              {PLATFORM_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="hover:text-[#00B879] transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -91,63 +100,29 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
               Solutions
             </h4>
             <ul className="space-y-2 text-xs text-gray-400">
-              <li>
-                <a href="#solutions" className="hover:text-[#00B879] transition-colors">
-                  Retail & eCommerce
-                </a>
-              </li>
-              <li>
-                <a href="#solutions" className="hover:text-[#00B879] transition-colors">
-                  Professional Services
-                </a>
-              </li>
-              <li>
-                <a href="#solutions" className="hover:text-[#00B879] transition-colors">
-                  Real Estate
-                </a>
-              </li>
-              <li>
-                <a href="#solutions" className="hover:text-[#00B879] transition-colors">
-                  Agencies
-                </a>
-              </li>
-              <li>
-                <a href="#solutions" className="hover:text-[#00B879] transition-colors">
-                  Education & Hospitality
-                </a>
-              </li>
+              {SOLUTION_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="hover:text-[#00B879] transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 4: Company & Trust (Col span 2) */}
+          {/* Column 4: Company & Legal (Col span 2) */}
           <div className="lg:col-span-2 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white">
-              Company
+              Company &amp; Legal
             </h4>
             <ul className="space-y-2 text-xs text-gray-400">
-              <li>
-                <a href="#workspace" className="hover:text-[#00B879] transition-colors">
-                  About Platform
-                </a>
-              </li>
-              <li>
-                <a href="#reviews" className="hover:text-[#00B879] transition-colors">
-                  Customer Stories
-                </a>
-              </li>
-              <li>
-                <button
-                  onClick={onOpenGetStarted}
-                  className="hover:text-[#00B879] transition-colors text-left cursor-pointer"
-                >
-                  Contact Support
-                </button>
-              </li>
-              <li>
-                <a href="#" className="hover:text-[#00B879] transition-colors">
-                  Security & Privacy
-                </a>
-              </li>
+              {COMPANY_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="hover:text-[#00B879] transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -161,7 +136,7 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
 
           <div className="flex items-center gap-2 text-gray-200 font-medium bg-gray-900/80 px-3.5 py-1.5 rounded-full border border-gray-800">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00B879]" />
-            <span>Ek platform. Poora business.</span>
+            <span>One Platform. Your Entire Business.</span>
           </div>
 
           <div className="flex items-center gap-4 text-[11px] text-gray-400">

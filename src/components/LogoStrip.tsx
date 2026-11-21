@@ -62,7 +62,7 @@ export const LogoStrip: React.FC = () => (
   <section className="py-10 sm:py-12 overflow-hidden">
     {/* Subtle eyebrow */}
     <p className="text-center text-[11px] sm:text-xs font-medium text-[#8A939F] tracking-[0.08em] uppercase mb-6 sm:mb-8 px-4">
-      Natively connected to the tools you already use
+      Trusted by 2,400+ global brands &amp; agencies in 40+ countries
     </p>
 
     {/* Marquee wrapper with fade-out edge masks */}
