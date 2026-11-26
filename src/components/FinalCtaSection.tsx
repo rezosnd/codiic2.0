@@ -25,13 +25,13 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
   subNote = "2 minute mein apni dukaan online lao · Free forever plan · No credit card required",
 }) => {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32 bg-[#171923] text-white">
+    <section className="relative overflow-hidden py-24 sm:py-32 bg-[#111827] text-white">
       {/* Bipsync-inspired Interactive Hexagonal Mesh Background (Dark Theme) */}
       <BipsyncHeroCanvas theme="dark" className="absolute inset-0 pointer-events-none z-0 overflow-hidden" />
 
       {/* Background glowing aura in green */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[760px] h-[380px] bg-gradient-to-r from-[#00B879]/25 via-[#008F60]/20 to-transparent blur-3xl pointer-events-none rounded-full" />
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#00B879_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[760px] h-[380px] bg-gradient-to-r from-[#064E3B]/25 via-[#043B2C]/20 to-transparent blur-3xl pointer-events-none rounded-full" />
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#064E3B_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 z-10">
         
@@ -51,7 +51,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
         <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 max-w-md mx-auto">
           <button
             onClick={onOpenGetStarted}
-            className="w-full sm:w-auto group px-8 py-3.5 sm:py-4 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-base font-bold shadow-xl shadow-[#00B879]/25 hover:shadow-2xl hover:shadow-[#00B879]/35 transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
+            className="w-full sm:w-auto group px-8 py-3.5 sm:py-4 rounded-full bg-[#064E3B] hover:bg-[#043B2C] text-white text-base font-bold shadow-xl shadow-[#064E3B]/25 hover:shadow-2xl hover:shadow-[#064E3B]/35 transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
           >
             <span>{ctaLabel}</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -61,7 +61,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({
             onClick={onOpenSeeHowItWorks}
             className="w-full sm:w-auto px-6 py-3.5 sm:py-4 rounded-full bg-white/10 hover:bg-white/15 text-white text-sm font-semibold border border-white/20 transition-all flex items-center justify-center gap-2 backdrop-blur-xs active:scale-95 cursor-pointer"
           >
-            <Play className="w-3.5 h-3.5 text-[#00B879] fill-[#00B879]" />
+            <Play className="w-3.5 h-3.5 text-[#064E3B] fill-[#064E3B]" />
             <span>See how it works</span>
           </button>
         </div>

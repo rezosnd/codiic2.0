@@ -90,36 +90,36 @@ export const CrmSection: React.FC<CrmSectionProps> = ({ onOpenGetStarted }) => {
   ];
 
   return (
-    <section id="crm" className="py-20 sm:py-28 bg-[#F7F9F8] border-b border-[#E8EAF0] overflow-hidden">
+    <section id="crm" className="py-20 sm:py-28 bg-[#F7F7F2] border-b border-[#E6E4DB] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           
           {/* Left Column: Rich Interactive CRM Dashboard Mockup */}
           <div className="lg:col-span-7 order-2 lg:order-1">
-            <div className="rounded-3xl bg-white border border-[#E2E8E5] p-5 sm:p-6 shadow-xl shadow-black/[0.03]">
+            <div className="rounded-3xl bg-white border border-[#E4E2D8] p-5 sm:p-6 shadow-xl shadow-black/[0.03]">
               
               {/* Follow-up reminder alert banner */}
-              <div className="flex items-center justify-between p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-900 mb-4 text-xs">
+              <div className="flex items-center justify-between p-3.5 rounded-2xl bg-[#C6A15B]/10 border border-[#C6A15B]/20 text-[#3B2E12] mb-4 text-xs">
                 <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-amber-600 animate-pulse" />
+                  <Clock className="w-4 h-4 text-[#A87F3D] animate-pulse" />
                   <span className="font-semibold">
                     Follow-up due:{" "}
-                    <strong className="text-amber-800">{activeContact.nextFollowUp}</strong>
+                    <strong className="text-[#6E5621]">{activeContact.nextFollowUp}</strong>
                   </span>
                 </div>
-                <span className="text-[10px] uppercase font-bold text-amber-700 bg-amber-200/60 px-2 py-0.5 rounded">
+                <span className="text-[10px] uppercase font-bold text-[#8F6E2D] bg-[#EDE0C0]/60 px-2 py-0.5 rounded">
                   Action Required
                 </span>
               </div>
 
               {/* CRM Top Controls */}
-              <div className="flex items-center justify-between pb-3.5 mb-3 border-b border-[#E8EAF0] text-xs">
+              <div className="flex items-center justify-between pb-3.5 mb-3 border-b border-[#E6E4DB] text-xs">
                 <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#00B879]" />
-                  <span className="font-bold text-[#171923]">CODIIC CRM Lead Intelligence</span>
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#064E3B]" />
+                  <span className="font-bold text-[#111827]">CODIIC CRM Lead Intelligence</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-0.5 rounded-full text-[11px] bg-[#E8F8F1] text-[#008F60] font-semibold border border-[#00B879]/20">
+                  <span className="px-2.5 py-0.5 rounded-full text-[11px] bg-[#F1F0EA] text-[#043B2C] font-semibold border border-[#064E3B]/20">
                     Follow-up bhoolna ab band
                   </span>
                 </div>
@@ -130,7 +130,7 @@ export const CrmSection: React.FC<CrmSectionProps> = ({ onOpenGetStarted }) => {
                 
                 {/* Contacts Mini Table */}
                 <div className="sm:col-span-5 space-y-2">
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-[#555A68] px-1">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-[#4B5563] px-1">
                     Active Leads ({contacts.length})
                   </div>
                   {contacts.map((contact) => (
@@ -139,86 +139,86 @@ export const CrmSection: React.FC<CrmSectionProps> = ({ onOpenGetStarted }) => {
                       onClick={() => setSelectedContactId(contact.id)}
                       className={`cursor-pointer p-3.5 rounded-2xl border transition-all text-xs ${
                         selectedContactId === contact.id
-                          ? "bg-[#E8F8F1]/50 border-[#00B879] shadow-sm ring-1 ring-[#00B879]/20"
-                          : "bg-white border-[#E2E8E5] hover:bg-[#F7F9F8]"
+                          ? "bg-[#F1F0EA]/50 border-[#064E3B] shadow-sm ring-1 ring-[#064E3B]/20"
+                          : "bg-white border-[#E4E2D8] hover:bg-[#F7F7F2]"
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <span className="font-bold text-[#171923]">{contact.name}</span>
-                        <span className="text-[10px] font-mono font-bold text-[#008F60]">
+                        <span className="font-bold text-[#111827]">{contact.name}</span>
+                        <span className="text-[10px] font-mono font-bold text-[#043B2C]">
                           {contact.dealValue}
                         </span>
                       </div>
-                      <div className="text-[11px] text-[#555A68] truncate">{contact.company}</div>
-                      <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-[#E8EAF0] text-[10px]">
-                        <span className="px-1.5 py-0.5 rounded bg-[#E8F8F1] text-[#008F60] font-semibold">
+                      <div className="text-[11px] text-[#4B5563] truncate">{contact.company}</div>
+                      <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-[#E6E4DB] text-[10px]">
+                        <span className="px-1.5 py-0.5 rounded bg-[#F1F0EA] text-[#043B2C] font-semibold">
                           {contact.source}
                         </span>
-                        <span className="text-[#555A68]">{contact.status}</span>
+                        <span className="text-[#4B5563]">{contact.status}</span>
                       </div>
                     </div>
                   ))}
                 </div>
 
                 {/* Detailed Contact Profile Drawer */}
-                <div className="sm:col-span-7 bg-[#F7F9F8] border border-[#E2E8E5] rounded-2xl p-4 sm:p-5 flex flex-col justify-between text-xs">
+                <div className="sm:col-span-7 bg-[#F7F7F2] border border-[#E4E2D8] rounded-2xl p-4 sm:p-5 flex flex-col justify-between text-xs">
                   <div>
                     {/* Profile Header */}
-                    <div className="flex items-start justify-between pb-3 border-b border-[#E8EAF0]">
+                    <div className="flex items-start justify-between pb-3 border-b border-[#E6E4DB]">
                       <div>
-                        <div className="text-sm font-bold text-[#171923]">
+                        <div className="text-sm font-bold text-[#111827]">
                           {activeContact.name}
                         </div>
-                        <div className="text-[11px] text-[#555A68]">
+                        <div className="text-[11px] text-[#4B5563]">
                           {activeContact.role} • {activeContact.company} ({activeContact.city})
                         </div>
                       </div>
-                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#00B879] text-white shadow-xs">
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#064E3B] text-white shadow-xs">
                         {activeContact.status}
                       </span>
                     </div>
 
                     {/* Metadata Grid */}
                     <div className="grid grid-cols-2 gap-2 my-3 text-[11px]">
-                      <div className="p-2.5 rounded-xl bg-white border border-[#E2E8E5]">
-                        <span className="text-[#8A90A0] block text-[10px]">Assigned Owner</span>
-                        <span className="font-semibold text-[#171923]">{activeContact.assigned}</span>
+                      <div className="p-2.5 rounded-xl bg-white border border-[#E4E2D8]">
+                        <span className="text-[#6B7280] block text-[10px]">Assigned Owner</span>
+                        <span className="font-semibold text-[#111827]">{activeContact.assigned}</span>
                       </div>
-                      <div className="p-2.5 rounded-xl bg-white border border-[#E2E8E5]">
-                        <span className="text-[#8A90A0] block text-[10px]">Deal Value</span>
-                        <span className="font-bold font-mono text-[#008F60]">{activeContact.dealValue}</span>
+                      <div className="p-2.5 rounded-xl bg-white border border-[#E4E2D8]">
+                        <span className="text-[#6B7280] block text-[10px]">Deal Value</span>
+                        <span className="font-bold font-mono text-[#043B2C]">{activeContact.dealValue}</span>
                       </div>
-                      <div className="p-2.5 rounded-xl bg-white border border-[#E2E8E5]">
-                        <span className="text-[#8A90A0] block text-[10px]">Lead Source</span>
-                        <span className="font-semibold text-[#171923]">{activeContact.source}</span>
+                      <div className="p-2.5 rounded-xl bg-white border border-[#E4E2D8]">
+                        <span className="text-[#6B7280] block text-[10px]">Lead Source</span>
+                        <span className="font-semibold text-[#111827]">{activeContact.source}</span>
                       </div>
-                      <div className="p-2.5 rounded-xl bg-white border border-[#E2E8E5]">
-                        <span className="text-[#8A90A0] block text-[10px]">Phone (Direct)</span>
-                        <span className="font-mono text-[#171923]">{activeContact.phone}</span>
+                      <div className="p-2.5 rounded-xl bg-white border border-[#E4E2D8]">
+                        <span className="text-[#6B7280] block text-[10px]">Phone (Direct)</span>
+                        <span className="font-mono text-[#111827]">{activeContact.phone}</span>
                       </div>
                     </div>
 
                     {/* Recent Activity Timeline */}
                     <div className="space-y-1.5 pt-1">
-                      <div className="text-[10px] font-bold uppercase tracking-wider text-[#555A68]">
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-[#4B5563]">
                         Recent Activity
                       </div>
-                      <div className="p-3 rounded-xl bg-white border border-[#E2E8E5] text-[11px] text-[#171923]">
-                        <div className="flex items-center gap-1.5 text-[#008F60] font-semibold text-[10px] mb-1">
-                          <MessageSquare className="w-3 h-3 text-[#00B879]" />
+                      <div className="p-3 rounded-xl bg-white border border-[#E4E2D8] text-[11px] text-[#111827]">
+                        <div className="flex items-center gap-1.5 text-[#043B2C] font-semibold text-[10px] mb-1">
+                          <MessageSquare className="w-3 h-3 text-[#064E3B]" />
                           <span>WhatsApp Conversation Log</span>
                         </div>
-                        <p className="text-[#555A68]">{activeContact.lastActivity}</p>
+                        <p className="text-[#4B5563]">{activeContact.lastActivity}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Action Quickbar */}
-                  <div className="mt-4 pt-3 border-t border-[#E8EAF0] flex items-center justify-between">
-                    <span className="text-[10px] text-[#555A68]">
+                  <div className="mt-4 pt-3 border-t border-[#E6E4DB] flex items-center justify-between">
+                    <span className="text-[10px] text-[#4B5563]">
                       Synced with WhatsApp Business & Email
                     </span>
-                    <button className="px-3 py-1.5 rounded-lg bg-[#00B879] hover:bg-[#008F60] text-white text-[11px] font-semibold transition-colors shadow-xs">
+                    <button className="px-3 py-1.5 rounded-lg bg-[#064E3B] hover:bg-[#043B2C] text-white text-[11px] font-semibold transition-colors shadow-xs">
                       Log Interaction
                     </button>
                   </div>
@@ -231,25 +231,25 @@ export const CrmSection: React.FC<CrmSectionProps> = ({ onOpenGetStarted }) => {
 
           {/* Right Column: Copy & Benefits */}
           <div className="lg:col-span-5 space-y-6 order-1 lg:order-2">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-xs font-bold uppercase tracking-wider">
-              <Users className="w-3.5 h-3.5 text-[#00B879]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F1F0EA] border border-[#064E3B]/20 text-[#043B2C] text-xs font-bold uppercase tracking-wider">
+              <Users className="w-3.5 h-3.5 text-[#064E3B]" />
               <span>EVERY CUSTOMER, ORGANIZED</span>
             </div>
 
             <div className="space-y-3">
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#171923] tracking-tight leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight leading-tight">
                 Turn every inquiry into a{" "}
-                <span className="text-[#00B879]">meaningful relationship.</span>
+                <span className="text-[#064E3B]">meaningful relationship.</span>
               </h2>
 
-              <div className="p-3.5 bg-white rounded-2xl border border-[#E2E8E5] text-xs font-semibold text-[#171923] space-y-1 shadow-xs">
+              <div className="p-3.5 bg-white rounded-2xl border border-[#E4E2D8] text-xs font-semibold text-[#111827] space-y-1 shadow-xs">
                 <div>Sab jagah leads hain — par system kahin nahi?</div>
-                <div className="text-[#008F60] font-bold">
+                <div className="text-[#043B2C] font-bold">
                   CODIIC sambhalega. Follow-up bhoolna ab band.
                 </div>
               </div>
 
-              <p className="text-base text-[#555A68] leading-relaxed">
+              <p className="text-base text-[#4B5563] leading-relaxed">
                 Consolidate customer data, conversation history, activity logs, and scheduled follow-ups in a clean, unified CRM workspace.
               </p>
             </div>
@@ -257,12 +257,12 @@ export const CrmSection: React.FC<CrmSectionProps> = ({ onOpenGetStarted }) => {
             {/* Feature Highlights */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               {highlights.map((item, idx) => (
-                <div key={idx} className="p-4 rounded-2xl bg-white border border-[#E2E8E5]">
+                <div key={idx} className="p-4 rounded-2xl bg-white border border-[#E4E2D8]">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#00B879] shrink-0" />
-                    <h3 className="text-xs font-bold text-[#171923]">{item.title}</h3>
+                    <CheckCircle2 className="w-4 h-4 text-[#064E3B] shrink-0" />
+                    <h3 className="text-xs font-bold text-[#111827]">{item.title}</h3>
                   </div>
-                  <p className="text-[11px] text-[#555A68] leading-normal">{item.desc}</p>
+                  <p className="text-[11px] text-[#4B5563] leading-normal">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -271,7 +271,7 @@ export const CrmSection: React.FC<CrmSectionProps> = ({ onOpenGetStarted }) => {
             <div className="pt-2">
               <button
                 onClick={onOpenGetStarted}
-                className="group px-6 py-3 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs font-bold shadow-md shadow-[#00B879]/20 transition-all flex items-center gap-2"
+                className="group px-6 py-3 rounded-full bg-[#064E3B] hover:bg-[#043B2C] text-white text-xs font-bold shadow-md shadow-[#064E3B]/20 transition-all flex items-center gap-2"
               >
                 <span>Explore Customer CRM</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

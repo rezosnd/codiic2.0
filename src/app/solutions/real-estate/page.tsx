@@ -23,7 +23,7 @@ export default function RealEstatePage() {
           headline: (
             <>
               Turn Property Ads into Booked Site Visits —{" "}
-              <em className="font-serif italic font-normal text-[#008F60]">On Autopilot.</em>
+              <em className="font-serif italic font-normal text-[#043B2C]">On Autopilot.</em>
             </>
           ),
           subheadline:

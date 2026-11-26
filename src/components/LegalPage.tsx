@@ -41,43 +41,43 @@ export const LegalPage: React.FC<{
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav
           aria-label="Breadcrumb"
-          className="flex items-center gap-1.5 text-[11px] font-semibold text-[#8A919C] mb-8"
+          className="flex items-center gap-1.5 text-[11px] font-semibold text-[#6B7280] mb-8"
         >
-          <Link href="/" className="hover:text-[#008F60] transition-colors">
+          <Link href="/" className="hover:text-[#043B2C] transition-colors">
             Home
           </Link>
           <ChevronRight className="w-3 h-3" />
-          <span className="text-[#171923]">{crumbLabel}</span>
+          <span className="text-[#111827]">{crumbLabel}</span>
         </nav>
 
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E2E6E4] bg-white text-[11px] font-bold uppercase tracking-wider text-[#5A6270]">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#008F60]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E4E2D8] bg-white text-[11px] font-bold uppercase tracking-wider text-[#4B5563]">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#043B2C]" />
             {badge}
           </div>
-          <h1 className="mt-5 text-[32px] sm:text-5xl font-bold text-[#171923] tracking-[-0.035em] leading-[1.06]">
+          <h1 className="mt-5 text-[32px] sm:text-5xl font-bold text-[#111827] tracking-[-0.035em] leading-[1.06]">
             {title}
           </h1>
-          <p className="mt-3 text-xs font-semibold text-[#8A919C]">{updated}</p>
-          <p className="mt-5 text-[15px] text-[#5A6270] leading-relaxed">{intro}</p>
+          <p className="mt-3 text-xs font-semibold text-[#6B7280]">{updated}</p>
+          <p className="mt-5 text-[15px] text-[#4B5563] leading-relaxed">{intro}</p>
         </div>
 
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Sticky TOC */}
           <aside className="hidden lg:block lg:col-span-3">
             <div className="sticky top-28">
-              <div className="text-[10px] font-bold uppercase tracking-wider text-[#8A919C] mb-3">
+              <div className="text-[10px] font-bold uppercase tracking-wider text-[#6B7280] mb-3">
                 On this page
               </div>
-              <nav className="space-y-1 border-l-2 border-[#EEF0EE]">
+              <nav className="space-y-1 border-l-2 border-[#F1F0EA]">
                 {sections.map((s, i) => (
                   <a
                     key={s.id}
                     href={`#${s.id}`}
                     className={`-ml-[2px] block pl-4 py-1.5 text-[12px] font-semibold border-l-2 transition-colors ${
                       activeId === s.id
-                        ? "border-[#00B879] text-[#008F60]"
-                        : "border-transparent text-[#5A6270] hover:text-[#171923]"
+                        ? "border-[#064E3B] text-[#043B2C]"
+                        : "border-transparent text-[#4B5563] hover:text-[#111827]"
                     }`}
                   >
                     {i + 1}. {s.title}
@@ -92,11 +92,11 @@ export const LegalPage: React.FC<{
             {sections.map((s, i) => (
               <section key={s.id} id={s.id} className="scroll-mt-28">
                 <Reveal>
-                <h2 className="text-[20px] sm:text-2xl font-bold text-[#171923] tracking-tight flex items-baseline gap-3">
-                  <span className="text-[#00B879] font-black text-sm">{String(i + 1).padStart(2, "0")}</span>
+                <h2 className="text-[20px] sm:text-2xl font-bold text-[#111827] tracking-tight flex items-baseline gap-3">
+                  <span className="text-[#064E3B] font-black text-sm">{String(i + 1).padStart(2, "0")}</span>
                   {s.title}
                 </h2>
-                <div className="mt-3.5 text-[14px] text-[#5A6270] leading-[1.8] space-y-3 [&_strong]:text-[#171923] [&_strong]:font-bold">
+                <div className="mt-3.5 text-[14px] text-[#4B5563] leading-[1.8] space-y-3 [&_strong]:text-[#111827] [&_strong]:font-bold">
                   {s.body}
                 </div>
                 </Reveal>

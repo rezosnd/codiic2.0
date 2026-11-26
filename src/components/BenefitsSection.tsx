@@ -17,10 +17,10 @@ const DEALS = [
 ];
 
 const STAGE_STYLE: Record<string, string> = {
-  Won: "bg-[#DCFCE7] text-[#15803D]",
+  Won: "bg-[#DCFCE7] text-[#0A5C44]",
   Proposal: "bg-[#E0F2FE] text-[#0369A1]",
   Qualified: "bg-[#EDE9FE] text-[#6D28D9]",
-  Contacted: "bg-[#FEF3C7] text-[#B45309]",
+  Contacted: "bg-[#F5EFDF] text-[#8F6E2D]",
 };
 
 const ORBIT = [
@@ -28,13 +28,13 @@ const ORBIT = [
   { initials: "NS", color: "#F97316", pos: "top-[10%] left-[52%]" },
   { initials: "AJ", color: "#8B5CF6", pos: "top-[42%] left-[78%]" },
   { initials: "RK", color: "#E11D48", pos: "top-[62%] left-[30%]" },
-  { initials: "SP", color: "#15803D", pos: "top-[70%] left-[64%]" },
+  { initials: "SP", color: "#0A5C44", pos: "top-[70%] left-[64%]" },
 ];
 
 const FOLLOW_UPS = [
-  { icon: MessageCircle, label: "Instagram Auto-DM sent", meta: "Instantly · Keyword trigger", tone: "text-[#4ADE80]" },
+  { icon: MessageCircle, label: "Instagram Auto-DM sent", meta: "Instantly · Keyword trigger", tone: "text-[#34D399]" },
   { icon: PhoneCall, label: "Bulk AI voice call — 42 booked", meta: "Auto · Appointments", tone: "text-[#38BDF8]" },
-  { icon: CalendarCheck, label: "WhatsApp drip campaign", meta: "Day 3 · Scheduled", tone: "text-[#FBBF24]" },
+  { icon: CalendarCheck, label: "WhatsApp drip campaign", meta: "Day 3 · Scheduled", tone: "text-[#C6A15B]" },
 ];
 
 const Avatar: React.FC<{ initials: string; color: string; className?: string }> = ({ initials, color, className = "w-9 h-9 text-xs" }) => (
@@ -52,13 +52,13 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ onOpenGetStart
       {/* Section Header */}
       <div className="grid lg:grid-cols-12 gap-6 items-end mb-10 sm:mb-14">
         <div className="lg:col-span-7">
-          <span className="text-sm font-semibold text-[#008F60]">Why CODIIC · Aapka Business, Aapka Control</span>
-          <h2 className="mt-3 text-[34px] sm:text-5xl lg:text-[56px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.05]">
+          <span className="text-sm font-semibold text-[#043B2C]">Why CODIIC · Aapka Business, Aapka Control</span>
+          <h2 className="mt-3 text-[34px] sm:text-5xl lg:text-[56px] font-bold text-[#111827] tracking-[-0.035em] leading-[1.05]">
             Built for{" "}
-            <em className="font-serif italic font-normal text-[#008F60]">everyday clarity.</em>
+            <em className="font-serif italic font-normal text-[#043B2C]">everyday clarity.</em>
           </h2>
         </div>
-        <p className="lg:col-span-5 text-base sm:text-lg text-[#4A5260] leading-relaxed">
+        <p className="lg:col-span-5 text-base sm:text-lg text-[#4B5563] leading-relaxed">
           One inbox for every channel, AI follow-ups that never sleep, and numbers the whole team
           can see.
         </p>
@@ -66,7 +66,7 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ onOpenGetStart
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
         {/* Less switching — solid emerald */}
-        <article className="lg:col-span-4 relative overflow-hidden rounded-[22px] bg-[#00A06A] text-white p-7 sm:p-8 flex flex-col min-h-[400px]">
+        <article className="lg:col-span-4 relative overflow-hidden rounded-[22px] bg-[#0E7A5C] text-white p-7 sm:p-8 flex flex-col min-h-[400px]">
           <h3 className="text-[22px] font-bold tracking-tight">One omnichannel inbox</h3>
           <p className="mt-3 text-[15px] text-white/85 leading-relaxed">
             WhatsApp Cloud API, Business App Coexistence, Instagram, Facebook, Telegram and Email —
@@ -74,13 +74,13 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ onOpenGetStart
           </p>
 
           <div className="mt-auto -mx-7 sm:-mx-8 -mb-7 sm:-mb-8 pt-8">
-            <div className="ml-7 sm:ml-8 rounded-tl-[20px] bg-[#111A16] p-5 pr-7 space-y-2.5 shadow-[0_-20px_40px_-20px_rgba(0,0,0,0.5)]">
+            <div className="ml-7 sm:ml-8 rounded-tl-[20px] bg-[#1F2937] p-5 pr-7 space-y-2.5 shadow-[0_-20px_40px_-20px_rgba(0,0,0,0.5)]">
               {UNIFIED.map((item) => (
                 <div
                   key={item}
-                  className="inline-flex w-fit items-center gap-2.5 px-3.5 py-2 rounded-lg bg-[#1D2924] ring-1 ring-white/10 text-sm text-white/90 mr-2"
+                  className="inline-flex w-fit items-center gap-2.5 px-3.5 py-2 rounded-lg bg-[#1F2937] ring-1 ring-white/10 text-sm text-white/90 mr-2"
                 >
-                  <Check className="w-4 h-4 text-[#4ADE80]" strokeWidth={2.5} />
+                  <Check className="w-4 h-4 text-[#34D399]" strokeWidth={2.5} />
                   {item}
                 </div>
               ))}
@@ -91,24 +91,24 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ onOpenGetStart
         {/* Clearer sales — light card with deal list + rep orbit */}
         <article className="lg:col-span-8 relative overflow-hidden rounded-[22px] bg-[#D8EEF9] p-6 sm:p-8">
           <div className="grid md:grid-cols-2 gap-6 md:gap-8 h-full">
-            <div className="relative z-10 rounded-2xl bg-white p-5 shadow-[0_18px_40px_-20px_rgba(14,60,90,0.35)] self-start">
+            <div className="relative z-10 rounded-2xl bg-white p-5 shadow-[0_18px_40px_-20px_rgba(17,24,39,0.35)] self-start">
               <div className="flex items-center justify-between">
-                <h4 className="text-lg font-bold text-[#171923]">Pipeline this month</h4>
-                <span className="text-xs font-semibold text-[#5A6270]">4 open</span>
+                <h4 className="text-lg font-bold text-[#111827]">Pipeline this month</h4>
+                <span className="text-xs font-semibold text-[#4B5563]">4 open</span>
               </div>
-              <ul className="mt-3 divide-y divide-[#EEF1F4]">
+              <ul className="mt-3 divide-y divide-[#F1F0EA]">
                 {DEALS.map((d) => (
                   <li key={d.name} className="flex items-center gap-3 py-3">
                     <Avatar initials={d.initials} color={d.color} />
                     <div className="min-w-0 flex-1">
-                      <div className="text-sm font-semibold text-[#171923] truncate">{d.name}</div>
+                      <div className="text-sm font-semibold text-[#111827] truncate">{d.name}</div>
                       <div className="text-xs text-[#6B7280] truncate">{d.company}</div>
                     </div>
                     <div className="text-right shrink-0">
                       <span className={`inline-block text-[10px] font-bold px-2 py-0.5 rounded ${STAGE_STYLE[d.stage]}`}>
                         {d.stage}
                       </span>
-                      <div className="mt-1 text-xs font-bold text-[#171923] tabular-nums">{d.value}</div>
+                      <div className="mt-1 text-xs font-bold text-[#111827] tabular-nums">{d.value}</div>
                     </div>
                   </li>
                 ))}
@@ -116,8 +116,8 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ onOpenGetStart
             </div>
 
             <div className="relative flex flex-col min-h-[300px]">
-              <h3 className="text-[22px] font-bold tracking-tight text-[#0F2A3D]">Clearer sales</h3>
-              <p className="mt-3 text-[15px] text-[#3B5466] leading-relaxed">
+              <h3 className="text-[22px] font-bold tracking-tight text-[#1F2937]">Clearer sales</h3>
+              <p className="mt-3 text-[15px] text-[#374151] leading-relaxed">
                 Every lead, its stage, its value and who owns it — visible to the whole team in real
                 numbers, not guesswork.
               </p>
@@ -141,7 +141,7 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ onOpenGetStart
         </article>
 
         {/* Smoother follow-ups — dark */}
-        <article className="lg:col-span-7 rounded-[22px] bg-[#111A16] text-white p-7 sm:p-8 grid md:grid-cols-2 gap-6">
+        <article className="lg:col-span-7 rounded-[22px] bg-[#1F2937] text-white p-7 sm:p-8 grid md:grid-cols-2 gap-6">
           <div>
             <h3 className="text-[22px] font-bold tracking-tight">Smoother follow-ups</h3>
             <p className="mt-3 text-[15px] text-white/70 leading-relaxed">
@@ -154,8 +154,8 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ onOpenGetStart
           </div>
           <ol className="relative space-y-3 before:absolute before:left-[19px] before:top-3 before:bottom-3 before:w-px before:bg-white/10">
             {FOLLOW_UPS.map(({ icon: Icon, label, meta, tone }) => (
-              <li key={label} className="relative flex items-center gap-3 rounded-xl bg-[#1D2924] ring-1 ring-white/10 px-3 py-2.5">
-                <span className="w-[26px] h-[26px] rounded-lg bg-[#111A16] ring-1 ring-white/10 flex items-center justify-center shrink-0">
+              <li key={label} className="relative flex items-center gap-3 rounded-xl bg-[#1F2937] ring-1 ring-white/10 px-3 py-2.5">
+                <span className="w-[26px] h-[26px] rounded-lg bg-[#1F2937] ring-1 ring-white/10 flex items-center justify-center shrink-0">
                   <Icon className={`w-3.5 h-3.5 ${tone}`} />
                 </span>
                 <div className="min-w-0">
@@ -168,17 +168,17 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({ onOpenGetStart
         </article>
 
         {/* Stat — bold yellow */}
-        <article className="lg:col-span-5 rounded-[22px] bg-[#FFD84D] text-[#1F1A05] p-7 sm:p-8 flex flex-col">
+        <article className="lg:col-span-5 rounded-[22px] bg-[#C6A15B] text-[#3B2E12] p-7 sm:p-8 flex flex-col">
           <span className="text-sm font-semibold">Average first reply</span>
           <div className="mt-2 text-[64px] sm:text-[80px] font-bold tracking-[-0.05em] leading-none">0.4s</div>
-          <p className="mt-3 text-[15px] text-[#4A3F0A] leading-relaxed max-w-sm">
+          <p className="mt-3 text-[15px] text-[#3B2E12] leading-relaxed max-w-sm">
             AI first-reply speed across WhatsApp, Instagram & Telegram — on every plan, including free.
           </p>
           {onOpenGetStarted && (
             <button
               type="button"
               onClick={onOpenGetStarted}
-              className="mt-6 self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1F1A05] hover:bg-black text-white text-sm font-bold transition-colors active:scale-[0.98] cursor-pointer"
+              className="mt-6 self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3B2E12] hover:bg-black text-white text-sm font-bold transition-colors active:scale-[0.98] cursor-pointer"
             >
               Start Free
               <ArrowRight className="w-4 h-4" />

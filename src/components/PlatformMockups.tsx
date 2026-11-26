@@ -33,22 +33,22 @@ const Shell: React.FC<{ title: string; right?: React.ReactNode; children: React.
   className = "",
 }) => (
   <div
-    className={`rounded-[24px] bg-white border border-[#E2E6E4] shadow-[0_30px_70px_-30px_rgba(23,25,35,0.25)] overflow-hidden ${className}`}
+    className={`rounded-[24px] bg-white border border-[#E4E2D8] shadow-[0_30px_70px_-30px_rgba(17,24,39,0.25)] overflow-hidden ${className}`}
   >
-    <div className="flex items-center gap-3 px-4 sm:px-5 py-3 border-b border-[#EEF0EE] bg-[#FAFBFA]">
+    <div className="flex items-center gap-3 px-4 sm:px-5 py-3 border-b border-[#F1F0EA] bg-[#F7F7F2]">
       <span className="flex gap-1.5">
         <i className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
         <i className="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]" />
         <i className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
       </span>
-      <span className="text-[11px] font-bold text-[#5A6270] truncate">{title}</span>
+      <span className="text-[11px] font-bold text-[#4B5563] truncate">{title}</span>
       <span className="ml-auto flex items-center gap-2">{right}</span>
     </div>
     {children}
   </div>
 );
 
-const Avatar: React.FC<{ initials: string; tint?: string }> = ({ initials, tint = "bg-[#00B879]" }) => (
+const Avatar: React.FC<{ initials: string; tint?: string }> = ({ initials, tint = "bg-[#064E3B]" }) => (
   <span
     className={`w-6 h-6 rounded-full ${tint} text-white text-[8px] font-black flex items-center justify-center shrink-0 ring-2 ring-white`}
   >
@@ -57,19 +57,19 @@ const Avatar: React.FC<{ initials: string; tint?: string }> = ({ initials, tint 
 );
 
 const CHANNEL_STYLES: Record<string, string> = {
-  WhatsApp: "bg-[#E8F8F1] text-[#008F60]",
+  WhatsApp: "bg-[#F1F0EA] text-[#043B2C]",
   Instagram: "bg-[#F4EDFB] text-[#7C3AED]",
   Web: "bg-[#EAF1FB] text-[#2E6FE8]",
-  "AI Voice": "bg-[#FFF6E4] text-[#B07807]",
+  "AI Voice": "bg-[#F5EFDF] text-[#8F6E2D]",
   Telegram: "bg-[#E4F2FB] text-[#1682C4]",
   Facebook: "bg-[#E7EEFB] text-[#3056C4]",
-  Email: "bg-[#F1F3F2] text-[#5A6270]",
+  Email: "bg-[#F1F0EA] text-[#4B5563]",
 };
 
 /* ═══════════════════════ 1. CRM 360 PIPELINE ═══════════════════════ */
 
 const STAGES = ["New Lead", "Contacted", "Qualified", "Proposal", "Won"];
-const STAGE_TINTS = ["#8A919C", "#2E6FE8", "#D99A0B", "#7C3AED", "#00B879"];
+const STAGE_TINTS = ["#6B7280", "#2E6FE8", "#A87F3D", "#7C3AED", "#064E3B"];
 
 interface Deal {
   id: string;
@@ -90,7 +90,7 @@ interface Deal {
 const INITIAL_DEALS: Deal[] = [
   {
     id: "d1", name: "Kaveri Lifestyle", value: "₹42,500", channel: "WhatsApp", agent: "AS",
-    agentTint: "bg-[#00B879]", stage: 0, tags: ["D2C", "Repeat Buyer"], segment: "High-Value",
+    agentTint: "bg-[#064E3B]", stage: 0, tags: ["D2C", "Repeat Buyer"], segment: "High-Value",
     phone: "+91 98•• ••210", ltv: "₹1.8L", city: "Jaipur",
     orders: [
       { id: "#1042", item: "Linen Co-ord Set ×2", total: "₹4,999", status: "Delivered" },
@@ -105,7 +105,7 @@ const INITIAL_DEALS: Deal[] = [
   },
   {
     id: "d3", name: "Nivaan Realty", value: "₹2,40,000", channel: "Web", agent: "AS",
-    agentTint: "bg-[#00B879]", stage: 1, tags: ["Real Estate", "Site Visit"], segment: "Enterprise",
+    agentTint: "bg-[#064E3B]", stage: 1, tags: ["Real Estate", "Site Visit"], segment: "Enterprise",
     phone: "+91 97•• ••302", ltv: "₹6.2L", city: "Gurugram",
     orders: [{ id: "#SV-09", item: "3BHK Skyline Tour", total: "Site visit", status: "Scheduled" }],
   },
@@ -129,7 +129,7 @@ const INITIAL_DEALS: Deal[] = [
   },
   {
     id: "d7", name: "Rohan Kapoor", value: "₹12,300", channel: "Web", agent: "AS",
-    agentTint: "bg-[#00B879]", stage: 4, tags: ["Paid", "Reorder"], segment: "High-Value",
+    agentTint: "bg-[#064E3B]", stage: 4, tags: ["Paid", "Reorder"], segment: "High-Value",
     phone: "+91 95•• ••889", ltv: "₹41,300", city: "Delhi",
     orders: [{ id: "#1048", item: "Ceramic Dinner Set", total: "₹12,300", status: "Paid ✓" }],
   },
@@ -150,8 +150,8 @@ export const CrmPipelineMockup: React.FC = () => {
     <Shell
       title="crm-360.codiic.com — Pipeline Board"
       right={
-        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#008F60] bg-[#E8F8F1] px-2 py-1 rounded-full">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00B879] animate-pulse" />
+        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#043B2C] bg-[#F1F0EA] px-2 py-1 rounded-full">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#064E3B] animate-pulse" />
           {deals.length} open deals
         </span>
       }
@@ -162,13 +162,13 @@ export const CrmPipelineMockup: React.FC = () => {
           {STAGES.map((stage, si) => {
             const stageDeals = deals.filter((d) => d.stage === si);
             return (
-              <div key={stage} className={`min-w-[150px] sm:min-w-[170px] md:min-w-0 md:flex-1 p-2.5 sm:p-3 ${si > 0 ? "border-l border-[#EEF0EE]" : ""}`}>
+              <div key={stage} className={`min-w-[150px] sm:min-w-[170px] md:min-w-0 md:flex-1 p-2.5 sm:p-3 ${si > 0 ? "border-l border-[#F1F0EA]" : ""}`}>
                 <div className="flex items-center gap-1.5 mb-2.5 px-1">
                   <span className="w-2 h-2 rounded-full" style={{ background: STAGE_TINTS[si] }} />
-                  <span className="text-[10px] font-bold uppercase tracking-wide text-[#5A6270] truncate">
+                  <span className="text-[10px] font-bold uppercase tracking-wide text-[#4B5563] truncate">
                     {stage}
                   </span>
-                  <span className="ml-auto text-[9px] font-bold text-[#8A919C] bg-[#F1F3F2] px-1.5 py-0.5 rounded-full">
+                  <span className="ml-auto text-[9px] font-bold text-[#6B7280] bg-[#F1F0EA] px-1.5 py-0.5 rounded-full">
                     {stageDeals.length}
                   </span>
                 </div>
@@ -180,19 +180,19 @@ export const CrmPipelineMockup: React.FC = () => {
                       onClick={() => setSelected(deal)}
                       className={`w-full text-left rounded-xl bg-white border p-2.5 transition-all cursor-pointer animate-tool-in ${
                         selected?.id === deal.id
-                          ? "border-[#00B879] shadow-[0_0_0_3px_rgba(0,184,121,0.12)]"
-                          : "border-[#E2E6E4] hover:border-[#00B879]/50 hover:shadow-sm"
+                          ? "border-[#064E3B] shadow-[0_0_0_3px_rgba(6,78,59,0.12)]"
+                          : "border-[#E4E2D8] hover:border-[#064E3B]/50 hover:shadow-sm"
                       }`}
                     >
                       <div className="flex items-start justify-between gap-1">
-                        <span className="text-[11px] font-bold text-[#171923] leading-tight truncate">
+                        <span className="text-[11px] font-bold text-[#111827] leading-tight truncate">
                           {deal.name}
                         </span>
                         <Avatar initials={deal.agent} tint={deal.agentTint} />
                       </div>
-                      <div className="mt-1 text-[11px] font-extrabold text-[#008F60]">{deal.value}</div>
+                      <div className="mt-1 text-[11px] font-extrabold text-[#043B2C]">{deal.value}</div>
                       <div className="mt-1.5 flex items-center justify-between gap-1">
-                        <span className={`text-[8px] font-bold px-1.5 py-0.5 rounded-full ${CHANNEL_STYLES[deal.channel] ?? "bg-[#F1F3F2] text-[#5A6270]"}`}>
+                        <span className={`text-[8px] font-bold px-1.5 py-0.5 rounded-full ${CHANNEL_STYLES[deal.channel] ?? "bg-[#F1F0EA] text-[#4B5563]"}`}>
                           {deal.channel}
                         </span>
                         <span
@@ -200,7 +200,7 @@ export const CrmPipelineMockup: React.FC = () => {
                           tabIndex={0}
                           onClick={(e) => { e.stopPropagation(); moveDeal(deal.id, 1); }}
                           onKeyDown={(e) => e.key === "Enter" && moveDeal(deal.id, 1)}
-                          className="w-5 h-5 rounded-full bg-[#F1F3F2] hover:bg-[#E8F8F1] text-[#5A6270] hover:text-[#008F60] flex items-center justify-center transition-colors"
+                          className="w-5 h-5 rounded-full bg-[#F1F0EA] hover:bg-[#F1F0EA] text-[#4B5563] hover:text-[#043B2C] flex items-center justify-center transition-colors"
                           title="Move to next stage"
                         >
                           <ArrowRight className="w-3 h-3" />
@@ -216,17 +216,17 @@ export const CrmPipelineMockup: React.FC = () => {
 
         {/* Slide-out contact profile */}
         {selected && (
-          <div className="w-full md:w-[280px] shrink-0 border-t md:border-t-0 md:border-l border-[#EEF0EE] bg-[#FAFBFA] animate-tool-in">
+          <div className="w-full md:w-[280px] shrink-0 border-t md:border-t-0 md:border-l border-[#F1F0EA] bg-[#F7F7F2] animate-tool-in">
             <div className="p-4">
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="text-[13px] font-bold text-[#171923]">{selected.name}</div>
-                  <div className="text-[10px] text-[#8A919C]">{selected.phone} · {selected.city}</div>
+                  <div className="text-[13px] font-bold text-[#111827]">{selected.name}</div>
+                  <div className="text-[10px] text-[#6B7280]">{selected.phone} · {selected.city}</div>
                 </div>
                 <button
                   type="button"
                   onClick={() => setSelected(null)}
-                  className="w-6 h-6 rounded-full hover:bg-[#EEF0EE] flex items-center justify-center text-[#8A919C] cursor-pointer"
+                  className="w-6 h-6 rounded-full hover:bg-[#F1F0EA] flex items-center justify-center text-[#6B7280] cursor-pointer"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -234,7 +234,7 @@ export const CrmPipelineMockup: React.FC = () => {
 
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {selected.tags.map((t) => (
-                  <span key={t} className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-[#E8F8F1] text-[#008F60]">
+                  <span key={t} className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-[#F1F0EA] text-[#043B2C]">
                     {t}
                   </span>
                 ))}
@@ -250,26 +250,26 @@ export const CrmPipelineMockup: React.FC = () => {
                   { l: "Source", v: selected.channel },
                   { l: "Stage", v: STAGES[selected.stage] },
                 ].map((f) => (
-                  <div key={f.l} className="rounded-lg bg-white border border-[#EEF0EE] p-2">
-                    <div className="text-[8px] font-bold uppercase tracking-wide text-[#8A919C]">{f.l}</div>
-                    <div className="text-[11px] font-bold text-[#171923] mt-0.5 truncate">{f.v}</div>
+                  <div key={f.l} className="rounded-lg bg-white border border-[#F1F0EA] p-2">
+                    <div className="text-[8px] font-bold uppercase tracking-wide text-[#6B7280]">{f.l}</div>
+                    <div className="text-[11px] font-bold text-[#111827] mt-0.5 truncate">{f.v}</div>
                   </div>
                 ))}
               </div>
 
               <div className="mt-4">
-                <div className="text-[9px] font-bold uppercase tracking-wider text-[#8A919C] mb-2">
+                <div className="text-[9px] font-bold uppercase tracking-wider text-[#6B7280] mb-2">
                   Order History
                 </div>
                 <div className="space-y-1.5">
                   {selected.orders.map((o) => (
-                    <div key={o.id} className="rounded-lg bg-white border border-[#EEF0EE] p-2 flex items-center gap-2">
-                      <ShoppingBag className="w-3 h-3 text-[#00B879] shrink-0" />
+                    <div key={o.id} className="rounded-lg bg-white border border-[#F1F0EA] p-2 flex items-center gap-2">
+                      <ShoppingBag className="w-3 h-3 text-[#064E3B] shrink-0" />
                       <div className="min-w-0">
-                        <div className="text-[10px] font-bold text-[#171923] truncate">
+                        <div className="text-[10px] font-bold text-[#111827] truncate">
                           {o.id} · {o.item}
                         </div>
-                        <div className="text-[9px] text-[#8A919C]">{o.total} · {o.status}</div>
+                        <div className="text-[9px] text-[#6B7280]">{o.total} · {o.status}</div>
                       </div>
                     </div>
                   ))}
@@ -277,10 +277,10 @@ export const CrmPipelineMockup: React.FC = () => {
               </div>
 
               <div className="mt-4 flex gap-2">
-                <button type="button" className="flex-1 py-2 rounded-full bg-[#00B879] text-white text-[10px] font-bold cursor-pointer">
+                <button type="button" className="flex-1 py-2 rounded-full bg-[#064E3B] text-white text-[10px] font-bold cursor-pointer">
                   WhatsApp
                 </button>
-                <button type="button" className="flex-1 py-2 rounded-full bg-[#171923] text-white text-[10px] font-bold cursor-pointer">
+                <button type="button" className="flex-1 py-2 rounded-full bg-[#111827] text-white text-[10px] font-bold cursor-pointer">
                   AI Call
                 </button>
               </div>
@@ -379,13 +379,13 @@ export const InboxMockup: React.FC = () => {
     <Shell
       title="inbox.codiic.com — Unified Team Inbox"
       right={
-        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#008F60] bg-[#E8F8F1] px-2 py-1 rounded-full">
+        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#043B2C] bg-[#F1F0EA] px-2 py-1 rounded-full">
           <Zap className="w-3 h-3" /> AI replying in 0.4s
         </span>
       }
     >
       {/* Channel tabs */}
-      <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-[#EEF0EE] overflow-x-auto no-scrollbar">
+      <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-[#F1F0EA] overflow-x-auto no-scrollbar">
         {CHANNEL_TABS.map((t) => (
           <button
             key={t}
@@ -393,8 +393,8 @@ export const InboxMockup: React.FC = () => {
             onClick={() => setChannel(t)}
             className={`px-2.5 py-1 rounded-full text-[10px] font-bold whitespace-nowrap transition-all cursor-pointer ${
               channel === t
-                ? "bg-[#171923] text-white"
-                : "bg-[#F1F3F2] text-[#5A6270] hover:bg-[#E4E7EB]"
+                ? "bg-[#111827] text-white"
+                : "bg-[#F1F0EA] text-[#4B5563] hover:bg-[#E4E2D8]"
             }`}
           >
             {t}
@@ -404,26 +404,26 @@ export const InboxMockup: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 min-h-[340px]">
         {/* Conversation list */}
-        <div className="border-b md:border-b-0 md:border-r border-[#EEF0EE] max-h-[200px] md:max-h-none overflow-y-auto no-scrollbar">
+        <div className="border-b md:border-b-0 md:border-r border-[#F1F0EA] max-h-[200px] md:max-h-none overflow-y-auto no-scrollbar">
           {filtered.map((c) => (
             <button
               key={c.id}
               type="button"
               onClick={() => setActiveId(c.id)}
-              className={`w-full flex items-center gap-2.5 px-4 py-3 text-left border-b border-[#F4F6F5] transition-colors cursor-pointer ${
-                activeId === c.id ? "bg-[#F0FAF5]" : "hover:bg-[#FAFBFA]"
+              className={`w-full flex items-center gap-2.5 px-4 py-3 text-left border-b border-[#F1F0EA] transition-colors cursor-pointer ${
+                activeId === c.id ? "bg-[#F1F0EA]" : "hover:bg-[#F7F7F2]"
               }`}
             >
               <Avatar initials={c.name.split(" ").map((w) => w[0]).join("").slice(0, 2)} />
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="text-[12px] font-bold text-[#171923] truncate">{c.name}</span>
-                  <span className="text-[9px] text-[#8A919C] shrink-0">{c.time}</span>
+                  <span className="text-[12px] font-bold text-[#111827] truncate">{c.name}</span>
+                  <span className="text-[9px] text-[#6B7280] shrink-0">{c.time}</span>
                 </div>
                 <div className="flex items-center justify-between gap-2 mt-0.5">
-                  <span className="text-[10px] text-[#8A919C] truncate">{c.preview}</span>
+                  <span className="text-[10px] text-[#6B7280] truncate">{c.preview}</span>
                   {c.unread && (
-                    <span className="w-4 h-4 rounded-full bg-[#00B879] text-white text-[8px] font-black flex items-center justify-center shrink-0">
+                    <span className="w-4 h-4 rounded-full bg-[#064E3B] text-white text-[8px] font-black flex items-center justify-center shrink-0">
                       {c.unread}
                     </span>
                   )}
@@ -437,19 +437,19 @@ export const InboxMockup: React.FC = () => {
         </div>
 
         {/* Chat thread */}
-        <div className="md:col-span-2 flex flex-col bg-[#FAFBFA]">
-          <div className="flex items-center gap-2.5 px-4 py-2.5 bg-white border-b border-[#EEF0EE]">
-            <Avatar initials={convo.name.split(" ").map((w) => w[0]).join("").slice(0, 2)} tint="bg-[#171923]" />
+        <div className="md:col-span-2 flex flex-col bg-[#F7F7F2]">
+          <div className="flex items-center gap-2.5 px-4 py-2.5 bg-white border-b border-[#F1F0EA]">
+            <Avatar initials={convo.name.split(" ").map((w) => w[0]).join("").slice(0, 2)} tint="bg-[#111827]" />
             <div className="min-w-0">
-              <div className="text-[12px] font-bold text-[#171923] truncate">{convo.name}</div>
-              <div className="text-[9px] text-[#008F60] font-semibold">Assigned to {convo.agent} · Online</div>
+              <div className="text-[12px] font-bold text-[#111827] truncate">{convo.name}</div>
+              <div className="text-[9px] text-[#043B2C] font-semibold">Assigned to {convo.agent} · Online</div>
             </div>
             <div className="ml-auto flex items-center gap-1.5">
               <button
                 type="button"
                 onClick={() => setNoteMode((v) => !v)}
                 className={`w-7 h-7 rounded-full flex items-center justify-center transition-colors cursor-pointer ${
-                  noteMode ? "bg-[#FFF6E4] text-[#B07807]" : "bg-[#F1F3F2] text-[#5A6270] hover:text-[#171923]"
+                  noteMode ? "bg-[#F5EFDF] text-[#8F6E2D]" : "bg-[#F1F0EA] text-[#4B5563] hover:text-[#111827]"
                 }`}
                 title="Internal note"
               >
@@ -458,7 +458,7 @@ export const InboxMockup: React.FC = () => {
               <button
                 type="button"
                 onClick={() => sendQuick("📦 Shared your full product catalog — tap to browse & order.")}
-                className="w-7 h-7 rounded-full bg-[#F1F3F2] text-[#5A6270] hover:text-[#008F60] flex items-center justify-center transition-colors cursor-pointer"
+                className="w-7 h-7 rounded-full bg-[#F1F0EA] text-[#4B5563] hover:text-[#043B2C] flex items-center justify-center transition-colors cursor-pointer"
                 title="Share product catalog"
               >
                 <ShoppingBag className="w-3.5 h-3.5" />
@@ -469,7 +469,7 @@ export const InboxMockup: React.FC = () => {
           <div className="flex-1 p-4 space-y-2.5 overflow-y-auto no-scrollbar max-h-[240px] md:max-h-[280px]">
             {thread.map((m, i) =>
               m.from === "note" ? (
-                <div key={i} className="mx-auto max-w-[85%] rounded-xl bg-[#FFF6E4] border border-[#F5D78E]/60 px-3 py-2 text-[10px] text-[#7A5B0B] animate-tool-in">
+                <div key={i} className="mx-auto max-w-[85%] rounded-xl bg-[#F5EFDF] border border-[#E8D6AC]/60 px-3 py-2 text-[10px] text-[#6E5621] animate-tool-in">
                   <span className="font-bold">Internal note</span> · {m.text}
                 </div>
               ) : (
@@ -477,12 +477,12 @@ export const InboxMockup: React.FC = () => {
                   <div
                     className={`max-w-[80%] rounded-2xl px-3 py-2 text-[11px] leading-relaxed animate-tool-in ${
                       m.from === "us"
-                        ? "bg-[#00B879] text-white rounded-br-md"
-                        : "bg-white border border-[#E2E6E4] text-[#171923] rounded-bl-md"
+                        ? "bg-[#064E3B] text-white rounded-br-md"
+                        : "bg-white border border-[#E4E2D8] text-[#111827] rounded-bl-md"
                     }`}
                   >
                     {m.text}
-                    <span className={`block mt-0.5 text-[8px] ${m.from === "us" ? "text-white/70" : "text-[#B4BBC4]"}`}>
+                    <span className={`block mt-0.5 text-[8px] ${m.from === "us" ? "text-white/70" : "text-[#9CA3AF]"}`}>
                       {m.time} {m.from === "us" && "· Seen ✓✓"}
                     </span>
                   </div>
@@ -499,25 +499,25 @@ export const InboxMockup: React.FC = () => {
                   key={q}
                   type="button"
                   onClick={() => sendQuick(q + " — sent via CODIIC quick reply")}
-                  className="px-2.5 py-1 rounded-full bg-white border border-[#E2E6E4] text-[9px] font-bold text-[#5A6270] hover:border-[#00B879]/50 hover:text-[#008F60] whitespace-nowrap transition-colors cursor-pointer"
+                  className="px-2.5 py-1 rounded-full bg-white border border-[#E4E2D8] text-[9px] font-bold text-[#4B5563] hover:border-[#064E3B]/50 hover:text-[#043B2C] whitespace-nowrap transition-colors cursor-pointer"
                 >
                   {q}
                 </button>
               ))}
             </div>
             {noteMode ? (
-              <div className="flex items-center gap-2 rounded-xl bg-[#FFF6E4] border border-[#F5D78E] px-3 py-2">
-                <StickyNote className="w-3.5 h-3.5 text-[#B07807] shrink-0" />
-                <span className="flex-1 text-[10px] text-[#7A5B0B]">Internal team note — teammates only</span>
-                <button type="button" onClick={sendNote} className="px-2.5 py-1 rounded-full bg-[#B07807] text-white text-[9px] font-bold cursor-pointer">
+              <div className="flex items-center gap-2 rounded-xl bg-[#F5EFDF] border border-[#E8D6AC] px-3 py-2">
+                <StickyNote className="w-3.5 h-3.5 text-[#8F6E2D] shrink-0" />
+                <span className="flex-1 text-[10px] text-[#6E5621]">Internal team note — teammates only</span>
+                <button type="button" onClick={sendNote} className="px-2.5 py-1 rounded-full bg-[#8F6E2D] text-white text-[9px] font-bold cursor-pointer">
                   Add note
                 </button>
               </div>
             ) : (
-              <div className="flex items-center gap-2 rounded-xl bg-white border border-[#E2E6E4] px-3 py-2">
-                <ImageIcon className="w-3.5 h-3.5 text-[#8A919C] shrink-0" />
-                <span className="flex-1 text-[10px] text-[#B4BBC4]">Type a reply…</span>
-                <Send className="w-3.5 h-3.5 text-[#00B879] shrink-0" />
+              <div className="flex items-center gap-2 rounded-xl bg-white border border-[#E4E2D8] px-3 py-2">
+                <ImageIcon className="w-3.5 h-3.5 text-[#6B7280] shrink-0" />
+                <span className="flex-1 text-[10px] text-[#9CA3AF]">Type a reply…</span>
+                <Send className="w-3.5 h-3.5 text-[#064E3B] shrink-0" />
               </div>
             )}
           </div>
@@ -530,10 +530,10 @@ export const InboxMockup: React.FC = () => {
 /* ═══════════════════ 3. BULK AI VOICE CALLS ════════════════════════ */
 
 const CALL_METRICS = [
-  { label: "Calls Dialed", value: "2,418", tint: "text-[#171923]" },
+  { label: "Calls Dialed", value: "2,418", tint: "text-[#111827]" },
   { label: "Connected", value: "1,762", tint: "text-[#2E6FE8]" },
-  { label: "Appointments Booked", value: "342", tint: "text-[#008F60]" },
-  { label: "Orders Confirmed", value: "589", tint: "text-[#008F60]" },
+  { label: "Appointments Booked", value: "342", tint: "text-[#043B2C]" },
+  { label: "Orders Confirmed", value: "589", tint: "text-[#043B2C]" },
 ];
 
 const TRANSCRIPT = [
@@ -544,9 +544,9 @@ const TRANSCRIPT = [
 ];
 
 const RECENT_CALLS = [
-  { name: "Order #1042 · COD verify", result: "Confirmed", tint: "bg-emerald-100 text-emerald-800", time: "Just now" },
+  { name: "Order #1042 · COD verify", result: "Confirmed", tint: "bg-[#F1F0EA] text-[#065F46]", time: "Just now" },
   { name: "Lead callback · Riya S.", result: "Appointment Fri 4 PM", tint: "bg-sky-100 text-sky-800", time: "2m ago" },
-  { name: "Winback · 214 contacts", result: "In progress · 68%", tint: "bg-amber-100 text-amber-800", time: "Live" },
+  { name: "Winback · 214 contacts", result: "In progress · 68%", tint: "bg-[#F5EFDF] text-[#6E5621]", time: "Live" },
 ];
 
 export const AICallsMockup: React.FC = () => {
@@ -572,7 +572,7 @@ export const AICallsMockup: React.FC = () => {
     <Shell
       title="voice.codiic.com — Campaign · COD Verification Blast"
       right={
-        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#B07807] bg-[#FFF6E4] px-2 py-1 rounded-full">
+        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#8F6E2D] bg-[#F5EFDF] px-2 py-1 rounded-full">
           <PhoneCall className="w-3 h-3" /> Campaign live
         </span>
       }
@@ -582,9 +582,9 @@ export const AICallsMockup: React.FC = () => {
         <div className="lg:col-span-7 space-y-4">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {CALL_METRICS.map((m) => (
-              <div key={m.label} className="rounded-xl bg-[#FAFBFA] border border-[#EEF0EE] p-3">
+              <div key={m.label} className="rounded-xl bg-[#F7F7F2] border border-[#F1F0EA] p-3">
                 <div className={`text-lg font-extrabold tracking-tight ${m.tint}`}>{m.value}</div>
-                <div className="text-[9px] font-bold uppercase tracking-wide text-[#8A919C] mt-0.5 leading-tight">
+                <div className="text-[9px] font-bold uppercase tracking-wide text-[#6B7280] mt-0.5 leading-tight">
                   {m.label}
                 </div>
               </div>
@@ -592,21 +592,21 @@ export const AICallsMockup: React.FC = () => {
           </div>
 
           {/* Waveform player */}
-          <div className="rounded-xl border border-[#EEF0EE] bg-white p-4">
+          <div className="rounded-xl border border-[#F1F0EA] bg-white p-4">
             <div className="flex items-center gap-3">
               <button
                 type="button"
                 onClick={() => setPlaying((v) => !v)}
-                className="w-10 h-10 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white flex items-center justify-center shadow-md shadow-[#00B879]/30 transition-all active:scale-95 cursor-pointer shrink-0"
+                className="w-10 h-10 rounded-full bg-[#064E3B] hover:bg-[#043B2C] text-white flex items-center justify-center shadow-md shadow-[#064E3B]/30 transition-all active:scale-95 cursor-pointer shrink-0"
                 aria-label={playing ? "Pause call sample" : "Play call sample"}
               >
                 {playing ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
               </button>
               <div className="flex-1">
-                <div className="text-[11px] font-bold text-[#171923]">Sample AI Call · Hinglish voice</div>
-                <div className="text-[9px] text-[#8A919C]">COD order verification · 38 sec</div>
+                <div className="text-[11px] font-bold text-[#111827]">Sample AI Call · Hinglish voice</div>
+                <div className="text-[9px] text-[#6B7280]">COD order verification · 38 sec</div>
               </div>
-              <span className="text-[10px] font-bold text-[#8A919C] tabular-nums">
+              <span className="text-[10px] font-bold text-[#6B7280] tabular-nums">
                 {Math.round(progress)}%
               </span>
             </div>
@@ -617,7 +617,7 @@ export const AICallsMockup: React.FC = () => {
                   <span
                     key={i}
                     className={`flex-1 rounded-full transition-all duration-150 ${
-                      active ? "bg-[#00B879]" : "bg-[#E4E7EB]"
+                      active ? "bg-[#064E3B]" : "bg-[#E4E2D8]"
                     }`}
                     style={{
                       height: `${h * 100}%`,
@@ -630,9 +630,9 @@ export const AICallsMockup: React.FC = () => {
           </div>
 
           {/* Transcript */}
-          <div className="rounded-xl border border-[#EEF0EE] bg-[#FAFBFA] p-4 space-y-2">
-            <div className="text-[9px] font-bold uppercase tracking-wider text-[#8A919C]">
-              Live Call Transcript {playing && <span className="text-[#00B879]">· streaming…</span>}
+          <div className="rounded-xl border border-[#F1F0EA] bg-[#F7F7F2] p-4 space-y-2">
+            <div className="text-[9px] font-bold uppercase tracking-wider text-[#6B7280]">
+              Live Call Transcript {playing && <span className="text-[#064E3B]">· streaming…</span>}
             </div>
             {TRANSCRIPT.map((line, i) => (
               <div
@@ -641,31 +641,31 @@ export const AICallsMockup: React.FC = () => {
                   i < visibleLines || progress === 0 ? (i < visibleLines ? "opacity-100" : "opacity-30") : "opacity-30"
                 }`}
               >
-                <span className={`font-bold ${line.who === "AI" ? "text-[#008F60]" : line.who === "System" ? "text-[#B07807]" : "text-[#171923]"}`}>
+                <span className={`font-bold ${line.who === "AI" ? "text-[#043B2C]" : line.who === "System" ? "text-[#8F6E2D]" : "text-[#111827]"}`}>
                   {line.who}:{" "}
                 </span>
-                <span className={line.who === "System" ? "text-[#8A919C] italic" : "text-[#5A6270]"}>{line.text}</span>
+                <span className={line.who === "System" ? "text-[#6B7280] italic" : "text-[#4B5563]"}>{line.text}</span>
               </div>
             ))}
             {progress === 0 && (
-              <p className="text-[10px] text-[#B4BBC4] italic">Press play to hear the AI agent handle a COD verification call.</p>
+              <p className="text-[10px] text-[#9CA3AF] italic">Press play to hear the AI agent handle a COD verification call.</p>
             )}
           </div>
         </div>
 
         {/* Disposition log */}
         <div className="lg:col-span-5">
-          <div className="rounded-xl border border-[#EEF0EE] bg-white p-4 h-full">
+          <div className="rounded-xl border border-[#F1F0EA] bg-white p-4 h-full">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[11px] font-bold text-[#171923]">Disposition Log</span>
-              <span className="text-[9px] font-bold text-[#008F60] bg-[#E8F8F1] px-2 py-0.5 rounded-full">Auto-synced to CRM</span>
+              <span className="text-[11px] font-bold text-[#111827]">Disposition Log</span>
+              <span className="text-[9px] font-bold text-[#043B2C] bg-[#F1F0EA] px-2 py-0.5 rounded-full">Auto-synced to CRM</span>
             </div>
             <div className="space-y-2">
               {RECENT_CALLS.map((c) => (
-                <div key={c.name} className="flex items-center justify-between gap-2 rounded-lg border border-[#EEF0EE] p-2.5">
+                <div key={c.name} className="flex items-center justify-between gap-2 rounded-lg border border-[#F1F0EA] p-2.5">
                   <div className="min-w-0">
-                    <div className="text-[11px] font-bold text-[#171923] truncate">{c.name}</div>
-                    <div className="text-[9px] text-[#8A919C]">{c.time}</div>
+                    <div className="text-[11px] font-bold text-[#111827] truncate">{c.name}</div>
+                    <div className="text-[9px] text-[#6B7280]">{c.time}</div>
                   </div>
                   <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap ${c.tint}`}>
                     {c.result}
@@ -673,8 +673,8 @@ export const AICallsMockup: React.FC = () => {
                 </div>
               ))}
             </div>
-            <div className="mt-4 rounded-xl bg-[#E8F8F1] border border-[#00B879]/15 p-3 text-[10px] font-semibold text-[#00593A] leading-relaxed">
-              <PhoneCall className="w-3.5 h-3.5 inline mr-1 text-[#00B879]" />
+            <div className="mt-4 rounded-xl bg-[#F1F0EA] border border-[#064E3B]/15 p-3 text-[10px] font-semibold text-[#043B2C] leading-relaxed">
+              <PhoneCall className="w-3.5 h-3.5 inline mr-1 text-[#064E3B]" />
               Every outcome — confirmed, rescheduled, not-interested — writes straight back to the
               deal card and triggers the next automation.
             </div>
@@ -701,15 +701,15 @@ interface AdCard {
 }
 
 const INTEL_CARDS: AdCard[] = [
-  { id: "a1", tab: "Winning Ads", title: "Velvet Touch Sofa — UGC Hook", sub: "Kaveri Lifestyle · Meta Feed", metric: "47 days", metricLabel: "Active run", grad: "from-[#0F2027] via-[#203A43] to-[#2C5364]" },
+  { id: "a1", tab: "Winning Ads", title: "Velvet Touch Sofa — UGC Hook", sub: "Kaveri Lifestyle · Meta Feed", metric: "47 days", metricLabel: "Active run", grad: "from-[#0B1120] via-[#1F2937] to-[#1F2937]" },
   { id: "a2", tab: "Winning Ads", title: "Skincare Serum — Before/After", sub: "GlowCraft · Reels", metric: "31 days", metricLabel: "Active run", grad: "from-[#5B247A] to-[#1BCEDF]" },
-  { id: "a3", tab: "Winning Ads", title: "Bamboo Organizer — Problem/Solution", sub: "Aura Living · Stories", metric: "26 days", metricLabel: "Active run", grad: "from-[#134E5E] to-[#71B280]" },
-  { id: "p1", tab: "Trending Products", title: "Ceramic Dinner Set (24pc)", sub: "Home & Kitchen · Demand ↑214%", metric: "₹38/mo", metricLabel: "Est. margin ₹380/unit", grad: "from-[#F7E4B0] to-[#D99A0B]" },
-  { id: "p2", tab: "Trending Products", title: "Posture Corrector Chair", sub: "Office · Demand ↑161%", metric: "₹52/mo", metricLabel: "Est. margin ₹520/unit", grad: "from-[#BFE3D2] to-[#008F60]" },
-  { id: "s1", tab: "Top Stores", title: "auraliving.com", sub: "Next.js + CODIIC checkout", metric: "₹42.8L", metricLabel: "Monthly est. revenue", grad: "from-[#203A43] to-[#00B879]" },
+  { id: "a3", tab: "Winning Ads", title: "Bamboo Organizer — Problem/Solution", sub: "Aura Living · Stories", metric: "26 days", metricLabel: "Active run", grad: "from-[#064E3B] to-[#71B280]" },
+  { id: "p1", tab: "Trending Products", title: "Ceramic Dinner Set (24pc)", sub: "Home & Kitchen · Demand ↑214%", metric: "₹38/mo", metricLabel: "Est. margin ₹380/unit", grad: "from-[#EDE0C0] to-[#A87F3D]" },
+  { id: "p2", tab: "Trending Products", title: "Posture Corrector Chair", sub: "Office · Demand ↑161%", metric: "₹52/mo", metricLabel: "Est. margin ₹520/unit", grad: "from-[#BFE3D2] to-[#043B2C]" },
+  { id: "s1", tab: "Top Stores", title: "auraliving.com", sub: "Next.js + CODIIC checkout", metric: "₹42.8L", metricLabel: "Monthly est. revenue", grad: "from-[#1F2937] to-[#064E3B]" },
   { id: "s2", tab: "Top Stores", title: "glowcraft.in", sub: "Beauty D2C · COD heavy", metric: "₹29.5L", metricLabel: "Monthly est. revenue", grad: "from-[#7C3AED] to-[#D4BCF2]" },
-  { id: "c1", tab: "Competitor Tracker", title: "Zephyr Decor", sub: "Launched 14 new video ads", metric: "↑ 38%", metricLabel: "Ad spend velocity", grad: "from-[#171923] to-[#4A5160]" },
-  { id: "c2", tab: "Competitor Tracker", title: "UrbanNest", sub: "Price drop on 6 bestsellers", metric: "-12%", metricLabel: "Avg price change", grad: "from-[#4A5160] to-[#8A919C]" },
+  { id: "c1", tab: "Competitor Tracker", title: "Zephyr Decor", sub: "Launched 14 new video ads", metric: "↑ 38%", metricLabel: "Ad spend velocity", grad: "from-[#111827] to-[#4B5563]" },
+  { id: "c2", tab: "Competitor Tracker", title: "UrbanNest", sub: "Price drop on 6 bestsellers", metric: "-12%", metricLabel: "Avg price change", grad: "from-[#4B5563] to-[#6B7280]" },
 ];
 
 export const AdLibraryMockup: React.FC = () => {
@@ -730,13 +730,13 @@ export const AdLibraryMockup: React.FC = () => {
     <Shell
       title="intel.codiic.com — Ad & Product Library"
       right={
-        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#008F60] bg-[#E8F8F1] px-2 py-1 rounded-full">
+        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#043B2C] bg-[#F1F0EA] px-2 py-1 rounded-full">
           <Bookmark className="w-3 h-3" /> {saved.length} saved
         </span>
       }
     >
       {/* Tabs + search */}
-      <div className="flex flex-wrap items-center gap-2 px-4 py-3 border-b border-[#EEF0EE]">
+      <div className="flex flex-wrap items-center gap-2 px-4 py-3 border-b border-[#F1F0EA]">
         <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
           {INTEL_TABS.map((t) => (
             <button
@@ -744,29 +744,29 @@ export const AdLibraryMockup: React.FC = () => {
               type="button"
               onClick={() => setTab(t)}
               className={`px-2.5 py-1 rounded-full text-[10px] font-bold whitespace-nowrap transition-all cursor-pointer ${
-                tab === t ? "bg-[#171923] text-white" : "bg-[#F1F3F2] text-[#5A6270] hover:bg-[#E4E7EB]"
+                tab === t ? "bg-[#111827] text-white" : "bg-[#F1F0EA] text-[#4B5563] hover:bg-[#E4E2D8]"
               }`}
             >
               {t}
             </button>
           ))}
         </div>
-        <div className="ml-auto flex items-center gap-2 rounded-full bg-white border border-[#E2E6E4] px-3 py-1.5 min-w-[160px]">
-          <Search className="w-3 h-3 text-[#8A919C] shrink-0" />
+        <div className="ml-auto flex items-center gap-2 rounded-full bg-white border border-[#E4E2D8] px-3 py-1.5 min-w-[160px]">
+          <Search className="w-3 h-3 text-[#6B7280] shrink-0" />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search ads, stores, SKUs…"
-            className="w-full bg-transparent text-[10px] font-semibold text-[#171923] placeholder:text-[#B4BBC4] outline-none"
+            className="w-full bg-transparent text-[10px] font-semibold text-[#111827] placeholder:text-[#9CA3AF] outline-none"
           />
         </div>
       </div>
 
-      <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 bg-[#FAFBFA]">
+      <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 bg-[#F7F7F2]">
         {cards.map((card) => {
           const isSaved = saved.includes(card.id);
           return (
-            <div key={card.id} className="rounded-xl bg-white border border-[#E2E6E4] overflow-hidden hover:border-[#00B879]/50 hover:shadow-md transition-all animate-tool-in">
+            <div key={card.id} className="rounded-xl bg-white border border-[#E4E2D8] overflow-hidden hover:border-[#064E3B]/50 hover:shadow-md transition-all animate-tool-in">
               <div className={`relative h-24 bg-gradient-to-br ${card.grad} flex items-center justify-center`}>
                 <span className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
                   <Play className="w-4 h-4 text-white fill-white ml-0.5" />
@@ -779,14 +779,14 @@ export const AdLibraryMockup: React.FC = () => {
                 </span>
               </div>
               <div className="p-3">
-                <div className="text-[11px] font-bold text-[#171923] leading-tight truncate">{card.title}</div>
-                <div className="text-[9px] text-[#8A919C] mt-0.5 truncate">{card.sub}</div>
+                <div className="text-[11px] font-bold text-[#111827] leading-tight truncate">{card.title}</div>
+                <div className="text-[9px] text-[#6B7280] mt-0.5 truncate">{card.sub}</div>
                 <div className="mt-2 flex items-center justify-between">
-                  <span className="text-[9px] font-semibold text-[#5A6270]">{card.metricLabel}</span>
+                  <span className="text-[9px] font-semibold text-[#4B5563]">{card.metricLabel}</span>
                   <div className="flex items-center gap-1.5">
                     <button
                       type="button"
-                      className="w-6 h-6 rounded-full bg-[#F1F3F2] text-[#5A6270] hover:text-[#171923] flex items-center justify-center cursor-pointer"
+                      className="w-6 h-6 rounded-full bg-[#F1F0EA] text-[#4B5563] hover:text-[#111827] flex items-center justify-center cursor-pointer"
                       title="Open landing page"
                     >
                       <ExternalLink className="w-3 h-3" />
@@ -795,7 +795,7 @@ export const AdLibraryMockup: React.FC = () => {
                       type="button"
                       onClick={() => toggleSave(card.id)}
                       className={`w-6 h-6 rounded-full flex items-center justify-center transition-all cursor-pointer ${
-                        isSaved ? "bg-[#00B879] text-white" : "bg-[#F1F3F2] text-[#5A6270] hover:text-[#008F60]"
+                        isSaved ? "bg-[#064E3B] text-white" : "bg-[#F1F0EA] text-[#4B5563] hover:text-[#043B2C]"
                       }`}
                       title="Save to Portfolio"
                     >
@@ -808,7 +808,7 @@ export const AdLibraryMockup: React.FC = () => {
           );
         })}
         {cards.length === 0 && (
-          <div className="col-span-full rounded-xl border-2 border-dashed border-[#E2E6E4] py-10 text-center text-[11px] font-semibold text-[#8A919C]">
+          <div className="col-span-full rounded-xl border-2 border-dashed border-[#E4E2D8] py-10 text-center text-[11px] font-semibold text-[#6B7280]">
             No results for “{query}” — try Magic AI Search instead.
           </div>
         )}
@@ -835,10 +835,10 @@ const SKU_ROWS = [
 ];
 
 const CHANNELS = [
-  { name: "Storefront Checkout", value: "₹14.2L", pct: 44, tint: "#00B879" },
+  { name: "Storefront Checkout", value: "₹14.2L", pct: 44, tint: "#064E3B" },
   { name: "WhatsApp Catalog", value: "₹9.8L", pct: 30, tint: "#25D366" },
   { name: "Instagram DM", value: "₹5.4L", pct: 17, tint: "#7C3AED" },
-  { name: "AI Voice Orders", value: "₹2.8L", pct: 9, tint: "#D99A0B" },
+  { name: "AI Voice Orders", value: "₹2.8L", pct: 9, tint: "#A87F3D" },
 ];
 
 function toPath(points: number[], width: number, height: number) {
@@ -857,8 +857,8 @@ export const SalesTrackerMockup: React.FC = () => {
     <Shell
       title="sales.codiic.com — Live Revenue & Profit"
       right={
-        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#008F60] bg-[#E8F8F1] px-2 py-1 rounded-full">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00B879] animate-pulse" />
+        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#043B2C] bg-[#F1F0EA] px-2 py-1 rounded-full">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#064E3B] animate-pulse" />
           Synced 4 min ago
         </span>
       }
@@ -867,27 +867,27 @@ export const SalesTrackerMockup: React.FC = () => {
         {/* Header row */}
         <div className="flex flex-wrap items-center gap-3 mb-4">
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-wide text-[#8A919C]">Total Revenue</div>
+            <div className="text-[10px] font-bold uppercase tracking-wide text-[#6B7280]">Total Revenue</div>
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-extrabold text-[#171923] tracking-tight">{data.revenue}</span>
-              <span className="text-[10px] font-bold text-[#008F60] bg-[#E8F8F1] px-1.5 py-0.5 rounded-full">+18.4%</span>
+              <span className="text-2xl font-extrabold text-[#111827] tracking-tight">{data.revenue}</span>
+              <span className="text-[10px] font-bold text-[#043B2C] bg-[#F1F0EA] px-1.5 py-0.5 rounded-full">+18.4%</span>
             </div>
           </div>
           <div className="ml-6">
-            <div className="text-[10px] font-bold uppercase tracking-wide text-[#8A919C]">Net Profit (after COGS + shipping)</div>
+            <div className="text-[10px] font-bold uppercase tracking-wide text-[#6B7280]">Net Profit (after COGS + shipping)</div>
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-extrabold text-[#008F60] tracking-tight">{data.profit}</span>
-              <span className="text-[10px] font-bold text-[#5A6270]">{data.margin} margin</span>
+              <span className="text-2xl font-extrabold text-[#043B2C] tracking-tight">{data.profit}</span>
+              <span className="text-[10px] font-bold text-[#4B5563]">{data.margin} margin</span>
             </div>
           </div>
-          <div className="ml-auto flex items-center gap-1 p-1 rounded-full bg-[#F1F3F2]">
+          <div className="ml-auto flex items-center gap-1 p-1 rounded-full bg-[#F1F0EA]">
             {RANGES.map((r) => (
               <button
                 key={r}
                 type="button"
                 onClick={() => setRange(r)}
                 className={`px-2.5 py-1 rounded-full text-[10px] font-bold transition-all cursor-pointer ${
-                  range === r ? "bg-[#171923] text-white" : "text-[#5A6270] hover:text-[#171923]"
+                  range === r ? "bg-[#111827] text-white" : "text-[#4B5563] hover:text-[#111827]"
                 }`}
               >
                 {r}
@@ -897,68 +897,68 @@ export const SalesTrackerMockup: React.FC = () => {
         </div>
 
         {/* Chart */}
-        <div className="rounded-xl border border-[#EEF0EE] bg-white p-3 overflow-hidden">
+        <div className="rounded-xl border border-[#F1F0EA] bg-white p-3 overflow-hidden">
           <svg viewBox={`0 0 ${W} ${H + 10}`} className="w-full h-32" preserveAspectRatio="none">
             <defs>
               <linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#00B879" stopOpacity="0.25" />
-                <stop offset="100%" stopColor="#00B879" stopOpacity="0" />
+                <stop offset="0%" stopColor="#064E3B" stopOpacity="0.25" />
+                <stop offset="100%" stopColor="#064E3B" stopOpacity="0" />
               </linearGradient>
               <linearGradient id="profGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#FFD84D" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#FFD84D" stopOpacity="0" />
+                <stop offset="0%" stopColor="#C6A15B" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#C6A15B" stopOpacity="0" />
               </linearGradient>
             </defs>
             {[0.25, 0.5, 0.75].map((f) => (
-              <line key={f} x1="0" y1={H * f} x2={W} y2={H * f} stroke="#EEF0EE" strokeWidth="1" />
+              <line key={f} x1="0" y1={H * f} x2={W} y2={H * f} stroke="#F1F0EA" strokeWidth="1" />
             ))}
             <path d={`${toPath(data.points, W, H)} L${W},${H} L0,${H} Z`} fill="url(#revGrad)" />
-            <path d={toPath(data.points, W, H)} fill="none" stroke="#00B879" strokeWidth="2.5" strokeLinecap="round" />
+            <path d={toPath(data.points, W, H)} fill="none" stroke="#064E3B" strokeWidth="2.5" strokeLinecap="round" />
             <path d={`${toPath(data.profitPoints, W, H)} L${W},${H} L0,${H} Z`} fill="url(#profGrad)" />
-            <path d={toPath(data.profitPoints, W, H)} fill="none" stroke="#D99A0B" strokeWidth="2" strokeDasharray="5 4" strokeLinecap="round" />
+            <path d={toPath(data.profitPoints, W, H)} fill="none" stroke="#A87F3D" strokeWidth="2" strokeDasharray="5 4" strokeLinecap="round" />
           </svg>
           <div className="flex items-center gap-4 mt-1 px-1">
-            <span className="flex items-center gap-1.5 text-[9px] font-bold text-[#5A6270]">
-              <i className="w-2.5 h-[3px] rounded-full bg-[#00B879]" /> Revenue
+            <span className="flex items-center gap-1.5 text-[9px] font-bold text-[#4B5563]">
+              <i className="w-2.5 h-[3px] rounded-full bg-[#064E3B]" /> Revenue
             </span>
-            <span className="flex items-center gap-1.5 text-[9px] font-bold text-[#5A6270]">
-              <i className="w-2.5 h-[3px] rounded-full bg-[#D99A0B]" /> Net Profit
+            <span className="flex items-center gap-1.5 text-[9px] font-bold text-[#4B5563]">
+              <i className="w-2.5 h-[3px] rounded-full bg-[#A87F3D]" /> Net Profit
             </span>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
           {/* SKU table */}
-          <div className="rounded-xl border border-[#EEF0EE] overflow-hidden">
-            <div className="px-3 py-2 bg-[#FAFBFA] border-b border-[#EEF0EE] text-[10px] font-bold uppercase tracking-wide text-[#8A919C]">
+          <div className="rounded-xl border border-[#F1F0EA] overflow-hidden">
+            <div className="px-3 py-2 bg-[#F7F7F2] border-b border-[#F1F0EA] text-[10px] font-bold uppercase tracking-wide text-[#6B7280]">
               SKU Margin Breakdown
             </div>
             {SKU_ROWS.map((row) => (
-              <div key={row.sku} className="flex items-center gap-3 px-3 py-2.5 border-b border-[#F4F6F5] last:border-0">
+              <div key={row.sku} className="flex items-center gap-3 px-3 py-2.5 border-b border-[#F1F0EA] last:border-0">
                 <div className="min-w-0 flex-1">
-                  <div className="text-[11px] font-bold text-[#171923] truncate">{row.sku}</div>
-                  <div className="text-[9px] text-[#8A919C]">{row.sold} sold</div>
+                  <div className="text-[11px] font-bold text-[#111827] truncate">{row.sku}</div>
+                  <div className="text-[9px] text-[#6B7280]">{row.sold} sold</div>
                 </div>
-                <span className="text-[11px] font-bold text-[#171923]">{row.revenue}</span>
-                <span className="text-[10px] font-bold text-[#008F60] bg-[#E8F8F1] px-1.5 py-0.5 rounded-full">{row.margin}</span>
-                <TrendingUp className={`w-3.5 h-3.5 ${row.trend === "up" ? "text-[#00B879]" : "text-[#DC2626] rotate-180"}`} />
+                <span className="text-[11px] font-bold text-[#111827]">{row.revenue}</span>
+                <span className="text-[10px] font-bold text-[#043B2C] bg-[#F1F0EA] px-1.5 py-0.5 rounded-full">{row.margin}</span>
+                <TrendingUp className={`w-3.5 h-3.5 ${row.trend === "up" ? "text-[#064E3B]" : "text-[#DC2626] rotate-180"}`} />
               </div>
             ))}
           </div>
 
           {/* Channel attribution */}
-          <div className="rounded-xl border border-[#EEF0EE] p-3.5">
-            <div className="text-[10px] font-bold uppercase tracking-wide text-[#8A919C] mb-3">
+          <div className="rounded-xl border border-[#F1F0EA] p-3.5">
+            <div className="text-[10px] font-bold uppercase tracking-wide text-[#6B7280] mb-3">
               Channel Attribution
             </div>
             <div className="space-y-3">
               {CHANNELS.map((c) => (
                 <div key={c.name}>
                   <div className="flex items-center justify-between text-[10px] font-bold mb-1">
-                    <span className="text-[#171923]">{c.name}</span>
-                    <span className="text-[#5A6270]">{c.value} · {c.pct}%</span>
+                    <span className="text-[#111827]">{c.name}</span>
+                    <span className="text-[#4B5563]">{c.value} · {c.pct}%</span>
                   </div>
-                  <div className="h-2 rounded-full bg-[#F1F3F2] overflow-hidden">
+                  <div className="h-2 rounded-full bg-[#F1F0EA] overflow-hidden">
                     <div
                       className="h-full rounded-full transition-all duration-700"
                       style={{ width: `${c.pct}%`, background: c.tint }}

@@ -29,7 +29,7 @@ export default function OmnichannelInboxPage() {
         headline={
           <>
             WhatsApp, Instagram, Facebook, Telegram &amp; Email —{" "}
-            <em className="font-serif italic font-normal text-[#008F60]">One Team Inbox.</em>
+            <em className="font-serif italic font-normal text-[#043B2C]">One Team Inbox.</em>
           </>
         }
         subheadline="Keep your existing WhatsApp Business phone app working alongside CODIIC with Official Coexistence, reply in 0.4s with AI, and assign chats across your team without collisions."
@@ -40,7 +40,7 @@ export default function OmnichannelInboxPage() {
         featuresHeading={
           <>
             Every channel your customers use,{" "}
-            <em className="font-serif italic font-normal text-[#008F60]">one shared screen.</em>
+            <em className="font-serif italic font-normal text-[#043B2C]">one shared screen.</em>
           </>
         }
         features={[

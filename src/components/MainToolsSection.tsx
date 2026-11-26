@@ -290,10 +290,10 @@ const MockHeader: React.FC<{
   title: string;
   right?: React.ReactNode;
 }> = ({ icon, title, right }) => (
-  <div className="flex items-center justify-between gap-3 pb-3.5 mb-3.5 border-b border-[#EEF0EE]">
+  <div className="flex items-center justify-between gap-3 pb-3.5 mb-3.5 border-b border-[#F1F0EA]">
     <div className="flex items-center gap-2 min-w-0">
       {icon}
-      <span className="text-[13px] font-bold text-[#171923] truncate">{title}</span>
+      <span className="text-[13px] font-bold text-[#111827] truncate">{title}</span>
     </div>
     {right}
   </div>
@@ -304,33 +304,33 @@ const ToolMockup: React.FC<{ id: string }> = ({ id }) => {
     return (
       <>
         <MockHeader
-          icon={<PhoneCall className="w-4 h-4 text-[#00B879]" />}
+          icon={<PhoneCall className="w-4 h-4 text-[#064E3B]" />}
           title="AI Voice Queue · Bulk Campaign"
           right={
-            <span className="text-[10px] bg-[#E8F8F1] text-[#008F60] px-2 py-1 rounded-full font-bold shrink-0">
+            <span className="text-[10px] bg-[#F1F0EA] text-[#043B2C] px-2 py-1 rounded-full font-bold shrink-0">
               Running
             </span>
           }
         />
         <div className="space-y-2">
           {[
-            { n: "Order confirmation — #1042", m: "Completed · COD verified", b: "Done", bc: "bg-emerald-100 text-emerald-800" },
+            { n: "Order confirmation — #1042", m: "Completed · COD verified", b: "Done", bc: "bg-[#F1F0EA] text-[#065F46]" },
             { n: "New lead callback — Riya S.", m: "Appointment booked · Fri 4 PM", b: "Booked", bc: "bg-sky-100 text-sky-800" },
-            { n: "Winback campaign — 214 contacts", m: "In progress · 68% reached", b: "Calling", bc: "bg-amber-100 text-amber-800" },
+            { n: "Winback campaign — 214 contacts", m: "In progress · 68% reached", b: "Calling", bc: "bg-[#F5EFDF] text-[#6E5621]" },
           ].map((r) => (
-            <div key={r.n} className="flex items-center justify-between gap-3 p-3 rounded-xl border border-[#EEF0EE] text-xs">
+            <div key={r.n} className="flex items-center justify-between gap-3 p-3 rounded-xl border border-[#F1F0EA] text-xs">
               <div className="min-w-0">
-                <div className="font-bold text-[#171923] truncate">{r.n}</div>
-                <div className="text-[10px] text-[#8A919C] truncate">{r.m}</div>
+                <div className="font-bold text-[#111827] truncate">{r.n}</div>
+                <div className="text-[10px] text-[#6B7280] truncate">{r.m}</div>
               </div>
               <span className={"text-[10px] px-2 py-0.5 rounded-full font-bold whitespace-nowrap " + r.bc}>{r.b}</span>
             </div>
           ))}
         </div>
-        <div className="mt-3 rounded-xl border border-[#EEF0EE] p-3">
+        <div className="mt-3 rounded-xl border border-[#F1F0EA] p-3">
           <div className="flex items-center justify-between text-[11px]">
-            <span className="font-bold text-[#171923]">Appointments booked</span>
-            <span className="font-bold text-[#008F60]">42 today</span>
+            <span className="font-bold text-[#111827]">Appointments booked</span>
+            <span className="font-bold text-[#043B2C]">42 today</span>
           </div>
         </div>
       </>
@@ -437,15 +437,15 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E2E6E4] bg-white text-xs font-semibold text-[#5A6270]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00B879]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E4E2D8] bg-white text-xs font-semibold text-[#4B5563]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#064E3B]" />
             Core Workspace Modules
           </div>
-          <h2 className="mt-5 text-[34px] sm:text-5xl lg:text-[56px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.05]">
+          <h2 className="mt-5 text-[34px] sm:text-5xl lg:text-[56px] font-bold text-[#111827] tracking-[-0.035em] leading-[1.05]">
             Every tool you need to grow,{" "}
-            <em className="font-serif italic font-normal text-[#008F60]">in one place.</em>
+            <em className="font-serif italic font-normal text-[#043B2C]">in one place.</em>
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-[#5A6270] leading-relaxed">
+          <p className="mt-5 text-base sm:text-lg text-[#4B5563] leading-relaxed">
             From your drag-and-drop storefront and unified inbox to CRM, AI automation and order
             management — eight connected modules that run your entire business.
           </p>
@@ -472,8 +472,8 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
                 onClick={() => setActiveTab(tool.id)}
                 className={`relative flex items-center gap-2.5 pl-2 pr-4 py-1.5 rounded-full border text-[13px] font-semibold whitespace-nowrap shrink-0 cursor-pointer transition-all ${
                   isActive
-                    ? "bg-[#FFD84D] border-black/20 text-[#171923] shadow-sm font-bold ring-1 ring-black/10"
-                    : "bg-white border-[#E2E6E4] text-[#5A6270] hover:text-[#171923] hover:border-[#C9D0CC]"
+                    ? "bg-[#C6A15B] border-black/20 text-[#111827] shadow-sm font-bold ring-1 ring-black/10"
+                    : "bg-white border-[#E4E2D8] text-[#4B5563] hover:text-[#111827] hover:border-[#C9CFC0]"
                 }`}
               >
                 <Icon className="w-6 h-6 shrink-0" />
@@ -487,7 +487,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
         <div
           key={currentTool.id}
           role="tabpanel"
-          className="mt-6 sm:mt-8 rounded-[28px] bg-[#FFD84D] border border-black/10 shadow-[0_24px_50px_-20px_rgba(23,25,35,0.2)] p-5 sm:p-8 lg:p-12 animate-tool-in text-[#171923]"
+          className="mt-6 sm:mt-8 rounded-[28px] bg-[#C6A15B] border border-black/10 shadow-[0_24px_50px_-20px_rgba(17,24,39,0.2)] p-5 sm:p-8 lg:p-12 animate-tool-in text-[#111827]"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Copy */}
@@ -495,18 +495,18 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
               <div className="w-14 h-14 flex items-center justify-center drop-shadow-md">
                 <CurrentIcon className="w-14 h-14" />
               </div>
-              <h3 className="mt-5 text-3xl sm:text-4xl font-bold text-[#171923] tracking-[-0.03em] leading-[1.08]">
+              <h3 className="mt-5 text-3xl sm:text-4xl font-bold text-[#111827] tracking-[-0.03em] leading-[1.08]">
                 {currentTool.title}
               </h3>
-              <p className="mt-4 text-[15px] sm:text-base text-[#2D260D] leading-relaxed">
+              <p className="mt-4 text-[15px] sm:text-base text-[#3B2E12] leading-relaxed">
                 {currentTool.desc}
               </p>
 
               <dl className="mt-6 grid grid-cols-2 gap-4">
                 {currentTool.stats.map((s) => (
                   <div key={s.label}>
-                    <dt className="text-xs text-[#4A401A] font-semibold">{s.label}</dt>
-                    <dd className="mt-0.5 text-xl font-bold text-[#171923] tracking-tight">{s.value}</dd>
+                    <dt className="text-xs text-[#3B2E12] font-semibold">{s.label}</dt>
+                    <dd className="mt-0.5 text-xl font-bold text-[#111827] tracking-tight">{s.value}</dd>
                   </div>
                 ))}
               </dl>
@@ -515,7 +515,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
                 <button
                   type="button"
                   onClick={onOpenGetStarted}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#171923] hover:bg-black text-white text-sm font-bold transition-all shadow-md shadow-black/15 active:scale-[0.98] cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#111827] hover:bg-black text-white text-sm font-bold transition-all shadow-md shadow-black/15 active:scale-[0.98] cursor-pointer"
                 >
                   Explore {currentTool.title}
                   <ArrowRight className="w-4 h-4" />
@@ -523,7 +523,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
                 <button
                   type="button"
                   onClick={onOpenGetStarted}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-sm font-bold text-[#171923] bg-white/40 hover:bg-white border border-black/10 transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-sm font-bold text-[#111827] bg-white/40 hover:bg-white border border-black/10 transition-colors cursor-pointer"
                 >
                   Book a demo
                 </button>
@@ -540,7 +540,7 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
                   onPointerLeave={resetTilt}
                   className="relative transition-transform duration-300 ease-out"
                 >
-                  <div className="relative aspect-[3/2] rounded-2xl overflow-hidden bg-white border border-black/10 shadow-[0_24px_60px_-30px_rgba(23,25,35,0.35)]">
+                  <div className="relative aspect-[3/2] rounded-2xl overflow-hidden bg-white border border-black/10 shadow-[0_24px_60px_-30px_rgba(17,24,39,0.35)]">
                     <div className="absolute inset-0 animate-shot-reveal">
                       <div className="absolute inset-0 animate-shot-zoom">
                         <Image
@@ -555,18 +555,18 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
                     </div>
                     <span
                       aria-hidden
-                      className="absolute inset-y-0 -left-1 w-1 bg-[#00B879] shadow-[0_0_24px_6px_rgba(0,184,121,0.55)] animate-shot-scan pointer-events-none"
+                      className="absolute inset-y-0 -left-1 w-1 bg-[#064E3B] shadow-[0_0_24px_6px_rgba(6,78,59,0.55)] animate-shot-scan pointer-events-none"
                     />
                     {!isPaused && (
                       <span
                         aria-hidden
-                        className="absolute bottom-0 left-0 h-[3px] bg-[#00B879] animate-shot-progress"
+                        className="absolute bottom-0 left-0 h-[3px] bg-[#064E3B] animate-shot-progress"
                       />
                     )}
                   </div>
                 </div>
               ) : (
-                <div className="rounded-2xl bg-white border border-black/10 shadow-[0_24px_60px_-30px_rgba(23,25,35,0.35)] p-4 sm:p-6">
+                <div className="rounded-2xl bg-white border border-black/10 shadow-[0_24px_60px_-30px_rgba(17,24,39,0.35)] p-4 sm:p-6">
                   <ToolMockup id={currentTool.id} />
                 </div>
               )}
@@ -577,12 +577,12 @@ export const MainToolsSection: React.FC<MainToolsSectionProps> = ({ onOpenGetSta
           <div className="hidden md:grid grid-cols-3 gap-6 mt-10 pt-8 border-t border-black/10">
             {currentTool.highlights.map((h) => (
               <div key={h.title} className="flex items-start gap-3">
-                <span className="mt-0.5 w-6 h-6 rounded-full bg-[#171923] text-[#FFD84D] flex items-center justify-center shrink-0 shadow-xs">
+                <span className="mt-0.5 w-6 h-6 rounded-full bg-[#111827] text-[#C6A15B] flex items-center justify-center shrink-0 shadow-xs">
                   <Check className="w-3.5 h-3.5" strokeWidth={3} />
                 </span>
                 <div>
-                  <h4 className="text-[15px] font-bold text-[#171923] tracking-tight">{h.title}</h4>
-                  <p className="mt-1 text-[13px] text-[#2D260D] leading-relaxed font-medium">{h.desc}</p>
+                  <h4 className="text-[15px] font-bold text-[#111827] tracking-tight">{h.title}</h4>
+                  <p className="mt-1 text-[13px] text-[#3B2E12] leading-relaxed font-medium">{h.desc}</p>
                 </div>
               </div>
             ))}

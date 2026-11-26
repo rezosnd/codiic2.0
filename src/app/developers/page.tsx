@@ -204,36 +204,36 @@ export default function DevelopersPage() {
       {/* Hero */}
       <section className="pt-10 sm:pt-14 pb-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] font-semibold text-[#8A919C] mb-8">
-            <Link href="/" className="hover:text-[#008F60] transition-colors">Home</Link>
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] font-semibold text-[#6B7280] mb-8">
+            <Link href="/" className="hover:text-[#043B2C] transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" />
-            <span className="text-[#171923]">API &amp; Developers</span>
+            <span className="text-[#111827]">API &amp; Developers</span>
           </nav>
 
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E2E6E4] bg-white text-[11px] font-bold uppercase tracking-wider text-[#5A6270]">
-                <Terminal className="w-3.5 h-3.5 text-[#008F60]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E4E2D8] bg-white text-[11px] font-bold uppercase tracking-wider text-[#4B5563]">
+                <Terminal className="w-3.5 h-3.5 text-[#043B2C]" />
                 CODIIC REST API · v1
               </div>
-              <h1 className="mt-5 text-[32px] sm:text-5xl font-bold text-[#171923] tracking-[-0.035em] leading-[1.06]">
+              <h1 className="mt-5 text-[32px] sm:text-5xl font-bold text-[#111827] tracking-[-0.035em] leading-[1.06]">
                 Everything in the dashboard,{" "}
-                <em className="font-serif italic font-normal text-[#008F60]">as an API.</em>
+                <em className="font-serif italic font-normal text-[#043B2C]">as an API.</em>
               </h1>
-              <p className="mt-5 text-base sm:text-lg text-[#5A6270] leading-relaxed">
+              <p className="mt-5 text-base sm:text-lg text-[#4B5563] leading-relaxed">
                 Send messages, create leads, trigger AI calls, and sync orders programmatically —
                 with signed webhooks and OAuth 2.0 throughout.
               </p>
             </div>
             <div className="flex items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-[11px] font-bold">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F1F0EA] border border-[#064E3B]/20 text-[#043B2C] text-[11px] font-bold">
                 <Activity className="w-3.5 h-3.5" />
                 API Status · 99.99% Uptime
               </span>
               <button
                 type="button"
                 onClick={goToLogin}
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs font-bold shadow-md shadow-[#00B879]/25 transition-all cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#064E3B] hover:bg-[#043B2C] text-white text-xs font-bold shadow-md shadow-[#064E3B]/25 transition-all cursor-pointer"
               >
                 Get API Keys
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -246,19 +246,19 @@ export default function DevelopersPage() {
       {/* Endpoint explorer */}
       <section className="pb-16 sm:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="rounded-[24px] bg-white border border-[#E2E6E4] shadow-[0_30px_70px_-30px_rgba(23,25,35,0.25)] overflow-hidden">
-            <div className="flex items-center gap-3 px-4 sm:px-5 py-3 border-b border-[#EEF0EE] bg-[#FAFBFA]">
-              <Terminal className="w-4 h-4 text-[#00B879]" />
-              <span className="text-[11px] font-bold text-[#5A6270]">api.codiic.com — Endpoint Explorer</span>
+          <Reveal className="rounded-[24px] bg-white border border-[#E4E2D8] shadow-[0_30px_70px_-30px_rgba(17,24,39,0.25)] overflow-hidden">
+            <div className="flex items-center gap-3 px-4 sm:px-5 py-3 border-b border-[#F1F0EA] bg-[#F7F7F2]">
+              <Terminal className="w-4 h-4 text-[#064E3B]" />
+              <span className="text-[11px] font-bold text-[#4B5563]">api.codiic.com — Endpoint Explorer</span>
               <span className="ml-auto flex items-center gap-1.5">
-                <KeyRound className="w-3.5 h-3.5 text-[#8A919C]" />
-                <span className="text-[10px] font-semibold text-[#8A919C]">Bearer auth</span>
+                <KeyRound className="w-3.5 h-3.5 text-[#6B7280]" />
+                <span className="text-[10px] font-semibold text-[#6B7280]">Bearer auth</span>
               </span>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {/* Endpoint list */}
-              <div className="border-b lg:border-b-0 lg:border-r border-[#EEF0EE]">
+              <div className="border-b lg:border-b-0 lg:border-r border-[#F1F0EA]">
                 {ENDPOINTS.map((ep) => {
                   const active = ep.id === activeEndpoint;
                   return (
@@ -266,27 +266,27 @@ export default function DevelopersPage() {
                       key={ep.id}
                       type="button"
                       onClick={() => setActiveEndpoint(ep.id)}
-                      className={`w-full text-left px-4 sm:px-5 py-4 border-b border-[#F4F6F5] last:border-b-0 transition-colors cursor-pointer ${
-                        active ? "bg-[#F0FAF5]" : "hover:bg-[#FAFBFA]"
+                      className={`w-full text-left px-4 sm:px-5 py-4 border-b border-[#F1F0EA] last:border-b-0 transition-colors cursor-pointer ${
+                        active ? "bg-[#F1F0EA]" : "hover:bg-[#F7F7F2]"
                       }`}
                     >
                       <div className="flex items-center gap-2.5">
                         <span className={`text-[9px] font-black px-2 py-0.5 rounded-md ${
-                          ep.method === "POST" ? "bg-[#E8F8F1] text-[#008F60]" : "bg-[#EAF1FB] text-[#2E6FE8]"
+                          ep.method === "POST" ? "bg-[#F1F0EA] text-[#043B2C]" : "bg-[#EAF1FB] text-[#2E6FE8]"
                         }`}>
                           {ep.method}
                         </span>
-                        <code className="text-[12px] font-bold text-[#171923] font-mono">{ep.path}</code>
+                        <code className="text-[12px] font-bold text-[#111827] font-mono">{ep.path}</code>
                       </div>
-                      <div className="mt-1 text-[12px] font-semibold text-[#171923]">{ep.title}</div>
-                      <p className="mt-0.5 text-[11px] text-[#8A919C] leading-snug">{ep.desc}</p>
+                      <div className="mt-1 text-[12px] font-semibold text-[#111827]">{ep.title}</div>
+                      <p className="mt-0.5 text-[11px] text-[#6B7280] leading-snug">{ep.desc}</p>
                     </button>
                   );
                 })}
               </div>
 
               {/* Code viewer */}
-              <div className="bg-[#171923] flex flex-col">
+              <div className="bg-[#111827] flex flex-col">
                 <div className="flex items-center gap-1.5 px-4 pt-4">
                   {LANG_TABS.map((t) => (
                     <button
@@ -305,11 +305,11 @@ export default function DevelopersPage() {
                     onClick={copySnippet}
                     className="ml-auto inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-bold text-gray-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
                   >
-                    {copied ? <Check className="w-3 h-3 text-[#00B879]" /> : <Copy className="w-3 h-3" />}
+                    {copied ? <Check className="w-3 h-3 text-[#064E3B]" /> : <Copy className="w-3 h-3" />}
                     {copied ? "Copied" : "Copy"}
                   </button>
                 </div>
-                <pre className="flex-1 m-0 p-4 pt-2 text-[11px] leading-relaxed text-[#A7F3D0] font-mono overflow-x-auto whitespace-pre">
+                <pre className="flex-1 m-0 p-4 pt-2 text-[11px] leading-relaxed text-[#D7E7DC] font-mono overflow-x-auto whitespace-pre">
                   {endpoint.snippets[lang]}
                 </pre>
               </div>
@@ -322,33 +322,33 @@ export default function DevelopersPage() {
       <section className="pb-16 sm:pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-5">
           {/* Webhooks */}
-          <Reveal className="rounded-2xl bg-white border border-[#E2E6E4] p-6 sm:p-8">
-            <span className="w-11 h-11 rounded-2xl bg-[#E8F8F1] flex items-center justify-center">
-              <Webhook className="w-5 h-5 text-[#008F60]" />
+          <Reveal className="rounded-2xl bg-white border border-[#E4E2D8] p-6 sm:p-8">
+            <span className="w-11 h-11 rounded-2xl bg-[#F1F0EA] flex items-center justify-center">
+              <Webhook className="w-5 h-5 text-[#043B2C]" />
             </span>
-            <h2 className="mt-4 text-xl font-bold text-[#171923] tracking-tight">Signed Webhooks</h2>
-            <p className="mt-2 text-[13px] text-[#5A6270] leading-relaxed">
+            <h2 className="mt-4 text-xl font-bold text-[#111827] tracking-tight">Signed Webhooks</h2>
+            <p className="mt-2 text-[13px] text-[#4B5563] leading-relaxed">
               Every webhook is signed with your workspace secret via the{" "}
-              <code className="text-[11px] font-mono bg-[#F1F3F2] px-1.5 py-0.5 rounded">X-CODIIC-Signature</code>{" "}
+              <code className="text-[11px] font-mono bg-[#F1F0EA] px-1.5 py-0.5 rounded">X-CODIIC-Signature</code>{" "}
               header — verify it before processing.
             </p>
             <div className="mt-5 space-y-2">
               {WEBHOOK_EVENTS.map((w) => (
-                <div key={w.event} className="flex items-center gap-3 rounded-xl border border-[#EEF0EE] px-3.5 py-2.5">
-                  <code className="text-[11px] font-bold font-mono text-[#008F60] shrink-0">{w.event}</code>
-                  <span className="text-[11px] text-[#5A6270] leading-snug">{w.desc}</span>
+                <div key={w.event} className="flex items-center gap-3 rounded-xl border border-[#F1F0EA] px-3.5 py-2.5">
+                  <code className="text-[11px] font-bold font-mono text-[#043B2C] shrink-0">{w.event}</code>
+                  <span className="text-[11px] text-[#4B5563] leading-snug">{w.desc}</span>
                 </div>
               ))}
             </div>
           </Reveal>
 
           {/* OAuth */}
-          <Reveal delay={90} className="rounded-2xl bg-white border border-[#E2E6E4] p-6 sm:p-8">
-            <span className="w-11 h-11 rounded-2xl bg-[#E8F8F1] flex items-center justify-center">
-              <KeyRound className="w-5 h-5 text-[#008F60]" />
+          <Reveal delay={90} className="rounded-2xl bg-white border border-[#E4E2D8] p-6 sm:p-8">
+            <span className="w-11 h-11 rounded-2xl bg-[#F1F0EA] flex items-center justify-center">
+              <KeyRound className="w-5 h-5 text-[#043B2C]" />
             </span>
-            <h2 className="mt-4 text-xl font-bold text-[#171923] tracking-tight">Authentication</h2>
-            <p className="mt-2 text-[13px] text-[#5A6270] leading-relaxed">
+            <h2 className="mt-4 text-xl font-bold text-[#111827] tracking-tight">Authentication</h2>
+            <p className="mt-2 text-[13px] text-[#4B5563] leading-relaxed">
               Server-side integrations use workspace API keys; third-party apps connect via OAuth 2.0
               authorization code flow with granular scopes.
             </p>
@@ -359,16 +359,16 @@ export default function DevelopersPage() {
                 { step: "3", text: "Rotate keys anytime — old keys expire after a 24h grace period" },
               ].map((s) => (
                 <div key={s.step} className="flex items-start gap-3">
-                  <span className="w-6 h-6 rounded-full bg-[#171923] text-[#FFD84D] text-[10px] font-black flex items-center justify-center shrink-0">
+                  <span className="w-6 h-6 rounded-full bg-[#111827] text-[#C6A15B] text-[10px] font-black flex items-center justify-center shrink-0">
                     {s.step}
                   </span>
-                  <p className="text-[13px] text-[#5A6270] leading-relaxed">{s.text}</p>
+                  <p className="text-[13px] text-[#4B5563] leading-relaxed">{s.text}</p>
                 </div>
               ))}
             </div>
-            <div className="mt-5 rounded-xl bg-[#FAFBFA] border border-[#EEF0EE] p-3.5 flex items-center gap-2.5">
-              <BookOpen className="w-4 h-4 text-[#00B879] shrink-0" />
-              <span className="text-[11px] font-semibold text-[#5A6270]">
+            <div className="mt-5 rounded-xl bg-[#F7F7F2] border border-[#F1F0EA] p-3.5 flex items-center gap-2.5">
+              <BookOpen className="w-4 h-4 text-[#064E3B] shrink-0" />
+              <span className="text-[11px] font-semibold text-[#4B5563]">
                 Full OpenAPI 3.1 spec available in your workspace developer settings.
               </span>
             </div>

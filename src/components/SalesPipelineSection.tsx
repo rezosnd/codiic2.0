@@ -92,11 +92,11 @@ export const SalesPipelineSection: React.FC<SalesPipelineSectionProps> = ({
   ]);
 
   const stages = [
-    { id: "leads", label: "New Leads", color: "#00B879" },
-    { id: "contacted", label: "Contacted", color: "#008F60" },
-    { id: "qualified", label: "Qualified", color: "#10B981" },
-    { id: "proposal", label: "Proposal", color: "#D97706" },
-    { id: "won", label: "Won", color: "#059669" },
+    { id: "leads", label: "New Leads", color: "#064E3B" },
+    { id: "contacted", label: "Contacted", color: "#043B2C" },
+    { id: "qualified", label: "Qualified", color: "#0E7A5C" },
+    { id: "proposal", label: "Proposal", color: "#A87F3D" },
+    { id: "won", label: "Won", color: "#0E7A5C" },
   ];
 
   // Quick interactive simulation to move deal forward
@@ -134,36 +134,36 @@ export const SalesPipelineSection: React.FC<SalesPipelineSectionProps> = ({
   ];
 
   return (
-    <section id="pipeline" className="py-20 sm:py-28 bg-white border-b border-[#E8EAF0] overflow-hidden">
+    <section id="pipeline" className="py-20 sm:py-28 bg-white border-b border-[#E6E4DB] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header with Left Copy & Right Feature Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-14">
           
           <div className="lg:col-span-5 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-xs font-bold uppercase tracking-wider">
-              <Kanban className="w-3.5 h-3.5 text-[#00B879]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F1F0EA] border border-[#064E3B]/20 text-[#043B2C] text-xs font-bold uppercase tracking-wider">
+              <Kanban className="w-3.5 h-3.5 text-[#064E3B]" />
               <span>FROM LEAD TO CUSTOMER</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#171923] tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight leading-tight">
               See every opportunity.{" "}
-              <span className="text-[#00B879]">Know what happens next.</span>
+              <span className="text-[#064E3B]">Know what happens next.</span>
             </h2>
 
-            <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-[#F7F9F8] border border-[#E2E8E5] text-xs font-semibold text-[#171923]">
-              <Sparkles className="w-4 h-4 text-[#00B879]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-[#F7F7F2] border border-[#E4E2D8] text-xs font-semibold text-[#111827]">
+              <Sparkles className="w-4 h-4 text-[#064E3B]" />
               <span>Har deal, har stage — sab saaf dikh raha hai.</span>
             </div>
 
-            <p className="text-base text-[#555A68] leading-relaxed">
+            <p className="text-base text-[#4B5563] leading-relaxed">
               Visualize your sales process, organize deals, and help your team move opportunities forward without confusion or lost inquiries.
             </p>
 
             <div className="pt-2">
               <button
                 onClick={onOpenGetStarted}
-                className="group px-6 py-3 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs font-bold shadow-md shadow-[#00B879]/20 transition-all flex items-center gap-2"
+                className="group px-6 py-3 rounded-full bg-[#064E3B] hover:bg-[#043B2C] text-white text-xs font-bold shadow-md shadow-[#064E3B]/20 transition-all flex items-center gap-2"
               >
                 <span>Explore Sales Pipeline</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -174,12 +174,12 @@ export const SalesPipelineSection: React.FC<SalesPipelineSectionProps> = ({
           {/* 4 Supporting Feature Cards on Right */}
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {featureCards.map((feat, i) => (
-              <div key={i} className="p-4 rounded-2xl bg-[#F7F9F8] border border-[#E2E8E5] hover:bg-white transition-colors">
+              <div key={i} className="p-4 rounded-2xl bg-[#F7F7F2] border border-[#E4E2D8] hover:bg-white transition-colors">
                 <div className="flex items-center gap-2 mb-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#00B879]" />
-                  <h3 className="text-xs font-bold text-[#171923]">{feat.title}</h3>
+                  <CheckCircle2 className="w-4 h-4 text-[#064E3B]" />
+                  <h3 className="text-xs font-bold text-[#111827]">{feat.title}</h3>
                 </div>
-                <p className="text-[11px] text-[#555A68] leading-relaxed">{feat.desc}</p>
+                <p className="text-[11px] text-[#4B5563] leading-relaxed">{feat.desc}</p>
               </div>
             ))}
           </div>
@@ -187,12 +187,12 @@ export const SalesPipelineSection: React.FC<SalesPipelineSectionProps> = ({
         </div>
 
         {/* Realistic Interactive Kanban Board Mockup */}
-        <div className="rounded-3xl bg-[#171923] border border-gray-800 p-5 sm:p-6 shadow-2xl">
+        <div className="rounded-3xl bg-[#111827] border border-gray-800 p-5 sm:p-6 shadow-2xl">
           
           {/* Board Header Bar */}
           <div className="flex flex-wrap items-center justify-between gap-3 pb-3.5 mb-4 border-b border-gray-800 text-xs">
             <div className="flex items-center gap-3">
-              <div className="w-3 h-3 rounded-full bg-[#00B879] animate-pulse" />
+              <div className="w-3 h-3 rounded-full bg-[#064E3B] animate-pulse" />
               <span className="font-bold text-white text-sm">
                 Corporate Sales Pipeline (Q4 FY26)
               </span>
@@ -204,7 +204,7 @@ export const SalesPipelineSection: React.FC<SalesPipelineSectionProps> = ({
             <div className="flex items-center gap-3">
               <div className="text-right">
                 <span className="text-[10px] text-gray-400 block">Total Pipeline Value</span>
-                <span className="font-mono text-xs font-bold text-[#00B879]">
+                <span className="font-mono text-xs font-bold text-[#064E3B]">
                   ₹54,60,000 INR
                 </span>
               </div>
@@ -252,18 +252,18 @@ export const SalesPipelineSection: React.FC<SalesPipelineSectionProps> = ({
                         <div
                           key={deal.id}
                           onClick={() => moveDealForward(deal.id)}
-                          className="group cursor-pointer bg-gray-800/80 hover:bg-gray-800 p-3 rounded-xl border border-gray-700/60 hover:border-[#00B879]/50 transition-all text-xs"
+                          className="group cursor-pointer bg-gray-800/80 hover:bg-gray-800 p-3 rounded-xl border border-gray-700/60 hover:border-[#064E3B]/50 transition-all text-xs"
                           title="Click to advance deal to next stage"
                         >
                           <div className="flex items-start justify-between gap-1 mb-1">
-                            <span className="font-semibold text-white text-[11px] group-hover:text-emerald-300 transition-colors">
+                            <span className="font-semibold text-white text-[11px] group-hover:text-[#6EE7B7] transition-colors">
                               {deal.name}
                             </span>
                           </div>
 
                           <div className="text-[10px] text-gray-400 mb-2">{deal.company}</div>
 
-                          <div className="flex items-center justify-between text-[11px] font-mono font-bold text-[#00B879]">
+                          <div className="flex items-center justify-between text-[11px] font-mono font-bold text-[#064E3B]">
                             <span>{deal.value}</span>
                             <span className="text-[9px] text-gray-400 font-sans font-normal">
                               Prob: {deal.winProb}
@@ -272,7 +272,7 @@ export const SalesPipelineSection: React.FC<SalesPipelineSectionProps> = ({
 
                           <div className="mt-2 pt-2 border-t border-gray-700/60 flex items-center justify-between text-[9px] text-gray-400">
                             <span>{deal.owner}</span>
-                            <span className="text-emerald-400/80 group-hover:underline flex items-center gap-0.5">
+                            <span className="text-[#34D399]/80 group-hover:underline flex items-center gap-0.5">
                               Next Stage →
                             </span>
                           </div>
@@ -296,10 +296,10 @@ export const SalesPipelineSection: React.FC<SalesPipelineSectionProps> = ({
           {/* Kanban Footer Bar */}
           <div className="mt-3 pt-3 border-t border-gray-800 flex flex-wrap items-center justify-between gap-2 text-[11px] text-gray-400">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#00B879]" />
+              <span className="w-2 h-2 rounded-full bg-[#064E3B]" />
               <span>Deals update automatically when proposals are viewed or signed</span>
             </div>
-            <div className="text-[#00B879] font-semibold">
+            <div className="text-[#064E3B] font-semibold">
               Conversion rate up by +28% with active follow-up reminders
             </div>
           </div>

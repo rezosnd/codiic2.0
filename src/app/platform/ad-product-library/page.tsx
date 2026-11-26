@@ -28,7 +28,7 @@ export default function AdProductLibraryPage() {
         headline={
           <>
             Discover Winning Products &amp; High-Converting Ad Creatives{" "}
-            <em className="font-serif italic font-normal text-[#008F60]">Before They Saturate.</em>
+            <em className="font-serif italic font-normal text-[#043B2C]">Before They Saturate.</em>
           </>
         }
         subheadline="Research top-performing Meta ads, track competitor storefronts, analyze trending SKUs, and use Magic AI Search to spot your next profitable product launch."
@@ -39,7 +39,7 @@ export default function AdProductLibraryPage() {
         featuresHeading={
           <>
             Eight research tools,{" "}
-            <em className="font-serif italic font-normal text-[#008F60]">one intelligence suite.</em>
+            <em className="font-serif italic font-normal text-[#043B2C]">one intelligence suite.</em>
           </>
         }
         features={[

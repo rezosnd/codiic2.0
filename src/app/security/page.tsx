@@ -53,22 +53,22 @@ export default function SecurityPage() {
     <PageShell>
       <section className="pt-10 sm:pt-14 pb-16 sm:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] font-semibold text-[#8A919C] mb-8">
-            <Link href="/" className="hover:text-[#008F60] transition-colors">Home</Link>
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] font-semibold text-[#6B7280] mb-8">
+            <Link href="/" className="hover:text-[#043B2C] transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" />
-            <span className="text-[#171923]">Security</span>
+            <span className="text-[#111827]">Security</span>
           </nav>
 
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E2E6E4] bg-white text-[11px] font-bold uppercase tracking-wider text-[#5A6270]">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#008F60]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E4E2D8] bg-white text-[11px] font-bold uppercase tracking-wider text-[#4B5563]">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#043B2C]" />
               Security &amp; Compliance
             </div>
-            <h1 className="mt-5 text-[34px] sm:text-5xl lg:text-[56px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.05]">
+            <h1 className="mt-5 text-[34px] sm:text-5xl lg:text-[56px] font-bold text-[#111827] tracking-[-0.035em] leading-[1.05]">
               Enterprise-grade security,{" "}
-              <em className="font-serif italic font-normal text-[#008F60]">every plan size.</em>
+              <em className="font-serif italic font-normal text-[#043B2C]">every plan size.</em>
             </h1>
-            <p className="mt-5 text-base sm:text-lg text-[#5A6270] leading-relaxed">
+            <p className="mt-5 text-base sm:text-lg text-[#4B5563] leading-relaxed">
               Your customer conversations and business data are the crown jewels of your company. We
               protect them with the same controls enterprises demand — on every plan, including Free.
             </p>
@@ -84,21 +84,21 @@ export default function SecurityPage() {
               const Icon = c.icon;
               return (
                 <Reveal key={c.title} delay={i * 60}>
-                  <div className="h-full rounded-2xl bg-white border border-[#E2E6E4] p-6 sm:p-7 hover:border-[#00B879]/40 hover:shadow-[0_18px_44px_-20px_rgba(0,143,96,0.3)] transition-all">
-                    <span className="w-11 h-11 rounded-2xl bg-[#E8F8F1] flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-[#008F60]" />
+                  <div className="h-full rounded-2xl bg-white border border-[#E4E2D8] p-6 sm:p-7 hover:border-[#064E3B]/40 hover:shadow-[0_18px_44px_-20px_rgba(4,59,44,0.3)] transition-all">
+                    <span className="w-11 h-11 rounded-2xl bg-[#F1F0EA] flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-[#043B2C]" />
                     </span>
-                    <h3 className="mt-4 text-[15px] font-bold text-[#171923] tracking-tight">{c.title}</h3>
-                    <p className="mt-2 text-[13px] text-[#5A6270] leading-relaxed">{c.desc}</p>
+                    <h3 className="mt-4 text-[15px] font-bold text-[#111827] tracking-tight">{c.title}</h3>
+                    <p className="mt-2 text-[13px] text-[#4B5563] leading-relaxed">{c.desc}</p>
                   </div>
                 </Reveal>
               );
             })}
 
             {/* Vulnerability disclosure */}
-            <div className="rounded-2xl bg-[#171923] text-white p-6 sm:p-7 flex flex-col">
+            <div className="rounded-2xl bg-[#111827] text-white p-6 sm:p-7 flex flex-col">
               <span className="w-11 h-11 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center">
-                <Bug className="w-5 h-5 text-[#00B879]" />
+                <Bug className="w-5 h-5 text-[#064E3B]" />
               </span>
               <h3 className="mt-4 text-[15px] font-bold tracking-tight">Responsible Disclosure</h3>
               <p className="mt-2 text-[13px] text-gray-400 leading-relaxed flex-1">
@@ -107,7 +107,7 @@ export default function SecurityPage() {
               </p>
               <a
                 href="mailto:security@codiic.com"
-                className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-bold text-[#00B879] hover:text-white transition-colors"
+                className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-bold text-[#064E3B] hover:text-white transition-colors"
               >
                 security@codiic.com
                 <ArrowRight className="w-3.5 h-3.5" />

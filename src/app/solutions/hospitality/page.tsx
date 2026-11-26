@@ -23,7 +23,7 @@ export default function HospitalityPage() {
           headline: (
             <>
               Fill Every Table and Chair —{" "}
-              <em className="font-serif italic font-normal text-[#008F60]">With Guests Who Come Back.</em>
+              <em className="font-serif italic font-normal text-[#043B2C]">With Guests Who Come Back.</em>
             </>
           ),
           subheadline:

@@ -28,7 +28,7 @@ export default function BulkAICallsPage() {
         headline={
           <>
             Qualify Leads, Confirm Orders &amp; Book Appointments —{" "}
-            <em className="font-serif italic font-normal text-[#008F60]">Automatically with AI Voice.</em>
+            <em className="font-serif italic font-normal text-[#043B2C]">Automatically with AI Voice.</em>
           </>
         }
         subheadline="Launch natural-sounding Bulk AI Voice campaigns in English, Hinglish, and regional languages — trigger instant calls when a lead submits a form and sync outcomes straight to CRM 360."
@@ -39,7 +39,7 @@ export default function BulkAICallsPage() {
         featuresHeading={
           <>
             An outbound sales team that{" "}
-            <em className="font-serif italic font-normal text-[#008F60]">never sleeps.</em>
+            <em className="font-serif italic font-normal text-[#043B2C]">never sleeps.</em>
           </>
         }
         features={[

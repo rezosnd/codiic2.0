@@ -41,11 +41,11 @@ export const TuyoReviewsSection: React.FC = () => {
       author: "Sarah Mitchell",
       role: "Founder",
       company: "Bloom & Birch, US",
-      avatarBg: "bg-[#1E3B2F] text-white",
+      avatarBg: "bg-[#1F2937] text-white",
       initials: "SM",
-      cardBg: "bg-[#DCEEE5]",
-      textColor: "text-[#1E3B2F]",
-      accentBadge: "bg-[#1E3B2F]/10 text-[#1E3B2F]",
+      cardBg: "bg-[#F1F0EA]",
+      textColor: "text-[#1F2937]",
+      accentBadge: "bg-[#1F2937]/10 text-[#1F2937]",
     },
     {
       id: "rev-2",
@@ -58,11 +58,11 @@ export const TuyoReviewsSection: React.FC = () => {
       author: "Daniel Osei",
       role: "Agency Founder",
       company: "Northline Creative, UK",
-      avatarBg: "bg-[#493128] text-white",
+      avatarBg: "bg-[#3B2E12] text-white",
       initials: "DO",
       cardBg: "bg-[#F2D9CD]",
-      textColor: "text-[#493128]",
-      accentBadge: "bg-[#493128]/10 text-[#493128]",
+      textColor: "text-[#3B2E12]",
+      accentBadge: "bg-[#3B2E12]/10 text-[#3B2E12]",
     },
     {
       id: "rev-3",
@@ -92,11 +92,11 @@ export const TuyoReviewsSection: React.FC = () => {
       author: "Layla Haddad",
       role: "Head of Operations",
       company: "Sahara Living, UAE",
-      avatarBg: "bg-[#483B20] text-white",
+      avatarBg: "bg-[#3B2E12] text-white",
       initials: "LH",
-      cardBg: "bg-[#F5EEDB]",
-      textColor: "text-[#483B20]",
-      accentBadge: "bg-[#483B20]/10 text-[#483B20]",
+      cardBg: "bg-[#F5EFDF]",
+      textColor: "text-[#3B2E12]",
+      accentBadge: "bg-[#3B2E12]/10 text-[#3B2E12]",
     },
     {
       id: "rev-5",
@@ -109,11 +109,11 @@ export const TuyoReviewsSection: React.FC = () => {
       author: "Marcus Tan",
       role: "Growth Lead",
       company: "Orbit Homeware, Singapore",
-      avatarBg: "bg-[#1E3447] text-white",
+      avatarBg: "bg-[#1F2937] text-white",
       initials: "MT",
       cardBg: "bg-[#DDEBF5]",
-      textColor: "text-[#1E3447]",
-      accentBadge: "bg-[#1E3447]/10 text-[#1E3447]",
+      textColor: "text-[#1F2937]",
+      accentBadge: "bg-[#1F2937]/10 text-[#1F2937]",
     },
     {
       id: "rev-6",
@@ -198,14 +198,14 @@ export const TuyoReviewsSection: React.FC = () => {
         {/* Tuyo.com-style Header: Left Title + Right Circular Dark Navigation Arrows */}
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#D9DED8] text-[11px] font-bold tracking-widest uppercase text-[#5A6270] shadow-2xs">
-              <Sparkles className="w-3.5 h-3.5 text-[#00B879]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#DAD8CD] text-[11px] font-bold tracking-widest uppercase text-[#4B5563] shadow-2xs">
+              <Sparkles className="w-3.5 h-3.5 text-[#064E3B]" />
               <span>TESTIMONIALS & TRUST</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#171923] tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] tracking-tight leading-tight">
               Trusted by fast-growing businesses worldwide.
             </h2>
-            <p className="text-base text-[#5A6270] max-w-xl">
+            <p className="text-base text-[#4B5563] max-w-xl">
               Founders, D2C operators and agency leaders across the US, UK, UAE, India and Singapore run their entire business on CODIIC.
             </p>
           </div>
@@ -216,7 +216,7 @@ export const TuyoReviewsSection: React.FC = () => {
               type="button"
               onClick={handlePrev}
               aria-label="Previous review"
-              className="w-12 h-12 rounded-full bg-[#171923] hover:bg-[#008F60] text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 active:scale-95 cursor-pointer"
+              className="w-12 h-12 rounded-full bg-[#111827] hover:bg-[#043B2C] text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 active:scale-95 cursor-pointer"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path
@@ -233,7 +233,7 @@ export const TuyoReviewsSection: React.FC = () => {
               type="button"
               onClick={handleNext}
               aria-label="Next review"
-              className="w-12 h-12 rounded-full bg-[#171923] hover:bg-[#008F60] text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 active:scale-95 cursor-pointer"
+              className="w-12 h-12 rounded-full bg-[#111827] hover:bg-[#043B2C] text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 active:scale-95 cursor-pointer"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path
@@ -302,11 +302,11 @@ export const TuyoReviewsSection: React.FC = () => {
                     {rev.category}
                   </span>
 
-                  <div className="flex items-center gap-1 text-amber-500">
+                  <div className="flex items-center gap-1 text-[#C6A15B]">
                     {[...Array(rev.rating)].map((_, i) => (
                       <Star
                         key={i}
-                        className="w-4 h-4 fill-amber-400 text-amber-400"
+                        className="w-4 h-4 fill-[#C6A15B] text-[#C6A15B]"
                       />
                     ))}
                   </div>
@@ -350,7 +350,7 @@ export const TuyoReviewsSection: React.FC = () => {
 
         {/* Tuyo.com Interactive Drag Indicator Pill */}
         <div className="flex justify-center mt-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/70 backdrop-blur-sm border border-[#D9DED8] text-[11px] text-[#5A6270] shadow-2xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/70 backdrop-blur-sm border border-[#DAD8CD] text-[11px] text-[#4B5563] shadow-2xs">
             <span>Drag, click, or use arrows to explore reviews</span>
           </div>
         </div>

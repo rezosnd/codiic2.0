@@ -25,7 +25,7 @@ const INDUSTRIES = [
     desc: "Drag-and-drop storefronts, multi-currency checkout, AI voice order verification, and automated WhatsApp tracking updates.",
     imageSrc: "/images/industries/retail.jpg",
     imageAlt: "Modern boutique retail storefront with curated lifestyle displays",
-    accent: "#00B879",
+    accent: "#064E3B",
   },
   {
     id: "services",
@@ -35,7 +35,7 @@ const INDUSTRIES = [
     desc: "No-code service pages, online booking calendars, team & agent assignment, and automated appointment reminders.",
     imageSrc: "/images/industries/services.jpg",
     imageAlt: "Professional advisory consultants meeting in a bright contemporary office",
-    accent: "#008F60",
+    accent: "#043B2C",
   },
   {
     id: "real-estate",
@@ -45,7 +45,7 @@ const INDUSTRIES = [
     desc: "Property showcase pages, Facebook/CTWA lead capture, instant WhatsApp floorplan delivery, and AI voice-booked tours.",
     imageSrc: "/images/industries/real-estate.jpg",
     imageAlt: "Contemporary architectural residential property development",
-    accent: "#00B879",
+    accent: "#064E3B",
   },
   {
     id: "agencies",
@@ -55,7 +55,7 @@ const INDUSTRIES = [
     desc: "Rapid client site launches, multi-client inbox, Ad Library & Competitor research, and retainer invoicing.",
     imageSrc: "/images/industries/agencies.jpg",
     imageAlt: "Creative digital agency team collaborating on digital campaign design",
-    accent: "#008F60",
+    accent: "#043B2C",
   },
   {
     id: "education",
@@ -65,7 +65,7 @@ const INDUSTRIES = [
     desc: "Drag-and-drop admission pages, automated WhatsApp course brochures, counseling call scheduling, and fee reminders.",
     imageSrc: "/images/industries/education.jpg",
     imageAlt: "Modern interactive education seminar with active participants",
-    accent: "#00B879",
+    accent: "#064E3B",
   },
   {
     id: "hospitality",
@@ -75,7 +75,7 @@ const INDUSTRIES = [
     desc: "QR digital menus, table & slot reservations, and automated WhatsApp loyalty broadcasts.",
     imageSrc: "/images/industries/hospitality.jpg",
     imageAlt: "Aesthetic modern boutique cafe interior with warm natural lighting",
-    accent: "#008F60",
+    accent: "#043B2C",
   },
 ];
 
@@ -267,7 +267,7 @@ function MobileCoverflow({ onOpenGetStarted }: { onOpenGetStarted: () => void })
           type="button"
           onClick={() => nudge(-1)}
           aria-label="Previous"
-          className="w-9 h-9 rounded-full bg-white border border-[#E2E6E4] shadow flex items-center justify-center text-[#171923] hover:bg-[#00B879] hover:text-white hover:border-[#00B879] transition-all duration-200 active:scale-95"
+          className="w-9 h-9 rounded-full bg-white border border-[#E4E2D8] shadow flex items-center justify-center text-[#111827] hover:bg-[#064E3B] hover:text-white hover:border-[#064E3B] transition-all duration-200 active:scale-95"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
@@ -283,7 +283,7 @@ function MobileCoverflow({ onOpenGetStarted }: { onOpenGetStarted: () => void })
               style={{
                 width: i === selected ? 20 : 8,
                 height: 8,
-                backgroundColor: i === selected ? "#00B879" : "#D1D5DB",
+                backgroundColor: i === selected ? "#064E3B" : "#C9CFC0",
               }}
             />
           ))}
@@ -292,7 +292,7 @@ function MobileCoverflow({ onOpenGetStarted }: { onOpenGetStarted: () => void })
           type="button"
           onClick={() => nudge(1)}
           aria-label="Next"
-          className="w-9 h-9 rounded-full bg-white border border-[#E2E6E4] shadow flex items-center justify-center text-[#171923] hover:bg-[#00B879] hover:text-white hover:border-[#00B879] transition-all duration-200 active:scale-95"
+          className="w-9 h-9 rounded-full bg-white border border-[#E4E2D8] shadow flex items-center justify-center text-[#111827] hover:bg-[#064E3B] hover:text-white hover:border-[#064E3B] transition-all duration-200 active:scale-95"
         >
           <ChevronRight className="w-4 h-4" />
         </button>
@@ -304,11 +304,11 @@ function MobileCoverflow({ onOpenGetStarted }: { onOpenGetStarted: () => void })
         className="px-4 text-center"
         style={{ animation: "industryCaptionIn 0.3s ease both" }}
       >
-        <p className="text-[12px] text-[#5A6270] leading-relaxed">{active.desc}</p>
+        <p className="text-[12px] text-[#4B5563] leading-relaxed">{active.desc}</p>
         <button
           type="button"
           onClick={onOpenGetStarted}
-          className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-bold text-[#008F60] hover:text-[#00B879] transition-colors"
+          className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-bold text-[#043B2C] hover:text-[#064E3B] transition-colors"
         >
           Explore industry solution <ArrowRight className="w-3.5 h-3.5" />
         </button>
@@ -349,20 +349,20 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
 
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-[11px] font-bold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F1F0EA] border border-[#064E3B]/20 text-[#043B2C] text-[11px] font-bold uppercase tracking-wider mb-4">
             <Sparkles className="w-3 h-3" />
             Industry Workflows
           </div>
           <h2
             id="solutions-heading"
-            className="text-[26px] sm:text-[42px] lg:text-[50px] font-extrabold text-[#171923] tracking-[-0.03em] leading-[1.08] mb-3"
+            className="text-[26px] sm:text-[42px] lg:text-[50px] font-extrabold text-[#111827] tracking-[-0.03em] leading-[1.08] mb-3"
           >
             Made for the way your{" "}
-            <em className="font-serif italic font-normal text-[#008F60] not-italic">
+            <em className="font-serif italic font-normal text-[#043B2C] not-italic">
               business works.
             </em>
           </h2>
-          <p className="text-[14px] sm:text-[16px] text-[#5A6270] leading-relaxed">
+          <p className="text-[14px] sm:text-[16px] text-[#4B5563] leading-relaxed">
             Whether you run a retail shop, advisory practice, or agency anywhere in the world, CODIIC connects your daily customer operations.
           </p>
         </div>
@@ -375,7 +375,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
             <button
               type="button"
               onClick={onOpenGetStarted}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-[13px] font-bold shadow-lg shadow-[#00B879]/25 transition-all duration-200 active:scale-[0.97]"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#064E3B] hover:bg-[#043B2C] text-white text-[13px] font-bold shadow-lg shadow-[#064E3B]/25 transition-all duration-200 active:scale-[0.97]"
             >
               See all industry solutions <ArrowRight className="w-4 h-4" />
             </button>
@@ -388,7 +388,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
             <div
               key={item.id}
               onClick={onOpenGetStarted}
-              className={`group cursor-pointer rounded-3xl bg-white border border-[#D9DED8] hover:border-[#00B879]/50 hover:shadow-2xl hover:shadow-[#00B879]/10 transition-all duration-300 flex flex-col overflow-hidden hover:-translate-y-1 ${
+              className={`group cursor-pointer rounded-3xl bg-white border border-[#DAD8CD] hover:border-[#064E3B]/50 hover:shadow-2xl hover:shadow-[#064E3B]/10 transition-all duration-300 flex flex-col overflow-hidden hover:-translate-y-1 ${
                 isInView ? "opacity-100" : "opacity-0"
               }`}
               style={{
@@ -397,7 +397,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
               }}
             >
               {/* Photo */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-[#D9DED8]">
+              <div className="relative aspect-[16/10] overflow-hidden bg-[#DAD8CD]">
                 <img
                   src={item.imageSrc}
                   alt={item.imageAlt}
@@ -422,12 +422,12 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
                   <div className="w-9 h-9 shrink-0 flex items-center justify-center drop-shadow-xs">
                     <item.icon className="w-9 h-9 shrink-0" />
                   </div>
-                  <h3 className="text-[15px] font-bold text-[#171923] group-hover:text-[#008F60] transition-colors leading-tight">
+                  <h3 className="text-[15px] font-bold text-[#111827] group-hover:text-[#043B2C] transition-colors leading-tight">
                     {item.title}
                   </h3>
                 </div>
-                <p className="text-[12.5px] text-[#555A68] leading-relaxed flex-1">{item.desc}</p>
-                <div className="mt-4 pt-3.5 border-t border-[#E8EAF0] flex items-center justify-between text-[11.5px] font-bold text-[#008F60]">
+                <p className="text-[12.5px] text-[#4B5563] leading-relaxed flex-1">{item.desc}</p>
+                <div className="mt-4 pt-3.5 border-t border-[#E6E4DB] flex items-center justify-between text-[11.5px] font-bold text-[#043B2C]">
                   <span>Explore industry solution</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
                 </div>
@@ -441,7 +441,7 @@ export const OlearisIndustrySection: React.FC<OlearisIndustrySectionProps> = ({
           <button
             type="button"
             onClick={onOpenGetStarted}
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#171923] hover:bg-[#00B879] text-white text-[14px] font-bold shadow-lg shadow-black/10 hover:shadow-[#00B879]/25 transition-all duration-200 active:scale-[0.97]"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#111827] hover:bg-[#064E3B] text-white text-[14px] font-bold shadow-lg shadow-black/10 hover:shadow-[#064E3B]/25 transition-all duration-200 active:scale-[0.97]"
           >
             Start free — works for any industry
             <ArrowRight className="w-4 h-4" />

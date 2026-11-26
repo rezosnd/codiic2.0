@@ -25,7 +25,7 @@ const TOUR_STEPS = [
     title: "Storefront & Website Builder",
     short: "Website",
     icon: Globe,
-    accent: "#00E08F",
+    accent: "#0E7A5C",
     accentSoft: "rgba(0,224,143,0.16)",
     tagline: "Code ka jhanjhat khatam",
     desc: "Drag and drop responsive blocks to launch your storefront or agency landing page in minutes. All inquiry forms sync directly with your CRM.",
@@ -79,8 +79,8 @@ const TOUR_STEPS = [
     title: "Workflow Automation Engine",
     short: "Automation",
     icon: Zap,
-    accent: "#FBBF24",
-    accentSoft: "rgba(251,191,36,0.16)",
+    accent: "#C6A15B",
+    accentSoft: "rgba(198,161,91,0.16)",
     tagline: "Kaam smart, growth fast",
     desc: "Set intelligent triggers that automatically enrich leads, assign sales reps, and dispatch instant WhatsApp brochures without manual intervention.",
     stats: [
@@ -136,7 +136,7 @@ export const TourModal: React.FC<TourModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-[#030806]/75 backdrop-blur-md"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-[#0B1120]/75 backdrop-blur-md"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -153,7 +153,7 @@ export const TourModal: React.FC<TourModalProps> = ({ isOpen, onClose }) => {
           if (Math.abs(dx) > 50) go(activeStep + (dx < 0 ? 1 : -1));
           touchStartX.current = null;
         }}
-        className="relative w-full max-w-4xl max-h-[calc(100dvh-1.5rem)] overflow-y-auto no-scrollbar rounded-[28px] bg-[#0B1310] text-white ring-1 ring-white/10 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.8)] animate-tour-in"
+        className="relative w-full max-w-4xl max-h-[calc(100dvh-1.5rem)] overflow-y-auto no-scrollbar rounded-[28px] bg-[#0B1120] text-white ring-1 ring-white/10 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.8)] animate-tour-in"
       >
         {/* Ambient accent glow + dot grid */}
         <div
@@ -161,7 +161,7 @@ export const TourModal: React.FC<TourModalProps> = ({ isOpen, onClose }) => {
           className="pointer-events-none absolute -top-40 -right-32 w-[520px] h-[520px] rounded-full blur-[120px] transition-colors duration-700"
           style={{ backgroundColor: current.accentSoft }}
         />
-        <div aria-hidden className="pointer-events-none absolute -bottom-48 -left-32 w-[420px] h-[420px] rounded-full bg-[#00B879]/10 blur-[120px]" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-48 -left-32 w-[420px] h-[420px] rounded-full bg-[#064E3B]/10 blur-[120px]" />
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.07)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:radial-gradient(ellipse_at_top_right,black_20%,transparent_70%)]"
@@ -179,13 +179,13 @@ export const TourModal: React.FC<TourModalProps> = ({ isOpen, onClose }) => {
         <div className="relative grid md:grid-cols-12">
           {/* Sidebar: steps */}
           <aside className="md:col-span-4 p-5 sm:p-7 md:border-r border-white/[0.08]">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00B879]/15 ring-1 ring-[#00B879]/30 text-[#5EF0B8] text-[10px] font-bold uppercase tracking-[0.14em]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#064E3B]/15 ring-1 ring-[#064E3B]/30 text-[#34D399] text-[10px] font-bold uppercase tracking-[0.14em]">
               <Play className="w-3 h-3 fill-current" />
               Interactive platform tour
             </div>
             <h3 className="mt-4 text-2xl sm:text-[28px] font-bold tracking-[-0.03em] leading-[1.1] pr-10 md:pr-0">
               How CODIIC connects your{" "}
-              <em className="font-serif italic font-normal text-[#5EF0B8]">entire business.</em>
+              <em className="font-serif italic font-normal text-[#34D399]">entire business.</em>
             </h3>
 
             <div className="mt-6 flex md:flex-col gap-2 overflow-x-auto no-scrollbar -mx-1 px-1 pb-1">
@@ -206,7 +206,7 @@ export const TourModal: React.FC<TourModalProps> = ({ isOpen, onClose }) => {
                       className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-all"
                       style={{
                         backgroundColor: isActive || isDone ? st.accent : "rgba(255,255,255,0.06)",
-                        color: isActive || isDone ? "#0B1310" : "rgba(255,255,255,0.6)",
+                        color: isActive || isDone ? "#0B1120" : "rgba(255,255,255,0.6)",
                         boxShadow: isActive ? `0 0 24px -2px ${st.accent}` : undefined,
                       }}
                     >
@@ -245,7 +245,7 @@ export const TourModal: React.FC<TourModalProps> = ({ isOpen, onClose }) => {
                   boxShadow: `0 18px 40px -12px ${current.accent}`,
                 }}
               >
-                <CurrentIcon className="w-7 h-7 text-[#0B1310]" />
+                <CurrentIcon className="w-7 h-7 text-[#0B1120]" />
               </span>
               <div className="min-w-0">
                 <span
@@ -315,7 +315,7 @@ export const TourModal: React.FC<TourModalProps> = ({ isOpen, onClose }) => {
                 <button
                   type="button"
                   onClick={() => go(activeStep + 1)}
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-bold text-[#0B1310] transition-transform active:scale-95 cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-bold text-[#0B1120] transition-transform active:scale-95 cursor-pointer"
                   style={{ backgroundColor: current.accent, boxShadow: `0 10px 30px -10px ${current.accent}` }}
                 >
                   Next step
@@ -325,7 +325,7 @@ export const TourModal: React.FC<TourModalProps> = ({ isOpen, onClose }) => {
                 <button
                   type="button"
                   onClick={onClose}
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#00B879] hover:bg-[#00D08A] text-sm font-bold text-[#0B1310] shadow-[0_10px_30px_-10px_#00B879] transition-colors active:scale-95 cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#064E3B] hover:bg-[#0E7A5C] text-sm font-bold text-[#0B1120] shadow-[0_10px_30px_-10px_#064E3B] transition-colors active:scale-95 cursor-pointer"
                 >
                   Start at ₹1/day
                   <ArrowRight className="w-4 h-4" />

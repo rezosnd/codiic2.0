@@ -17,7 +17,7 @@ export const PageShell: React.FC<{ children: React.ReactNode }> = ({ children })
   const goToLogin = () => router.push("/login");
 
   return (
-    <div className="relative isolate min-h-screen flex flex-col text-[#171923] selection:bg-[#00B879]/20 selection:text-[#008F60]">
+    <div className="relative isolate min-h-screen flex flex-col text-[#111827] selection:bg-[#064E3B]/20 selection:text-[#043B2C]">
       <FrostedEmeraldBackdrop />
       <Navbar onOpenGetStarted={goToLogin} onOpenSeeHowItWorks={goToLogin} linkPrefix="/" />
       <main className="flex-1">{children}</main>

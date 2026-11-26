@@ -23,7 +23,7 @@ export default function ServiceBusinessesPage() {
           headline: (
             <>
               Fill Your Calendar with Booked Appointments —{" "}
-              <em className="font-serif italic font-normal text-[#008F60]">Not Missed Calls.</em>
+              <em className="font-serif italic font-normal text-[#043B2C]">Not Missed Calls.</em>
             </>
           ),
           subheadline:

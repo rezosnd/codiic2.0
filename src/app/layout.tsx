@@ -12,7 +12,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#00B879",
+  themeColor: "#064E3B",
 };
 
 const siteUrl =
@@ -95,7 +95,7 @@ export default function RootLayout({
         <link rel="image_src" href={`${siteUrl}/og-image.png`} />
         <meta property="og:image:secure_url" content={`${siteUrl}/og-image.png`} />
       </head>
-      <body className="min-h-screen bg-[#F7F9F8] text-[#171923] antialiased selection:bg-[#00B879]/20 selection:text-[#008F60]">
+      <body className="min-h-screen bg-[#F7F7F2] text-[#111827] antialiased selection:bg-[#064E3B]/20 selection:text-[#043B2C]">
         {children}
       </body>
     </html>

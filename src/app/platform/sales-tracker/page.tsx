@@ -28,7 +28,7 @@ export default function SalesTrackerPage() {
         headline={
           <>
             Track Live Revenue, SKU Margins &amp; Net Profit{" "}
-            <em className="font-serif italic font-normal text-[#008F60]">Across Every Channel.</em>
+            <em className="font-serif italic font-normal text-[#043B2C]">Across Every Channel.</em>
           </>
         }
         subheadline="Stop guessing your true margins in spreadsheets. Monitor live orders, automatically deduct COGS and shipping, and track team & channel ROI in one dashboard."
@@ -39,7 +39,7 @@ export default function SalesTrackerPage() {
         featuresHeading={
           <>
             Real profit numbers,{" "}
-            <em className="font-serif italic font-normal text-[#008F60]">not vanity revenue.</em>
+            <em className="font-serif italic font-normal text-[#043B2C]">not vanity revenue.</em>
           </>
         }
         features={[

@@ -18,7 +18,7 @@ const INDUSTRIES = [
     description:
       "Connect your storefront with real-time UPI orders, WhatsApp customer updates, and auto-synced inventory.",
     img: "/images/industries/retail.jpg",
-    accent: "#00B879",
+    accent: "#064E3B",
   },
   {
     id: "services",
@@ -28,7 +28,7 @@ const INDUSTRIES = [
     description:
       "Organize client consultations, intake briefs, and retainer proposals with clear team task assignment.",
     img: "/images/industries/services.jpg",
-    accent: "#008F60",
+    accent: "#043B2C",
   },
   {
     id: "real-estate",
@@ -38,7 +38,7 @@ const INDUSTRIES = [
     description:
       "Keep property inquiries, floorplan shares, and site-visit schedules visible across your deal pipeline.",
     img: "/images/industries/real-estate.jpg",
-    accent: "#00B879",
+    accent: "#064E3B",
   },
   {
     id: "agencies",
@@ -48,7 +48,7 @@ const INDUSTRIES = [
     description:
       "Capture website inquiries, qualify client budgets, and track pitch milestones in one continuous feed.",
     img: "/images/industries/agencies.jpg",
-    accent: "#008F60",
+    accent: "#043B2C",
   },
   {
     id: "education",
@@ -58,7 +58,7 @@ const INDUSTRIES = [
     description:
       "Manage prospective student enrollment forms, batch intake questions, and automated WhatsApp course brochures.",
     img: "/images/industries/education.jpg",
-    accent: "#00B879",
+    accent: "#064E3B",
   },
   {
     id: "hospitality",
@@ -68,7 +68,7 @@ const INDUSTRIES = [
     description:
       "Give diners and guests a beautiful online presence to explore menus, reserve tables, and connect via WhatsApp.",
     img: "/images/industries/hospitality.jpg",
-    accent: "#008F60",
+    accent: "#043B2C",
   },
 ];
 
@@ -116,14 +116,14 @@ const DesktopCard: React.FC<{
     </div>
 
     {/* Content */}
-    <div className="flex flex-col flex-1 p-5 bg-[#F7F9F8] group-hover:bg-white transition-colors duration-300 border-x border-b border-[#EAEDED] rounded-b-[28px]">
-      <p className="text-[11px] font-bold tracking-widest uppercase text-[#00B879] mb-1">
+    <div className="flex flex-col flex-1 p-5 bg-[#F7F7F2] group-hover:bg-white transition-colors duration-300 border-x border-b border-[#F1F0EA] rounded-b-[28px]">
+      <p className="text-[11px] font-bold tracking-widest uppercase text-[#064E3B] mb-1">
         {item.subtitle}
       </p>
-      <p className="text-[13.5px] font-semibold text-[#171923] leading-snug mb-2 line-clamp-2">
+      <p className="text-[13.5px] font-semibold text-[#111827] leading-snug mb-2 line-clamp-2">
         {item.description}
       </p>
-      <div className="mt-auto pt-3 border-t border-[#E8EAF0] flex items-center justify-between text-[12px] font-bold text-[#008F60]">
+      <div className="mt-auto pt-3 border-t border-[#E6E4DB] flex items-center justify-between text-[12px] font-bold text-[#043B2C]">
         <span>Explore industry solution</span>
         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
       </div>
@@ -166,22 +166,22 @@ export const IndustrySolutionsSection: React.FC<IndustrySolutionsSectionProps> =
 
         {/* ── Header ── */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-[11px] font-bold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F1F0EA] border border-[#064E3B]/20 text-[#043B2C] text-[11px] font-bold uppercase tracking-wider mb-4">
             <Sparkles className="w-3 h-3" />
             Built for every type of business
           </div>
 
           <h2
             id="industries-heading"
-            className="text-[26px] sm:text-[42px] lg:text-[50px] font-extrabold text-[#171923] tracking-[-0.03em] leading-[1.08] mb-4"
+            className="text-[26px] sm:text-[42px] lg:text-[50px] font-extrabold text-[#111827] tracking-[-0.03em] leading-[1.08] mb-4"
           >
             One platform.{" "}
-            <em className="font-serif italic font-normal text-[#008F60] not-italic">
+            <em className="font-serif italic font-normal text-[#043B2C] not-italic">
               Different ways to work.
             </em>
           </h2>
 
-          <p className="text-[14px] sm:text-[16px] text-[#5A6270] leading-relaxed">
+          <p className="text-[14px] sm:text-[16px] text-[#4B5563] leading-relaxed">
             CODIIC adapts to how your industry actually operates — not the other way around.
           </p>
         </div>
@@ -210,7 +210,7 @@ export const IndustrySolutionsSection: React.FC<IndustrySolutionsSectionProps> =
             <button
               type="button"
               onClick={onOpenGetStarted}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-sm font-bold shadow-lg shadow-[#00B879]/25 transition-all duration-200 active:scale-[0.97]"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#064E3B] hover:bg-[#043B2C] text-white text-sm font-bold shadow-lg shadow-[#064E3B]/25 transition-all duration-200 active:scale-[0.97]"
             >
               See all industry solutions
               <ArrowRight className="w-4 h-4" />
@@ -239,7 +239,7 @@ export const IndustrySolutionsSection: React.FC<IndustrySolutionsSectionProps> =
           <button
             type="button"
             onClick={onOpenGetStarted}
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#171923] hover:bg-[#00B879] text-white text-[14px] font-bold shadow-lg shadow-black/10 hover:shadow-[#00B879]/25 transition-all duration-200 active:scale-[0.97]"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#111827] hover:bg-[#064E3B] text-white text-[14px] font-bold shadow-lg shadow-black/10 hover:shadow-[#064E3B]/25 transition-all duration-200 active:scale-[0.97]"
           >
             Start your free trial — any industry
             <ArrowRight className="w-4 h-4" />
@@ -247,11 +247,11 @@ export const IndustrySolutionsSection: React.FC<IndustrySolutionsSectionProps> =
         </div>
 
         {/* Legal note */}
-        <p className="mt-8 text-center text-[11px] text-[#9AA7A0]">
+        <p className="mt-8 text-center text-[11px] text-[#9CA3AF]">
           Need custom fields or workflow rules?{" "}
           <button
             onClick={onOpenGetStarted}
-            className="text-[#008F60] font-semibold hover:underline cursor-pointer"
+            className="text-[#043B2C] font-semibold hover:underline cursor-pointer"
           >
             Talk to us →
           </button>

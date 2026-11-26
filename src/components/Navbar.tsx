@@ -193,15 +193,15 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div
           aria-hidden
           onClick={() => setMobileMenuOpen(false)}
-          className="md:hidden fixed inset-0 -z-10 bg-[#04120C]/35 backdrop-blur-[3px] animate-in fade-in duration-200"
+          className="md:hidden fixed inset-0 -z-10 bg-[#0B1120]/35 backdrop-blur-[3px] animate-in fade-in duration-200"
         />
       )}
 
       {/* Floating Capsule Bar (Dropship-inspired refined SaaS navigation) */}
       <div
         className={`w-full max-w-7xl mx-auto rounded-full transition-all duration-300 border border-white/70 backdrop-blur-xl backdrop-saturate-150 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] ${scrolled
-            ? "bg-white/80 shadow-xl shadow-[#0D5C4D]/10 py-1.5 pl-3 pr-1.5 sm:py-2 sm:px-6"
-            : "bg-white/65 shadow-lg shadow-[#0D5C4D]/[0.06] py-2 pl-3.5 pr-2 sm:py-2.5 sm:px-6"
+            ? "bg-white/80 shadow-xl shadow-[#065F46]/10 py-1.5 pl-3 pr-1.5 sm:py-2 sm:px-6"
+            : "bg-white/65 shadow-lg shadow-[#065F46]/[0.06] py-2 pl-3.5 pr-2 sm:py-2.5 sm:px-6"
           }`}
       >
         <div className="flex items-center justify-between">
@@ -236,7 +236,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </a>
 
           {/* Center: Clean SaaS Dropdowns & Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2 text-[13px] font-semibold text-[#171923]">
+          <nav className="hidden md:flex items-center gap-1 lg:gap-2 text-[13px] font-semibold text-[#111827]">
             {/* Platform Dropdown Trigger */}
             <div className="relative">
               <button
@@ -247,13 +247,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onMouseEnter={() => setActiveDropdown("platform")}
                 aria-expanded={activeDropdown === "platform"}
                 className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${activeDropdown === "platform"
-                    ? "bg-[#E5F8F1] text-[#14B8A6]"
-                    : "text-[#171923] hover:text-[#14B8A6] hover:bg-[#F7FAF9]"
+                    ? "bg-[#F1F0EA] text-[#064E3B]"
+                    : "text-[#111827] hover:text-[#064E3B] hover:bg-[#F7F7F2]"
                   }`}
               >
                 <span>Platform</span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "platform" ? "rotate-180 text-[#14B8A6]" : "text-[#5A6270]"
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "platform" ? "rotate-180 text-[#064E3B]" : "text-[#4B5563]"
                     }`}
                   strokeWidth={2}
                 />
@@ -270,13 +270,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onMouseEnter={() => setActiveDropdown("solutions")}
                 aria-expanded={activeDropdown === "solutions"}
                 className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${activeDropdown === "solutions"
-                    ? "bg-[#E5F8F1] text-[#14B8A6]"
-                    : "text-[#171923] hover:text-[#14B8A6] hover:bg-[#F7FAF9]"
+                    ? "bg-[#F1F0EA] text-[#064E3B]"
+                    : "text-[#111827] hover:text-[#064E3B] hover:bg-[#F7F7F2]"
                   }`}
               >
                 <span>Solutions</span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "solutions" ? "rotate-180 text-[#14B8A6]" : "text-[#5A6270]"
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "solutions" ? "rotate-180 text-[#064E3B]" : "text-[#4B5563]"
                     }`}
                   strokeWidth={2}
                 />
@@ -287,7 +287,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <a
               href={`${linkPrefix}#integrations`}
               onClick={() => setActiveDropdown(null)}
-              className="px-3.5 py-1.5 rounded-full text-[#171923] hover:text-[#14B8A6] hover:bg-[#F7FAF9] transition-all"
+              className="px-3.5 py-1.5 rounded-full text-[#111827] hover:text-[#064E3B] hover:bg-[#F7F7F2] transition-all"
             >
               Integrations
             </a>
@@ -296,7 +296,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <a
               href={`${linkPrefix}#reviews`}
               onClick={() => setActiveDropdown(null)}
-              className="px-3.5 py-1.5 rounded-full text-[#171923] hover:text-[#14B8A6] hover:bg-[#F7FAF9] transition-all"
+              className="px-3.5 py-1.5 rounded-full text-[#111827] hover:text-[#064E3B] hover:bg-[#F7F7F2] transition-all"
             >
               Reviews
             </a>
@@ -308,7 +308,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={onOpenGetStarted}
               id="header-signin-button"
-              className="hidden sm:block px-3 py-1.5 rounded-full text-xs sm:text-[13px] font-semibold text-[#171923] hover:text-[#14B8A6] transition-colors cursor-pointer"
+              className="hidden sm:block px-3 py-1.5 rounded-full text-xs sm:text-[13px] font-semibold text-[#111827] hover:text-[#064E3B] transition-colors cursor-pointer"
             >
               Sign in
             </button>
@@ -317,7 +317,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={onOpenGetStarted}
               id="header-cta-button"
-              className="group relative h-9 sm:h-auto px-3.5 sm:px-5 sm:py-2.5 rounded-full bg-[#0D5C4D] hover:bg-[#08483C] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#0D5C4D]/30 hover:shadow-lg hover:shadow-[#0D5C4D]/40 transition-all duration-200 flex items-center gap-1.5 active:scale-95 cursor-pointer whitespace-nowrap"
+              className="group relative h-9 sm:h-auto px-3.5 sm:px-5 sm:py-2.5 rounded-full bg-[#065F46] hover:bg-[#064E3B] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#065F46]/30 hover:shadow-lg hover:shadow-[#065F46]/40 transition-all duration-200 flex items-center gap-1.5 active:scale-95 cursor-pointer whitespace-nowrap"
             >
               <span className="sm:hidden">Start Free</span>
               <span className="hidden sm:inline">Start Free</span>
@@ -331,8 +331,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               aria-expanded={mobileMenuOpen}
               className={`md:hidden w-9 h-9 rounded-full flex items-center justify-center cursor-pointer touch-manipulation focus:outline-none active:scale-90 transition-all shrink-0 ${
                 mobileMenuOpen
-                  ? "bg-[#171923] text-white"
-                  : "bg-white/80 text-[#171923] border border-[#DCE9E4]"
+                  ? "bg-[#111827] text-white"
+                  : "bg-white/80 text-[#111827] border border-[#DAD8CD]"
               }`}
               aria-label="Toggle navigation menu"
             >
@@ -348,14 +348,14 @@ export const Navbar: React.FC<NavbarProps> = ({
       {activeDropdown && (
         <div
           onMouseLeave={() => setActiveDropdown(null)}
-          className="hidden md:block absolute top-full left-4 right-4 mt-2 max-w-4xl mx-auto bg-white rounded-3xl border border-[#DCE9E4] shadow-2xl p-5 sm:p-6 animate-in fade-in slide-in-from-top-2 duration-150 z-50"
+          className="hidden md:block absolute top-full left-4 right-4 mt-2 max-w-4xl mx-auto bg-white rounded-3xl border border-[#DAD8CD] shadow-2xl p-5 sm:p-6 animate-in fade-in slide-in-from-top-2 duration-150 z-50"
         >
           {activeDropdown === "platform" && (
             <div>
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#E8EAF0]">
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#E6E4DB]">
                 <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#14B8A6]" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#171923]">
+                  <Sparkles className="w-4 h-4 text-[#064E3B]" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#111827]">
                     Core Platform Tools
                   </span>
                 </div>
@@ -364,7 +364,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     setActiveDropdown(null);
                     onOpenSeeHowItWorks();
                   }}
-                  className="text-xs font-semibold text-[#14B8A6] hover:text-[#14B8A6] flex items-center gap-1 cursor-pointer"
+                  className="text-xs font-semibold text-[#064E3B] hover:text-[#064E3B] flex items-center gap-1 cursor-pointer"
                 >
                   <span>Interactive Walkthrough</span>
                   <ExternalLink className="w-3 h-3" />
@@ -382,21 +382,21 @@ export const Navbar: React.FC<NavbarProps> = ({
                       key={tool.title}
                       href={href}
                       onClick={() => setActiveDropdown(null)}
-                      className="group p-3 rounded-2xl hover:bg-[#F7FAF9] border border-transparent hover:border-[#DCE9E4] transition-all flex items-start gap-3"
+                      className="group p-3 rounded-2xl hover:bg-[#F7F7F2] border border-transparent hover:border-[#DAD8CD] transition-all flex items-start gap-3"
                     >
                       <div className="w-10 h-10 flex items-center justify-center shrink-0 drop-shadow-sm group-hover:scale-105 transition-transform">
                         <Icon className="w-10 h-10 shrink-0" />
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-[#171923] group-hover:text-[#14B8A6] transition-colors truncate">
+                          <span className="text-xs font-bold text-[#111827] group-hover:text-[#064E3B] transition-colors truncate">
                             {tool.title}
                           </span>
-                          <span className="text-[9px] font-bold font-mono px-1.5 py-0.2 rounded bg-[#E5F8F1] text-[#14B8A6] border border-[#DCE9E4]">
+                          <span className="text-[9px] font-bold font-mono px-1.5 py-0.2 rounded bg-[#F1F0EA] text-[#064E3B] border border-[#DAD8CD]">
                             {tool.badge}
                           </span>
                         </div>
-                        <p className="text-[11px] text-[#5A6270] mt-0.5 line-clamp-2 leading-snug">
+                        <p className="text-[11px] text-[#4B5563] mt-0.5 line-clamp-2 leading-snug">
                           {tool.desc}
                         </p>
                       </div>
@@ -409,14 +409,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {activeDropdown === "solutions" && (
             <div>
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#E8EAF0]">
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#E6E4DB]">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#14B8A6]" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#171923]">
+                  <span className="w-2 h-2 rounded-full bg-[#064E3B]" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#111827]">
                     Industry-Specific Workflows
                   </span>
                 </div>
-                <span className="text-xs text-[#5A6270]">Built for global business operations</span>
+                <span className="text-xs text-[#4B5563]">Built for global business operations</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -430,16 +430,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                       key={ind.title}
                       href={href}
                       onClick={() => setActiveDropdown(null)}
-                      className="group p-3.5 rounded-2xl hover:bg-[#F7FAF9] border border-transparent hover:border-[#DCE9E4] transition-all flex items-start gap-3"
+                      className="group p-3.5 rounded-2xl hover:bg-[#F7F7F2] border border-transparent hover:border-[#DAD8CD] transition-all flex items-start gap-3"
                     >
                       <div className="w-10 h-10 flex items-center justify-center shrink-0 drop-shadow-sm group-hover:scale-105 transition-transform">
                         <Icon className="w-10 h-10 shrink-0" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-[#171923] group-hover:text-[#14B8A6] transition-colors">
+                        <div className="text-xs font-bold text-[#111827] group-hover:text-[#064E3B] transition-colors">
                           {ind.title}
                         </div>
-                        <p className="text-[11px] text-[#5A6270] mt-0.5 leading-snug">
+                        <p className="text-[11px] text-[#4B5563] mt-0.5 leading-snug">
                           {ind.desc}
                         </p>
                       </div>
@@ -461,26 +461,26 @@ export const Navbar: React.FC<NavbarProps> = ({
                 key={link.href}
                 href={`${linkPrefix}${link.href}`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="group flex items-center justify-between px-3.5 py-3.5 rounded-2xl text-[15px] font-semibold text-[#171923] active:bg-[#E5F8F1] hover:bg-[#E5F8F1]/70 transition-colors animate-tool-in"
+                className="group flex items-center justify-between px-3.5 py-3.5 rounded-2xl text-[15px] font-semibold text-[#111827] active:bg-[#F1F0EA] hover:bg-[#F1F0EA]/70 transition-colors animate-tool-in"
                 style={{ animationDelay: `${60 + i * 40}ms` }}
               >
                 <span>{link.label}</span>
                 <span className="flex items-center gap-2">
                   {link.badge && (
-                    <span className="text-[10px] text-[#14B8A6] bg-[#E5F8F1] px-2 py-0.5 rounded-full font-bold">
+                    <span className="text-[10px] text-[#064E3B] bg-[#F1F0EA] px-2 py-0.5 rounded-full font-bold">
                       {link.badge}
                     </span>
                   )}
-                  <ChevronRight className="w-4 h-4 text-[#9AA7A0] group-hover:text-[#14B8A6] transition-colors" />
+                  <ChevronRight className="w-4 h-4 text-[#9CA3AF] group-hover:text-[#064E3B] transition-colors" />
                 </span>
               </a>
             ))}
           </nav>
 
-          <div className="mt-2 p-2 rounded-2xl bg-gradient-to-br from-[#E5F8F1] to-[#C6F3E4] border border-[#DCE9E4] space-y-2">
-            <div className="flex items-center justify-center gap-2 pt-1 text-xs font-semibold text-[#0D5C4D]">
-              <Sparkles className="w-3.5 h-3.5 text-[#14B8A6]" />
-              Start free · Pro at <span className="font-extrabold text-[#14B8A6]">₹1/day</span>
+          <div className="mt-2 p-2 rounded-2xl bg-gradient-to-br from-[#F1F0EA] to-[#D7E7DC] border border-[#DAD8CD] space-y-2">
+            <div className="flex items-center justify-center gap-2 pt-1 text-xs font-semibold text-[#065F46]">
+              <Sparkles className="w-3.5 h-3.5 text-[#064E3B]" />
+              Start free · Pro at <span className="font-extrabold text-[#064E3B]">₹1/day</span>
             </div>
             <button
               type="button"
@@ -488,7 +488,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setMobileMenuOpen(false);
                 onOpenGetStarted();
               }}
-              className="w-full py-3.5 rounded-full bg-[#14B8A6] active:bg-[#14B8A6] text-white text-sm font-bold shadow-lg shadow-[#0D5C4D]/30 flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
+              className="w-full py-3.5 rounded-full bg-[#064E3B] active:bg-[#064E3B] text-white text-sm font-bold shadow-lg shadow-[#065F46]/30 flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
             >
               Start Free
               <ArrowRight className="w-4 h-4" />
@@ -499,9 +499,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setMobileMenuOpen(false);
                 onOpenSeeHowItWorks();
               }}
-              className="w-full py-3 rounded-full bg-white/80 text-[#171923] text-sm font-semibold border border-white flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
+              className="w-full py-3 rounded-full bg-white/80 text-[#111827] text-sm font-semibold border border-white flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
             >
-              <Play className="w-3.5 h-3.5 text-[#14B8A6] fill-[#14B8A6]" />
+              <Play className="w-3.5 h-3.5 text-[#064E3B] fill-[#064E3B]" />
               Explore platform tour
             </button>
           </div>

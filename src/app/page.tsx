@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { MainToolsSection } from "@/components/MainToolsSection";
-import { WebsiteBuilderSection } from "@/components/WebsiteBuilderSection";
 import { ConnectedWorkspaceSection } from "@/components/ConnectedWorkspaceSection";
+import { AppsComparisonSection } from "@/components/AppsComparisonSection";
 import { BenefitsSection } from "@/components/BenefitsSection";
 import { IntegrationNetwork } from "@/components/IntegrationNetwork";
 import { OlearisIndustrySection } from "@/components/OlearisIndustrySection";
@@ -24,7 +24,7 @@ export default function Home() {
   const goToLogin = () => router.push("/login");
 
   return (
-    <div className="relative isolate min-h-screen flex flex-col text-[#171923] selection:bg-[#00B879]/20 selection:text-[#008F60]">
+    <div className="relative isolate min-h-screen flex flex-col text-[#111827] selection:bg-[#064E3B]/20 selection:text-[#043B2C]">
       <FrostedEmeraldBackdrop />
       {/* 1. Header (TeaCode-inspired floating pill navigation) */}
       <Navbar onOpenGetStarted={goToLogin} onOpenSeeHowItWorks={goToLogin} />
@@ -37,11 +37,11 @@ export default function Home() {
         {/* 3. Main Product Tools (Platform intelligence) */}
         <MainToolsSection onOpenGetStarted={goToLogin} />
 
-        {/* 4. No-Code Drag and Drop Website & Storefront Studio */}
-        <WebsiteBuilderSection onOpenGetStarted={goToLogin} />
-
-        {/* 5. Connected Workspace (Everything works together.) */}
+        {/* 4. Connected Workspace (Everything works together.) */}
         <ConnectedWorkspaceSection onOpenGetStarted={goToLogin} />
+
+        {/* 5. Apps Comparison (Imagine without CODIIC — Odoo-style toggle grid) */}
+        <AppsComparisonSection />
 
         {/* 7. Benefits bento (Less switching, Clearer sales, Smoother follow-ups) */}
         <BenefitsSection onOpenGetStarted={goToLogin} />
@@ -65,7 +65,7 @@ export default function Home() {
         <FinalCtaSection onOpenGetStarted={goToLogin} onOpenSeeHowItWorks={goToLogin} />
       </main>
 
-      {/* 13. Premium Dark Footer (The Chakor-inspired #171923 organization) */}
+      {/* 13. Premium Dark Footer (The Chakor-inspired #111827 organization) */}
       <ChakorFooter onOpenGetStarted={goToLogin} />
 
       {/* 14. WhatsApp Floating Contact Button */}

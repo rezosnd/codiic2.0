@@ -53,7 +53,7 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
       desc: "Dynamic UPI QR codes, debit/credit cards, and automated payment receipt generation.",
       status: "Native Webhook",
       badge: "Instant Settlement",
-      color: "#00B879",
+      color: "#064E3B",
       icon: CreditCard,
       samplePayload: "Payment of ₹4,890 verified via UPI webhook → Order marked 'Paid' in Pipeline.",
       cx: 330,
@@ -149,46 +149,46 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
   const active = nodes.find((n) => n.id === selectedNode) || nodes[0];
 
   return (
-    <section id="integrations" className="py-20 sm:py-28 bg-white border-b border-[#E8EAF0] relative overflow-hidden">
+    <section id="integrations" className="py-20 sm:py-28 bg-white border-b border-[#E6E4DB] relative overflow-hidden">
       
       {/* Subtle background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#E8F8F1]/50 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#F1F0EA]/50 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-xs font-bold tracking-wider uppercase">
-            <Sparkles className="w-3.5 h-3.5 text-[#00B879]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F1F0EA] border border-[#064E3B]/20 text-[#043B2C] text-xs font-bold tracking-wider uppercase">
+            <Sparkles className="w-3.5 h-3.5 text-[#064E3B]" />
             <span>CONNECTED INTEGRATION NETWORK</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#171923] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] tracking-tight leading-tight">
             Works with the tools your business already uses.
           </h2>
 
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F7F9F8] border border-[#E2E8E5] text-xs font-semibold text-[#171923]">
-            <span className="w-2 h-2 rounded-full bg-[#00B879] animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F7F7F2] border border-[#E4E2D8] text-xs font-semibold text-[#111827]">
+            <span className="w-2 h-2 rounded-full bg-[#064E3B] animate-pulse" />
             <span>Existing tools badalna zaroori nahi — sab seamlessly jud jayenge.</span>
           </div>
 
-          <p className="text-base sm:text-lg text-[#555A68] leading-relaxed">
+          <p className="text-base sm:text-lg text-[#4B5563] leading-relaxed">
             Connect CODIIC directly to your communication channels, payment processors, advertising accounts, and business software without fragile custom code.
           </p>
         </div>
 
         {/* Desktop Interactive Animated Network Canvas (Visible on md and up) */}
-        <div className="hidden md:block relative w-full max-w-5xl mx-auto bg-[#F7F9F8] border border-[#E2E8E5] rounded-3xl p-6 sm:p-10 shadow-sm overflow-hidden">
+        <div className="hidden md:block relative w-full max-w-5xl mx-auto bg-[#F7F7F2] border border-[#E4E2D8] rounded-3xl p-6 sm:p-10 shadow-sm overflow-hidden">
           
           {/* Top Status Bar inside canvas */}
-          <div className="flex items-center justify-between pb-4 border-b border-[#E8EAF0] mb-4">
+          <div className="flex items-center justify-between pb-4 border-b border-[#E6E4DB] mb-4">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#00B879] animate-pulse" />
-              <span className="text-xs font-mono font-bold text-[#171923]">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#064E3B] animate-pulse" />
+              <span className="text-xs font-mono font-bold text-[#111827]">
                 CODIIC UNIFIED SYNC BUS • 8 CONNECTORS ACTIVE
               </span>
             </div>
-            <span className="text-xs text-[#555A68]">
+            <span className="text-xs text-[#4B5563]">
               Hover or click any service to inspect real-time data flow
             </span>
           </div>
@@ -203,12 +203,12 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
             >
               <defs>
                 <linearGradient id="grad-active" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#00B879" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#008F60" stopOpacity="0.8" />
+                  <stop offset="0%" stopColor="#064E3B" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#043B2C" stopOpacity="0.8" />
                 </linearGradient>
                 <linearGradient id="grad-inactive" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#D9DEDC" stopOpacity="0.6" />
-                  <stop offset="100%" stopColor="#D9DEDC" stopOpacity="0.3" />
+                  <stop offset="0%" stopColor="#DAD8CD" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="#DAD8CD" stopOpacity="0.3" />
                 </linearGradient>
               </defs>
 
@@ -218,7 +218,7 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
                 cy="260"
                 r="70"
                 fill="none"
-                stroke="#00B879"
+                stroke="#064E3B"
                 strokeWidth="1"
                 strokeDasharray="4 4"
                 className="opacity-30"
@@ -228,7 +228,7 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
                 cy="260"
                 r="110"
                 fill="none"
-                stroke="#00B879"
+                stroke="#064E3B"
                 strokeWidth="0.75"
                 strokeDasharray="6 6"
                 className="opacity-20"
@@ -253,7 +253,7 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
                     {isSelected && (
                       <circle
                         r="4"
-                        fill="#00B879"
+                        fill="#064E3B"
                         className="animate-pulse"
                       >
                         <animateMotion
@@ -272,10 +272,10 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
             <div className="absolute top-[260px] left-[450px] -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
               <div className="relative group cursor-pointer">
                 {/* Pulsing ring */}
-                <div className="absolute -inset-3 bg-[#00B879]/20 rounded-full blur-md animate-pulse" />
+                <div className="absolute -inset-3 bg-[#064E3B]/20 rounded-full blur-md animate-pulse" />
                 
                 {/* Center Core Circle with official symbol logo */}
-                <div className="relative w-24 h-24 rounded-full bg-white border-2 border-[#00B879] shadow-xl flex items-center justify-center p-3.5 transition-transform hover:scale-105">
+                <div className="relative w-24 h-24 rounded-full bg-white border-2 border-[#064E3B] shadow-xl flex items-center justify-center p-3.5 transition-transform hover:scale-105">
                   <Image
                     src="/logo_withot text.png"
                     alt="CODIIC Central Hub"
@@ -286,7 +286,7 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
                 </div>
               </div>
 
-              <div className="mt-2.5 px-3 py-1 rounded-full bg-[#171923] text-white text-[11px] font-bold font-mono shadow-md tracking-wider">
+              <div className="mt-2.5 px-3 py-1 rounded-full bg-[#111827] text-white text-[11px] font-bold font-mono shadow-md tracking-wider">
                 CODIIC CORE
               </div>
             </div>
@@ -308,8 +308,8 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
                   onMouseEnter={() => setSelectedNode(node.id)}
                   className={`absolute -translate-x-1/2 -translate-y-1/2 z-10 cursor-pointer p-3 sm:p-3.5 rounded-2xl transition-all duration-200 border w-48 text-left ${
                     isSelected
-                      ? "bg-white border-[#00B879] shadow-xl shadow-[#00B879]/15 scale-105 ring-2 ring-[#00B879]/20"
-                      : "bg-white/95 border-[#E2E8E5] hover:border-[#00B879]/40 hover:bg-white shadow-sm"
+                      ? "bg-white border-[#064E3B] shadow-xl shadow-[#064E3B]/15 scale-105 ring-2 ring-[#064E3B]/20"
+                      : "bg-white/95 border-[#E4E2D8] hover:border-[#064E3B]/40 hover:bg-white shadow-sm"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1.5">
@@ -322,18 +322,18 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
                     <span
                       className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${
                         isSelected
-                          ? "bg-[#E8F8F1] text-[#008F60]"
-                          : "bg-[#F7F9F8] text-[#555A68]"
+                          ? "bg-[#F1F0EA] text-[#043B2C]"
+                          : "bg-[#F7F7F2] text-[#4B5563]"
                       }`}
                     >
                       {node.badge}
                     </span>
                   </div>
 
-                  <div className="text-xs font-bold text-[#171923] line-clamp-1">
+                  <div className="text-xs font-bold text-[#111827] line-clamp-1">
                     {node.name}
                   </div>
-                  <div className="text-[10px] text-[#555A68] line-clamp-1">
+                  <div className="text-[10px] text-[#4B5563] line-clamp-1">
                     {node.category}
                   </div>
                 </div>
@@ -343,7 +343,7 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
           </div>
 
           {/* Bottom Live Data Inspection Panel */}
-          <div className="mt-4 p-4 rounded-2xl bg-white border border-[#E2E8E5] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="mt-4 p-4 rounded-2xl bg-white border border-[#E4E2D8] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-start gap-3">
               <div
                 className="w-9 h-9 rounded-xl flex items-center justify-center text-white shrink-0 mt-0.5"
@@ -353,14 +353,14 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-[#171923]">
+                  <span className="text-xs font-bold text-[#111827]">
                     {active.name}
                   </span>
-                  <span className="text-[10px] font-mono text-[#008F60] bg-[#E8F8F1] px-2 py-0.5 rounded-full border border-[#00B879]/20">
+                  <span className="text-[10px] font-mono text-[#043B2C] bg-[#F1F0EA] px-2 py-0.5 rounded-full border border-[#064E3B]/20">
                     {active.status}
                   </span>
                 </div>
-                <p className="text-xs text-[#555A68] mt-0.5 font-mono">
+                <p className="text-xs text-[#4B5563] mt-0.5 font-mono">
                   Payload Simulation: &quot;{active.samplePayload}&quot;
                 </p>
               </div>
@@ -368,7 +368,7 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
 
             <button
               onClick={onOpenGetStarted}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#171923] hover:bg-[#00B879] text-white text-xs font-bold transition-colors shrink-0"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#111827] hover:bg-[#064E3B] text-white text-xs font-bold transition-colors shrink-0"
             >
               <span>Connect {active.name.split(" ")[0]}</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -379,7 +379,7 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
 
         {/* Mobile View: Clean Responsive Grid Cards (< 768px) */}
         <div className="md:hidden space-y-4">
-          <div className="p-4 rounded-2xl bg-[#E8F8F1] border border-[#00B879]/20 flex items-center gap-3">
+          <div className="p-4 rounded-2xl bg-[#F1F0EA] border border-[#064E3B]/20 flex items-center gap-3">
             <Image
               src="/logo_withot text.png"
               alt="CODIIC Symbol"
@@ -388,8 +388,8 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
               className="w-9 h-9 object-contain"
             />
             <div>
-              <div className="text-xs font-bold text-[#171923]">CODIIC Unified Sync Hub</div>
-              <div className="text-[11px] text-[#008F60]">Connects 8+ core operational channels</div>
+              <div className="text-xs font-bold text-[#111827]">CODIIC Unified Sync Hub</div>
+              <div className="text-[11px] text-[#043B2C]">Connects 8+ core operational channels</div>
             </div>
           </div>
 
@@ -399,7 +399,7 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
               return (
                 <div
                   key={node.id}
-                  className="p-4 rounded-2xl bg-[#F7F9F8] border border-[#E2E8E5] flex flex-col justify-between"
+                  className="p-4 rounded-2xl bg-[#F7F7F2] border border-[#E4E2D8] flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
@@ -409,18 +409,18 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
                       >
                         <Icon className="w-4 h-4" />
                       </div>
-                      <span className="text-[10px] font-semibold text-[#008F60] bg-[#E8F8F1] px-2 py-0.5 rounded-full border border-[#00B879]/20">
+                      <span className="text-[10px] font-semibold text-[#043B2C] bg-[#F1F0EA] px-2 py-0.5 rounded-full border border-[#064E3B]/20">
                         {node.status}
                       </span>
                     </div>
 
-                    <h3 className="text-sm font-bold text-[#171923]">{node.name}</h3>
-                    <p className="text-xs text-[#555A68] mt-1 leading-relaxed">{node.desc}</p>
+                    <h3 className="text-sm font-bold text-[#111827]">{node.name}</h3>
+                    <p className="text-xs text-[#4B5563] mt-1 leading-relaxed">{node.desc}</p>
                   </div>
 
-                  <div className="mt-3 pt-2.5 border-t border-[#E8EAF0] flex items-center justify-between text-[11px] text-[#555A68]">
+                  <div className="mt-3 pt-2.5 border-t border-[#E6E4DB] flex items-center justify-between text-[11px] text-[#4B5563]">
                     <span>Zero-code setup</span>
-                    <span className="text-[#008F60] font-semibold">Native sync →</span>
+                    <span className="text-[#043B2C] font-semibold">Native sync →</span>
                   </div>
                 </div>
               );
@@ -430,16 +430,16 @@ export const IntegrationsSection: React.FC<IntegrationsSectionProps> = ({
 
         {/* Bottom Callout */}
         <div className="mt-12 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-3 p-4 rounded-2xl bg-[#F7F9F8] border border-[#E2E8E5] text-xs text-[#555A68] max-w-2xl mx-auto">
-            <div className="flex items-center gap-2 text-[#171923] font-semibold">
-              <ShieldCheck className="w-4 h-4 text-[#00B879]" />
+          <div className="inline-flex flex-col sm:flex-row items-center gap-3 p-4 rounded-2xl bg-[#F7F7F2] border border-[#E4E2D8] text-xs text-[#4B5563] max-w-2xl mx-auto">
+            <div className="flex items-center gap-2 text-[#111827] font-semibold">
+              <ShieldCheck className="w-4 h-4 text-[#064E3B]" />
               <span>Developer API & Custom Webhooks</span>
             </div>
             <span>•</span>
             <span>REST API documentation available for enterprise custom systems.</span>
             <button
               onClick={onOpenGetStarted}
-              className="text-[#008F60] font-bold hover:underline"
+              className="text-[#043B2C] font-bold hover:underline"
             >
               Request API Key →
             </button>

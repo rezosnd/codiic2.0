@@ -52,7 +52,7 @@ const Pill: React.FC<{ item: IntegrationItem; id: string }> = ({ item, id }) => 
     <item.Logo className="w-[18px] h-[18px] shrink-0 opacity-90 group-hover:opacity-100 transition-opacity" />
 
     {/* Brand name — neutral, no brand colour forced */}
-    <span className="text-[13px] font-semibold text-[#2D3340] tracking-[-0.01em] whitespace-nowrap">
+    <span className="text-[13px] font-semibold text-[#1F2937] tracking-[-0.01em] whitespace-nowrap">
       {item.name}
     </span>
   </div>
@@ -61,7 +61,7 @@ const Pill: React.FC<{ item: IntegrationItem; id: string }> = ({ item, id }) => 
 export const LogoStrip: React.FC = () => (
   <section className="py-10 sm:py-12 overflow-hidden">
     {/* Subtle eyebrow */}
-    <p className="text-center text-[11px] sm:text-xs font-medium text-[#8A939F] tracking-[0.08em] uppercase mb-6 sm:mb-8 px-4">
+    <p className="text-center text-[11px] sm:text-xs font-medium text-[#6B7280] tracking-[0.08em] uppercase mb-6 sm:mb-8 px-4">
       Trusted by 2,400+ global brands &amp; agencies in 40+ countries
     </p>
 

@@ -43,7 +43,7 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
         { label: "Follow-up Rate", value: "Zero Drops", sub: "Systematic abandoned cart flow" },
       ],
       modules: ["Storefront Builder", "UPI & Razorpay Gateway", "WhatsApp API", "CRM Order Log"],
-      accentColor: "#00B879",
+      accentColor: "#064E3B",
       hinglish: "Website se customer tak — sab connected.",
       uiSnippet: {
         header: "Live Storefront & Order Ingestion Stream",
@@ -70,7 +70,7 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
         { label: "Proposal Follow-up", value: "Scheduled", sub: "Automated alert to rep & client" },
       ],
       modules: ["Web Inquiry Forms", "Sales Pipeline", "Email & Calendar Sync", "Document Vault"],
-      accentColor: "#008F60",
+      accentColor: "#043B2C",
       hinglish: "Har deal, har stage — sab saaf dikh raha hai.",
       uiSnippet: {
         header: "Enterprise Sales Pipeline • Stage Progression",
@@ -97,7 +97,7 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
         { label: "Broker Accountability", value: "100% Tracked", sub: "Call and visit outcome logs" },
       ],
       modules: ["Meta Ads Connector", "WhatsApp Brochure Bot", "Broker CRM", "Site-Visit Pipeline"],
-      accentColor: "#00B879",
+      accentColor: "#064E3B",
       hinglish: "Follow-up bhoolna ab band.",
       uiSnippet: {
         header: "Property Lead Lifecycle & Site-Visit Pipeline",
@@ -124,7 +124,7 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
         { label: "Follow-Up Continuity", value: "Automated", sub: "Checkup reminders at 14 days" },
       ],
       modules: ["Booking Engine", "Patient CRM", "SMS / WhatsApp Notifier", "Consultation Workflow"],
-      accentColor: "#008F60",
+      accentColor: "#043B2C",
       hinglish: "Ek platform, poora business.",
       uiSnippet: {
         header: "Patient Appointment & Consultation Timeline",
@@ -150,26 +150,26 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
   };
 
   return (
-    <section id="showcase" className="py-20 sm:py-28 bg-[#F7F9F8] border-b border-[#E8EAF0] relative overflow-hidden">
+    <section id="showcase" className="py-20 sm:py-28 bg-[#F7F7F2] border-b border-[#E6E4DB] relative overflow-hidden">
       {/* Decorative ambient subtle background highlight */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#00B879]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#008F60]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#064E3B]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#043B2C]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header with Tuyo-inspired confident typography */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-xs font-bold tracking-wider uppercase mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-[#00B879]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F1F0EA] border border-[#064E3B]/20 text-[#043B2C] text-xs font-bold tracking-wider uppercase mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-[#064E3B]" />
               <span>PROVEN OPERATIONAL PLAYBOOKS</span>
             </div>
             
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#171923] tracking-tight leading-[1.15]">
-              How modern businesses run on <span className="text-[#00B879]">CODIIC</span>.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] tracking-tight leading-[1.15]">
+              How modern businesses run on <span className="text-[#064E3B]">CODIIC</span>.
             </h2>
             
-            <p className="mt-3 text-base sm:text-lg text-[#555A68] leading-relaxed">
+            <p className="mt-3 text-base sm:text-lg text-[#4B5563] leading-relaxed">
               Curated blueprints of how companies connect storefront, leads, sales pipeline, and automated follow-ups into one synchronized operation.
             </p>
           </div>
@@ -179,17 +179,17 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
             <button
               onClick={handlePrev}
               aria-label="Previous showcase blueprint"
-              className="w-11 h-11 rounded-full border border-[#D9DEDC] bg-white hover:bg-[#171923] hover:text-white hover:border-[#171923] text-[#171923] flex items-center justify-center transition-all shadow-sm active:scale-95"
+              className="w-11 h-11 rounded-full border border-[#DAD8CD] bg-white hover:bg-[#111827] hover:text-white hover:border-[#111827] text-[#111827] flex items-center justify-center transition-all shadow-sm active:scale-95"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <span className="text-xs font-mono font-semibold text-[#555A68]">
+            <span className="text-xs font-mono font-semibold text-[#4B5563]">
               {current.index} / 0{cases.length}
             </span>
             <button
               onClick={handleNext}
               aria-label="Next showcase blueprint"
-              className="w-11 h-11 rounded-full border border-[#D9DEDC] bg-white hover:bg-[#171923] hover:text-white hover:border-[#171923] text-[#171923] flex items-center justify-center transition-all shadow-sm active:scale-95"
+              className="w-11 h-11 rounded-full border border-[#DAD8CD] bg-white hover:bg-[#111827] hover:text-white hover:border-[#111827] text-[#111827] flex items-center justify-center transition-all shadow-sm active:scale-95"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -197,47 +197,47 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
         </div>
 
         {/* Big Featured Showcase Card (Tuyo-inspired large rounded container) */}
-        <div className="bg-white rounded-3xl border border-[#E2E8E5] shadow-xl shadow-black/[0.03] overflow-hidden transition-all duration-300">
+        <div className="bg-white rounded-3xl border border-[#E4E2D8] shadow-xl shadow-black/[0.03] overflow-hidden transition-all duration-300">
           <div className="grid grid-cols-1 lg:grid-cols-12">
             
             {/* Left Column: Editorial Storytelling (Col span 6) */}
-            <div className="lg:col-span-6 p-7 sm:p-10 lg:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#E8EAF0]">
+            <div className="lg:col-span-6 p-7 sm:p-10 lg:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#E6E4DB]">
               <div>
                 {/* Meta Header */}
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#008F60] bg-[#E8F8F1] px-3 py-1 rounded-full border border-[#00B879]/20">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#043B2C] bg-[#F1F0EA] px-3 py-1 rounded-full border border-[#064E3B]/20">
                     {current.tag}
                   </span>
-                  <span className="text-xs font-mono font-bold text-[#8A90A0]">
+                  <span className="text-xs font-mono font-bold text-[#6B7280]">
                     PLAYBOOK #{current.index}
                   </span>
                 </div>
 
                 {/* Main Headline */}
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-[#171923] tracking-tight leading-snug mb-3">
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-[#111827] tracking-tight leading-snug mb-3">
                   {current.title}
                 </h3>
 
-                <p className="text-sm sm:text-base text-[#555A68] leading-relaxed mb-6">
+                <p className="text-sm sm:text-base text-[#4B5563] leading-relaxed mb-6">
                   {current.subtitle}
                 </p>
 
                 {/* Problem vs Solution Split */}
                 <div className="space-y-4 mb-8">
-                  <div className="p-4 rounded-2xl bg-[#F7F9F8] border border-[#E8EAF0]">
+                  <div className="p-4 rounded-2xl bg-[#F7F7F2] border border-[#E6E4DB]">
                     <div className="text-[11px] font-bold uppercase tracking-wider text-[#E11D48] mb-1">
                       Before CODIIC • The Disconnected Bottleneck
                     </div>
-                    <p className="text-xs sm:text-sm text-[#555A68] leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#4B5563] leading-relaxed">
                       {current.challenge}
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-[#E8F8F1]/60 border border-[#00B879]/30">
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-[#008F60] mb-1">
+                  <div className="p-4 rounded-2xl bg-[#F1F0EA]/60 border border-[#064E3B]/30">
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-[#043B2C] mb-1">
                       With CODIIC • Connected Workspace
                     </div>
-                    <p className="text-xs sm:text-sm text-[#171923] font-medium leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#111827] font-medium leading-relaxed">
                       {current.solution}
                     </p>
                   </div>
@@ -245,16 +245,16 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
 
                 {/* Connected Modules Tags */}
                 <div>
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-[#8A90A0] mb-2.5">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-[#6B7280] mb-2.5">
                     Connected Architecture
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {current.modules.map((mod, i) => (
                       <span
                         key={i}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#171923] bg-[#F7F9F8] border border-[#D9DEDC] px-3 py-1 rounded-lg"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111827] bg-[#F7F7F2] border border-[#DAD8CD] px-3 py-1 rounded-lg"
                       >
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#00B879]" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#064E3B]" />
                         {mod}
                       </span>
                     ))}
@@ -263,14 +263,14 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
               </div>
 
               {/* Action Bottom Strip */}
-              <div className="pt-8 mt-8 border-t border-[#E8EAF0] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div className="text-xs font-semibold text-[#008F60] bg-[#E8F8F1] px-3 py-1.5 rounded-full border border-[#00B879]/20">
+              <div className="pt-8 mt-8 border-t border-[#E6E4DB] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="text-xs font-semibold text-[#043B2C] bg-[#F1F0EA] px-3 py-1.5 rounded-full border border-[#064E3B]/20">
                   {current.hinglish}
                 </div>
 
                 <button
                   onClick={onOpenGetStarted}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs font-bold transition-all shadow-md shadow-[#00B879]/20 hover:shadow-lg"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#064E3B] hover:bg-[#043B2C] text-white text-xs font-bold transition-all shadow-md shadow-[#064E3B]/20 hover:shadow-lg"
                 >
                   <span>Build This Workflow</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -279,20 +279,20 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
             </div>
 
             {/* Right Column: Live Interactive UI Representation (Col span 6) */}
-            <div className="lg:col-span-6 bg-[#171923] text-white p-6 sm:p-8 lg:p-10 flex flex-col justify-between relative overflow-hidden">
+            <div className="lg:col-span-6 bg-[#111827] text-white p-6 sm:p-8 lg:p-10 flex flex-col justify-between relative overflow-hidden">
               {/* Subtle grid pattern in dark container */}
-              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#00B879_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#064E3B_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
               <div className="relative z-10">
                 {/* Header in simulated app interface */}
                 <div className="flex items-center justify-between pb-4 border-b border-gray-800 mb-6">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-3 h-3 rounded-full bg-[#00B879] animate-pulse" />
+                    <div className="w-3 h-3 rounded-full bg-[#064E3B] animate-pulse" />
                     <span className="text-xs font-mono font-bold text-gray-200">
                       {current.uiSnippet.header}
                     </span>
                   </div>
-                  <span className="text-[11px] font-semibold text-[#00B879] bg-[#00B879]/15 border border-[#00B879]/30 px-2.5 py-0.5 rounded-full">
+                  <span className="text-[11px] font-semibold text-[#064E3B] bg-[#064E3B]/15 border border-[#064E3B]/30 px-2.5 py-0.5 rounded-full">
                     {current.uiSnippet.badge}
                   </span>
                 </div>
@@ -302,10 +302,10 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
                   {current.uiSnippet.flow.map((item, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-xl bg-gray-900/90 border border-gray-800 hover:border-[#00B879]/40 transition-all flex items-start justify-between gap-3"
+                      className="p-3.5 rounded-xl bg-gray-900/90 border border-gray-800 hover:border-[#064E3B]/40 transition-all flex items-start justify-between gap-3"
                     >
                       <div className="flex items-start gap-3">
-                        <div className="w-6 h-6 rounded-full bg-[#00B879]/20 text-[#00B879] font-mono text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5 border border-[#00B879]/30">
+                        <div className="w-6 h-6 rounded-full bg-[#064E3B]/20 text-[#064E3B] font-mono text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5 border border-[#064E3B]/30">
                           {idx + 1}
                         </div>
                         <div>
@@ -322,7 +322,7 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
                           </p>
                         </div>
                       </div>
-                      <span className="text-[10px] font-semibold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800 shrink-0">
+                      <span className="text-[10px] font-semibold text-[#34D399] bg-[#052E22]/80 px-2 py-0.5 rounded border border-[#065F46] shrink-0">
                         {item.status}
                       </span>
                     </div>
@@ -340,7 +340,7 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
                         key={idx}
                         className="p-3 rounded-xl bg-gray-900/60 border border-gray-800 text-left"
                       >
-                        <div className="text-lg sm:text-xl font-extrabold text-[#00B879] tracking-tight">
+                        <div className="text-lg sm:text-xl font-extrabold text-[#064E3B] tracking-tight">
                           {m.value}
                         </div>
                         <div className="text-[11px] font-semibold text-gray-200 mt-0.5">
@@ -358,7 +358,7 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
               {/* Bottom footer inside dark pane */}
               <div className="relative z-10 pt-6 mt-6 border-t border-gray-800/80 flex items-center justify-between text-[11px] text-gray-400">
                 <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#00B879]"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#064E3B]"></span>
                   Native CODIIC Multi-Tenant Engine
                 </span>
                 <span className="font-mono text-gray-300">Live Production Blueprint</span>
@@ -370,9 +370,9 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
 
         {/* Horizontal Preview Row (Tuyo-inspired interactive selector) */}
         <div className="mt-8">
-          <div className="text-xs font-bold uppercase tracking-wider text-[#555A68] mb-3 flex items-center justify-between">
+          <div className="text-xs font-bold uppercase tracking-wider text-[#4B5563] mb-3 flex items-center justify-between">
             <span>Explore Other Verified Playbooks</span>
-            <span className="text-[#008F60]">Click to preview</span>
+            <span className="text-[#043B2C]">Click to preview</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -384,8 +384,8 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
                   onClick={() => setActiveIndex(index)}
                   className={`p-4 rounded-2xl text-left transition-all duration-200 border flex flex-col justify-between group ${
                     isSelected
-                      ? "bg-white border-[#00B879] shadow-md ring-2 ring-[#00B879]/20"
-                      : "bg-white border-[#E2E8E5] hover:border-[#00B879]/40 hover:bg-white"
+                      ? "bg-white border-[#064E3B] shadow-md ring-2 ring-[#064E3B]/20"
+                      : "bg-white border-[#E4E2D8] hover:border-[#064E3B]/40 hover:bg-white"
                   }`}
                 >
                   <div>
@@ -393,29 +393,29 @@ export const TuyoShowcaseSection: React.FC<TuyoShowcaseSectionProps> = ({
                       <span
                         className={`text-xs font-mono font-bold px-2 py-0.5 rounded ${
                           isSelected
-                            ? "bg-[#00B879] text-white"
-                            : "bg-[#F7F9F8] text-[#555A68] group-hover:text-[#171923]"
+                            ? "bg-[#064E3B] text-white"
+                            : "bg-[#F7F7F2] text-[#4B5563] group-hover:text-[#111827]"
                         }`}
                       >
                         {item.index}
                       </span>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#8A90A0]">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#6B7280]">
                         {item.tag.split(" ")[0]}
                       </span>
                     </div>
 
                     <h4
                       className={`text-sm font-bold tracking-tight line-clamp-2 transition-colors ${
-                        isSelected ? "text-[#008F60]" : "text-[#171923] group-hover:text-[#00B879]"
+                        isSelected ? "text-[#043B2C]" : "text-[#111827] group-hover:text-[#064E3B]"
                       }`}
                     >
                       {item.title}
                     </h4>
                   </div>
 
-                  <div className="mt-3 pt-2.5 border-t border-[#E8EAF0] flex items-center justify-between text-[11px]">
-                    <span className="text-[#555A68] font-medium">{item.metrics[0].value}</span>
-                    <span className={`font-semibold transition-transform ${isSelected ? "text-[#008F60] translate-x-1" : "text-[#8A90A0] group-hover:text-[#00B879]"}`}>
+                  <div className="mt-3 pt-2.5 border-t border-[#E6E4DB] flex items-center justify-between text-[11px]">
+                    <span className="text-[#4B5563] font-medium">{item.metrics[0].value}</span>
+                    <span className={`font-semibold transition-transform ${isSelected ? "text-[#043B2C] translate-x-1" : "text-[#6B7280] group-hover:text-[#064E3B]"}`}>
                       View Blueprint →
                     </span>
                   </div>

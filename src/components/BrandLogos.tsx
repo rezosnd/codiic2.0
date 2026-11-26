@@ -45,7 +45,7 @@ export const RazorpayLogo: React.FC<LogoProps> = ({
     aria-label={ariaLabel}
   >
     <path d="M22.436 0 10.526 7.773 9.352 12.05l6.625-4.297L11.65 24h4.391L22.436 0Z" fill="#3395FF" />
-    <path d="M14.26 10.098 3.389 17.166 1.564 24h9.008l3.688-13.902Z" fill="#072654" />
+    <path d="M14.26 10.098 3.389 17.166 1.564 24h9.008l3.688-13.902Z" fill="#0B1120" />
   </svg>
 );
 
@@ -141,7 +141,7 @@ export const AwsLogo: React.FC<LogoProps> = ({
       fontWeight="700"
       fontSize="10"
       letterSpacing="-0.3"
-      fill="#232F3E"
+      fill="#1F2937"
     >
       aws
     </text>
@@ -204,10 +204,10 @@ export const WebhooksLogo: React.FC<LogoProps> = ({
     role="img"
     aria-label={ariaLabel}
   >
-    <rect width="24" height="24" rx="6" fill="#E8F8F1" stroke="#00B879" strokeWidth="1.5" />
+    <rect width="24" height="24" rx="6" fill="#F1F0EA" stroke="#064E3B" strokeWidth="1.5" />
     <path
       d="M8.5 15.5L5 12l3.5-3.5M15.5 8.5L19 12l-3.5 3.5M13.5 6.5l-3 11"
-      stroke="#008F60"
+      stroke="#043B2C"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -228,8 +228,8 @@ export const BhimUpiLogo: React.FC<LogoProps> = ({
     role="img"
     aria-label={ariaLabel}
   >
-    <rect width="24" height="24" rx="6" fill="#F8FAFC" />
-    <path d="M14.5 4.5L6.5 19.5H11.5L19.5 4.5H14.5Z" fill="#097939" />
+    <rect width="24" height="24" rx="6" fill="#F7F7F2" />
+    <path d="M14.5 4.5L6.5 19.5H11.5L19.5 4.5H14.5Z" fill="#0A5C44" />
     <path d="M17.5 4.5L12 15H16L21.5 4.5H17.5Z" fill="#F47920" />
   </svg>
 );
@@ -247,7 +247,7 @@ export const BlueDartLogo: React.FC<LogoProps> = ({
     role="img"
     aria-label={ariaLabel}
   >
-    <rect width="24" height="24" rx="6" fill="#0C2340" />
+    <rect width="24" height="24" rx="6" fill="#0B1120" />
     <path d="M4 14.5L15 4.5L13.5 11.5H20L9 21.5L10.5 14.5H4Z" fill="#E63946" />
     <path d="M8 12.5L15 6L14 11H18L11 17.5L12 12.5H8Z" fill="#FFFFFF" />
   </svg>
@@ -266,17 +266,17 @@ export const GstLogo: React.FC<LogoProps> = ({
     role="img"
     aria-label={ariaLabel}
   >
-    <rect width="24" height="24" rx="6" fill="#0F172A" />
+    <rect width="24" height="24" rx="6" fill="#111827" />
     <path
       d="M12 3L4 6V11.5C4 16.5 7.5 20.8 12 22C16.5 20.8 20 16.5 20 11.5V6L12 3Z"
-      fill="#F59E0B"
+      fill="#A87F3D"
       fillOpacity="0.2"
-      stroke="#F59E0B"
+      stroke="#A87F3D"
       strokeWidth="1.5"
     />
     <path
       d="M9 12L11 14L15 10"
-      stroke="#10B981"
+      stroke="#0E7A5C"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -341,11 +341,11 @@ export const ZohoLogo: React.FC<LogoProps> = ({
     role="img"
     aria-label={ariaLabel}
   >
-    <rect width="24" height="24" rx="6" fill="#F8FAFC" />
+    <rect width="24" height="24" rx="6" fill="#F7F7F2" />
     <rect x="4" y="4" width="7" height="7" rx="1.5" fill="#E42528" />
-    <rect x="13" y="4" width="7" height="7" rx="1.5" fill="#008851" />
+    <rect x="13" y="4" width="7" height="7" rx="1.5" fill="#0A5C44" />
     <rect x="4" y="13" width="7" height="7" rx="1.5" fill="#0096D6" />
-    <rect x="13" y="13" width="7" height="7" rx="1.5" fill="#F8B133" />
+    <rect x="13" y="13" width="7" height="7" rx="1.5" fill="#C6A15B" />
   </svg>
 );
 
@@ -362,7 +362,7 @@ export const GmailLogo: React.FC<LogoProps> = ({
     role="img"
     aria-label={ariaLabel}
   >
-    <rect width="24" height="24" rx="6" fill="#F8FAFC" />
+    <rect width="24" height="24" rx="6" fill="#F7F7F2" />
     <path d="M4 6.5C4 5.67 4.67 5 5.5 5H7L12 9L17 5H18.5C19.33 5 20 5.67 20 6.5V8.5L12 14.5L4 8.5V6.5Z" fill="#EA4335" />
     <path d="M4 8.5L9 12.5V19H5.5C4.67 19 4 18.33 4 17.5V8.5Z" fill="#4285F4" />
     <path d="M20 8.5L15 12.5V19H18.5C19.33 19 20 18.33 20 17.5V8.5Z" fill="#34A853" />
@@ -410,7 +410,7 @@ export const GoogleAdsLogo: React.FC<LogoProps> = ({
     role="img"
     aria-label={ariaLabel}
   >
-    <rect width="24" height="24" rx="6" fill="#F8FAFC" />
+    <rect width="24" height="24" rx="6" fill="#F7F7F2" />
     <path d="M5.5 14.5L10 6.5C10.6 5.5 11.9 5.1 12.9 5.7C13.9 6.3 14.3 7.6 13.7 8.6L9.2 16.6C8.6 17.6 7.3 18 6.3 17.4C5.3 16.8 4.9 15.5 5.5 14.5Z" fill="#F4B400" />
     <path d="M14.5 14.5L19 6.5C19.6 5.5 20.9 5.1 21.9 5.7C22.9 6.3 23.3 7.6 22.7 8.6L18.2 16.6C17.6 17.6 16.3 18 15.3 17.4C14.3 16.8 13.9 15.5 14.5 14.5Z" fill="#4285F4" />
     <circle cx="6.5" cy="16.5" r="2.5" fill="#34A853" />

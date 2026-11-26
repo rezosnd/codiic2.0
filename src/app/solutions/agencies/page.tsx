@@ -23,7 +23,7 @@ export default function AgenciesPage() {
           headline: (
             <>
               Launch Client Campaigns in Days,{" "}
-              <em className="font-serif italic font-normal text-[#008F60]">Not Sprint Cycles.</em>
+              <em className="font-serif italic font-normal text-[#043B2C]">Not Sprint Cycles.</em>
             </>
           ),
           subheadline:

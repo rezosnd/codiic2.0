@@ -23,7 +23,7 @@ export default function EducationPage() {
           headline: (
             <>
               Turn Admission Inquiries into Enrolled Students —{" "}
-              <em className="font-serif italic font-normal text-[#008F60]">Automatically.</em>
+              <em className="font-serif italic font-normal text-[#043B2C]">Automatically.</em>
             </>
           ),
           subheadline:

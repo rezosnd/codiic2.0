@@ -23,7 +23,7 @@ export default function RetailD2CPage() {
           headline: (
             <>
               Sell Online with a Storefront That{" "}
-              <em className="font-serif italic font-normal text-[#008F60]">Follows Up for You.</em>
+              <em className="font-serif italic font-normal text-[#043B2C]">Follows Up for You.</em>
             </>
           ),
           subheadline:

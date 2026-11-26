@@ -147,33 +147,33 @@ export default function UserGuidePage() {
       {/* Hero + search */}
       <section className="pt-10 sm:pt-14 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] font-semibold text-[#8A919C] mb-8">
-            <Link href="/" className="hover:text-[#008F60] transition-colors">Home</Link>
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] font-semibold text-[#6B7280] mb-8">
+            <Link href="/" className="hover:text-[#043B2C] transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" />
-            <span className="text-[#171923]">User Guide</span>
+            <span className="text-[#111827]">User Guide</span>
           </nav>
 
           <div className="text-center max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E2E6E4] bg-white text-[11px] font-bold uppercase tracking-wider text-[#5A6270]">
-              <BookOpen className="w-3.5 h-3.5 text-[#008F60]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E4E2D8] bg-white text-[11px] font-bold uppercase tracking-wider text-[#4B5563]">
+              <BookOpen className="w-3.5 h-3.5 text-[#043B2C]" />
               User Guide &amp; Help Center
             </div>
-            <h1 className="mt-5 text-[32px] sm:text-5xl font-bold text-[#171923] tracking-[-0.035em] leading-[1.06]">
+            <h1 className="mt-5 text-[32px] sm:text-5xl font-bold text-[#111827] tracking-[-0.035em] leading-[1.06]">
               Learn CODIIC in an afternoon,{" "}
-              <em className="font-serif italic font-normal text-[#008F60]">not a sprint.</em>
+              <em className="font-serif italic font-normal text-[#043B2C]">not a sprint.</em>
             </h1>
-            <p className="mt-5 text-base sm:text-lg text-[#5A6270] leading-relaxed">
+            <p className="mt-5 text-base sm:text-lg text-[#4B5563] leading-relaxed">
               Quick-start walkthroughs and step-by-step guides for every module — search anything or
               follow the 4-step onboarding path.
             </p>
 
-            <div className="mt-7 flex items-center gap-2.5 rounded-full bg-white border border-[#E2E6E4] px-5 py-3.5 max-w-md mx-auto shadow-sm focus-within:border-[#00B879]/50 transition-colors">
-              <Search className="w-4 h-4 text-[#8A919C] shrink-0" />
+            <div className="mt-7 flex items-center gap-2.5 rounded-full bg-white border border-[#E4E2D8] px-5 py-3.5 max-w-md mx-auto shadow-sm focus-within:border-[#064E3B]/50 transition-colors">
+              <Search className="w-4 h-4 text-[#6B7280] shrink-0" />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search guides — e.g. 'domain', 'coexistence', 'broadcast'…"
-                className="w-full bg-transparent text-sm font-semibold text-[#171923] placeholder:text-[#B4BBC4] outline-none"
+                className="w-full bg-transparent text-sm font-semibold text-[#111827] placeholder:text-[#9CA3AF] outline-none"
               />
             </div>
           </div>
@@ -190,24 +190,24 @@ export default function UserGuidePage() {
                 <Reveal key={s.num} delay={i * 70}>
                 <Link
                   href={s.href}
-                  className="group block h-full rounded-2xl bg-white border border-[#E2E6E4] p-5 hover:border-[#00B879]/40 hover:shadow-[0_18px_44px_-20px_rgba(0,143,96,0.3)] hover:-translate-y-0.5 transition-all"
+                  className="group block h-full rounded-2xl bg-white border border-[#E4E2D8] p-5 hover:border-[#064E3B]/40 hover:shadow-[0_18px_44px_-20px_rgba(4,59,44,0.3)] hover:-translate-y-0.5 transition-all"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="w-10 h-10 rounded-xl bg-[#E8F8F1] flex items-center justify-center">
-                      <Icon className="w-4.5 h-4.5 text-[#008F60]" />
+                    <span className="w-10 h-10 rounded-xl bg-[#F1F0EA] flex items-center justify-center">
+                      <Icon className="w-4.5 h-4.5 text-[#043B2C]" />
                     </span>
-                    <span className="text-[10px] font-black text-[#8A919C]">{s.num}</span>
+                    <span className="text-[10px] font-black text-[#6B7280]">{s.num}</span>
                   </div>
-                  <h3 className="mt-3.5 text-[14px] font-bold text-[#171923] tracking-tight group-hover:text-[#008F60] transition-colors">
+                  <h3 className="mt-3.5 text-[14px] font-bold text-[#111827] tracking-tight group-hover:text-[#043B2C] transition-colors">
                     {s.title}
                   </h3>
-                  <p className="mt-1.5 text-[12px] text-[#5A6270] leading-relaxed">{s.desc}</p>
-                  <div className="mt-3.5 flex items-center gap-1.5 text-[11px] font-bold text-[#008F60]">
-                    <span className="w-5 h-5 rounded-full bg-[#00B879] text-white flex items-center justify-center">
+                  <p className="mt-1.5 text-[12px] text-[#4B5563] leading-relaxed">{s.desc}</p>
+                  <div className="mt-3.5 flex items-center gap-1.5 text-[11px] font-bold text-[#043B2C]">
+                    <span className="w-5 h-5 rounded-full bg-[#064E3B] text-white flex items-center justify-center">
                       <Play className="w-2.5 h-2.5 fill-white ml-0.5" />
                     </span>
                     Watch · {s.duration}
-                    <ArrowRight className="w-3 h-3 ml-auto text-[#B4BBC4] group-hover:text-[#00B879] group-hover:translate-x-0.5 transition-all" />
+                    <ArrowRight className="w-3 h-3 ml-auto text-[#9CA3AF] group-hover:text-[#064E3B] group-hover:translate-x-0.5 transition-all" />
                   </div>
                 </Link>
                 </Reveal>
@@ -222,8 +222,8 @@ export default function UserGuidePage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {filtered.map((group) => (
             <div key={group.category}>
-              <div className="text-[11px] font-bold uppercase tracking-wider text-[#8A919C] mb-3 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00B879]" />
+              <div className="text-[11px] font-bold uppercase tracking-wider text-[#6B7280] mb-3 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#064E3B]" />
                 {group.category}
               </div>
               <div className="space-y-3">
@@ -235,8 +235,8 @@ export default function UserGuidePage() {
                       key={item.q}
                       className={`rounded-2xl border transition-all duration-200 bg-white ${
                         isOpen
-                          ? "border-[#00B879]/40 shadow-[0_14px_34px_-18px_rgba(0,143,96,0.35)]"
-                          : "border-[#E2E6E4] hover:border-[#C9D0CC]"
+                          ? "border-[#064E3B]/40 shadow-[0_14px_34px_-18px_rgba(4,59,44,0.35)]"
+                          : "border-[#E4E2D8] hover:border-[#C9CFC0]"
                       }`}
                     >
                       <button
@@ -245,16 +245,16 @@ export default function UserGuidePage() {
                         aria-expanded={isOpen}
                         className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left cursor-pointer"
                       >
-                        <span className="text-[14px] font-bold text-[#171923] leading-snug">{item.q}</span>
+                        <span className="text-[14px] font-bold text-[#111827] leading-snug">{item.q}</span>
                         <ChevronDown
                           className={`w-4 h-4 shrink-0 transition-transform duration-200 ${
-                            isOpen ? "rotate-180 text-[#008F60]" : "text-[#5A6270]"
+                            isOpen ? "rotate-180 text-[#043B2C]" : "text-[#4B5563]"
                           }`}
                           strokeWidth={2.5}
                         />
                       </button>
                       {isOpen && (
-                        <p className="px-5 pb-5 -mt-1 text-[13px] text-[#5A6270] leading-relaxed animate-tool-in">
+                        <p className="px-5 pb-5 -mt-1 text-[13px] text-[#4B5563] leading-relaxed animate-tool-in">
                           {item.a}
                         </p>
                       )}
@@ -265,9 +265,9 @@ export default function UserGuidePage() {
             </div>
           ))}
           {filtered.length === 0 && (
-            <div className="rounded-2xl border-2 border-dashed border-[#E2E6E4] py-14 text-center">
-              <p className="text-sm font-bold text-[#171923]">No guides match “{query}”</p>
-              <p className="mt-1.5 text-xs text-[#8A919C]">
+            <div className="rounded-2xl border-2 border-dashed border-[#E4E2D8] py-14 text-center">
+              <p className="text-sm font-bold text-[#111827]">No guides match “{query}”</p>
+              <p className="mt-1.5 text-xs text-[#6B7280]">
                 Try a different keyword — or ask our AI inside your workspace.
               </p>
             </div>

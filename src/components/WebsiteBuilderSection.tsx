@@ -67,7 +67,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
     <section
       id="website-builder"
       aria-labelledby="builder-heading"
-      className="py-12 sm:py-20 lg:py-24 bg-gradient-to-b from-[#F7F9F8] to-white border-b border-[#E8EAF0] relative overflow-hidden"
+      className="py-12 sm:py-20 lg:py-24 bg-gradient-to-b from-[#F7F7F2] to-white border-b border-[#E6E4DB] relative overflow-hidden"
     >
       {/* Background Decorative Patterns */}
       <div className="absolute inset-0 bg-grid-pattern opacity-35 pointer-events-none" aria-hidden />
@@ -88,9 +88,9 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
               {/* Organic pencil border pass 1 */}
               <path
                 d="M 6,9 C 60,4 180,5 234,7 C 238,18 236,31 233,37 C 175,40 70,38 7,39 C 3,28 4,16 6,9 Z"
-                fill="#FFD84D"
+                fill="#C6A15B"
                 fillOpacity="0.3"
-                stroke="#171923"
+                stroke="#111827"
                 strokeWidth="1.8"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -98,26 +98,26 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
               {/* Secondary jittery graphite sketch stroke */}
               <path
                 d="M 9,12 C 75,7 165,8 230,10 C 235,22 233,30 231,35 C 170,37 85,36 9,36"
-                stroke="#008F60"
+                stroke="#043B2C"
                 strokeWidth="1.2"
                 strokeLinecap="round"
                 strokeDasharray="90 3 60 2"
                 opacity="0.8"
               />
             </svg>
-            <Pencil className="w-3.5 h-3.5 text-[#171923] relative z-10 -rotate-12" />
-            <span className="relative z-10 text-[12px] sm:text-xs font-bold text-[#171923] tracking-tight font-serif italic">
+            <Pencil className="w-3.5 h-3.5 text-[#111827] relative z-10 -rotate-12" />
+            <span className="relative z-10 text-[12px] sm:text-xs font-bold text-[#111827] tracking-tight font-serif italic">
               No-code website & theme studio · Zero code required
             </span>
           </div>
 
           <h2
             id="builder-heading"
-            className="text-[28px] xs:text-[34px] sm:text-[44px] lg:text-[52px] font-extrabold text-[#171923] tracking-[-0.035em] leading-[1.12] mb-4 sm:mb-5"
+            className="text-[28px] xs:text-[34px] sm:text-[44px] lg:text-[52px] font-extrabold text-[#111827] tracking-[-0.035em] leading-[1.12] mb-4 sm:mb-5"
           >
             A professional storefront.{" "}
             <span className="relative inline-block whitespace-nowrap">
-              <span className="relative z-10 text-[#008F60] font-serif italic font-normal">
+              <span className="relative z-10 text-[#043B2C] font-serif italic font-normal">
                 Without the code.
               </span>
               {/* Multi-layer hand-drawn pencil sketch underline */}
@@ -130,7 +130,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                 {/* Soft crayon/yellow highlight wash */}
                 <path
                   d="M 6,13 C 65,6 185,5 334,12"
-                  stroke="#FFD84D"
+                  stroke="#C6A15B"
                   strokeWidth="7"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -139,7 +139,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                 {/* Primary hand-drawn graphite pencil line */}
                 <path
                   d="M 8,15 C 80,9 195,7 330,14"
-                  stroke="#171923"
+                  stroke="#111827"
                   strokeWidth="2.4"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -148,7 +148,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                 {/* Secondary pencil jitter/scratch pass */}
                 <path
                   d="M 14,17 C 110,11 220,9 318,15"
-                  stroke="#008F60"
+                  stroke="#043B2C"
                   strokeWidth="1.6"
                   strokeLinecap="round"
                   opacity="0.75"
@@ -158,33 +158,33 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
           </h2>
 
           {/* Hand-sketched arrow annotation */}
-          <div className="hidden sm:flex items-center justify-center gap-2 mb-3 text-[#171923] select-none">
+          <div className="hidden sm:flex items-center justify-center gap-2 mb-3 text-[#111827] select-none">
             <svg
-              className="w-14 h-7 text-[#171923] overflow-visible -rotate-6"
+              className="w-14 h-7 text-[#111827] overflow-visible -rotate-6"
               viewBox="0 0 70 32"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M 4,20 C 22,6 48,8 62,24"
-                stroke="#171923"
+                stroke="#111827"
                 strokeWidth="1.8"
                 strokeLinecap="round"
               />
               <path
                 d="M 52,24 L 62,25 L 60,16"
-                stroke="#171923"
+                stroke="#111827"
                 strokeWidth="1.8"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
-            <span className="font-serif italic text-xs text-[#171923] font-semibold -rotate-2">
+            <span className="font-serif italic text-xs text-[#111827] font-semibold -rotate-2">
               interactive live studio below ↓
             </span>
           </div>
 
-          <p className="text-[13px] sm:text-[15px] lg:text-[16px] text-[#5A6270] leading-relaxed max-w-lg mx-auto px-2">
+          <p className="text-[13px] sm:text-[15px] lg:text-[16px] text-[#4B5563] leading-relaxed max-w-lg mx-auto px-2">
             Design and publish high-converting storefronts, landing pages, and lead forms — with instant custom domain connection and every submission synced straight to CRM 360.
           </p>
 
@@ -193,30 +193,30 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
             <button
               type="button"
               onClick={onOpenGetStarted}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#00B879]/25 transition-all duration-200 active:scale-[0.98] cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#064E3B] hover:bg-[#043B2C] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#064E3B]/25 transition-all duration-200 active:scale-[0.98] cursor-pointer"
             >
               <span>Explore Drag-and-Drop Studio</span>
               <ArrowRight className="w-4 h-4" />
             </button>
-            <span className="text-[11px] sm:text-xs font-semibold text-[#5A6270]">
-              Included in all plans — <strong className="text-[#008F60]">start free</strong>
+            <span className="text-[11px] sm:text-xs font-semibold text-[#4B5563]">
+              Included in all plans — <strong className="text-[#043B2C]">start free</strong>
             </span>
           </div>
         </div>
 
         {/* ── Studio Frame (Mobile-Perfect Light Theme with Official Logo) ── */}
         <div className="max-w-6xl mx-auto">
-          <div className="rounded-2xl sm:rounded-3xl bg-[#FFD84D] border border-black/10 shadow-[0_24px_50px_-20px_rgba(23,25,35,0.25)] overflow-hidden">
+          <div className="rounded-2xl sm:rounded-3xl bg-[#C6A15B] border border-black/10 shadow-[0_24px_50px_-20px_rgba(17,24,39,0.25)] overflow-hidden">
             
             {/* ── Window Top Bar: Clean & Non-Cramped on Mobile ── */}
-            <div className="flex items-center justify-between px-3 sm:px-6 py-2.5 sm:py-3 border-b border-black/10 bg-[#FFD84D]">
+            <div className="flex items-center justify-between px-3 sm:px-6 py-2.5 sm:py-3 border-b border-black/10 bg-[#C6A15B]">
               
               {/* Left: Window Dots + Real CODIIC Logo */}
               <div className="flex items-center gap-2 sm:gap-4">
                 <div className="flex items-center gap-1 sm:gap-1.5">
                   <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]/50 inline-block" />
-                  <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]/50 inline-block" />
-                  <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]/50 inline-block" />
+                  <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FFBD2E] border border-[#A87F3D]/50 inline-block" />
+                  <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27C93F] border border-[#0E7A5C]/50 inline-block" />
                 </div>
 
                 <div className="flex items-center gap-1.5 sm:gap-2 pl-2 sm:pl-3 border-l border-black/15">
@@ -230,7 +230,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                       className="object-contain object-left"
                     />
                   </div>
-                  <span className="hidden sm:inline px-1.5 py-0.5 rounded bg-[#171923] text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
+                  <span className="hidden sm:inline px-1.5 py-0.5 rounded bg-[#111827] text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
                     Studio
                   </span>
                 </div>
@@ -243,12 +243,12 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                   onClick={() => setDeviceView("desktop")}
                   className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     deviceView === "desktop"
-                      ? "bg-white text-[#171923] shadow-xs font-bold"
+                      ? "bg-white text-[#111827] shadow-xs font-bold"
                       : "text-black/70 hover:text-black"
                   }`}
                   title="Desktop Preview"
                 >
-                  <Monitor className="w-3.5 h-3.5 text-[#008F60]" />
+                  <Monitor className="w-3.5 h-3.5 text-[#043B2C]" />
                   <span className="hidden md:inline text-[11px]">Desktop</span>
                 </button>
                 <button
@@ -256,12 +256,12 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                   onClick={() => setDeviceView("tablet")}
                   className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     deviceView === "tablet"
-                      ? "bg-white text-[#171923] shadow-xs font-bold"
+                      ? "bg-white text-[#111827] shadow-xs font-bold"
                       : "text-black/70 hover:text-black"
                   }`}
                   title="Tablet Preview"
                 >
-                  <Tablet className="w-3.5 h-3.5 text-[#008F60]" />
+                  <Tablet className="w-3.5 h-3.5 text-[#043B2C]" />
                   <span className="hidden md:inline text-[11px]">Tablet</span>
                 </button>
                 <button
@@ -269,12 +269,12 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                   onClick={() => setDeviceView("mobile")}
                   className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     deviceView === "mobile"
-                      ? "bg-white text-[#171923] shadow-xs font-bold"
+                      ? "bg-white text-[#111827] shadow-xs font-bold"
                       : "text-black/70 hover:text-black"
                   }`}
                   title="Mobile Preview"
                 >
-                  <Smartphone className="w-3.5 h-3.5 text-[#008F60]" />
+                  <Smartphone className="w-3.5 h-3.5 text-[#043B2C]" />
                   <span className="hidden md:inline text-[11px]">Mobile</span>
                 </button>
               </div>
@@ -282,7 +282,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
               {/* Right: Publish Live Button */}
               <div className="flex items-center gap-2">
                 <span className="hidden lg:flex items-center gap-1.5 text-[11px] text-black/70 font-semibold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#008F60]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#043B2C]" />
                   <span>Auto-saved</span>
                 </span>
 
@@ -291,8 +291,8 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                   onClick={() => setIsPublished(!isPublished)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all duration-200 cursor-pointer active:scale-95 ${
                     isPublished
-                      ? "bg-[#171923] text-white"
-                      : "bg-[#171923] hover:bg-black text-white shadow-black/20"
+                      ? "bg-[#111827] text-white"
+                      : "bg-[#111827] hover:bg-black text-white shadow-black/20"
                   }`}
                 >
                   <Send className="w-3 h-3" />
@@ -302,8 +302,8 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
             </div>
 
             {/* ── Mobile-Only Section Selector Bar (Touch-Friendly Horizontal Tabs) ── */}
-            <div className="md:hidden flex items-center gap-1.5 p-2 bg-[#FFD84D] border-b border-black/10 overflow-x-auto no-scrollbar">
-              <span className="text-[10px] font-bold text-[#171923] uppercase px-1 shrink-0">
+            <div className="md:hidden flex items-center gap-1.5 p-2 bg-[#C6A15B] border-b border-black/10 overflow-x-auto no-scrollbar">
+              <span className="text-[10px] font-bold text-[#111827] uppercase px-1 shrink-0">
                 Section:
               </span>
               {componentsList.map((item) => {
@@ -316,8 +316,8 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                     onClick={() => setActiveBlock(item.id)}
                     className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                       isSelected
-                        ? "bg-[#171923] text-white shadow-xs"
-                        : "bg-white/80 text-[#171923] border border-black/10"
+                        ? "bg-[#111827] text-white shadow-xs"
+                        : "bg-white/80 text-[#111827] border border-black/10"
                     }`}
                   >
                     <Icon className="w-3 h-3" />
@@ -328,16 +328,16 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
             </div>
 
             {/* ── Studio Body ── */}
-            <div className="grid grid-cols-12 bg-[#FFF9E6]">
+            <div className="grid grid-cols-12 bg-[#F5EFDF]">
               
               {/* Left Column: Sections Library (Desktop & Tablet) */}
-              <aside className="hidden md:block md:col-span-3 lg:col-span-3 bg-[#FFD84D] border-r border-black/10 p-4 flex flex-col justify-between">
+              <aside className="hidden md:block md:col-span-3 lg:col-span-3 bg-[#C6A15B] border-r border-black/10 p-4 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3 pb-2 border-b border-black/10">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#171923]">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#111827]">
                       Page Sections
                     </span>
-                    <span className="text-[10px] font-mono text-white bg-[#171923] px-1.5 py-0.5 rounded font-bold">
+                    <span className="text-[10px] font-mono text-white bg-[#111827] px-1.5 py-0.5 rounded font-bold">
                       4 Ready
                     </span>
                   </div>
@@ -353,19 +353,19 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                           onClick={() => setActiveBlock(item.id)}
                           className={`w-full text-left p-2.5 rounded-xl transition-all flex items-center justify-between cursor-pointer border ${
                             isSelected
-                              ? "bg-white border-black/20 text-[#171923] shadow-xs"
-                              : "bg-white/60 hover:bg-white border-black/10 text-[#171923]"
+                              ? "bg-white border-black/20 text-[#111827] shadow-xs"
+                              : "bg-white/60 hover:bg-white border-black/10 text-[#111827]"
                           }`}
                         >
                           <div className="flex items-center gap-2.5">
-                            <Icon className={`w-4 h-4 ${isSelected ? "text-[#008F60]" : "text-[#171923]"}`} />
+                            <Icon className={`w-4 h-4 ${isSelected ? "text-[#043B2C]" : "text-[#111827]"}`} />
                             <span className="text-xs font-bold">{item.label}</span>
                           </div>
                           <span
                             className={`text-[9px] font-semibold px-1.5 py-0.5 rounded ${
                               isSelected
-                                ? "bg-[#171923] text-white"
-                                : "bg-white text-[#171923]"
+                                ? "bg-[#111827] text-white"
+                                : "bg-white text-[#111827]"
                             }`}
                           >
                             {item.tag}
@@ -378,20 +378,20 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
 
                 {/* Live Sync Info Card */}
                 <div className="p-3 rounded-xl bg-white border border-black/10 text-[11px] shadow-xs">
-                  <div className="flex items-center gap-1.5 text-[#171923] font-bold mb-1">
-                    <span className="w-2 h-2 rounded-full bg-[#008F60] animate-pulse" />
+                  <div className="flex items-center gap-1.5 text-[#111827] font-bold mb-1">
+                    <span className="w-2 h-2 rounded-full bg-[#043B2C] animate-pulse" />
                     <span>Instant CRM 360 Sync</span>
                   </div>
-                  <p className="text-[10.5px] text-[#2D260D] leading-snug">
+                  <p className="text-[10.5px] text-[#3B2E12] leading-snug">
                     Clicks, checkouts & inquiries sync in real-time — zero extra plugins.
                   </p>
                 </div>
               </aside>
 
               {/* Center Canvas: Live Preview */}
-              <div className="col-span-12 md:col-span-9 lg:col-span-6 p-2.5 sm:p-5 flex flex-col items-center justify-center overflow-x-hidden bg-[#FFF9E6]">
+              <div className="col-span-12 md:col-span-9 lg:col-span-6 p-2.5 sm:p-5 flex flex-col items-center justify-center overflow-x-hidden bg-[#F5EFDF]">
                 <div
-                  className={`w-full transition-all duration-300 rounded-xl sm:rounded-2xl bg-white border border-[#DCE4DF] shadow-xs sm:shadow-md overflow-hidden flex flex-col ${
+                  className={`w-full transition-all duration-300 rounded-xl sm:rounded-2xl bg-white border border-[#DAD8CD] shadow-xs sm:shadow-md overflow-hidden flex flex-col ${
                     deviceView === "mobile"
                       ? "max-w-[340px]"
                       : deviceView === "tablet"
@@ -400,19 +400,19 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                   }`}
                 >
                   {/* Storefront Mini Browser Header */}
-                  <div className="px-3 sm:px-3.5 py-2 sm:py-2.5 bg-[#F9FBF9] border-b border-[#E8EEEA] flex items-center justify-between text-xs">
+                  <div className="px-3 sm:px-3.5 py-2 sm:py-2.5 bg-[#F7F7F2] border-b border-[#E8EEEA] flex items-center justify-between text-xs">
                     <div className="flex items-center gap-1.5">
-                      <span className="text-[11px] sm:text-xs font-extrabold tracking-tight text-[#171923]">
+                      <span className="text-[11px] sm:text-xs font-extrabold tracking-tight text-[#111827]">
                         AURA LIVING
                       </span>
-                      <span className="text-[8px] sm:text-[9px] text-[#008F60] bg-[#E8F8F1] px-1.5 py-0.2 rounded font-semibold">
+                      <span className="text-[8px] sm:text-[9px] text-[#043B2C] bg-[#F1F0EA] px-1.5 py-0.2 rounded font-semibold">
                         SSL Live
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-[#5A6270]">
+                    <div className="flex items-center gap-2 text-[#4B5563]">
                       <Search className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                      <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-[#171923]">
+                      <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-[#111827]">
                         <ShoppingBag className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                         <span>(3)</span>
                       </div>
@@ -423,26 +423,26 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                   <div className="p-3.5 sm:p-5 flex-1 min-h-[260px] sm:min-h-[300px] flex flex-col justify-between">
                     {activeBlock === "hero" && (
                       <div className="space-y-2.5 sm:space-y-3.5 my-auto text-center py-2">
-                        <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#E8F8F1] text-[#008F60] text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider">
-                          <Sparkles className="w-3 h-3 text-[#00B879]" />
+                        <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#F1F0EA] text-[#043B2C] text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider">
+                          <Sparkles className="w-3 h-3 text-[#064E3B]" />
                           Festive Home Collection
                         </div>
-                        <h3 className="text-base sm:text-xl lg:text-2xl font-extrabold text-[#171923] tracking-tight leading-tight">
+                        <h3 className="text-base sm:text-xl lg:text-2xl font-extrabold text-[#111827] tracking-tight leading-tight">
                           Modern Sustainable Home Decor
                         </h3>
-                        <p className="text-[11px] sm:text-xs text-[#5A6270] max-w-sm mx-auto leading-relaxed">
+                        <p className="text-[11px] sm:text-xs text-[#4B5563] max-w-sm mx-auto leading-relaxed">
                           Handcrafted lifestyle essentials designed for modern homes worldwide. Free global shipping.
                         </p>
                         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2 pt-1 w-full max-w-xs mx-auto">
                           <button
                             type="button"
                             onClick={onOpenGetStarted}
-                            className="w-full sm:w-auto px-4 py-2 rounded-full bg-[#00B879] text-white text-xs font-bold shadow-xs flex items-center justify-center gap-1 cursor-pointer"
+                            className="w-full sm:w-auto px-4 py-2 rounded-full bg-[#064E3B] text-white text-xs font-bold shadow-xs flex items-center justify-center gap-1 cursor-pointer"
                           >
                             <span>Shop Collection</span>
                             <ArrowRight className="w-3 h-3" />
                           </button>
-                          <div className="w-full sm:w-auto px-3.5 py-2 rounded-full bg-[#E8F8F1] text-[#008F60] text-xs font-semibold flex items-center justify-center gap-1.5">
+                          <div className="w-full sm:w-auto px-3.5 py-2 rounded-full bg-[#F1F0EA] text-[#043B2C] text-xs font-semibold flex items-center justify-center gap-1.5">
                             <WhatsAppLogo className="w-3.5 h-3.5" />
                             <span>WhatsApp Buy</span>
                           </div>
@@ -452,29 +452,29 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
 
                     {activeBlock === "products" && (
                       <div className="space-y-2.5 my-auto">
-                        <div className="flex items-center justify-between pb-1 border-b border-[#EEF2EF]">
-                          <span className="text-[11px] sm:text-xs font-bold text-[#171923]">Bestselling Products</span>
-                          <span className="text-[9px] sm:text-[10px] text-[#008F60] font-semibold">Instant Secure Pay</span>
+                        <div className="flex items-center justify-between pb-1 border-b border-[#F1F0EA]">
+                          <span className="text-[11px] sm:text-xs font-bold text-[#111827]">Bestselling Products</span>
+                          <span className="text-[9px] sm:text-[10px] text-[#043B2C] font-semibold">Instant Secure Pay</span>
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-left">
-                          <div className="p-2 sm:p-2.5 rounded-xl bg-[#F7F9F8] border border-[#E5ECE7]">
-                            <div className="w-full aspect-[4/3] rounded-lg bg-[#E2EAE5] mb-1.5 flex items-center justify-center text-[10px] sm:text-xs font-bold text-[#008F60]">
+                          <div className="p-2 sm:p-2.5 rounded-xl bg-[#F7F7F2] border border-[#E4E2D8]">
+                            <div className="w-full aspect-[4/3] rounded-lg bg-[#F1F0EA] mb-1.5 flex items-center justify-center text-[10px] sm:text-xs font-bold text-[#043B2C]">
                               Ceramic Vase
                             </div>
-                            <div className="text-[10px] sm:text-[11px] font-bold text-[#171923] truncate">Nordic Glaze Set</div>
+                            <div className="text-[10px] sm:text-[11px] font-bold text-[#111827] truncate">Nordic Glaze Set</div>
                             <div className="flex items-center justify-between mt-1">
-                              <span className="text-[11px] sm:text-xs font-extrabold text-[#008F60]">₹1,499</span>
-                              <span className="text-[8.5px] sm:text-[9px] bg-[#00B879] text-white px-1.5 py-0.5 rounded font-bold">Add</span>
+                              <span className="text-[11px] sm:text-xs font-extrabold text-[#043B2C]">₹1,499</span>
+                              <span className="text-[8.5px] sm:text-[9px] bg-[#064E3B] text-white px-1.5 py-0.5 rounded font-bold">Add</span>
                             </div>
                           </div>
-                          <div className="p-2 sm:p-2.5 rounded-xl bg-[#F7F9F8] border border-[#E5ECE7]">
-                            <div className="w-full aspect-[4/3] rounded-lg bg-[#E2EAE5] mb-1.5 flex items-center justify-center text-[10px] sm:text-xs font-bold text-[#008F60]">
+                          <div className="p-2 sm:p-2.5 rounded-xl bg-[#F7F7F2] border border-[#E4E2D8]">
+                            <div className="w-full aspect-[4/3] rounded-lg bg-[#F1F0EA] mb-1.5 flex items-center justify-center text-[10px] sm:text-xs font-bold text-[#043B2C]">
                               Linen Throw
                             </div>
-                            <div className="text-[10px] sm:text-[11px] font-bold text-[#171923] truncate">Handloom Cotton</div>
+                            <div className="text-[10px] sm:text-[11px] font-bold text-[#111827] truncate">Handloom Cotton</div>
                             <div className="flex items-center justify-between mt-1">
-                              <span className="text-[11px] sm:text-xs font-extrabold text-[#008F60]">₹2,199</span>
-                              <span className="text-[8.5px] sm:text-[9px] bg-[#00B879] text-white px-1.5 py-0.5 rounded font-bold">Add</span>
+                              <span className="text-[11px] sm:text-xs font-extrabold text-[#043B2C]">₹2,199</span>
+                              <span className="text-[8.5px] sm:text-[9px] bg-[#064E3B] text-white px-1.5 py-0.5 rounded font-bold">Add</span>
                             </div>
                           </div>
                         </div>
@@ -483,38 +483,38 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
 
                     {activeBlock === "proof" && (
                       <div className="space-y-2.5 text-center my-auto py-2">
-                        <div className="inline-block text-[9px] sm:text-[10px] font-bold text-[#008F60] uppercase tracking-wider bg-[#E8F8F1] px-2.5 py-0.5 rounded-full">
+                        <div className="inline-block text-[9px] sm:text-[10px] font-bold text-[#043B2C] uppercase tracking-wider bg-[#F1F0EA] px-2.5 py-0.5 rounded-full">
                           4.9 ★ from 1,280+ Customers
                         </div>
-                        <div className="p-3 rounded-xl bg-[#F7F9F8] border border-[#E5ECE7] text-[11px] sm:text-xs text-[#171923] italic leading-relaxed">
+                        <div className="p-3 rounded-xl bg-[#F7F7F2] border border-[#E4E2D8] text-[11px] sm:text-xs text-[#111827] italic leading-relaxed">
                           &quot;Order confirmation arrived on WhatsApp in 3 seconds. The checkout experience is smoother than any big brand site.&quot;
                         </div>
-                        <div className="text-[10px] sm:text-[11px] font-bold text-[#171923]">
-                          Ananya Roy <span className="font-normal text-[#5A6270]">· Verified Buyer</span>
+                        <div className="text-[10px] sm:text-[11px] font-bold text-[#111827]">
+                          Ananya Roy <span className="font-normal text-[#4B5563]">· Verified Buyer</span>
                         </div>
                       </div>
                     )}
 
                     {activeBlock === "contact" && (
                       <div className="space-y-2 max-w-xs mx-auto text-left my-auto w-full py-1">
-                        <div className="text-center text-[11px] sm:text-xs font-bold text-[#171923]">
+                        <div className="text-center text-[11px] sm:text-xs font-bold text-[#111827]">
                           Inquiry Form (Synced to CRM)
                         </div>
                         <input
                           type="text"
                           disabled
                           placeholder="Your Name"
-                          className="w-full text-[11px] px-3 py-2 rounded-lg border border-[#DCE4DF] bg-[#FAFCFA]"
+                          className="w-full text-[11px] px-3 py-2 rounded-lg border border-[#DAD8CD] bg-[#F7F7F2]"
                         />
                         <input
                           type="tel"
                           disabled
                           placeholder="WhatsApp Phone Number"
-                          className="w-full text-[11px] px-3 py-2 rounded-lg border border-[#DCE4DF] bg-[#FAFCFA]"
+                          className="w-full text-[11px] px-3 py-2 rounded-lg border border-[#DAD8CD] bg-[#F7F7F2]"
                         />
                         <button
                           type="button"
-                          className="w-full py-2 rounded-lg bg-[#00B879] text-white text-[11px] sm:text-xs font-bold text-center"
+                          className="w-full py-2 rounded-lg bg-[#064E3B] text-white text-[11px] sm:text-xs font-bold text-center"
                         >
                           Send Inquiry · Auto-reply in 0.4s
                         </button>
@@ -522,12 +522,12 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                     )}
 
                     {/* Canvas Floating Footer */}
-                    <div className="pt-2.5 border-t border-[#EEF2EF] flex items-center justify-between text-[9px] sm:text-[10px] text-[#5A6270]">
-                      <div className="flex items-center gap-1 font-semibold text-[#008F60]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#00B879]" />
+                    <div className="pt-2.5 border-t border-[#F1F0EA] flex items-center justify-between text-[9px] sm:text-[10px] text-[#4B5563]">
+                      <div className="flex items-center gap-1 font-semibold text-[#043B2C]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#064E3B]" />
                         <span>Live Sync Active</span>
                       </div>
-                      <div className="flex items-center gap-1 text-[#171923] font-bold">
+                      <div className="flex items-center gap-1 text-[#111827] font-bold">
                         <RazorpayLogo className="w-3 h-3" />
                         <span>Stripe & UPI Ready</span>
                       </div>
@@ -537,34 +537,34 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
               </div>
 
               {/* Right Column: Health & SEO Meter (Desktop only) */}
-              <aside className="hidden lg:block lg:col-span-3 bg-[#FFD84D] border-l border-black/10 p-4 flex flex-col justify-between">
+              <aside className="hidden lg:block lg:col-span-3 bg-[#C6A15B] border-l border-black/10 p-4 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3 pb-2 border-b border-black/10">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#171923]">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#111827]">
                       Page Health
                     </span>
-                    <span className="text-[10px] font-bold text-[#171923] bg-white px-2 py-0.5 rounded shadow-2xs">Live</span>
+                    <span className="text-[10px] font-bold text-[#111827] bg-white px-2 py-0.5 rounded shadow-2xs">Live</span>
                   </div>
 
                   {/* SEO Score Meter */}
                   <div className="p-3.5 rounded-xl bg-white border border-black/10 text-center mb-4 shadow-xs">
-                    <div className="text-2xl font-black text-[#171923] leading-none mb-0.5">
-                      98<span className="text-xs font-semibold text-[#5A6270]">/100</span>
+                    <div className="text-2xl font-black text-[#111827] leading-none mb-0.5">
+                      98<span className="text-xs font-semibold text-[#4B5563]">/100</span>
                     </div>
-                    <div className="text-[10px] font-bold text-[#171923] mb-1.5">
+                    <div className="text-[10px] font-bold text-[#111827] mb-1.5">
                       Google Core Web Vitals
                     </div>
-                    <div className="space-y-1 text-[10px] text-[#2D260D] text-left">
+                    <div className="space-y-1 text-[10px] text-[#3B2E12] text-left">
                       <div className="flex items-center gap-1.5">
-                        <Check className="w-3 h-3 text-[#008F60] shrink-0" />
+                        <Check className="w-3 h-3 text-[#043B2C] shrink-0" />
                         <span>Mobile PageSpeed: 0.4s LCP</span>
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <Check className="w-3 h-3 text-[#008F60] shrink-0" />
+                        <Check className="w-3 h-3 text-[#043B2C] shrink-0" />
                         <span>Auto-generated Meta Tags</span>
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <Check className="w-3 h-3 text-[#008F60] shrink-0" />
+                        <Check className="w-3 h-3 text-[#043B2C] shrink-0" />
                         <span>Structured Schema Markup</span>
                       </div>
                     </div>
@@ -572,7 +572,7 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
 
                   {/* Design Tokens Theme Switcher */}
                   <div className="space-y-2 text-xs">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#171923]">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#111827]">
                       Brand Tokens
                     </span>
                     <div className="flex items-center gap-2">
@@ -581,8 +581,8 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                         onClick={() => setActiveTheme("emerald")}
                         className={`flex-1 py-1.5 px-2 rounded-lg text-[11px] font-bold border transition-colors ${
                           activeTheme === "emerald"
-                            ? "bg-[#171923] border-[#171923] text-white shadow-xs"
-                            : "bg-white border-black/10 text-[#171923] hover:bg-white/80"
+                            ? "bg-[#111827] border-[#111827] text-white shadow-xs"
+                            : "bg-white border-black/10 text-[#111827] hover:bg-white/80"
                         }`}
                       >
                         Emerald
@@ -592,8 +592,8 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                         onClick={() => setActiveTheme("slate")}
                         className={`flex-1 py-1.5 px-2 rounded-lg text-[11px] font-bold border transition-colors ${
                           activeTheme === "slate"
-                            ? "bg-[#171923] border-[#171923] text-white shadow-xs"
-                            : "bg-white border-black/10 text-[#171923] hover:bg-white/80"
+                            ? "bg-[#111827] border-[#111827] text-white shadow-xs"
+                            : "bg-white border-black/10 text-[#111827] hover:bg-white/80"
                         }`}
                       >
                         Minimal
@@ -602,9 +602,9 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-black/10 text-[10.5px] text-[#2D260D] flex items-center justify-between font-medium">
+                <div className="pt-3 border-t border-black/10 text-[10.5px] text-[#3B2E12] flex items-center justify-between font-medium">
                   <span>Custom Domain</span>
-                  <span className="font-mono text-[#171923] font-bold">yourbrand.in</span>
+                  <span className="font-mono text-[#111827] font-bold">yourbrand.in</span>
                 </div>
               </aside>
 
@@ -620,16 +620,16 @@ export const WebsiteBuilderSection: React.FC<WebsiteBuilderSectionProps> = ({
             return (
               <div
                 key={idx}
-                className="group p-3.5 sm:p-5 rounded-2xl bg-[#FFD84D] border border-black/10 hover:border-black/30 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-start gap-3 sm:gap-3.5"
+                className="group p-3.5 sm:p-5 rounded-2xl bg-[#C6A15B] border border-black/10 hover:border-black/30 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-start gap-3 sm:gap-3.5"
               >
                 <div className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center drop-shadow-xs group-hover:scale-105 transition-transform">
                   <Icon className="w-9 h-9 sm:w-10 sm:h-10 shrink-0" />
                 </div>
                 <div>
-                  <h3 className="text-xs sm:text-sm font-bold text-[#171923] leading-tight mb-0.5 sm:mb-1">
+                  <h3 className="text-xs sm:text-sm font-bold text-[#111827] leading-tight mb-0.5 sm:mb-1">
                     {feat.title}
                   </h3>
-                  <p className="text-[11px] sm:text-[11.5px] text-[#2D260D] leading-relaxed">
+                  <p className="text-[11px] sm:text-[11.5px] text-[#3B2E12] leading-relaxed">
                     {feat.desc}
                   </p>
                 </div>

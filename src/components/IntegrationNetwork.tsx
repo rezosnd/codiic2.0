@@ -218,8 +218,8 @@ const NetworkSVG: React.FC<NetworkSVGProps> = ({
     >
       <defs>
         <radialGradient id="intHubGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#00B879" stopOpacity="0.22" />
-          <stop offset="100%" stopColor="#00B879" stopOpacity="0" />
+          <stop offset="0%" stopColor="#064E3B" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="#064E3B" stopOpacity="0" />
         </radialGradient>
       </defs>
 
@@ -243,7 +243,7 @@ const NetworkSVG: React.FC<NetworkSVGProps> = ({
           key={`flow-${tiles[i].id}`}
           d={d}
           fill="none"
-          stroke="#00B879"
+          stroke="#064E3B"
           strokeWidth="1.5"
           strokeLinecap="round"
           opacity={isInView ? 0.5 : 0}
@@ -259,10 +259,10 @@ const NetworkSVG: React.FC<NetworkSVGProps> = ({
       <circle cx={hub.x} cy={hub.y} r={hubSize + 18} fill="url(#intHubGlow)"
         opacity={isInView ? 1 : 0}
         style={{ transition: reducedMotion ? "none" : "opacity 0.8s ease" }} />
-      <circle cx={hub.x} cy={hub.y} r={hubSize + 5} fill="none" stroke="#00B879"
+      <circle cx={hub.x} cy={hub.y} r={hubSize + 5} fill="none" stroke="#064E3B"
         strokeWidth="1" opacity={isInView ? 0.28 : 0}
         style={{ transition: reducedMotion ? "none" : "opacity 0.8s ease 0.2s" }} />
-      <circle cx={hub.x} cy={hub.y} r={hubSize} fill="white" stroke="#E2E6E4"
+      <circle cx={hub.x} cy={hub.y} r={hubSize} fill="white" stroke="#E4E2D8"
         strokeWidth="1.5" filter="drop-shadow(0 4px 14px rgba(0,0,0,0.11))"
         opacity={isInView ? 1 : 0}
         style={{ transition: reducedMotion ? "none" : "opacity 0.6s ease 0.1s" }} />
@@ -289,7 +289,7 @@ const NetworkSVG: React.FC<NetworkSVGProps> = ({
             x={t.cx - tileSize / 2} y={t.cy - tileSize / 2}
             width={tileSize} height={tileSize}
             rx={r} ry={r}
-            fill="white" stroke="#E4E8EC" strokeWidth="1.1"
+            fill="white" stroke="#E4E2D8" strokeWidth="1.1"
             filter="drop-shadow(0 3px 10px rgba(0,0,0,0.08))"
           />
           <foreignObject
@@ -351,23 +351,23 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
         {/* ── Header ─────────────────────────────────── */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E2E6E4] bg-[#F7F9F8] text-xs font-semibold text-[#5A6270] mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00B879] animate-pulse-green" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E4E2D8] bg-[#F7F7F2] text-xs font-semibold text-[#4B5563] mb-5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#064E3B] animate-pulse-green" />
               Integrations
             </div>
             <h2
               id="integrations-heading"
-              className="text-[26px] sm:text-[40px] lg:text-[50px] font-bold text-[#171923] tracking-[-0.03em] leading-[1.1]"
+              className="text-[26px] sm:text-[40px] lg:text-[50px] font-bold text-[#111827] tracking-[-0.03em] leading-[1.1]"
             >
               Works with the tools{" "}
-              <em className="font-serif italic font-normal text-[#008F60] not-italic">
+              <em className="font-serif italic font-normal text-[#043B2C] not-italic">
                 you already use.
               </em>
             </h2>
           </div>
 
           <div className="flex flex-col lg:pt-3">
-            <p className="text-[15px] sm:text-[17px] text-[#5A6270] leading-relaxed">
+            <p className="text-[15px] sm:text-[17px] text-[#4B5563] leading-relaxed">
               Messages, payments, leads, orders and files flow into one CODIIC
               workspace — automatically, in real time. Connect once, and
               everything stays in sync.
@@ -376,13 +376,13 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
               <button
                 type="button"
                 onClick={onOpenGetStarted}
-                className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#171923] hover:bg-[#00B879] text-white text-sm font-bold transition-all duration-200 active:scale-[0.97] cursor-pointer shadow-lg shadow-black/10 hover:shadow-[#00B879]/25"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#111827] hover:bg-[#064E3B] text-white text-sm font-bold transition-all duration-200 active:scale-[0.97] cursor-pointer shadow-lg shadow-black/10 hover:shadow-[#064E3B]/25"
               >
                 Connect your tools
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
-              <p className="text-[13px] font-semibold text-[#5A6270]">
-                All included — <span className="text-[#008F60] font-extrabold">start free</span>
+              <p className="text-[13px] font-semibold text-[#4B5563]">
+                All included — <span className="text-[#043B2C] font-extrabold">start free</span>
               </p>
             </div>
           </div>
@@ -432,8 +432,8 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
                     <Logo className="w-4.5 h-4.5" />
                   </span>
                   <div className="min-w-0">
-                    <div className="text-[11.5px] font-bold text-[#0F2A3D] leading-tight truncate">{item.name}</div>
-                    <div className="text-[10px] text-[#355368] leading-tight truncate mt-0.5 font-medium">{item.role}</div>
+                    <div className="text-[11.5px] font-bold text-[#1F2937] leading-tight truncate">{item.name}</div>
+                    <div className="text-[10px] text-[#374151] leading-tight truncate mt-0.5 font-medium">{item.role}</div>
                   </div>
                 </li>
               );
@@ -443,7 +443,7 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
           <button
             type="button"
             onClick={() => setShowAll((v) => !v)}
-            className="mt-3 w-full py-2.5 rounded-2xl border border-[#BCE1F5] bg-[#D8EEF9] hover:bg-[#C8E4F3] text-[12.5px] font-bold text-[#0F2A3D] transition-colors flex items-center justify-center gap-1.5 active:scale-[0.98]"
+            className="mt-3 w-full py-2.5 rounded-2xl border border-[#BCE1F5] bg-[#D8EEF9] hover:bg-[#C8E4F3] text-[12.5px] font-bold text-[#1F2937] transition-colors flex items-center justify-center gap-1.5 active:scale-[0.98]"
           >
             {showAll ? (
               <>Show less <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden><path d="M2 8l4-4 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg></>
@@ -467,7 +467,7 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
             return (
               <li
                 key={item.id}
-                className={`group rounded-[20px] bg-[#D8EEF9] hover:bg-[#CEEAF7] border border-[#BCE1F5] hover:border-[#9FD4F1] p-5 transition-all duration-300 hover:shadow-[0_12px_32px_-8px_rgba(15,42,61,0.15)] hover:-translate-y-0.5 ${isInView ? "animate-tool-in" : "opacity-0"}`}
+                className={`group rounded-[20px] bg-[#D8EEF9] hover:bg-[#CEEAF7] border border-[#BCE1F5] hover:border-[#9FD4F1] p-5 transition-all duration-300 hover:shadow-[0_12px_32px_-8px_rgba(17,24,39,0.15)] hover:-translate-y-0.5 ${isInView ? "animate-tool-in" : "opacity-0"}`}
                 style={{ animationDelay: `${i * 50}ms` }}
               >
                 <div className="flex items-center gap-3">
@@ -475,13 +475,13 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
                     <Logo className="w-6 h-6" />
                   </span>
                   <div className="min-w-0">
-                    <div className="text-[13.5px] font-bold text-[#0F2A3D] leading-tight truncate">{item.name}</div>
-                    <div className="mt-0.5 text-[11.5px] text-[#355368] leading-snug truncate font-medium">{item.role}</div>
+                    <div className="text-[13.5px] font-bold text-[#1F2937] leading-tight truncate">{item.name}</div>
+                    <div className="mt-0.5 text-[11.5px] text-[#374151] leading-snug truncate font-medium">{item.role}</div>
                   </div>
                 </div>
                 <ul className="mt-4 space-y-1.5">
                   {item.points.map((point) => (
-                    <li key={point} className="flex items-start gap-2 text-[12px] text-[#1D3B4F] leading-snug font-medium">
+                    <li key={point} className="flex items-start gap-2 text-[12px] text-[#1F2937] leading-snug font-medium">
                       <span className="mt-0.5 w-3.5 h-3.5 rounded-full bg-white text-[#0369A1] shadow-2xs flex items-center justify-center shrink-0">
                         <Check className="w-2 h-2" strokeWidth={3} />
                       </span>
@@ -495,12 +495,12 @@ export const IntegrationNetwork: React.FC<IntegrationNetworkProps> = ({ onOpenGe
         </ul>
 
         {/* ── Trust line ─────────────────────────────── */}
-        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-[11.5px] text-[#8A939F] text-center">
-          <span className="inline-flex items-center gap-1.5 font-semibold text-[#171923]">
-            <Lock className="w-3 h-3 text-[#00B879]" aria-hidden="true" />
+        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-[11.5px] text-[#6B7280] text-center">
+          <span className="inline-flex items-center gap-1.5 font-semibold text-[#111827]">
+            <Lock className="w-3 h-3 text-[#064E3B]" aria-hidden="true" />
             Official Meta Tech Partner · 256-Bit SSL · GDPR &amp; Global Tax Ready · AWS Cloud Hosted
           </span>
-          <span className="hidden sm:inline text-[#D1D5DB]">•</span>
+          <span className="hidden sm:inline text-[#C9CFC0]">•</span>
           <span>Brand names and logos belong to their respective owners.</span>
         </div>
       </div>

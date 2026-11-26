@@ -30,7 +30,7 @@ export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = ({
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with CODIIC on WhatsApp"
-        className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white shadow-xl shadow-[#25D366]/30 hover:shadow-2xl transition-all duration-200 active:scale-95"
+        className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#25D366] hover:bg-[#0E7A5C] text-white shadow-xl shadow-[#25D366]/30 hover:shadow-2xl transition-all duration-200 active:scale-95"
       >
         {/* Authentic WhatsApp SVG Icon */}
         <svg

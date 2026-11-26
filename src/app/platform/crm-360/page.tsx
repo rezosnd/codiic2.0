@@ -28,7 +28,7 @@ export default function Crm360Page() {
         headline={
           <>
             Every Customer, Deal, and Conversation in One{" "}
-            <em className="font-serif italic font-normal text-[#008F60]">360° Workspace.</em>
+            <em className="font-serif italic font-normal text-[#043B2C]">360° Workspace.</em>
           </>
         }
         subheadline="Automatically capture leads from your storefront, WhatsApp, Instagram, and ads — assign agents, move deals across visual pipeline stages, and never miss a follow-up."
@@ -39,7 +39,7 @@ export default function Crm360Page() {
         featuresHeading={
           <>
             Pipeline clarity,{" "}
-            <em className="font-serif italic font-normal text-[#008F60]">without the spreadsheets.</em>
+            <em className="font-serif italic font-normal text-[#043B2C]">without the spreadsheets.</em>
           </>
         }
         features={[

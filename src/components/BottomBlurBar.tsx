@@ -42,7 +42,7 @@ export const BottomBlurBar: React.FC = () => {
           WebkitMaskImage:
             "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 25%, rgba(0,0,0,0.65) 65%, rgba(0,0,0,1) 100%)",
           background:
-            "linear-gradient(to bottom, rgba(15,23,42,0) 0%, rgba(15,23,42,0.05) 50%, rgba(15,23,42,0.14) 100%)",
+            "linear-gradient(to bottom, rgba(17,24,39,0) 0%, rgba(17,24,39,0.05) 50%, rgba(17,24,39,0.14) 100%)",
         }}
       />
     </div>

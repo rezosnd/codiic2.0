@@ -244,14 +244,14 @@ export function CoverflowCarousel({
                 {/* Slide label on card */}
                 {slide.badge && (
                   <div className="absolute top-3 left-3">
-                    <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-[#00B879]/90 backdrop-blur-sm text-white text-[10px] font-bold tracking-wide">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-[#064E3B]/90 backdrop-blur-sm text-white text-[10px] font-bold tracking-wide">
                       {slide.badge}
                     </span>
                   </div>
                 )}
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   {slide.subtitle && (
-                    <p className="text-[#5EF0B8] text-[10px] font-bold tracking-widest uppercase mb-1">{slide.subtitle}</p>
+                    <p className="text-[#34D399] text-[10px] font-bold tracking-widest uppercase mb-1">{slide.subtitle}</p>
                   )}
                   {slide.title && (
                     <p className="text-white text-[14px] font-bold leading-tight">{slide.title}</p>
@@ -268,7 +268,7 @@ export function CoverflowCarousel({
               type="button"
               aria-label="Previous"
               onClick={() => nudge(-1)}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-[200] w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm border border-[#E2E6E4] shadow-md flex items-center justify-center text-[#171923] hover:bg-[#00B879] hover:text-white hover:border-[#00B879] transition-all duration-200"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-[200] w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm border border-[#E4E2D8] shadow-md flex items-center justify-center text-[#111827] hover:bg-[#064E3B] hover:text-white hover:border-[#064E3B] transition-all duration-200"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -276,7 +276,7 @@ export function CoverflowCarousel({
               type="button"
               aria-label="Next"
               onClick={() => nudge(1)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-[200] w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm border border-[#E2E6E4] shadow-md flex items-center justify-center text-[#171923] hover:bg-[#00B879] hover:text-white hover:border-[#00B879] transition-all duration-200"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-[200] w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm border border-[#E4E2D8] shadow-md flex items-center justify-center text-[#111827] hover:bg-[#064E3B] hover:text-white hover:border-[#064E3B] transition-all duration-200"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -288,7 +288,7 @@ export function CoverflowCarousel({
       {showCaption && active && (
         <div key={selected} className="mt-4 px-2 animate-[fadeUp_0.35s_ease_both]">
           {active.description && (
-            <p className="text-[13px] text-[#5A6270] leading-relaxed text-center mt-1">
+            <p className="text-[13px] text-[#4B5563] leading-relaxed text-center mt-1">
               {active.description}
             </p>
           )}
@@ -308,8 +308,8 @@ export function CoverflowCarousel({
               className={cn(
                 "rounded-full transition-all duration-300",
                 index === selected
-                  ? "w-5 h-2 bg-[#00B879]"
-                  : "w-2 h-2 bg-[#D1D5DB] hover:bg-[#00B879]/50"
+                  ? "w-5 h-2 bg-[#064E3B]"
+                  : "w-2 h-2 bg-[#C9CFC0] hover:bg-[#064E3B]/50"
               )}
             />
           ))}

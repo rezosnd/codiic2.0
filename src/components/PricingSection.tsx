@@ -90,26 +90,26 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
   ];
 
   return (
-    <section id="pricing" className="py-20 sm:py-28 bg-white border-b border-[#E8EAF0]">
+    <section id="pricing" className="py-20 sm:py-28 bg-white border-b border-[#E6E4DB]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E8F8F1] border border-[#00B879]/20 text-[#008F60] text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-[#00B879]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F1F0EA] border border-[#064E3B]/20 text-[#043B2C] text-xs font-bold uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-[#064E3B]" />
             <span>TRANSPARENT, FLEXIBLE PLANS</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#171923] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] tracking-tight leading-tight">
             One platform. Transparent global pricing.
           </h2>
 
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F7F9F8] border border-[#E2E8E5] text-xs font-semibold text-[#171923]">
-            <span className="w-2 h-2 rounded-full bg-[#00B879]" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F7F7F2] border border-[#E4E2D8] text-xs font-semibold text-[#111827]">
+            <span className="w-2 h-2 rounded-full bg-[#064E3B]" />
             <span>Transparent pricing. No hidden charges.</span>
           </div>
 
-          <p className="text-base sm:text-lg text-[#555A68] leading-relaxed">
+          <p className="text-base sm:text-lg text-[#4B5563] leading-relaxed">
             Start free, upgrade when you grow — flat 20% off all annual plans. No lock-in.
           </p>
 
@@ -117,7 +117,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
           <div className="pt-4 flex items-center justify-center gap-3">
             <span
               className={`text-xs font-bold cursor-pointer transition-colors ${
-                billingCycle === "monthly" ? "text-[#171923]" : "text-[#8A90A0]"
+                billingCycle === "monthly" ? "text-[#111827]" : "text-[#6B7280]"
               }`}
               onClick={() => setBillingCycle("monthly")}
             >
@@ -128,11 +128,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
               onClick={() =>
                 setBillingCycle(billingCycle === "annual" ? "monthly" : "annual")
               }
-              className="w-12 h-6 rounded-full bg-[#171923] p-0.5 transition-colors relative focus:outline-none"
+              className="w-12 h-6 rounded-full bg-[#111827] p-0.5 transition-colors relative focus:outline-none"
               aria-label="Toggle Annual or Monthly Billing"
             >
               <div
-                className={`w-5 h-5 rounded-full bg-[#00B879] transition-transform shadow-xs ${
+                className={`w-5 h-5 rounded-full bg-[#064E3B] transition-transform shadow-xs ${
                   billingCycle === "annual" ? "translate-x-6" : "translate-x-0"
                 }`}
               />
@@ -140,12 +140,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
 
             <span
               className={`text-xs font-bold cursor-pointer flex items-center gap-1.5 transition-colors ${
-                billingCycle === "annual" ? "text-[#171923]" : "text-[#8A90A0]"
+                billingCycle === "annual" ? "text-[#111827]" : "text-[#6B7280]"
               }`}
               onClick={() => setBillingCycle("annual")}
             >
               <span>Annual Billing</span>
-              <span className="px-2 py-0.5 rounded-full bg-[#E8F8F1] text-[#008F60] text-[10px] font-bold border border-[#00B879]/20">
+              <span className="px-2 py-0.5 rounded-full bg-[#F1F0EA] text-[#043B2C] text-[10px] font-bold border border-[#064E3B]/20">
                 Save 20%
               </span>
             </span>
@@ -162,52 +162,52 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
                 key={plan.id}
                 className={`rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-200 relative ${
                   plan.popular
-                    ? "bg-white border-2 border-[#00B879] shadow-xl shadow-[#00B879]/10 ring-4 ring-[#00B879]/10 lg:-translate-y-2"
-                    : "bg-white border border-[#E2E8E5] hover:border-[#00B879]/40 hover:shadow-md"
+                    ? "bg-white border-2 border-[#064E3B] shadow-xl shadow-[#064E3B]/10 ring-4 ring-[#064E3B]/10 lg:-translate-y-2"
+                    : "bg-white border border-[#E4E2D8] hover:border-[#064E3B]/40 hover:shadow-md"
                 }`}
               >
                 {/* Popular Pill */}
                 {plan.popular && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-[#00B879] text-white text-[10px] font-extrabold tracking-wider uppercase shadow-md shadow-[#00B879]/25">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-[#064E3B] text-white text-[10px] font-extrabold tracking-wider uppercase shadow-md shadow-[#064E3B]/25">
                     Most Popular Choice
                   </div>
                 )}
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-xl font-bold text-[#171923]">{plan.name}</h3>
-                    <span className="text-[11px] font-bold text-[#008F60] bg-[#E8F8F1] px-2.5 py-0.5 rounded-full border border-[#00B879]/20">
+                    <h3 className="text-xl font-bold text-[#111827]">{plan.name}</h3>
+                    <span className="text-[11px] font-bold text-[#043B2C] bg-[#F1F0EA] px-2.5 py-0.5 rounded-full border border-[#064E3B]/20">
                       {plan.badge}
                     </span>
                   </div>
 
-                  <p className="text-xs text-[#555A68] min-h-[36px] mb-5 leading-relaxed">
+                  <p className="text-xs text-[#4B5563] min-h-[36px] mb-5 leading-relaxed">
                     {plan.desc}
                   </p>
 
                   {/* Pricing line */}
-                  <div className="pb-5 mb-5 border-b border-[#E8EAF0]">
+                  <div className="pb-5 mb-5 border-b border-[#E6E4DB]">
                     <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-extrabold text-[#171923] font-mono">
+                      <span className="text-4xl font-extrabold text-[#111827] font-mono">
                         {price}
                       </span>
-                      <span className="text-xs text-[#555A68] font-medium">
+                      <span className="text-xs text-[#4B5563] font-medium">
                         / month
                       </span>
                     </div>
-                    <div className="text-[11px] text-[#555A68] mt-1 font-mono">
+                    <div className="text-[11px] text-[#4B5563] mt-1 font-mono">
                       {billingCycle === "annual" ? plan.annualNote : plan.monthlyNote}
                     </div>
                   </div>
 
                   {/* Features List */}
                   <div className="space-y-3 mb-6">
-                    <div className="text-xs font-bold uppercase tracking-wider text-[#171923]">
+                    <div className="text-xs font-bold uppercase tracking-wider text-[#111827]">
                       Included Features:
                     </div>
                     {plan.features.map((feat, i) => (
-                      <div key={i} className="flex items-start gap-2.5 text-xs text-[#171923]">
-                        <div className="w-4 h-4 rounded-full bg-[#E8F8F1] text-[#00B879] flex items-center justify-center shrink-0 mt-0.5">
+                      <div key={i} className="flex items-start gap-2.5 text-xs text-[#111827]">
+                        <div className="w-4 h-4 rounded-full bg-[#F1F0EA] text-[#064E3B] flex items-center justify-center shrink-0 mt-0.5">
                           <Check className="w-3 h-3 stroke-[3]" />
                         </div>
                         <span className="leading-relaxed">{feat}</span>
@@ -217,19 +217,19 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
                 </div>
 
                 {/* CTA Button */}
-                <div className="pt-4 border-t border-[#E8EAF0]">
+                <div className="pt-4 border-t border-[#E6E4DB]">
                   <button
                     onClick={plan.action}
                     className={`w-full py-3 rounded-full text-xs font-bold transition-all flex items-center justify-center gap-2 ${
                       plan.popular
-                        ? "bg-[#00B879] hover:bg-[#008F60] text-white shadow-md shadow-[#00B879]/25 hover:shadow-lg"
-                        : "bg-[#171923] hover:bg-[#00B879] text-white"
+                        ? "bg-[#064E3B] hover:bg-[#043B2C] text-white shadow-md shadow-[#064E3B]/25 hover:shadow-lg"
+                        : "bg-[#111827] hover:bg-[#064E3B] text-white"
                     }`}
                   >
                     <span>{plan.ctaText}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
-                  <div className="text-center text-[10px] text-[#8A90A0] mt-2">
+                  <div className="text-center text-[10px] text-[#6B7280] mt-2">
                     Features adapt to your actual business requirements
                   </div>
                 </div>
@@ -239,9 +239,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
         </div>
 
         {/* Stack savings callout */}
-        <div className="mt-12 p-5 rounded-2xl bg-[#F7F9F8] border border-[#E2E8E5] max-w-3xl mx-auto text-center text-xs text-[#555A68] space-y-1">
-          <div className="font-bold text-[#171923] flex items-center justify-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-[#00B879]" />
+        <div className="mt-12 p-5 rounded-2xl bg-[#F7F7F2] border border-[#E4E2D8] max-w-3xl mx-auto text-center text-xs text-[#4B5563] space-y-1">
+          <div className="font-bold text-[#111827] flex items-center justify-center gap-1.5">
+            <ShieldCheck className="w-4 h-4 text-[#064E3B]" />
             <span>Replace Your Entire Stack</span>
           </div>
           <p>
