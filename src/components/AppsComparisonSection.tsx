@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { motion, useReducedMotion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 import { createTileIcon, type TileIcon } from "./ColorfulProductIcons";
-import { RupeeOfferPill } from "./RupeeOffer";
 
 /* ─── App icons — uniform gradient tiles, CODIIC's own icon language ───────── */
 
@@ -268,311 +269,391 @@ const HelpdeskIcon = createTileIcon(
   </>
 );
 
-/* ─── App definitions — CODIIC's own clean chip language, no scribbles ────── */
+/* ─── The disconnected stack — real tools businesses juggle today ──────────── */
 
 interface AppDef {
+  /** The third-party tool */
   name: string;
+  /** The CODIIC module category it maps to */
+  cat: string;
   icon: TileIcon;
-  /** The scattered tool this module replaces */
-  replaces?: string;
-  /** Short side comment shown while the "without CODIIC" view is active */
-  comment?: { text: string; side: "l" | "r" };
 }
 
 const APPS: AppDef[] = [
-  // Row 1
-  { name: "Website", icon: WebsiteIcon, replaces: "Wix" },
-  { name: "Storefront", icon: StorefrontIcon, replaces: "Shopify" },
-  { name: "CRM 360", icon: CrmIcon, replaces: "Salesforce" },
-  { name: "Inbox", icon: InboxIcon, replaces: "Wati" },
-  { name: "Automation", icon: AutomationIcon, replaces: "Zapier" },
-  { name: "AI Assistant", icon: AiIcon, replaces: "Chatbase" },
-  // Row 2
-  {
-    name: "Sales",
-    icon: SalesIcon,
-    replaces: "Pipedrive",
-    comment: { text: "nothing connects", side: "l" },
-  },
-  { name: "Voice Calls", icon: VoiceIcon, replaces: "Exotel" },
-  { name: "Broadcasts", icon: BroadcastsIcon, replaces: "Mailchimp" },
-  { name: "Bookings", icon: BookingsIcon, replaces: "Calendly" },
-  { name: "Catalog", icon: CatalogIcon, replaces: "Excel, honestly" },
-  {
-    name: "Analytics",
-    icon: AnalyticsIcon,
-    replaces: "Tableau",
-    comment: { text: "six data silos", side: "r" },
-  },
-  // Row 3
-  { name: "Ad Library", icon: AdLibraryIcon, replaces: "Foreplay" },
-  { name: "Ad Tracker", icon: AdTrackerIcon, replaces: "Triple Whale" },
-  { name: "Competitors", icon: CompetitorsIcon, replaces: "Similarweb" },
-  { name: "Portfolio", icon: PortfolioIcon },
-  { name: "Integrations", icon: IntegrationsIcon, replaces: "Make" },
-  {
-    name: "Knowledge",
-    icon: KnowledgeIcon,
-    replaces: "Notion",
-    comment: { text: "per-seat pricing", side: "r" },
-  },
-  // Row 4
-  { name: "Retail POS", icon: RetailIcon, replaces: "Lightspeed" },
-  { name: "Invoicing", icon: InvoicingIcon, replaces: "Vyapar" },
-  { name: "Projects", icon: ProjectsIcon, replaces: "Asana" },
-  { name: "eSign", icon: SignIcon, replaces: "DocuSign" },
-  { name: "HR", icon: HrIcon, replaces: "Keka" },
-  { name: "Helpdesk", icon: HelpdeskIcon, replaces: "Zendesk" },
+  { name: "Wix", cat: "Website", icon: WebsiteIcon },
+  { name: "Shopify", cat: "Storefront", icon: StorefrontIcon },
+  { name: "Salesforce", cat: "CRM 360", icon: CrmIcon },
+  { name: "Wati", cat: "Inbox", icon: InboxIcon },
+  { name: "Zapier", cat: "Automation", icon: AutomationIcon },
+  { name: "Chatbase", cat: "AI Assistant", icon: AiIcon },
+  { name: "Pipedrive", cat: "Sales", icon: SalesIcon },
+  { name: "Exotel", cat: "Voice Calls", icon: VoiceIcon },
+  { name: "Mailchimp", cat: "Broadcasts", icon: BroadcastsIcon },
+  { name: "Calendly", cat: "Bookings", icon: BookingsIcon },
+  { name: "Excel", cat: "Catalog", icon: CatalogIcon },
+  { name: "Tableau", cat: "Analytics", icon: AnalyticsIcon },
+  { name: "Foreplay", cat: "Ad Library", icon: AdLibraryIcon },
+  { name: "Triple Whale", cat: "Ad Tracker", icon: AdTrackerIcon },
+  { name: "Similarweb", cat: "Competitors", icon: CompetitorsIcon },
+  { name: "Portfolio", cat: "Portfolio", icon: PortfolioIcon },
+  { name: "Make", cat: "Integrations", icon: IntegrationsIcon },
+  { name: "Notion", cat: "Knowledge", icon: KnowledgeIcon },
+  { name: "Lightspeed", cat: "Retail POS", icon: RetailIcon },
+  { name: "Vyapar", cat: "Invoicing", icon: InvoicingIcon },
+  { name: "Asana", cat: "Projects", icon: ProjectsIcon },
+  { name: "DocuSign", cat: "eSign", icon: SignIcon },
+  { name: "Keka", cat: "HR", icon: HrIcon },
+  { name: "Zendesk", cat: "Helpdesk", icon: HelpdeskIcon },
 ];
 
-/* ─── Section ─────────────────────────────────────────────────────────────── */
+/* ─── The connected CODIIC modules ─────────────────────────────────────────── */
 
-export const AppsComparisonSection: React.FC = () => {
-  const [without, setWithout] = useState(false);
-  const [mounted, setMounted] = useState(false);
+const MODULES: { name: string; icon: TileIcon }[] = [
+  { name: "Website Builder", icon: WebsiteIcon },
+  { name: "Omnichannel Inbox", icon: InboxIcon },
+  { name: "CRM 360", icon: CrmIcon },
+  { name: "Automation", icon: AutomationIcon },
+  { name: "Sales Tracker", icon: SalesIcon },
+  { name: "AI Voice Calls", icon: VoiceIcon },
+  { name: "Analytics", icon: AnalyticsIcon },
+  { name: "Integrations", icon: IntegrationsIcon },
+];
 
-  // Trigger the draw-in of the red X + platform card shortly after first paint
-  useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 700);
-    return () => clearTimeout(t);
-  }, []);
+/* ─── Converging transition: lavender → mint → CODIIC green ────────────────── */
 
-  const codiicOn = mounted && !without;
+const FLOW_PATHS = [
+  "M60,0 C180,60 360,110 560,168",
+  "M300,0 C360,70 480,120 575,168",
+  "M540,0 C560,80 580,130 596,168",
+  "M660,0 C640,80 620,130 604,168",
+  "M900,0 C840,70 720,120 625,168",
+  "M1140,0 C1020,60 840,110 640,168",
+];
+
+function StackConvergence() {
+  const reducedMotion = useReducedMotion();
 
   return (
-    <section id="one-platform" className="relative bg-transparent py-14 sm:py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E2E6E4] bg-white text-xs font-semibold text-[#5A6270]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00B879]" />
-            One platform, not twelve tools
-          </div>
-          <h2 className="mt-5 text-[34px] sm:text-5xl lg:text-[56px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.05]">
-            Everything connected.{" "}
-            <em className="font-serif italic font-normal text-[#008F60]">Nothing duct-taped.</em>
-          </h2>
-          <p className="mt-5 text-base sm:text-lg text-[#5A6270] leading-relaxed">
-            These aren&apos;t integrations — they&apos;re one system. Flip the switch to remember
-            what running a business looked like before CODIIC.
+    <div aria-hidden className="relative w-full h-32 sm:h-44 -my-2 select-none">
+      <svg
+        viewBox="0 0 1200 180"
+        preserveAspectRatio="none"
+        className="block w-full h-full"
+        fill="none"
+      >
+        <defs>
+          <linearGradient id="stackFlowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#DCC9F9" stopOpacity="0.7" />
+            <stop offset="55%" stopColor="#9FE8C5" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#08745A" stopOpacity="1" />
+          </linearGradient>
+        </defs>
+
+        {FLOW_PATHS.map((d, i) => (
+          <React.Fragment key={d}>
+            <motion.path
+              id={`stack-flow-${i}`}
+              d={d}
+              stroke="url(#stackFlowGrad)"
+              strokeWidth={i === 2 || i === 3 ? 2 : 1.3}
+              strokeLinecap="round"
+              opacity={i === 2 || i === 3 ? 0.9 : 0.55}
+              initial={reducedMotion ? false : { pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              viewport={{ once: true, margin: "-10% 0px" }}
+              transition={{
+                duration: 1.6,
+                delay: 0.15 + i * 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            />
+            {/* Translucent dots drifting down the two outer curves */}
+            {!reducedMotion && (i === 0 || i === 5) && (
+              <circle r="3" fill="#08745A" opacity="0.55">
+                <animateMotion dur={`${i === 0 ? 7 : 9}s`} repeatCount="indefinite">
+                  <mpath href={`#stack-flow-${i}`} />
+                </animateMotion>
+              </circle>
+            )}
+            {!reducedMotion && i === 3 && (
+              <circle r="2.4" fill="#DCC9F9" opacity="0.9">
+                <animateMotion dur="6s" repeatCount="indefinite">
+                  <mpath href="#stack-flow-3" />
+                </animateMotion>
+              </circle>
+            )}
+          </React.Fragment>
+        ))}
+      </svg>
+    </div>
+  );
+}
+
+/* ─── Fragmented connector hints inside the disconnected grid ──────────────── */
+
+const FRAGMENTS: { cls: string }[] = [
+  { cls: "top-[16%] left-[9%] w-[9%] border-t" },
+  { cls: "top-[16%] right-[18%] w-[7%] border-t" },
+  { cls: "top-[49%] left-[24%] w-[10%] border-t" },
+  { cls: "top-[49%] right-[8%] w-[8%] border-t" },
+  { cls: "top-[82%] left-[14%] w-[8%] border-t" },
+  { cls: "top-[82%] right-[27%] w-[9%] border-t" },
+];
+
+/* ─── Section ──────────────────────────────────────────────────────────────── */
+
+interface AppsComparisonSectionProps {
+  onOpenGetStarted?: () => void;
+}
+
+export const AppsComparisonSection: React.FC<AppsComparisonSectionProps> = ({
+  onOpenGetStarted,
+}) => {
+  const [view, setView] = useState<"without" | "with">("without");
+  const withCodiic = view === "with";
+
+  return (
+    <section id="one-platform" className="relative bg-transparent py-16 sm:py-24">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ── Heading ─────────────────────────────────────────── */}
+        <div className="text-center max-w-[900px] mx-auto">
+          <p className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.24em] text-[#08745A]">
+            The old way vs. the CODIIC way
           </p>
+          <h2 className="mt-4 text-[32px] sm:text-5xl lg:text-[56px] font-bold text-[#111827] tracking-[-0.035em] leading-[1.06]">
+            Too many tools.{" "}
+            <span className="text-[#08745A]">One better way</span> to run your
+            business.
+          </h2>
+          <p className="mt-5 text-base sm:text-lg text-[#64706B] leading-relaxed max-w-2xl mx-auto">
+            Your website, customer conversations, sales, payments, and operations
+            shouldn&apos;t live in separate systems. CODIIC brings everything
+            together in one connected platform.
+          </p>
+
+          {/* Segmented control */}
+          <div className="mt-8 inline-flex relative rounded-full bg-white border border-[#E5E7E1] p-1 shadow-sm">
+            <motion.span
+              aria-hidden
+              initial={false}
+              animate={{ x: withCodiic ? "100%" : "0%" }}
+              transition={{ type: "spring", stiffness: 380, damping: 34 }}
+              className="absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-full bg-[#075C46]"
+            />
+            {(["without", "with"] as const).map((v) => (
+              <button
+                key={v}
+                type="button"
+                onClick={() => setView(v)}
+                aria-pressed={view === v}
+                className={`relative z-10 w-32 sm:w-36 py-2 rounded-full text-[13px] font-bold transition-colors duration-300 cursor-pointer ${
+                  view === v ? "text-white" : "text-[#64706B] hover:text-[#111827]"
+                }`}
+              >
+                {v === "without" ? "Without CODIIC" : "With CODIIC"}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* App grid + annotation layer */}
-        <div className="relative max-w-5xl mx-auto mt-2 pt-14 pb-16 px-2 sm:px-8 lg:px-32">
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-12 sm:gap-x-6 sm:gap-y-14">
-            {APPS.map((app, appIdx) => {
-              const Icon = app.icon;
-              return (
-                <div
-                  key={app.name}
-                  className={`relative transition-all duration-500 ${
-                    without ? "" : "opacity-40 saturate-[0.5]"
-                  }`}
-                >
-                  {/* Competitor chip — the separate tool this replaces */}
-                  {app.replaces && (
-                    <span
-                      aria-hidden
-                      className={`without-note pointer-events-none absolute -top-6 sm:-top-7 left-1/2 -translate-x-1/2 z-20 whitespace-nowrap rounded-full bg-white border border-[#E5E7DF] px-2 sm:px-2.5 py-[3px] text-[9px] sm:text-[10px] font-bold tracking-wide text-[#586579] shadow-sm transition-all duration-500 ease-out ${
-                        without
-                          ? "opacity-100 translate-y-0 scale-100"
-                          : "opacity-0 translate-y-2 scale-90"
-                      }`}
-                      style={{ transitionDelay: without ? `${100 + appIdx * 30}ms` : "0ms" }}
-                    >
-                      {app.replaces}
-                    </span>
-                  )}
+        {/* ── The disconnected stack ──────────────────────────── */}
+        <div className="mt-12 sm:mt-16">
+          <div className="text-center">
+            <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.22em] text-[#64706B]">
+              The disconnected stack
+            </p>
+            <p className="mt-1.5 text-sm text-[#64706B]">
+              Separate tools. Separate logins. Separate data.
+            </p>
+          </div>
 
-                  {/* Side comment — what the scattered stack really costs */}
-                  {app.comment && (
-                    <span
-                      aria-hidden
-                      className={`without-note hidden lg:flex pointer-events-none absolute top-1/2 -translate-y-1/2 z-20 items-center gap-1.5 whitespace-nowrap text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#008F68] transition-all duration-500 ease-out ${
-                        app.comment.side === "l"
-                          ? "right-[calc(100%+12px)]"
-                          : "left-[calc(100%+12px)]"
-                      } ${without ? "opacity-100" : "opacity-0"}`}
-                      style={{ transitionDelay: without ? `${150 + appIdx * 30}ms` : "0ms" }}
-                    >
-                      {app.comment.side === "r" && (
-                        <span className="h-px w-4 bg-[#008F68]/50" />
-                      )}
-                      {app.comment.text}
-                      {app.comment.side === "l" && (
-                        <span className="h-px w-4 bg-[#008F68]/50" />
-                      )}
-                    </span>
-                  )}
+          <div
+            className={`relative mt-8 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              withCodiic ? "opacity-35 saturate-[0.35]" : "opacity-100"
+            }`}
+          >
+            {/* Fragmented connector hints — thin, muted, broken */}
+            {FRAGMENTS.map((f) => (
+              <span
+                key={f.cls}
+                aria-hidden
+                className={`hidden sm:block absolute border-dashed border-[#64706B]/25 ${f.cls}`}
+              />
+            ))}
 
-                  {/* Tile */}
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-2xl bg-white border border-black/[0.04] shadow-[0_14px_30px_-14px_rgba(23,25,35,0.22)] flex items-center justify-center transition-transform duration-300 hover:-translate-y-1">
-                    <Icon className="w-8 h-8 sm:w-9 sm:h-9" />
+            <div className="relative grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-7 sm:gap-x-6 sm:gap-y-8">
+              {APPS.map((app) => {
+                const Icon = app.icon;
+                return (
+                  <div key={app.name} className="flex flex-col items-center text-center">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white border border-[#E5E7E1] shadow-[0_8px_20px_-12px_rgba(17,24,39,0.18)] flex items-center justify-center transition-transform duration-300 hover:-translate-y-1">
+                      <Icon className="w-7 h-7 sm:w-8 sm:h-8" />
+                    </div>
+                    <div className="mt-2.5 text-[13px] sm:text-sm font-semibold text-[#111827] leading-tight">
+                      {app.name}
+                    </div>
+                    <div className="mt-0.5 text-[11px] sm:text-xs text-[#64706B] leading-tight">
+                      {app.cat}
+                    </div>
                   </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
 
-                  {/* Red strike through this scattered tool — CODIIC is on */}
-                  <svg
-                    viewBox="0 0 64 64"
-                    aria-hidden
-                    className={`without-note pointer-events-none absolute top-0 inset-x-0 mx-auto w-14 h-14 sm:w-16 sm:h-16 z-10 transition-opacity duration-200 ${
-                      without ? "opacity-0" : "opacity-100"
-                    }`}
-                  >
+        {/* ── Lavender → mint → green converging transition ───── */}
+        <StackConvergence />
+
+        {/* ── The connected CODIIC platform ───────────────────── */}
+        <div
+          className={`relative max-w-4xl mx-auto rounded-3xl bg-white border transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            withCodiic
+              ? "border-[#08745A]/30 shadow-[0_36px_90px_-34px_rgba(7,92,70,0.4)] ring-1 ring-[#08745A]/15"
+              : "border-[#E5E7E1] shadow-[0_20px_50px_-30px_rgba(17,24,39,0.25)] opacity-90"
+          }`}
+        >
+          <div className="px-5 pt-8 pb-8 sm:px-10 sm:pt-10 sm:pb-10 text-center">
+            <div className="mx-auto w-14 h-14 rounded-2xl bg-[#075C46] shadow-[0_14px_34px_-12px_rgba(7,92,70,0.6)] flex items-center justify-center">
+              <Image
+                src="/logo_withot text.png"
+                alt="CODIIC"
+                width={32}
+                height={32}
+                className="object-contain brightness-0 invert"
+              />
+            </div>
+            <h3 className="mt-5 text-2xl sm:text-3xl lg:text-4xl font-bold text-[#111827] tracking-[-0.03em] leading-tight">
+              One platform. Every app.
+            </h3>
+            <p className="mt-2 text-sm sm:text-base text-[#64706B]">
+              All tools. Every feature. One login.
+            </p>
+          </div>
+
+          {/* Modules wired into the platform */}
+          <div className="relative px-5 pb-8 sm:px-10 sm:pb-10">
+            <div className="relative">
+              {/* Connector lines fanning from the hub into every module */}
+              <svg
+                aria-hidden
+                viewBox="0 0 800 210"
+                preserveAspectRatio="none"
+                className="pointer-events-none absolute inset-0 w-full h-full"
+                fill="none"
+              >
+                {MODULES.map((_, i) => {
+                  const col = i % 4;
+                  const row = Math.floor(i / 4);
+                  const x = 100 + col * 200;
+                  const y = row === 0 ? 62 : 168;
+                  return (
                     <path
-                      d="M11 11 L53 53 M53 11 L11 53"
-                      stroke="#E11D48"
-                      strokeWidth="4.5"
+                      key={i}
+                      d={`M400,0 C400,${y * 0.45} ${x},${y * 0.55} ${x},${y}`}
+                      stroke="#08745A"
+                      strokeWidth="1.5"
+                      strokeDasharray="5 6"
                       strokeLinecap="round"
-                      fill="none"
+                      className="transition-opacity duration-700"
+                      opacity={withCodiic ? 0.65 : 0.15}
                       pathLength={100}
-                      strokeDasharray="100"
                       style={{
-                        strokeDashoffset: codiicOn ? 0 : 100,
-                        transition: "stroke-dashoffset 0.45s cubic-bezier(0.22, 1, 0.36, 1)",
-                        transitionDelay: `${appIdx * 40}ms`,
+                        strokeDashoffset: 0,
                       }}
                     />
-                  </svg>
+                  );
+                })}
+              </svg>
 
-                  <div className="mt-2 text-[11px] sm:text-xs font-semibold text-[#171923]/85 text-center leading-tight">
-                    {app.name}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* The one platform that replaces them all */}
-          <div
-            aria-hidden={without}
-            className={`absolute left-1/2 top-[48%] z-30 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out ${
-              without || !mounted
-                ? "opacity-0 scale-90 pointer-events-none"
-                : "opacity-100 scale-100"
-            }`}
-          >
-            <div className="animate-tool-float w-[240px] sm:w-[300px] rounded-3xl bg-white border border-black/[0.06] shadow-[0_30px_70px_-20px_rgba(23,25,35,0.35)] px-6 py-6 sm:px-8 sm:py-7 text-center">
-              <div className="mx-auto w-12 h-12 rounded-2xl bg-[#F1F0EA] flex items-center justify-center">
-                <Image
-                  src="/logo_withot text.png"
-                  alt="CODIIC"
-                  width={30}
-                  height={30}
-                  className="object-contain"
-                />
-              </div>
-              <div className="mt-3 text-xl sm:text-2xl font-bold text-[#171923] tracking-tight leading-tight">
-                One platform.{" "}
-                <em className="font-serif italic font-normal text-[#008F60]">Every app.</em>
-              </div>
-              <p className="mt-1.5 text-xs sm:text-sm text-[#5A6270]">
-                All tools · every feature · one login
-              </p>
-              <div className="mt-4 flex justify-center">
-                <RupeeOfferPill />
+              <div className="relative grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-6">
+                {MODULES.map((m) => {
+                  const Icon = m.icon;
+                  return (
+                    <div
+                      key={m.name}
+                      className="flex items-center gap-2.5 rounded-xl bg-[#F7F6EF] border border-[#E5E7E1] px-3 py-2.5 transition-colors duration-300 hover:border-[#9FE8C5]"
+                    >
+                      <span className="w-8 h-8 shrink-0 rounded-lg bg-white ring-1 ring-black/[0.05] flex items-center justify-center">
+                        <Icon className="w-5 h-5" />
+                      </span>
+                      <span className="text-xs sm:text-[13px] font-semibold text-[#111827] leading-tight">
+                        {m.name}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-          </div>
-
-          {/* Hand-drawn brace under the ops row */}
-          <div
-            aria-hidden
-            className={`without-note pointer-events-none absolute left-[3%] bottom-5 w-[64%] transition-all duration-500 ease-out ${
-              without ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-            }`}
-            style={{ transitionDelay: without ? `${140 + APPS.length * 30}ms` : "0ms" }}
-          >
-            <svg viewBox="0 0 600 44" preserveAspectRatio="none" className="w-full h-10" fill="none">
-              <path
-                d="M8 8 Q 150 38 296 38 Q 446 38 592 10 M8 8 L3 2 M592 10 L597 4"
-                stroke="#171923"
-                strokeWidth="2"
-                strokeLinecap="round"
-                vectorEffect="non-scaling-stroke"
-                opacity="0.5"
-              />
-            </svg>
-            <span className="whitespace-nowrap absolute left-1/2 top-full -translate-x-1/2 -translate-y-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#586579]">
-              each billed per seat, per month
-            </span>
           </div>
         </div>
 
-        {/* Toggle + price story */}
-        <div className="max-w-5xl mx-auto flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between px-2 sm:px-8 lg:px-24">
+        {/* ── Pricing comparison ──────────────────────────────── */}
+        <div className="mt-14 sm:mt-16 grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+          {/* Without CODIIC */}
+          <div
+            className={`rounded-2xl bg-[#F1EFE7] border p-6 sm:p-8 transition-all duration-500 ${
+              view === "without"
+                ? "border-[#111827]/15 ring-2 ring-[#111827]/10"
+                : "border-[#E5E7E1]"
+            }`}
+          >
+            <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#64706B]">
+              Without CODIIC
+            </p>
+            <p className="mt-2 text-sm text-[#64706B] leading-relaxed">
+              Multiple tools. Multiple subscriptions. Multiple logins.
+            </p>
+            <div className="mt-5 flex items-baseline gap-1.5">
+              <span className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#111827]">
+                ₹40,000+
+              </span>
+              <span className="text-sm font-semibold text-[#64706B]">/mo</span>
+            </div>
+            <p className="mt-3 text-xs text-[#64706B]">
+              Illustrative cost of a fragmented software stack.{" "}
+              <span className="font-semibold text-[#111827]">
+                Each billed per seat, per month.
+              </span>
+            </p>
+          </div>
+
+          {/* With CODIIC */}
+          <div
+            className={`rounded-2xl bg-[#075C46] border p-6 sm:p-8 transition-all duration-500 ${
+              withCodiic
+                ? "border-[#08745A] ring-2 ring-[#08745A]/40 shadow-[0_24px_60px_-28px_rgba(7,92,70,0.5)]"
+                : "border-transparent"
+            }`}
+          >
+            <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#9FE8C5]">
+              With CODIIC
+            </p>
+            <p className="mt-2 text-sm text-white/70 leading-relaxed">
+              One connected platform. One simple starting price.
+            </p>
+            <div className="mt-5 flex items-baseline gap-1.5">
+              <span className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+                ₹1
+              </span>
+              <span className="text-sm font-semibold text-[#9FE8C5]">/day</span>
+            </div>
+            <p className="mt-3 text-xs text-white/60">
+              Start with just ₹1 per day.
+            </p>
+          </div>
+        </div>
+
+        {/* ── CTA into the next section ───────────────────────── */}
+        <div className="mt-10 flex justify-center">
           <button
             type="button"
-            role="switch"
-            aria-checked={without}
-            onClick={() => setWithout((v) => !v)}
-            className="group flex items-center gap-3 cursor-pointer"
+            onClick={onOpenGetStarted}
+            className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#08745A] hover:bg-[#075C46] text-white text-sm font-bold shadow-[0_16px_40px_-14px_rgba(8,116,90,0.6)] transition-all duration-200 active:scale-[0.98] cursor-pointer"
           >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              className={`w-6 h-6 transition-colors duration-300 ${
-                without ? "text-[#171923]" : "text-[#00B879]"
-              }`}
-              aria-hidden
-            >
-              <path
-                d="M12 4v3.5M12 16.5V20M4 12h3.5M16.5 12H20M6.3 6.3l2.4 2.4M15.3 15.3l2.4 2.4M6.3 17.7l2.4-2.4M15.3 8.7l2.4-2.4"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-              />
-            </svg>
-            <span
-              className={`relative inline-flex w-11 h-6 shrink-0 rounded-full transition-colors duration-300 ${
-                without ? "bg-[#171923]" : "bg-[#CBD5E1]"
-              }`}
-            >
-              <span
-                className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-transform duration-300 ${
-                  without ? "translate-x-5" : "translate-x-0"
-                }`}
-              />
-            </span>
-            <span
-              className={`text-base sm:text-lg font-semibold transition-colors duration-300 ${
-                without ? "text-[#171923]" : "text-[#5A6270]"
-              }`}
-            >
-              Imagine without <span className="font-bold">CODIIC</span>
-            </span>
+            Start free — ₹1/day
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
           </button>
-
-          {/* Price story: scattered-tool bill struck out by the ₹1/day offer */}
-          <div className="flex flex-col sm:items-end gap-2.5">
-            <div className="relative inline-flex self-start sm:self-end">
-              <span
-                className={`text-xl sm:text-2xl font-extrabold tracking-tight whitespace-nowrap transition-colors duration-300 ${
-                  without ? "text-[#101828]" : "text-[#8A919C]"
-                }`}
-              >
-                ₹40,000+<span className="text-sm font-bold text-[#586579]">/mo in tools</span>
-              </span>
-              {/* Big red hand-drawn cross — only while CODIIC is in the picture */}
-              <svg
-                viewBox="0 0 160 44"
-                preserveAspectRatio="none"
-                aria-hidden
-                className={`without-note pointer-events-none absolute -inset-x-3 -inset-y-1 w-[calc(100%+24px)] h-[calc(100%+8px)] transition-all duration-500 ease-out ${
-                  without ? "opacity-0 scale-90" : "opacity-100 scale-100"
-                }`}
-              >
-                <path
-                  d="M6 6 C 55 18, 108 28, 154 38 M154 6 C 106 16, 54 28, 6 38"
-                  stroke="#E11D48"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  fill="none"
-                  vectorEffect="non-scaling-stroke"
-                />
-              </svg>
-            </div>
-          </div>
         </div>
       </div>
     </section>

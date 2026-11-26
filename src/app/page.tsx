@@ -45,7 +45,7 @@ export default function Home() {
         <ConnectedWorkspaceSection onOpenGetStarted={goToLogin} />
 
         {/* 5. Apps Comparison (Imagine without CODIIC — Odoo-style toggle grid) */}
-        <AppsComparisonSection />
+        <AppsComparisonSection onOpenGetStarted={goToLogin} />
 
         {/* 7. Benefits bento (Less switching, Clearer sales, Smoother follow-ups) */}
         <BenefitsSection onOpenGetStarted={goToLogin} />
