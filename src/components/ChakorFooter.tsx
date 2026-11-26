@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { ArrowRight, CheckCircle2, Shield, Heart } from "lucide-react";
+import { GradientBackground } from "@/components/ui/dark-blue-hero-gardient";
 
 const PLATFORM_LINKS = [
   { label: "Drag-and-Drop Website Builder", href: "/platform/website-builder" },
@@ -39,8 +40,11 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
   onOpenGetStarted,
 }) => {
   return (
-    <footer id="footer" className="bg-[#111827] text-white pt-16 pb-12 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer id="footer" className="relative overflow-hidden bg-[#111827] text-white pt-16 pb-12 border-t border-gray-800">
+      <div className="absolute inset-0 pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_42%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_42%)]">
+        <GradientBackground className="h-full w-full" />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Top 4-Column Grid (Chakor & Dropship-inspired organization) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-gray-800">
@@ -70,7 +74,7 @@ export const ChakorFooter: React.FC<ChakorFooterProps> = ({
             <div className="pt-2">
               <button
                 onClick={onOpenGetStarted}
-                className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#064E3B] hover:bg-[#043B2C] text-white text-xs font-bold transition-all shadow-md shadow-[#064E3B]/20 hover:shadow-lg active:scale-95 cursor-pointer"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#C6A15B] hover:bg-[#A87F3D] text-[#111827] text-xs font-bold transition-all shadow-md shadow-[#C6A15B]/20 hover:shadow-lg active:scale-95 cursor-pointer"
               >
                 <span>Start Free</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />

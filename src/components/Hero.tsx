@@ -23,9 +23,8 @@ import {
   AutomationColorIcon,
   AnalyticsColorIcon,
 } from "./ColorfulProductIcons";
-import { BipsyncHeroCanvas } from "./BipsyncHeroCanvas";
+import { HeroShaderBackground } from "./ui/hero";
 import { RupeeOfferPill } from "./RupeeOffer";
-import { ContainerTextFlip } from "@/components/ui/container-text-flip";
 
 interface HeroProps {
   onOpenGetStarted: () => void;
@@ -87,23 +86,23 @@ const ROWS: FlowRow[] = [
 const FlowCard: React.FC<{ item: FlowCardItem }> = ({ item }) => {
   const Logo = item.Logo;
   return (
-    <div className="w-[228px] sm:w-[268px] h-[64px] sm:h-[74px] shrink-0 flex items-center gap-3 pl-2.5 pr-3 sm:pl-3 sm:pr-4 rounded-2xl bg-white border border-[#DAD8CD] shadow-[0_10px_30px_-14px_rgba(17,24,39,0.22)]">
-      <span className="w-10 h-10 sm:w-11 sm:h-11 shrink-0 rounded-xl bg-white ring-1 ring-black/[0.06] flex items-center justify-center">
-        <Logo className="w-6 h-6" />
+    <div className="w-[200px] sm:w-[232px] h-[54px] sm:h-[60px] shrink-0 flex items-center gap-2.5 px-2.5 sm:px-3 rounded-xl bg-white border border-[#E4E2D8] shadow-[0_8px_24px_-14px_rgba(17,24,39,0.25)]">
+      <span className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-lg bg-white ring-1 ring-black/[0.06] flex items-center justify-center">
+        <Logo className="w-5 h-5" />
       </span>
       <div className="min-w-0 flex-1">
-        <div className="text-[12px] sm:text-[13px] font-bold text-[#111827] truncate leading-tight">
+        <div className="text-[11px] sm:text-[12px] font-bold text-[#111827] truncate leading-tight">
           {item.title}
         </div>
-        <div className="text-[10px] sm:text-[11px] text-[#6B7280] truncate leading-tight mt-1">
+        <div className="text-[9px] sm:text-[10px] text-[#6B7280] truncate leading-tight mt-0.5">
           {item.subtitle}
         </div>
       </div>
       <div className="text-right shrink-0">
-        <div className="text-[12px] sm:text-[14px] font-extrabold text-[#111827] tabular-nums leading-tight">
+        <div className="text-[11px] sm:text-[12px] font-extrabold text-[#111827] tabular-nums leading-tight">
           {item.value}
         </div>
-        <span className="inline-block mt-1 text-[9px] font-semibold text-[#064E3B] bg-[#F1F0EA] px-1.5 py-0.5 rounded-md leading-none">
+        <span className="inline-block mt-0.5 text-[8px] font-semibold text-[#064E3B] bg-[#EAF7F1] px-1.5 py-0.5 rounded leading-none">
           {item.growth}
         </span>
       </div>
@@ -112,15 +111,15 @@ const FlowCard: React.FC<{ item: FlowCardItem }> = ({ item }) => {
 };
 
 const SkeletonCard: React.FC = () => (
-  <div className="w-[228px] sm:w-[268px] h-[64px] sm:h-[74px] shrink-0 flex items-center gap-3 pl-2.5 pr-3 sm:pl-3 sm:pr-4 rounded-2xl bg-white border border-[#DAD8CD]">
-    <span className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#F1F0EA] shrink-0" />
-    <div className="flex-1 space-y-2">
-      <span className="block h-2.5 w-[68%] rounded-full bg-[#F1F0EA]" />
-      <span className="block h-2 w-[46%] rounded-full bg-[#F1F0EA]" />
+  <div className="w-[200px] sm:w-[232px] h-[54px] sm:h-[60px] shrink-0 flex items-center gap-2.5 px-2.5 sm:px-3 rounded-xl bg-white/70 border border-[#E4E2D8]/70">
+    <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#EDEBE2] shrink-0" />
+    <div className="flex-1 space-y-1.5">
+      <span className="block h-2 w-[68%] rounded-full bg-[#EDEBE2]" />
+      <span className="block h-1.5 w-[46%] rounded-full bg-[#EDEBE2]" />
     </div>
-    <div className="w-12 space-y-2 flex flex-col items-end">
-      <span className="block h-2.5 w-full rounded-full bg-[#F1F0EA]" />
-      <span className="block h-2 w-7 rounded-full bg-[#F1F0EA]" />
+    <div className="w-10 space-y-1.5 flex flex-col items-end">
+      <span className="block h-2 w-full rounded-full bg-[#EDEBE2]" />
+      <span className="block h-1.5 w-6 rounded-full bg-[#EDEBE2]" />
     </div>
   </div>
 );
@@ -169,181 +168,110 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
   const paused = !inView;
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#EDECE4_0%,#F7F7F2_100%)] pt-12 sm:pt-20 lg:pt-24">
-      {/* Interactive 3D hexagon terrain (reacts to the cursor) */}
-      <BipsyncHeroCanvas className="absolute inset-0 pointer-events-none z-0 overflow-hidden" />
+    <section className="relative overflow-hidden bg-[#03271E] -mt-[76px] pt-[118px] sm:pt-[136px] lg:pt-[148px]">
+      {/* Animated CODIIC mesh-gradient shader — soft emerald/mint light wash */}
+      <HeroShaderBackground className="z-0" />
+
+      {/* Atmospheric vignette — covers the copy area down to the stage seam
+          (the stage has its own solid bg at z-10, so this won't tint it) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_62%_58%_at_50%_34%,rgba(3,39,30,0)_0%,rgba(3,39,30,0.5)_62%,rgba(3,39,30,0.85)_100%)]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[300px] z-[1] bg-gradient-to-b from-transparent to-[#03271E]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-[4%] -translate-x-1/2 z-[1] w-[900px] h-[420px] bg-[radial-gradient(ellipse_at_center,rgba(54,214,166,0.14)_0%,rgba(54,214,166,0)_65%)]"
+      />
 
       {/* Copy */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Soft halo so the copy stays readable over the 3D terrain */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-[-10%] -translate-x-1/2 w-[110%] max-w-[980px] h-[120%] -z-10 bg-[radial-gradient(ellipse_at_center,rgba(247,247,242,0.95)_0%,rgba(237,236,228,0.75)_40%,rgba(237,236,228,0)_72%)]"
-        />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        {/* Announcement badge — small, elegant, existing ₹1/day offer */}
         <RupeeOfferPill
-          className="mb-6"
-          label="Sara kuch ₹1/day mein • No-Code Builder & Official Meta Cloud API 🌍"
+          dark
+          className="mb-5 sm:mb-6"
+          label="Everything in one plan • Just ₹1/day"
         />
 
-        <h1 className="mx-auto max-w-5xl text-[40px] sm:text-6xl lg:text-[76px] font-bold text-[#111827] tracking-[-0.035em] leading-[1.02] [text-shadow:0_2px_24px_rgba(255,255,255,0.9)]">
-          <span className="block">Everything You Need to</span>
-          <ContainerTextFlip
-            words={["Build", "Manage", "Grow", "Automate", "Sell"]}
-            interval={2500}
-            animationDuration={700}
-            className="my-2 sm:my-3"
-          />
-          <span className="block">Your Business, All in One Place.</span>
+        {/* Eyebrow */}
+        <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#9FE8C6]/90">
+          The All-in-One Business Platform
+        </p>
+
+        {/* Headline */}
+        <h1 className="mx-auto mt-4 sm:mt-5 max-w-[1100px] text-[40px] sm:text-6xl lg:text-[80px] font-bold tracking-[-0.035em] leading-[1.04] text-white [text-shadow:0_2px_30px_rgba(3,39,30,0.9)]">
+          <span className="block">Everything your business needs.</span>
+          <span className="block text-[#9FE8C6]">All in one place.</span>
         </h1>
 
-        <div className="mx-auto mt-5 sm:mt-6 max-w-2xl rounded-2xl sm:rounded-3xl px-5 py-3.5 sm:px-7 sm:py-4 bg-white/60 backdrop-blur-xl backdrop-saturate-150 border border-white/80 shadow-[0_20px_50px_-24px_rgba(6,95,70,0.45),inset_0_1px_0_rgba(255,255,255,0.9)]">
-          <p className="text-base sm:text-lg lg:text-xl font-medium text-[#1F2937] leading-relaxed">
-            Create websites, sell products, manage customers, accept bookings, and automate your
-            daily work — all from one platform, with just a few clicks.
-          </p>
-        </div>
+        {/* Description */}
+        <p className="mx-auto mt-5 sm:mt-6 max-w-2xl text-base sm:text-lg lg:text-xl font-medium text-white/75 leading-relaxed">
+          Build your website, manage customers, accept payments, and automate your
+          business — all from one platform.
+        </p>
 
+        {/* CTAs */}
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             type="button"
             onClick={onOpenGetStarted}
             id="hero-primary-cta"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#065F46] hover:bg-[#064E3B] text-white text-[15px] font-bold shadow-[0_14px_34px_-12px_rgba(6,95,70,0.7)] transition-colors active:scale-[0.98] cursor-pointer"
+            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#36D6A6] hover:bg-[#2CC297] text-[#03271E] text-[15px] font-bold shadow-[0_16px_40px_-12px_rgba(54,214,166,0.55)] transition-all duration-200 active:scale-[0.98] cursor-pointer"
           >
             Get Started
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
           </button>
           <button
             type="button"
             onClick={onOpenSeeHowItWorks}
             id="hero-secondary-cta"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/65 hover:bg-white/85 backdrop-blur-md text-[#111827] text-[15px] font-semibold border border-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] transition-colors active:scale-[0.98] cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/[0.08] hover:bg-white/[0.14] backdrop-blur-md text-white text-[15px] font-semibold border border-white/15 transition-colors duration-200 active:scale-[0.98] cursor-pointer"
           >
-            <Compass className="w-4 h-4" />
+            <Compass className="w-4 h-4 text-[#9FE8C6]" />
             Explore Features
           </button>
         </div>
 
-        <p className="mt-4 text-xs sm:text-sm italic text-[#4B5563]">
-          Na coding ki tension, na mehnga setup — website se WhatsApp payment tak sab connected.
-        </p>
-
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-2 text-xs sm:text-sm text-[#4B5563]">
-          <span className="flex items-center gap-0.5 text-[#C6A15B]" aria-hidden="true">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} className="w-3.5 h-3.5 fill-current" />
-            ))}
+        {/* Trust row — one line on desktop, wraps cleanly on mobile */}
+        <div className="mt-9 sm:mt-10 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs sm:text-sm text-white/60">
+          <span className="flex items-center gap-1.5">
+            <Star className="w-3.5 h-3.5 fill-[#C6A15B] text-[#C6A15B]" aria-hidden="true" />
+            <span className="font-semibold text-white/90">4.9/5</span>
           </span>
-          <span className="font-semibold text-[#111827]">4.9</span>
-          <span>from 2,400+ global brands &amp; agencies</span>
-          <span className="hidden sm:inline text-[#9CA3AF]">·</span>
-          {/* ── Pencil-sketch oval encircle (matches reference) ── */}
-          <span className="inline-flex items-center">
-            <span className="relative inline-block px-3.5 sm:px-4 py-0.5">
-              {/* Dark bold text — matches reference */}
-              <span className="relative z-10 font-extrabold text-[#111827] tracking-tight text-xs sm:text-sm" style={{ fontFamily: "inherit" }}>
-                Zero coding — only drag &amp; drop
-              </span>
-
-              {/* Hand-drawn teal oval SVG — drawn around the text */}
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 220 44"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="absolute inset-0 w-full h-full overflow-visible pointer-events-none"
-                preserveAspectRatio="none"
-              >
-                <defs>
-                  <linearGradient id="ovalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#0E7A5C" />
-                    <stop offset="50%" stopColor="#064E3B" />
-                    <stop offset="100%" stopColor="#34D399" />
-                  </linearGradient>
-                </defs>
-
-                {/* Primary oval stroke — thick, wobbly, hand-drawn */}
-                <path
-                  d="
-                    M 28 36
-                    C 14 40, 4 32, 6 22
-                    C 8 10, 22 4, 50 3
-                    C 80 2, 130 1, 168 3
-                    C 196 4, 216 10, 215 20
-                    C 214 30, 202 38, 178 40
-                    C 148 43, 98 44, 58 42
-                    C 42 41, 30 39, 28 36 Z
-                  "
-                  stroke="url(#ovalGrad)"
-                  strokeWidth="3.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  style={{
-                    strokeDasharray: 620,
-                    strokeDashoffset: 620,
-                    animation: "sketchDraw 1.1s cubic-bezier(0.35,0,0.25,1) 0.2s forwards",
-                  }}
-                />
-
-                {/* Secondary inner oval — thinner, offset, pencil second-pass feel */}
-                <path
-                  d="
-                    M 32 38
-                    C 20 41, 10 35, 12 25
-                    C 13 14, 26 7, 52 5.5
-                    C 82 4, 132 3, 166 5
-                    C 194 6.5, 212 13, 211 22
-                    C 210 31, 200 39, 175 41.5
-                    C 144 44, 94 45, 55 43
-                    C 40 42, 32 40, 32 38 Z
-                  "
-                  stroke="#064E3B"
-                  strokeWidth="1.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  opacity={0.38}
-                  style={{
-                    strokeDasharray: 620,
-                    strokeDashoffset: 620,
-                    animation: "sketchDraw 1.1s cubic-bezier(0.35,0,0.25,1) 0.42s forwards",
-                  }}
-                />
-
-                {/* Tiny sketch tail / overshoot — like a pen lifting off */}
-                <path
-                  d="M 28 36 C 24 35, 20 36, 18 34"
-                  stroke="#064E3B"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  opacity={0.55}
-                  style={{
-                    strokeDasharray: 30,
-                    strokeDashoffset: 30,
-                    animation: "sketchDraw 0.4s ease 1.1s forwards",
-                  }}
-                />
-              </svg>
-            </span>
-          </span>
-          <span className="hidden sm:inline text-[#9CA3AF]">·</span>
+          <span className="text-white/25" aria-hidden="true">·</span>
+          <span>2,400+ brands &amp; agencies</span>
+          <span className="text-white/25" aria-hidden="true">·</span>
+          <span>Zero coding required</span>
+          <span className="text-white/25" aria-hidden="true">·</span>
           <span>2-minute setup</span>
-          <span className="hidden sm:inline text-[#9CA3AF]">·</span>
-          <span>Keep your existing WhatsApp Business number</span>
         </div>
+
+        {/* Supporting line */}
+        <p className="mt-4 text-xs sm:text-sm italic text-[#9FE8C6]/60">
+          From your first website to your next sale, everything works together.
+        </p>
       </div>
 
-      {/* Flow stage: cards travel left → right through the CODIIC hub */}
-      <div ref={stageRef} className="relative mt-12 sm:mt-16 h-[300px] sm:h-[380px] lg:h-[400px]" aria-hidden="true">
-        {/* Beam */}
-        <div className="absolute left-[26%] sm:left-1/2 top-0 bottom-0 -translate-x-1/2 w-[3px] bg-gradient-to-b from-[#064E3B]/0 via-[#064E3B] to-[#064E3B]/0" />
+      {/* Flow stage: cards travel left → right through the CODIIC hub (light band) */}
+      <div
+        ref={stageRef}
+        className="relative z-10 mt-14 sm:mt-20 h-[240px] sm:h-[290px] lg:h-[310px] bg-[#F5F3EC] rounded-t-[32px] sm:rounded-t-[48px] border-t border-white/70 shadow-[0_-24px_60px_-30px_rgba(3,39,30,0.55)] overflow-hidden"
+        aria-hidden="true"
+      >
+        {/* Beam — thin mint line with a soft glow */}
+        <div className="absolute left-[26%] sm:left-1/2 top-0 bottom-0 -translate-x-1/2 w-[2px] bg-gradient-to-b from-[#36D6A6]/0 via-[#36D6A6]/55 to-[#36D6A6]/0" />
+        <div className="absolute left-[26%] sm:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-full bg-[#36D6A6]/[0.07] blur-xl" />
 
         {/* Rows */}
-        <div className="absolute inset-0 flex flex-col justify-center gap-3 sm:gap-4 [perspective:1400px] [mask-image:linear-gradient(90deg,transparent,black_5%,black_92%,transparent)] sm:[mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+        <div className="absolute inset-0 flex flex-col justify-center gap-2.5 sm:gap-3 [perspective:1200px] [mask-image:linear-gradient(90deg,transparent,black_6%,black_92%,transparent)] sm:[mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
           {ROWS.map((row, i) => (
             <div
               key={i}
-              className="relative h-[64px] sm:h-[74px]"
-              style={{ transform: `rotateX(14deg) rotate(${(i - 1) * 0.8}deg) translateZ(0)` }}
+              className="relative h-[54px] sm:h-[60px]"
+              style={{ transform: `rotateX(10deg) rotate(${(i - 1) * 0.6}deg) translateZ(0)` }}
             >
               {reducedMotion ? (
                 <div className="absolute inset-0 flex justify-center gap-4">
@@ -367,22 +295,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
 
         {/* Hub */}
         <div className="absolute left-[26%] sm:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-          <div className="relative w-[64px] h-[64px] sm:w-[84px] sm:h-[84px] rounded-[20px] sm:rounded-[26px] bg-[#064E3B] ring-[6px] ring-white shadow-[0_20px_50px_-12px_rgba(6,78,59,0.55)] flex items-center justify-center">
-            <div className="relative w-8 h-8 sm:w-10 sm:h-10">
+          <div className="relative w-[60px] h-[60px] sm:w-[72px] sm:h-[72px] rounded-[18px] sm:rounded-[22px] bg-[#075B46] ring-[5px] ring-white shadow-[0_18px_44px_-14px_rgba(0,0,0,0.5)] flex items-center justify-center">
+            <div className="relative w-7 h-7 sm:w-9 sm:h-9">
               <Image
                 src="/logo_withot text.png"
                 alt=""
                 fill
                 priority
-                sizes="40px"
+                sizes="36px"
                 className="object-contain brightness-0 invert"
               />
             </div>
           </div>
         </div>
 
-        {/* Frosted-glass bottom edge */}
-        <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 pointer-events-none z-20 backdrop-blur-xl backdrop-saturate-150 bg-gradient-to-t from-[#F1F0EA]/90 via-[#F1F0EA]/45 to-transparent [mask-image:linear-gradient(to_top,black_35%,transparent)]" />
+        {/* Frosted-glass bottom edge — slim */}
+        <div className="absolute inset-x-0 bottom-0 h-12 sm:h-14 pointer-events-none z-20 backdrop-blur-lg bg-gradient-to-t from-[#F5F3EC]/90 via-[#F5F3EC]/40 to-transparent" />
       </div>
     </section>
   );

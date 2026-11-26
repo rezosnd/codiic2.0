@@ -18,6 +18,7 @@ import { ChakorFooter } from "@/components/ChakorFooter";
 import { WhatsAppFloatingButton } from "@/components/WhatsAppFloatingButton";
 import { BottomBlurBar } from "@/components/BottomBlurBar";
 import { FrostedEmeraldBackdrop } from "@/components/FrostedEmeraldBackdrop";
+import { Skiper31 } from "@/components/ui/text-scroll-animation";
 
 export default function Home() {
   const router = useRouter();
@@ -33,6 +34,9 @@ export default function Home() {
       <main className="flex-1">
         {/* 2. Hero Section (All your business. One connected platform.) */}
         <Hero onOpenGetStarted={goToLogin} onOpenSeeHowItWorks={goToLogin} />
+
+        {/* 2b. Skiper31 scroll-scrubbed word reveal (Why CODIIC works) */}
+        <Skiper31 onOpenGetStarted={goToLogin} />
 
         {/* 3. Main Product Tools (Platform intelligence) */}
         <MainToolsSection onOpenGetStarted={goToLogin} />

@@ -2,15 +2,30 @@
 
 :root {
   --font-geist-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --color-charcoal: #111827;
-  --color-primary-green: #064E3B;
-  --color-deep-green: #043B2C;
+
+  /* ── CODIIC design system ─────────────────────────────────── */
+  --color-forest: #063B2E;        /* deep forest green — immersive sections */
+  --color-emerald: #075C46;       /* dark emerald — hubs, strong emphasis */
+  --color-brand: #008F68;         /* CODIIC brand green — CTAs, accents */
+  --color-mint: #9AE6C5;          /* mint accent — highlighted words, strokes */
+  --color-mint-soft: #DDF4E9;     /* soft mint — tinted surfaces */
+  --color-mint-bright: #36D6A6;   /* bright mint — primary CTA on dark */
+  --color-cream: #F7F6F0;         /* warm cream — content sections */
+  --color-ink: #101828;           /* primary text */
+  --color-muted: #586579;         /* secondary text */
+  --color-line: #E5E7DF;          /* subtle borders */
+  --color-gold: #C8A45D;          /* gold accent — sparing highlights */
+
+  /* Legacy aliases — kept mapped to the design system */
+  --color-charcoal: #101828;
+  --color-primary-green: #075C46;
+  --color-deep-green: #063B2E;
   --color-light-mint: #F1F0EA;
-  --color-soft-bg: #F7F7F2;
+  --color-soft-bg: #F7F6F0;
   --color-white: #ffffff;
-  --color-text-main: #111827;
-  --color-text-muted: #4B5563;
-  --color-border: #E4E2D8;
+  --color-text-main: #101828;
+  --color-text-muted: #586579;
+  --color-border: #E5E7DF;
 }
 
 html {

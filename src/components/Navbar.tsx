@@ -6,7 +6,6 @@ import {
   Menu,
   X,
   ArrowRight,
-  ChevronDown,
   ChevronRight,
   Sparkles,
   ExternalLink,
@@ -27,6 +26,14 @@ import {
   EducationColorIcon,
   HospitalityColorIcon,
 } from "./ColorfulProductIcons";
+import {
+  MotionNavigationMenu,
+  MotionNavigationMenuContent,
+  MotionNavigationMenuItem,
+  MotionNavigationMenuLink,
+  MotionNavigationMenuList,
+  MotionNavigationMenuTrigger,
+} from "./ui/motion-navigation-menu";
 
 const MOBILE_LINKS = [
   { href: "#tools", label: "Platform & Tools", badge: "8 tools" },
@@ -50,13 +57,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<"platform" | "solutions" | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let lastScrolled = false;
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 15;
+      // Hysteresis: shrink after 28px, expand back only under 8px — no flicker
+      const isScrolled = lastScrolled ? window.scrollY > 8 : window.scrollY > 28;
       if (isScrolled !== lastScrolled) {
         lastScrolled = isScrolled;
         setScrolled(isScrolled);
@@ -82,11 +89,11 @@ export const Navbar: React.FC<NavbarProps> = ({
     };
   }, [mobileMenuOpen]);
 
-  // Close dropdown on click outside
+  // Close mobile menu on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
-        setActiveDropdown(null);
+        setMobileMenuOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -187,7 +194,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header
       ref={navRef}
-      className="sticky top-2.5 sm:top-3.5 z-50 w-full px-2.5 sm:px-6 lg:px-8 transition-all duration-300"
+      className="sticky top-2.5 sm:top-3 z-50 w-full px-2.5 sm:px-6 lg:px-8"
     >
       {mobileMenuOpen && (
         <div
@@ -199,9 +206,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Floating Capsule Bar (Dropship-inspired refined SaaS navigation) */}
       <div
-        className={`w-full max-w-7xl mx-auto rounded-full transition-all duration-300 border border-white/70 backdrop-blur-xl backdrop-saturate-150 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] ${scrolled
-            ? "bg-white/80 shadow-xl shadow-[#065F46]/10 py-1.5 pl-3 pr-1.5 sm:py-2 sm:px-6"
-            : "bg-white/65 shadow-lg shadow-[#065F46]/[0.06] py-2 pl-3.5 pr-2 sm:py-2.5 sm:px-6"
+        className={`w-full mx-auto rounded-full border border-white/70 backdrop-blur-xl backdrop-saturate-150 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${scrolled
+            ? "max-w-5xl bg-white/85 shadow-xl shadow-[#065F46]/10 py-1 pl-2.5 pr-1 sm:py-1.5 sm:pl-4 sm:pr-1.5"
+            : "max-w-7xl bg-white/65 shadow-lg shadow-[#065F46]/[0.06] py-2 pl-3.5 pr-2 sm:py-3 sm:pl-6 sm:pr-2.5"
           }`}
       >
         <div className="flex items-center justify-between">
@@ -211,8 +218,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="flex items-center gap-2 focus:outline-none shrink-0 group py-1"
             aria-label="CODIIC Homepage"
           >
-            {/* Desktop: Full Logo with Text */}
-            <div className="hidden sm:block relative h-8 w-32 md:w-36">
+            {/* Desktop: Full Logo with Text — shrinks slightly on scroll */}
+            <div
+              className={`hidden sm:block relative transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${scrolled ? "h-7 w-28 md:w-32" : "h-8 w-32 md:w-36"
+                }`}
+            >
               <Image
                 src="/logo_with_text.png"
                 alt="CODIIC All-in-One Business Platform"
@@ -235,72 +245,112 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </a>
 
-          {/* Center: Clean SaaS Dropdowns & Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2 text-[13px] font-semibold text-[#111827]">
-            {/* Platform Dropdown Trigger */}
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() =>
-                  setActiveDropdown(activeDropdown === "platform" ? null : "platform")
-                }
-                onMouseEnter={() => setActiveDropdown("platform")}
-                aria-expanded={activeDropdown === "platform"}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${activeDropdown === "platform"
-                    ? "bg-[#F1F0EA] text-[#064E3B]"
-                    : "text-[#111827] hover:text-[#064E3B] hover:bg-[#F7F7F2]"
-                  }`}
-              >
-                <span>Platform</span>
-                <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "platform" ? "rotate-180 text-[#064E3B]" : "text-[#4B5563]"
-                    }`}
-                  strokeWidth={2}
-                />
-              </button>
-            </div>
+          {/* Center: Animated spring-viewport navigation menu */}
+          <MotionNavigationMenu
+            className="hidden md:flex"
+            viewportClassName="rounded-3xl"
+            springStiffness={420}
+            springDamping={34}
+          >
+            <MotionNavigationMenuList>
+              <MotionNavigationMenuItem value="platform">
+                <MotionNavigationMenuTrigger>Platform</MotionNavigationMenuTrigger>
+                <MotionNavigationMenuContent>
+                  <div className="w-[min(680px,80vw)]">
+                    <div className="flex items-center justify-between px-2 pb-2">
+                      <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-[#4B5563]">
+                        <Sparkles className="w-3.5 h-3.5 text-[#064E3B]" />
+                        Core platform tools
+                      </span>
+                      <button
+                        type="button"
+                        onClick={onOpenSeeHowItWorks}
+                        className="flex items-center gap-1 text-xs font-semibold text-[#064E3B] hover:underline cursor-pointer"
+                      >
+                        Interactive walkthrough
+                        <ExternalLink className="w-3 h-3" />
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-3 gap-0.5">
+                      {platformTools.map((tool) => {
+                        const Icon = tool.icon;
+                        const href = tool.href.startsWith("#")
+                          ? `${linkPrefix}${tool.href}`
+                          : tool.href;
+                        return (
+                          <MotionNavigationMenuLink key={tool.title} href={href}>
+                            <span className="flex items-center gap-2">
+                              <span className="w-7 h-7 flex items-center justify-center shrink-0">
+                                <Icon className="w-7 h-7" />
+                              </span>
+                              <span className="text-xs font-bold text-[#111827]">
+                                {tool.title}
+                              </span>
+                            </span>
+                            <span className="text-[11px] text-[#4B5563] leading-snug pl-9 -mt-1">
+                              {tool.desc}
+                            </span>
+                          </MotionNavigationMenuLink>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </MotionNavigationMenuContent>
+              </MotionNavigationMenuItem>
 
-            {/* Solutions Dropdown Trigger */}
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() =>
-                  setActiveDropdown(activeDropdown === "solutions" ? null : "solutions")
-                }
-                onMouseEnter={() => setActiveDropdown("solutions")}
-                aria-expanded={activeDropdown === "solutions"}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${activeDropdown === "solutions"
-                    ? "bg-[#F1F0EA] text-[#064E3B]"
-                    : "text-[#111827] hover:text-[#064E3B] hover:bg-[#F7F7F2]"
-                  }`}
-              >
-                <span>Solutions</span>
-                <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "solutions" ? "rotate-180 text-[#064E3B]" : "text-[#4B5563]"
-                    }`}
-                  strokeWidth={2}
-                />
-              </button>
-            </div>
+              <MotionNavigationMenuItem value="solutions">
+                <MotionNavigationMenuTrigger>Solutions</MotionNavigationMenuTrigger>
+                <MotionNavigationMenuContent>
+                  <div className="w-[min(560px,80vw)]">
+                    <div className="px-2 pb-2 text-[10px] font-bold uppercase tracking-wider text-[#4B5563]">
+                      Industry-specific workflows
+                    </div>
+                    <div className="grid grid-cols-2 gap-0.5">
+                      {solutionIndustries.map((ind) => {
+                        const Icon = ind.icon;
+                        const href = ind.href.startsWith("#")
+                          ? `${linkPrefix}${ind.href}`
+                          : ind.href;
+                        return (
+                          <MotionNavigationMenuLink key={ind.title} href={href}>
+                            <span className="flex items-center gap-2.5">
+                              <span className="w-7 h-7 flex items-center justify-center shrink-0">
+                                <Icon className="w-7 h-7" />
+                              </span>
+                              <span className="text-xs font-bold text-[#111827]">
+                                {ind.title}
+                              </span>
+                            </span>
+                            <span className="text-[11px] text-[#4B5563] leading-snug pl-9 -mt-1">
+                              {ind.desc}
+                            </span>
+                          </MotionNavigationMenuLink>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </MotionNavigationMenuContent>
+              </MotionNavigationMenuItem>
 
-            {/* Integrations Link */}
-            <a
-              href={`${linkPrefix}#integrations`}
-              onClick={() => setActiveDropdown(null)}
-              className="px-3.5 py-1.5 rounded-full text-[#111827] hover:text-[#064E3B] hover:bg-[#F7F7F2] transition-all"
-            >
-              Integrations
-            </a>
+              <MotionNavigationMenuItem>
+                <MotionNavigationMenuLink
+                  href={`${linkPrefix}#integrations`}
+                  className="h-9 flex-row items-center px-4 py-2 text-sm font-semibold"
+                >
+                  Integrations
+                </MotionNavigationMenuLink>
+              </MotionNavigationMenuItem>
 
-            {/* Reviews Link */}
-            <a
-              href={`${linkPrefix}#reviews`}
-              onClick={() => setActiveDropdown(null)}
-              className="px-3.5 py-1.5 rounded-full text-[#111827] hover:text-[#064E3B] hover:bg-[#F7F7F2] transition-all"
-            >
-              Reviews
-            </a>
-          </nav>
+              <MotionNavigationMenuItem>
+                <MotionNavigationMenuLink
+                  href={`${linkPrefix}#reviews`}
+                  className="h-9 flex-row items-center px-4 py-2 text-sm font-semibold"
+                >
+                  Reviews
+                </MotionNavigationMenuLink>
+              </MotionNavigationMenuItem>
+            </MotionNavigationMenuList>
+          </MotionNavigationMenu>
 
           {/* Right: Actions & Primary Green CTA (Dropship.io 1:1 match) */}
           <div className="flex items-center gap-1.5 sm:gap-3">
@@ -317,7 +367,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={onOpenGetStarted}
               id="header-cta-button"
-              className="group relative h-9 sm:h-auto px-3.5 sm:px-5 sm:py-2.5 rounded-full bg-[#065F46] hover:bg-[#064E3B] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#065F46]/30 hover:shadow-lg hover:shadow-[#065F46]/40 transition-all duration-200 flex items-center gap-1.5 active:scale-95 cursor-pointer whitespace-nowrap"
+              className={`group relative px-3.5 sm:px-5 rounded-full bg-[#065F46] hover:bg-[#064E3B] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#065F46]/30 hover:shadow-lg hover:shadow-[#065F46]/40 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] flex items-center gap-1.5 active:scale-95 cursor-pointer whitespace-nowrap ${scrolled ? "h-8 sm:h-8" : "h-9 sm:h-10"
+                }`}
             >
               <span className="sm:hidden">Start Free</span>
               <span className="hidden sm:inline">Start Free</span>
@@ -344,113 +395,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Dropship-inspired Mega Dropdown Panels (Desktop) */}
-      {activeDropdown && (
-        <div
-          onMouseLeave={() => setActiveDropdown(null)}
-          className="hidden md:block absolute top-full left-4 right-4 mt-2 max-w-4xl mx-auto bg-white rounded-3xl border border-[#DAD8CD] shadow-2xl p-5 sm:p-6 animate-in fade-in slide-in-from-top-2 duration-150 z-50"
-        >
-          {activeDropdown === "platform" && (
-            <div>
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#E6E4DB]">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#064E3B]" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#111827]">
-                    Core Platform Tools
-                  </span>
-                </div>
-                <button
-                  onClick={() => {
-                    setActiveDropdown(null);
-                    onOpenSeeHowItWorks();
-                  }}
-                  className="text-xs font-semibold text-[#064E3B] hover:text-[#064E3B] flex items-center gap-1 cursor-pointer"
-                >
-                  <span>Interactive Walkthrough</span>
-                  <ExternalLink className="w-3 h-3" />
-                </button>
-              </div>
 
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
-                {platformTools.map((tool) => {
-                  const Icon = tool.icon;
-                  const href = tool.href.startsWith("#")
-                    ? `${linkPrefix}${tool.href}`
-                    : tool.href;
-                  return (
-                    <a
-                      key={tool.title}
-                      href={href}
-                      onClick={() => setActiveDropdown(null)}
-                      className="group p-3 rounded-2xl hover:bg-[#F7F7F2] border border-transparent hover:border-[#DAD8CD] transition-all flex items-start gap-3"
-                    >
-                      <div className="w-10 h-10 flex items-center justify-center shrink-0 drop-shadow-sm group-hover:scale-105 transition-transform">
-                        <Icon className="w-10 h-10 shrink-0" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-[#111827] group-hover:text-[#064E3B] transition-colors truncate">
-                            {tool.title}
-                          </span>
-                          <span className="text-[9px] font-bold font-mono px-1.5 py-0.2 rounded bg-[#F1F0EA] text-[#064E3B] border border-[#DAD8CD]">
-                            {tool.badge}
-                          </span>
-                        </div>
-                        <p className="text-[11px] text-[#4B5563] mt-0.5 line-clamp-2 leading-snug">
-                          {tool.desc}
-                        </p>
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-
-          {activeDropdown === "solutions" && (
-            <div>
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#E6E4DB]">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#064E3B]" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#111827]">
-                    Industry-Specific Workflows
-                  </span>
-                </div>
-                <span className="text-xs text-[#4B5563]">Built for global business operations</span>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {solutionIndustries.map((ind) => {
-                  const Icon = ind.icon;
-                  const href = ind.href.startsWith("#")
-                    ? `${linkPrefix}${ind.href}`
-                    : ind.href;
-                  return (
-                    <a
-                      key={ind.title}
-                      href={href}
-                      onClick={() => setActiveDropdown(null)}
-                      className="group p-3.5 rounded-2xl hover:bg-[#F7F7F2] border border-transparent hover:border-[#DAD8CD] transition-all flex items-start gap-3"
-                    >
-                      <div className="w-10 h-10 flex items-center justify-center shrink-0 drop-shadow-sm group-hover:scale-105 transition-transform">
-                        <Icon className="w-10 h-10 shrink-0" />
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-[#111827] group-hover:text-[#064E3B] transition-colors">
-                          {ind.title}
-                        </div>
-                        <p className="text-[11px] text-[#4B5563] mt-0.5 leading-snug">
-                          {ind.desc}
-                        </p>
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
 
       {/* Mobile Drawer (Clean, categorized, and touch-friendly) */}
       {mobileMenuOpen && (
