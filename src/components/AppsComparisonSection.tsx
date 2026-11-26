@@ -268,161 +268,62 @@ const HelpdeskIcon = createTileIcon(
   </>
 );
 
-/* ─── Hand-drawn annotation machinery ─────────────────────────────────────── */
-
-type ArrowKind = "dr" | "dl" | "d" | "u" | "ur" | "ul" | "r" | "l";
-type Where = "tl" | "tc" | "tr" | "l" | "r" | "bl" | "bc" | "br";
-
-interface NoteDef {
-  text: string;
-  where: Where;
-  rot?: number;
-  /** Bigger free-floating comment in the brand accent color. */
-  comment?: boolean;
-}
+/* ─── App definitions — CODIIC's own clean chip language, no scribbles ────── */
 
 interface AppDef {
   name: string;
   icon: TileIcon;
-  notes?: NoteDef[];
+  /** The scattered tool this module replaces */
+  replaces?: string;
+  /** Short side comment shown while the "without CODIIC" view is active */
+  comment?: { text: string; side: "l" | "r" };
 }
 
-const INK = "#171923";
-
-/** Pen-style arrows: slightly wavy shaft + an open V-flick head drawn through the tip. */
-const ARROW_PATHS: Record<ArrowKind, string> = {
-  dr: "M4 4 C 12 14, 22 22, 32 30 S 46 39, 53 41 M45 40 Q 49 41, 53 41 Q 52 36, 50 32",
-  dl: "M56 4 C 48 14, 38 22, 28 30 S 14 39, 7 41 M15 40 Q 11 41, 7 41 Q 8 36, 10 32",
-  d: "M30 3 C 24 14, 36 24, 30 40 M23.5 34 Q 26.5 39, 30 40 Q 33.5 39, 36.5 34",
-  u: "M30 41 C 36 30, 24 20, 30 4 M23.5 10 Q 26.5 5, 30 4 Q 33.5 5, 36.5 10",
-  ur: "M5 41 C 15 32, 26 26, 38 18 S 50 8, 55 3 M46 12 Q 51 7, 55 3 Q 53 10, 50 16",
-  ul: "M55 41 C 45 32, 34 26, 22 18 S 10 8, 5 3 M14 12 Q 9 7, 5 3 Q 7 10, 10 16",
-  r: "M4 8 C 16 20, 32 29, 55 30 M45 34 Q 50.5 32, 55 30 Q 51.5 26, 48 22",
-  l: "M56 8 C 44 20, 28 29, 5 30 M15 34 Q 9.5 32, 5 30 Q 8.5 26, 12 22",
-};
-
-const PLACEMENT: Record<
-  Where,
-  { wrap: string; arrow: ArrowKind; arrowFirst: boolean; arrowCls: string }
-> = {
-  tl: {
-    wrap: "bottom-full left-[-12px] flex-col items-start",
-    arrow: "dr",
-    arrowFirst: false,
-    arrowCls: "ml-4 translate-y-1.5",
-  },
-  tc: {
-    wrap: "bottom-full left-1/2 -translate-x-1/2 flex-col items-center",
-    arrow: "d",
-    arrowFirst: false,
-    arrowCls: "translate-y-1.5",
-  },
-  tr: {
-    wrap: "bottom-full right-[-12px] flex-col items-end",
-    arrow: "dl",
-    arrowFirst: false,
-    arrowCls: "mr-4 translate-y-1.5",
-  },
-  l: {
-    wrap: "right-[calc(100%+10px)] top-1/3 flex-row items-center",
-    arrow: "r",
-    arrowFirst: false,
-    arrowCls: "mt-3 -ml-1 translate-x-1",
-  },
-  r: {
-    wrap: "left-[calc(100%+10px)] top-1/3 flex-row items-center",
-    arrow: "l",
-    arrowFirst: true,
-    arrowCls: "mt-3 -mr-1 -translate-x-1",
-  },
-  bl: {
-    wrap: "top-[calc(100%+26px)] left-[-8px] flex-col items-start",
-    arrow: "ur",
-    arrowFirst: true,
-    arrowCls: "ml-4 -translate-y-1.5",
-  },
-  bc: {
-    wrap: "top-[calc(100%+26px)] left-1/2 -translate-x-1/2 flex-col items-center",
-    arrow: "u",
-    arrowFirst: true,
-    arrowCls: "-translate-y-1.5",
-  },
-  br: {
-    wrap: "top-[calc(100%+26px)] right-[-8px] flex-col items-end",
-    arrow: "ul",
-    arrowFirst: true,
-    arrowCls: "mr-4 -translate-y-1.5",
-  },
-};
-
-const Arrow: React.FC<{ kind: ArrowKind; className?: string }> = ({ kind, className }) => (
-  <svg viewBox="0 0 60 44" fill="none" className={`h-7 w-10 shrink-0 ${className ?? ""}`} aria-hidden>
-    <path
-      d={ARROW_PATHS[kind]}
-      stroke={INK}
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      opacity="0.85"
-    />
-  </svg>
-);
-
-/* ─── The apps: every tile replaces a separate tool you'd otherwise pay for ── */
-
 const APPS: AppDef[] = [
-  // Row 1 — placements alternate so no two labels can ever touch
-  { name: "Website", icon: WebsiteIcon, notes: [{ text: "Wix", where: "tl" }] },
-  { name: "Storefront", icon: StorefrontIcon, notes: [{ text: "Shopify", where: "tr" }] },
-  { name: "CRM 360", icon: CrmIcon, notes: [{ text: "Salesforce", where: "tc" }] },
-  { name: "Inbox", icon: InboxIcon, notes: [{ text: "Wati", where: "tl" }] },
-  { name: "Automation", icon: AutomationIcon, notes: [{ text: "Zapier", where: "tc" }] },
-  { name: "AI Assistant", icon: AiIcon, notes: [{ text: "Chatbase", where: "tr" }] },
+  // Row 1
+  { name: "Website", icon: WebsiteIcon, replaces: "Wix" },
+  { name: "Storefront", icon: StorefrontIcon, replaces: "Shopify" },
+  { name: "CRM 360", icon: CrmIcon, replaces: "Salesforce" },
+  { name: "Inbox", icon: InboxIcon, replaces: "Wati" },
+  { name: "Automation", icon: AutomationIcon, replaces: "Zapier" },
+  { name: "AI Assistant", icon: AiIcon, replaces: "Chatbase" },
   // Row 2
   {
     name: "Sales",
     icon: SalesIcon,
-    notes: [
-      { text: "Pipedrive", where: "tl" },
-      { text: "nothing connects", where: "l", comment: true, rot: -8 },
-    ],
+    replaces: "Pipedrive",
+    comment: { text: "nothing connects", side: "l" },
   },
-  { name: "Voice Calls", icon: VoiceIcon, notes: [{ text: "Exotel", where: "tc" }] },
-  { name: "Broadcasts", icon: BroadcastsIcon, notes: [{ text: "Mailchimp", where: "tr" }] },
-  { name: "Bookings", icon: BookingsIcon, notes: [{ text: "Calendly", where: "tc" }] },
-  { name: "Catalog", icon: CatalogIcon, notes: [{ text: "Excel, honestly", where: "tc", rot: -6 }] },
+  { name: "Voice Calls", icon: VoiceIcon, replaces: "Exotel" },
+  { name: "Broadcasts", icon: BroadcastsIcon, replaces: "Mailchimp" },
+  { name: "Bookings", icon: BookingsIcon, replaces: "Calendly" },
+  { name: "Catalog", icon: CatalogIcon, replaces: "Excel, honestly" },
   {
     name: "Analytics",
     icon: AnalyticsIcon,
-    notes: [
-      { text: "Tableau", where: "tr" },
-      { text: "six data silos", where: "r", comment: true, rot: 6 },
-    ],
+    replaces: "Tableau",
+    comment: { text: "six data silos", side: "r" },
   },
   // Row 3
-  { name: "Ad Library", icon: AdLibraryIcon, notes: [{ text: "Foreplay", where: "tl" }] },
-  { name: "Ad Tracker", icon: AdTrackerIcon, notes: [{ text: "Triple Whale", where: "tl" }] },
-  { name: "Competitors", icon: CompetitorsIcon, notes: [{ text: "Similarweb", where: "tc" }] },
+  { name: "Ad Library", icon: AdLibraryIcon, replaces: "Foreplay" },
+  { name: "Ad Tracker", icon: AdTrackerIcon, replaces: "Triple Whale" },
+  { name: "Competitors", icon: CompetitorsIcon, replaces: "Similarweb" },
   { name: "Portfolio", icon: PortfolioIcon },
-  { name: "Integrations", icon: IntegrationsIcon, notes: [{ text: "Make", where: "tl" }] },
+  { name: "Integrations", icon: IntegrationsIcon, replaces: "Make" },
   {
     name: "Knowledge",
     icon: KnowledgeIcon,
-    notes: [
-      { text: "Notion", where: "tr" },
-      { text: "per-seat pricing", where: "r", comment: true, rot: 5 },
-    ],
+    replaces: "Notion",
+    comment: { text: "per-seat pricing", side: "r" },
   },
-  // Row 4 — the ops row under the brace
-  { name: "Retail POS", icon: RetailIcon, notes: [{ text: "Lightspeed", where: "tl" }] },
-  { name: "Invoicing", icon: InvoicingIcon, notes: [{ text: "Vyapar", where: "tl" }] },
-  { name: "Projects", icon: ProjectsIcon, notes: [{ text: "Asana", where: "tc" }] },
-  { name: "eSign", icon: SignIcon, notes: [{ text: "DocuSign", where: "tl" }] },
-  { name: "HR", icon: HrIcon, notes: [{ text: "Keka", where: "tl" }] },
-  { name: "Helpdesk", icon: HelpdeskIcon, notes: [{ text: "Zendesk", where: "tr" }] },
+  // Row 4
+  { name: "Retail POS", icon: RetailIcon, replaces: "Lightspeed" },
+  { name: "Invoicing", icon: InvoicingIcon, replaces: "Vyapar" },
+  { name: "Projects", icon: ProjectsIcon, replaces: "Asana" },
+  { name: "eSign", icon: SignIcon, replaces: "DocuSign" },
+  { name: "HR", icon: HrIcon, replaces: "Keka" },
+  { name: "Helpdesk", icon: HelpdeskIcon, replaces: "Zendesk" },
 ];
-
-const TOTAL_NOTES = APPS.reduce((n, a) => n + (a.notes?.length ?? 0), 0);
 
 /* ─── Section ─────────────────────────────────────────────────────────────── */
 
@@ -437,8 +338,6 @@ export const AppsComparisonSection: React.FC = () => {
   }, []);
 
   const codiicOn = mounted && !without;
-
-  let noteIndex = -1;
 
   return (
     <section id="one-platform" className="relative bg-transparent py-14 sm:py-20">
@@ -460,8 +359,8 @@ export const AppsComparisonSection: React.FC = () => {
         </div>
 
         {/* App grid + annotation layer */}
-        <div className="relative max-w-5xl mx-auto mt-2 pt-12 pb-20 px-2 sm:px-8 lg:px-32">
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-16 sm:gap-x-6 sm:gap-y-20">
+        <div className="relative max-w-5xl mx-auto mt-2 pt-14 pb-16 px-2 sm:px-8 lg:px-32">
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-12 sm:gap-x-6 sm:gap-y-14">
             {APPS.map((app, appIdx) => {
               const Icon = app.icon;
               return (
@@ -471,39 +370,41 @@ export const AppsComparisonSection: React.FC = () => {
                     without ? "" : "opacity-40 saturate-[0.5]"
                   }`}
                 >
-                  {app.notes?.map((note) => {
-                    noteIndex += 1;
-                    const p = PLACEMENT[note.where];
-                    // Below lg the grid reflows to 3/4 columns — show only the
-                    // alternating (even-index) notes so labels can never collide.
-                    const hideBelowLg = note.comment || appIdx % 2 === 1;
-                    const visibility = hideBelowLg ? "hidden lg:flex" : "flex";
-                    return (
-                      <div
-                        key={note.text}
-                        aria-hidden
-                        className={`without-note pointer-events-none absolute z-20 ${p.wrap} ${visibility} transition-all duration-500 ease-out ${
-                          without
-                            ? "opacity-100 translate-y-0 scale-100"
-                            : "opacity-0 translate-y-3 scale-95"
-                        }`}
-                        style={{ transitionDelay: without ? `${120 + noteIndex * 45}ms` : "0ms" }}
-                      >
-                        {p.arrowFirst && <Arrow kind={p.arrow} className={p.arrowCls} />}
-                        <span
-                          className={`font-serif italic whitespace-nowrap leading-none ${
-                            note.comment
-                              ? "text-lg sm:text-xl text-[#008F60]"
-                              : "text-xl sm:text-2xl text-[#171923]"
-                          }`}
-                          style={{ rotate: `${note.rot ?? (note.comment ? -7 : -4)}deg` }}
-                        >
-                          {note.text}
-                        </span>
-                        {!p.arrowFirst && <Arrow kind={p.arrow} className={p.arrowCls} />}
-                      </div>
-                    );
-                  })}
+                  {/* Competitor chip — the separate tool this replaces */}
+                  {app.replaces && (
+                    <span
+                      aria-hidden
+                      className={`without-note pointer-events-none absolute -top-6 sm:-top-7 left-1/2 -translate-x-1/2 z-20 whitespace-nowrap rounded-full bg-white border border-[#E5E7DF] px-2 sm:px-2.5 py-[3px] text-[9px] sm:text-[10px] font-bold tracking-wide text-[#586579] shadow-sm transition-all duration-500 ease-out ${
+                        without
+                          ? "opacity-100 translate-y-0 scale-100"
+                          : "opacity-0 translate-y-2 scale-90"
+                      }`}
+                      style={{ transitionDelay: without ? `${100 + appIdx * 30}ms` : "0ms" }}
+                    >
+                      {app.replaces}
+                    </span>
+                  )}
+
+                  {/* Side comment — what the scattered stack really costs */}
+                  {app.comment && (
+                    <span
+                      aria-hidden
+                      className={`without-note hidden lg:flex pointer-events-none absolute top-1/2 -translate-y-1/2 z-20 items-center gap-1.5 whitespace-nowrap text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#008F68] transition-all duration-500 ease-out ${
+                        app.comment.side === "l"
+                          ? "right-[calc(100%+12px)]"
+                          : "left-[calc(100%+12px)]"
+                      } ${without ? "opacity-100" : "opacity-0"}`}
+                      style={{ transitionDelay: without ? `${150 + appIdx * 30}ms` : "0ms" }}
+                    >
+                      {app.comment.side === "r" && (
+                        <span className="h-px w-4 bg-[#008F68]/50" />
+                      )}
+                      {app.comment.text}
+                      {app.comment.side === "l" && (
+                        <span className="h-px w-4 bg-[#008F68]/50" />
+                      )}
+                    </span>
+                  )}
 
                   {/* Tile */}
                   <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-2xl bg-white border border-black/[0.04] shadow-[0_14px_30px_-14px_rgba(23,25,35,0.22)] flex items-center justify-center transition-transform duration-300 hover:-translate-y-1">
@@ -580,22 +481,19 @@ export const AppsComparisonSection: React.FC = () => {
             className={`without-note pointer-events-none absolute left-[3%] bottom-5 w-[64%] transition-all duration-500 ease-out ${
               without ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
             }`}
-            style={{ transitionDelay: without ? `${140 + TOTAL_NOTES * 45}ms` : "0ms" }}
+            style={{ transitionDelay: without ? `${140 + APPS.length * 30}ms` : "0ms" }}
           >
             <svg viewBox="0 0 600 44" preserveAspectRatio="none" className="w-full h-10" fill="none">
               <path
                 d="M8 8 Q 150 38 296 38 Q 446 38 592 10 M8 8 L3 2 M592 10 L597 4"
-                stroke={INK}
-                strokeWidth="2.5"
+                stroke="#171923"
+                strokeWidth="2"
                 strokeLinecap="round"
                 vectorEffect="non-scaling-stroke"
-                opacity="0.8"
+                opacity="0.5"
               />
             </svg>
-            <span
-              className="font-serif italic text-xl sm:text-2xl whitespace-nowrap absolute left-1/2 top-full -translate-x-1/2 -translate-y-1.5 text-[#171923]"
-              style={{ rotate: "-2deg" }}
-            >
+            <span className="whitespace-nowrap absolute left-1/2 top-full -translate-x-1/2 -translate-y-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#586579]">
               each billed per seat, per month
             </span>
           </div>
@@ -649,11 +547,11 @@ export const AppsComparisonSection: React.FC = () => {
           <div className="flex flex-col sm:items-end gap-2.5">
             <div className="relative inline-flex self-start sm:self-end">
               <span
-                className={`font-serif italic text-xl sm:text-2xl whitespace-nowrap transition-colors duration-300 ${
-                  without ? "text-[#171923]" : "text-[#8A919C]"
+                className={`text-xl sm:text-2xl font-extrabold tracking-tight whitespace-nowrap transition-colors duration-300 ${
+                  without ? "text-[#101828]" : "text-[#8A919C]"
                 }`}
               >
-                ₹40,000+/mo in tools
+                ₹40,000+<span className="text-sm font-bold text-[#586579]">/mo in tools</span>
               </span>
               {/* Big red hand-drawn cross — only while CODIIC is in the picture */}
               <svg
