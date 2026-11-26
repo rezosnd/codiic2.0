@@ -265,7 +265,7 @@ export const BipsyncHeroCanvas: React.FC<BipsyncHeroCanvasProps> = ({
                 ctx.strokeStyle = "rgba(0, 140, 90, 0.25)";
               } else {
                 ctx.fillStyle = `rgba(1, 26, 17, ${0.85 + sideShade * 0.1})`;
-                ctx.strokeStyle = "rgba(0, 184, 121, 0.2)";
+                ctx.strokeStyle = "rgba(20, 184, 166, 0.2)";
               }
               ctx.fill();
               ctx.lineWidth = 0.6;
@@ -292,7 +292,7 @@ export const BipsyncHeroCanvas: React.FC<BipsyncHeroCanvasProps> = ({
               ctx.fillStyle = `rgba(0, ${Math.round(170 + rimGleam * 85)}, ${Math.round(
                 120 + rimGleam * 65
               )}, ${0.6 + rimGleam * 0.35})`;
-              ctx.strokeStyle = `rgba(0, 184, 121, ${0.45 + glowFactor * 0.45})`;
+              ctx.strokeStyle = `rgba(20, 184, 166, ${0.45 + glowFactor * 0.45})`;
             } else {
               ctx.fillStyle = `rgba(0, ${Math.round(150 + rimGleam * 105)}, ${Math.round(
                 95 + rimGleam * 75
@@ -319,7 +319,7 @@ export const BipsyncHeroCanvas: React.FC<BipsyncHeroCanvasProps> = ({
             ctx.strokeStyle = `rgba(0, 140, 90, ${0.3 + glowFactor * 0.5})`;
           } else {
             ctx.fillStyle = glowFactor > 0.08
-              ? `rgba(0, 184, 121, ${0.45 + glowFactor * 0.45})`
+              ? `rgba(20, 184, 166, ${0.45 + glowFactor * 0.45})`
               : "rgba(0, 85, 55, 0.52)";
             ctx.strokeStyle = `rgba(56, 225, 155, ${0.25 + glowFactor * 0.65})`;
           }

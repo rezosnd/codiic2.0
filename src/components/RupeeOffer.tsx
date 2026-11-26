@@ -15,7 +15,7 @@ export const RupeeOfferPill: React.FC<RupeeOfferPillProps> = ({
     className={`relative inline-flex items-center gap-2 pl-1 pr-3.5 py-1 rounded-full overflow-hidden backdrop-blur-md text-xs sm:text-[13px] font-semibold ${
       dark
         ? "bg-white/10 ring-1 ring-white/20 text-white"
-        : "bg-white/70 ring-1 ring-[#00B879]/25 text-[#00593A] shadow-[0_10px_30px_-12px_rgba(0,143,96,0.5)]"
+        : "bg-white/70 ring-1 ring-[#14B8A6]/30 text-[#0D5C4D] shadow-[0_10px_30px_-12px_rgba(13,92,77,0.5)]"
     } ${className}`}
   >
     <span className="relative flex items-center justify-center h-6 px-2 rounded-full bg-gradient-to-br from-[#FFD66B] via-[#F5B82E] to-[#D99A0B] text-[#3D2A00] text-[11px] font-extrabold shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_2px_6px_rgba(217,154,11,0.45)]">

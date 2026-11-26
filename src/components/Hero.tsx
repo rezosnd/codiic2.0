@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
-import { ArrowRight, Play, Star } from "lucide-react";
+import { ArrowRight, Compass, Star } from "lucide-react";
 import {
   WhatsAppLogo,
   RazorpayLogo,
@@ -25,6 +25,7 @@ import {
 } from "./ColorfulProductIcons";
 import { BipsyncHeroCanvas } from "./BipsyncHeroCanvas";
 import { RupeeOfferPill } from "./RupeeOffer";
+import { ContainerTextFlip } from "@/components/ui/container-text-flip";
 
 interface HeroProps {
   onOpenGetStarted: () => void;
@@ -86,7 +87,7 @@ const ROWS: FlowRow[] = [
 const FlowCard: React.FC<{ item: FlowCardItem }> = ({ item }) => {
   const Logo = item.Logo;
   return (
-    <div className="w-[228px] sm:w-[268px] h-[64px] sm:h-[74px] shrink-0 flex items-center gap-3 pl-2.5 pr-3 sm:pl-3 sm:pr-4 rounded-2xl bg-white border border-[#E6E9E7] shadow-[0_10px_30px_-14px_rgba(23,25,35,0.22)]">
+    <div className="w-[228px] sm:w-[268px] h-[64px] sm:h-[74px] shrink-0 flex items-center gap-3 pl-2.5 pr-3 sm:pl-3 sm:pr-4 rounded-2xl bg-white border border-[#DCE9E4] shadow-[0_10px_30px_-14px_rgba(23,25,35,0.22)]">
       <span className="w-10 h-10 sm:w-11 sm:h-11 shrink-0 rounded-xl bg-white ring-1 ring-black/[0.06] flex items-center justify-center">
         <Logo className="w-6 h-6" />
       </span>
@@ -102,7 +103,7 @@ const FlowCard: React.FC<{ item: FlowCardItem }> = ({ item }) => {
         <div className="text-[12px] sm:text-[14px] font-extrabold text-[#171923] tabular-nums leading-tight">
           {item.value}
         </div>
-        <span className="inline-block mt-1 text-[9px] font-semibold text-[#008F60] bg-[#E8F8F1] px-1.5 py-0.5 rounded-md leading-none">
+        <span className="inline-block mt-1 text-[9px] font-semibold text-[#14B8A6] bg-[#E5F8F1] px-1.5 py-0.5 rounded-md leading-none">
           {item.growth}
         </span>
       </div>
@@ -111,7 +112,7 @@ const FlowCard: React.FC<{ item: FlowCardItem }> = ({ item }) => {
 };
 
 const SkeletonCard: React.FC = () => (
-  <div className="w-[228px] sm:w-[268px] h-[64px] sm:h-[74px] shrink-0 flex items-center gap-3 pl-2.5 pr-3 sm:pl-3 sm:pr-4 rounded-2xl bg-white border border-[#ECEFED]">
+  <div className="w-[228px] sm:w-[268px] h-[64px] sm:h-[74px] shrink-0 flex items-center gap-3 pl-2.5 pr-3 sm:pl-3 sm:pr-4 rounded-2xl bg-white border border-[#DCE9E4]">
     <span className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#EEF1EF] shrink-0" />
     <div className="flex-1 space-y-2">
       <span className="block h-2.5 w-[68%] rounded-full bg-[#EEF1EF]" />
@@ -146,15 +147,15 @@ const Track: React.FC<{ row: FlowRow; skeleton?: boolean; paused: boolean }> = (
 export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWorks }) => {
   const stageRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(true);
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mq.matches);
-    const onChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
+  const reducedMotion = useSyncExternalStore(
+    (onStoreChange) => {
+      const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+      mq.addEventListener("change", onStoreChange);
+      return () => mq.removeEventListener("change", onStoreChange);
+    },
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => false,
+  );
 
   useEffect(() => {
     if (!stageRef.current) return;
@@ -168,7 +169,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
   const paused = !inView;
 
   return (
-    <section className="relative overflow-hidden bg-transparent pt-12 sm:pt-20 lg:pt-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#C6F3E4_0%,#F7FAF9_100%)] pt-12 sm:pt-20 lg:pt-24">
       {/* Interactive 3D hexagon terrain (reacts to the cursor) */}
       <BipsyncHeroCanvas className="absolute inset-0 pointer-events-none z-0 overflow-hidden" />
 
@@ -177,26 +178,28 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
         {/* Soft halo so the copy stays readable over the 3D terrain */}
         <div
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-[-10%] -translate-x-1/2 w-[110%] max-w-[980px] h-[120%] -z-10 bg-[radial-gradient(ellipse_at_center,rgba(244,252,248,0.95)_0%,rgba(236,249,243,0.75)_40%,rgba(236,249,243,0)_72%)]"
+          className="pointer-events-none absolute left-1/2 top-[-10%] -translate-x-1/2 w-[110%] max-w-[980px] h-[120%] -z-10 bg-[radial-gradient(ellipse_at_center,rgba(247,250,249,0.95)_0%,rgba(198,243,228,0.75)_40%,rgba(198,243,228,0)_72%)]"
         />
         <RupeeOfferPill
           className="mb-6"
           label="Sara kuch ₹1/day mein • No-Code Builder & Official Meta Cloud API 🌍"
         />
 
-        <h1 className="mx-auto max-w-4xl text-[40px] sm:text-6xl lg:text-[76px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.02] [text-shadow:0_2px_24px_rgba(255,255,255,0.9)]">
-          Build your storefront with drag-and-drop.{" "}
-          <em className="font-serif italic font-normal pr-1 text-transparent bg-clip-text bg-[linear-gradient(110deg,#006B48_0%,#00B879_35%,#5EF0B8_50%,#00B879_65%,#006B48_100%)] bg-[length:250%_100%] animate-text-shine [text-shadow:none]">
-            Turn chats into paid orders.
-          </em>
+        <h1 className="mx-auto max-w-5xl text-[40px] sm:text-6xl lg:text-[76px] font-bold text-[#171923] tracking-[-0.035em] leading-[1.02] [text-shadow:0_2px_24px_rgba(255,255,255,0.9)]">
+          <span className="block">Everything You Need to</span>
+          <ContainerTextFlip
+            words={["Build", "Manage", "Grow", "Automate", "Sell"]}
+            interval={2500}
+            animationDuration={700}
+            className="my-2 sm:my-3"
+          />
+          <span className="block">Your Business, All in One Place.</span>
         </h1>
 
-        <div className="mx-auto mt-5 sm:mt-6 max-w-2xl rounded-2xl sm:rounded-3xl px-5 py-3.5 sm:px-7 sm:py-4 bg-white/60 backdrop-blur-xl backdrop-saturate-150 border border-white/80 shadow-[0_20px_50px_-24px_rgba(0,107,72,0.45),inset_0_1px_0_rgba(255,255,255,0.9)]">
+        <div className="mx-auto mt-5 sm:mt-6 max-w-2xl rounded-2xl sm:rounded-3xl px-5 py-3.5 sm:px-7 sm:py-4 bg-white/60 backdrop-blur-xl backdrop-saturate-150 border border-white/80 shadow-[0_20px_50px_-24px_rgba(13,92,77,0.45),inset_0_1px_0_rgba(255,255,255,0.9)]">
           <p className="text-base sm:text-lg lg:text-xl font-medium text-[#2A303C] leading-relaxed">
-            Design a high-converting website without writing a single line of code, manage every
-            customer across WhatsApp, Instagram, Facebook, Telegram &amp; Email in one inbox, spy on
-            winning ads &amp; competitors, and automate AI voice &amp; chat follow-ups.{" "}
-            <span className="font-semibold text-[#008F60]">Start free, or unlock Pro at ₹1/day.</span>
+            Create websites, sell products, manage customers, accept bookings, and automate your
+            daily work — all from one platform, with just a few clicks.
           </p>
         </div>
 
@@ -205,9 +208,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
             type="button"
             onClick={onOpenGetStarted}
             id="hero-primary-cta"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#00B879] hover:bg-[#008F60] text-white text-[15px] font-bold shadow-[0_14px_34px_-12px_rgba(0,143,96,0.7)] transition-colors active:scale-[0.98] cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#0D5C4D] hover:bg-[#08483C] text-white text-[15px] font-bold shadow-[0_14px_34px_-12px_rgba(13,92,77,0.7)] transition-colors active:scale-[0.98] cursor-pointer"
           >
-            Start Free
+            Get Started
             <ArrowRight className="w-4 h-4" />
           </button>
           <button
@@ -216,8 +219,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
             id="hero-secondary-cta"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/65 hover:bg-white/85 backdrop-blur-md text-[#171923] text-[15px] font-semibold border border-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] transition-colors active:scale-[0.98] cursor-pointer"
           >
-            <Play className="w-4 h-4 fill-[#171923]" />
-            See how it works
+            <Compass className="w-4 h-4" />
+            Explore Features
           </button>
         </div>
 
@@ -253,9 +256,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
               >
                 <defs>
                   <linearGradient id="ovalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#00D4A0" />
-                    <stop offset="50%" stopColor="#00B879" />
-                    <stop offset="100%" stopColor="#5EF0C8" />
+                    <stop offset="0%" stopColor="#2DD4BF" />
+                    <stop offset="50%" stopColor="#14B8A6" />
+                    <stop offset="100%" stopColor="#5EEAD4" />
                   </linearGradient>
                 </defs>
 
@@ -294,7 +297,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
                     C 144 44, 94 45, 55 43
                     C 40 42, 32 40, 32 38 Z
                   "
-                  stroke="#00B879"
+                  stroke="#14B8A6"
                   strokeWidth="1.2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -309,7 +312,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
                 {/* Tiny sketch tail / overshoot — like a pen lifting off */}
                 <path
                   d="M 28 36 C 24 35, 20 36, 18 34"
-                  stroke="#00B879"
+                  stroke="#14B8A6"
                   strokeWidth="2"
                   strokeLinecap="round"
                   opacity={0.55}
@@ -332,7 +335,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
       {/* Flow stage: cards travel left → right through the CODIIC hub */}
       <div ref={stageRef} className="relative mt-12 sm:mt-16 h-[300px] sm:h-[380px] lg:h-[400px]" aria-hidden="true">
         {/* Beam */}
-        <div className="absolute left-[26%] sm:left-1/2 top-0 bottom-0 -translate-x-1/2 w-[3px] bg-gradient-to-b from-[#00B879]/0 via-[#00B879] to-[#00B879]/0" />
+        <div className="absolute left-[26%] sm:left-1/2 top-0 bottom-0 -translate-x-1/2 w-[3px] bg-gradient-to-b from-[#14B8A6]/0 via-[#14B8A6] to-[#14B8A6]/0" />
 
         {/* Rows */}
         <div className="absolute inset-0 flex flex-col justify-center gap-3 sm:gap-4 [perspective:1400px] [mask-image:linear-gradient(90deg,transparent,black_5%,black_92%,transparent)] sm:[mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
@@ -364,7 +367,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
 
         {/* Hub */}
         <div className="absolute left-[26%] sm:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-          <div className="relative w-[64px] h-[64px] sm:w-[84px] sm:h-[84px] rounded-[20px] sm:rounded-[26px] bg-[#00B879] ring-[6px] ring-white shadow-[0_20px_50px_-12px_rgba(0,143,96,0.55)] flex items-center justify-center">
+          <div className="relative w-[64px] h-[64px] sm:w-[84px] sm:h-[84px] rounded-[20px] sm:rounded-[26px] bg-[#14B8A6] ring-[6px] ring-white shadow-[0_20px_50px_-12px_rgba(20,184,166,0.55)] flex items-center justify-center">
             <div className="relative w-8 h-8 sm:w-10 sm:h-10">
               <Image
                 src="/logo_withot text.png"
@@ -379,7 +382,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetStarted, onOpenSeeHowItWork
         </div>
 
         {/* Frosted-glass bottom edge */}
-        <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 pointer-events-none z-20 backdrop-blur-xl backdrop-saturate-150 bg-gradient-to-t from-[#E3F4EC]/90 via-[#E3F4EC]/45 to-transparent [mask-image:linear-gradient(to_top,black_35%,transparent)]" />
+        <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 pointer-events-none z-20 backdrop-blur-xl backdrop-saturate-150 bg-gradient-to-t from-[#E5F8F1]/90 via-[#E5F8F1]/45 to-transparent [mask-image:linear-gradient(to_top,black_35%,transparent)]" />
       </div>
     </section>
   );
